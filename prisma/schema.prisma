@@ -1,0 +1,786 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Patient {
+  id        String  @id @default(uuid())
+  local_id  String? @unique
+  name      String
+  gender    Gender?
+  age_value Float? // Age numerical value (e.g., 2.5)
+  age_unit  String? // Age unit: 'years', 'months', 'days'
+  phone     String?
+  email     String?
+  address   String?
+
+  // Add this field to track current visit number
+  current_visit_number Int @default(1)
+
+  // Keep existing payment fields for backward compatibility
+  discount_amount      Float? // The actual discount applied
+  discount_percentage  Float? // Discount percentage applied
+  discount_type        DiscountType? // Type of discount applied
+  discount_reason      String? // Reason for discount
+  discount_approved_by String? // User who approved the discount
+
+  // Payment fields
+  total_amount   Float? // Final total after discount
+  amount_paid    Float?        @default(0) // Amount paid so far
+  amount_due     Float? // Remaining amount to pay
+  payment_status PaymentStatus @default(Unpaid)
+  payment_method String? // Cash, Card, Insurance, etc.
+  payment_notes  String?
+
+  // Receipt tracking
+  receipt_number     String?   @unique
+  receipt_printed    Boolean   @default(false)
+  receipt_printed_at DateTime?
+  receipt_printed_by String?
+
+  // For partial payments tracking
+  partial_payments Json? // Array of partial payments {date, amount, by_user}
+
+  // Relations
+  doctors         PatientDoctor[]
+  tests           Test[]
+  discount_audits DiscountAudit[]
+  visits          PatientVisit[] // Add this reverse relation
+
+  // Sync metadata
+  sync_status    SyncStatus @default(Pending)
+  created_at     DateTime   @default(now())
+  updated_at     DateTime   @updatedAt
+  last_synced_at DateTime?
+  is_deleted     Boolean    @default(false)
+  version        Int        @default(1)
+
+  @@index([is_deleted])
+  @@index([sync_status])
+  @@map("patients")
+}
+
+model PatientVisit {
+  id           String   @id @default(uuid())
+  patient_id   String
+  visit_date   DateTime @default(now())
+  visit_number Int      @default(1)
+  notes        String?
+
+  // Financials for this specific visit
+  total_amount        Float?
+  discount_amount     Float?
+  discount_percentage Float?
+  discount_type       DiscountType?
+  discount_reason     String?
+
+  amount_paid    Float?        @default(0)
+  amount_due     Float?
+  payment_status PaymentStatus @default(Unpaid)
+  payment_method String?
+  receipt_number String?       @unique
+
+  // Relations
+  patient       Patient       @relation(fields: [patient_id], references: [id], onDelete: Cascade)
+  tests         Test[] // Tests can link to a visit
+  visit_doctors VisitDoctor[]
+
+  // Timestamps
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  is_deleted Boolean  @default(false)
+
+  @@index([patient_id])
+  @@index([visit_number])
+  @@map("patient_visits")
+}
+
+model VisitDoctor {
+  id          String   @id @default(cuid())
+  visit_id    String
+  doctor_id   String
+  sync_status String   @default("Pending")
+  created_at  DateTime @default(now())
+
+  visit  PatientVisit @relation(fields: [visit_id], references: [id])
+  doctor Doctor       @relation(fields: [doctor_id], references: [id])
+
+  @@unique([visit_id, doctor_id])
+  @@map("visit_doctors")
+}
+
+model Doctor {
+  id             String  @id @default(uuid())
+  local_id       String? @unique
+  name           String
+  specialization String?
+  phone          String?
+  email          String?
+  clinic_address String?
+
+  // Relations
+  patients      PatientDoctor[]
+  tests         Test[]
+  visit_doctors VisitDoctor[]
+
+  // Sync metadata
+  sync_status    SyncStatus @default(Pending)
+  created_at     DateTime   @default(now())
+  updated_at     DateTime   @updatedAt
+  last_synced_at DateTime?
+  is_deleted     Boolean    @default(false)
+  version        Int        @default(1)
+
+  @@index([is_deleted])
+  @@index([sync_status])
+  @@map("doctors")
+}
+
+model PatientDoctor {
+  id          String   @id @default(uuid())
+  patient_id  String
+  doctor_id   String
+  referred_at DateTime @default(now())
+  is_primary  Boolean  @default(false)
+  notes       String?
+
+  // Relations
+  patient Patient @relation(fields: [patient_id], references: [id], onDelete: Cascade)
+  doctor  Doctor  @relation(fields: [doctor_id], references: [id], onDelete: Cascade)
+
+  // Sync metadata
+  sync_status    SyncStatus @default(Pending)
+  created_at     DateTime   @default(now())
+  updated_at     DateTime   @updatedAt
+  last_synced_at DateTime?
+  is_deleted     Boolean    @default(false)
+
+  @@unique([patient_id, doctor_id])
+  @@map("patient_doctors")
+}
+
+model TestCategory {
+  id          String         @id @default(uuid())
+  name        String         @unique
+  description String?
+  parent_id   String?
+  parent      TestCategory?  @relation("CategoryHierarchy", fields: [parent_id], references: [id])
+  children    TestCategory[] @relation("CategoryHierarchy")
+  tests       TestTemplate[]
+  created_at  DateTime       @default(now())
+  updated_at  DateTime       @updatedAt
+  is_active   Boolean        @default(true)
+
+  @@index([is_active])
+  @@map("test_categories")
+}
+
+model TestTemplate {
+  id                  String             @id @default(uuid())
+  name                String
+  code                String             @unique
+  category_id         String
+  category            TestCategory       @relation(fields: [category_id], references: [id])
+  description         String?
+  specimen            String?
+  container           String?
+  volume              String?
+  storage             String?
+  methodology         String?
+  turnaround_time     String?
+  fees                Float?
+  is_active           Boolean            @default(true)
+  andrology_test_type AndrologyTestType?
+  created_at          DateTime           @default(now())
+  updated_at          DateTime           @updatedAt
+  expired_at          DateTime?
+
+  parameters    TestParameter[]
+  patient_tests Test[]
+  external_prices ExternalLabTestPrice[]
+
+  @@index([is_active])
+  @@index([category_id])
+  @@index([name])
+  @@map("test_templates")
+}
+
+model TestParameter {
+  id                String       @id @default(uuid())
+  test_template_id  String
+  test_template     TestTemplate @relation(fields: [test_template_id], references: [id], onDelete: Cascade)
+  name              String
+  code              String?
+  units             String?
+  default_value     String?
+  normal_range_min  Float?
+  normal_range_max  Float?
+  normal_range_text String?
+  is_critical       Boolean      @default(false)
+  sort_order        Int          @default(0)
+  created_at        DateTime     @default(now())
+  updated_at        DateTime     @updatedAt
+
+  @@map("test_parameters")
+}
+
+model Test {
+  id                  String     @id @default(uuid())
+  local_id            String?    @unique
+  patient_id          String
+  referring_doctor_id String?
+  test_type           String
+  test_code           String?
+  test_template_id    String?
+  status              TestStatus @default(Pending)
+  results             Json?
+  normal_range        Json?
+  units               String?
+  tested_at           DateTime?
+  completed_at        DateTime?
+
+  // Print/Archive management
+  is_printed  Boolean   @default(false)
+  printed_at  DateTime?
+  printed_by  String? // User ID who printed
+  print_count Int       @default(0) // Track re-prints
+
+  // Visit tracking
+  visit_id      String?
+  patient_visit PatientVisit? @relation(fields: [visit_id], references: [id], onDelete: SetNull) // Add this
+
+  // Relations
+  patient       Patient       @relation(fields: [patient_id], references: [id], onDelete: Cascade)
+  doctor        Doctor?       @relation(fields: [referring_doctor_id], references: [id], onDelete: SetNull)
+  test_template TestTemplate? @relation(fields: [test_template_id], references: [id])
+  external_lab_id String?
+  external_lab    ExternalLab? @relation(fields: [external_lab_id], references: [id])
+  outsourcing_cost Float?
+
+  created_by_id String?
+  updated_by_id String?
+  created_by    User?   @relation("UserCreatedTests", fields: [created_by_id], references: [id])
+  updated_by    User?   @relation("UserUpdatedTests", fields: [updated_by_id], references: [id])
+
+  andrology_test_type AndrologyTestType?
+  casa_analysis       CasaAnalysis?
+
+  test_images TestImage[]
+
+  // Sync metadata
+  sync_status    SyncStatus @default(Pending)
+  created_at     DateTime   @default(now())
+  updated_at     DateTime   @updatedAt
+  last_synced_at DateTime?
+  is_deleted     Boolean    @default(false)
+  version        Int        @default(1)
+
+  visit_number Int     @default(1) // Track which visit this test belongs to
+  is_archived  Boolean @default(false) // Rename is_printed to is_archived for clarity
+
+  @@index([is_deleted])
+  @@index([sync_status])
+  @@index([status])
+  @@index([created_at])
+  @@index([is_printed])
+  @@index([printed_at])
+  @@index([visit_id])
+  @@map("tests")
+}
+
+model SyncLog {
+  id              String    @id @default(uuid())
+  entity_type     String
+  entity_id       String
+  operation       String
+  local_timestamp DateTime  @default(now())
+  synced_at       DateTime?
+  data_before     Json?
+  data_after      Json?
+
+  @@map("sync_logs")
+}
+
+model ReportTemplate {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  config      Json // Template configuration
+  isActive    Boolean  @default(true)
+  isDefault   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("report_templates")
+}
+
+model User {
+  id                      String        @id @default(uuid())
+  email                   String        @unique
+  password_hash           String
+  name                    String
+  role                    UserRole      @default(Admin)
+  last_login_at           DateTime?
+  is_active               Boolean       @default(true)
+  created_at              DateTime      @default(now())
+  updated_at              DateTime      @updatedAt
+  can_give_discount       Boolean       @default(false)
+  max_discount_percentage Float? // Maximum discount percentage allowed (0-100)
+  max_discount_amount     Float? // Maximum fixed discount amount allowed
+  discount_type           DiscountType? @default(Percentage) // Percentage or Fixed amount
+
+  // Test Template Permissions
+  can_create_test_templates  Boolean @default(false)
+  can_edit_test_templates    Boolean @default(true)
+  can_delete_test_templates  Boolean @default(false)
+  can_edit_reference_ranges  Boolean @default(false)
+  can_edit_fees              Boolean @default(false)
+  can_view_test_templates    Boolean @default(true)
+  can_archive_test_templates Boolean @default(false)
+
+  //  Patient Management Permissions
+  can_create_patients        Boolean @default(false)
+  can_edit_patients          Boolean @default(false)
+  can_delete_patients        Boolean @default(false)
+  can_view_all_patients      Boolean @default(false)
+  can_access_medical_history Boolean @default(false)
+
+  // ✅ Relations
+  created_tests   Test[]          @relation("UserCreatedTests")
+  updated_tests   Test[]          @relation("UserUpdatedTests")
+  audit_logs      AuditLog[]
+  discount_audits DiscountAudit[]
+
+  preferred_language String? // Add this field
+  language           Language? @relation(fields: [preferred_language], references: [code])
+
+  @@map("users")
+}
+
+model AuditLog {
+  id                 String   @id @default(uuid())
+  user_id            String
+  user               User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  action             String
+  entity_type        String
+  entity_id          String?
+  description        String?
+  translation_params Json? // Add this field
+  old_values         Json?
+  new_values         Json?
+  ip_address         String?
+  user_agent         String?
+  metadata           Json?
+  created_at         DateTime @default(now())
+
+  @@index([user_id])
+  @@index([entity_type, entity_id])
+  @@index([action])
+  @@index([created_at])
+  @@map("audit_logs")
+}
+
+model ReportSettings {
+  id          String   @id @default(uuid())
+  key         String   @unique
+  value       Json
+  description String?
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  updated_by  String
+
+  @@map("report_settings")
+}
+
+model License {
+  id                    String    @id @default(uuid())
+  license_key           String    @unique
+  status                String    @default("active") // active, expired, suspended, trial
+  expires_at            DateTime?
+  last_validated_at     DateTime?
+  offline_validated_at  DateTime? // Last time validated while offline
+  grace_period_ends_at  DateTime? // When offline grace period ends
+  max_users             Int?
+  max_devices            Int?
+  machine_id             String? // Machine fingerprint - binds license to a specific machine
+  features               Json? // Enabled features
+  metadata               Json? // Additional license metadata
+  created_at             DateTime  @default(now())
+  updated_at             DateTime  @updatedAt
+
+  @@index([status])
+  @@index([expires_at])
+  @@index([license_key])
+  @@index([machine_id])
+  @@map("licenses")
+}
+
+model ErrorLog {
+  id        String   @id @default(uuid())
+  category  String   // DATABASE, SYNC, API, SYSTEM, VALIDATION, UNKNOWN
+  severity  String   // LOW, MEDIUM, HIGH, CRITICAL
+  message   String
+  error     String?
+  stack     String?
+  context   Json?
+  user_id   String?
+  metadata  Json?
+  created_at DateTime @default(now())
+
+  @@index([category])
+  @@index([severity])
+  @@index([created_at])
+  @@map("error_logs")
+}
+
+model Language {
+  id          String  @id @default(uuid())
+  code        String  @unique // en, ar, fr, es
+  name        String // English, العربية, Français, Español
+  native_name String // English, العربية, Français, Español
+  direction   String  @default("ltr") // ltr or rtl
+  is_active   Boolean @default(true)
+  is_default  Boolean @default(false)
+
+  translations Translation[]
+  users        User[]
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("languages")
+}
+
+model Translation {
+  id            String @id @default(uuid())
+  key           String // translation key like "welcome_message"
+  namespace     String @default("common") // common, navigation, forms, errors
+  language_code String
+  value         String // the actual translated text
+
+  language Language @relation(fields: [language_code], references: [code], onDelete: Cascade)
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  // Fixed unique constraint name
+  @@unique([key, namespace, language_code])
+  @@index([key])
+  @@index([namespace])
+  @@index([language_code])
+  @@map("translations")
+}
+
+model DiscountAudit {
+  id         String  @id @default(uuid())
+  patient_id String
+  patient    Patient @relation(fields: [patient_id], references: [id], onDelete: Cascade)
+
+  user_id String
+  user    User   @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  // Discount details
+  original_total      Float
+  discount_amount     Float
+  discount_percentage Float?
+  discount_type       DiscountType
+  discount_reason     String?
+  is_additional       Boolean      @default(false)
+
+  // Timestamps
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@index([patient_id])
+  @@index([user_id])
+  @@index([created_at])
+  @@map("discount_audits")
+}
+
+model ReceiptSettings {
+  id          String   @id @default(cuid())
+  key         String   @unique
+  value       Json
+  description String?
+  updated_by  String
+  updated_at  DateTime @default(now())
+  created_at  DateTime @default(now())
+
+  @@map("receipt_settings")
+}
+
+model CasaAnalysis {
+  id      String @id @default(uuid())
+  test_id String @unique
+  test    Test   @relation(fields: [test_id], references: [id], onDelete: Cascade)
+
+  // ========== BASIC SEMEN PARAMETERS ==========
+  collection_date     DateTime?
+  abstinence_days     Int? // Days of sexual abstinence
+  collection_method   String? // Masturbation, Condom, Interruption
+  collection_complete Boolean? // Complete sample or not
+
+  // PHYSICAL CHARACTERISTICS
+  volume_ml             Float? // Volume in mL
+  appearance            String? // Normal, Opalescent, Blood-tinged
+  viscosity             String? // Normal, Increased
+  liquefaction_time_min Int? // Minutes to liquefy (≤60 min normal)
+  ph                    Float? // pH value (7.2-8.0 normal)
+  odor                  String? // Characteristic, Foul
+
+  // ========== SPERM CONCENTRATION PARAMETERS ==========
+  concentration_million_per_ml Float? // Sperm concentration
+  total_sperm_number_million   Float? // Total sperm count per ejaculate
+  dilution_factor              Float?  @default(1)
+  chamber_depth_mm      Float?    @default(0.01)
+  counting_chamber             String? // Makler, Neubauer, Microcell
+
+  // ========== MOTILITY PARAMETERS (WHO 2021) ==========
+  total_motility_percent       Float? // PR + NP (≥42%)
+  progressive_motility_percent Float? // PR (≥30%)
+  non_progressive_percent      Float? // NP
+  immotile_percent             Float? // IM
+
+  // Progressive Motility Grades (A-D)
+  grade_a_percent Float? // Rapid progressive (≥25 µm/s)
+  grade_b_percent Float? // Slow progressive (5-25 µm/s)
+  grade_c_percent Float? // Non-progressive (<5 µm/s)
+  grade_d_percent Float? // Immotile
+
+  // ========== KINETIC PARAMETERS (CASA) ==========
+  // Velocity Parameters (µm/s)
+  vcl Float? // Curvilinear velocity
+  vsl Float? // Straight-line velocity
+  vap Float? // Average path velocity
+
+  // Movement Characteristics
+  lin Float? // Linearity (VSL/VCL × 100)
+  str Float? // Straightness (VSL/VAP × 100)
+  wob Float? // Wobble (VAP/VCL × 100)
+  alh Float? // Amplitude lateral head displacement
+  bcf Float? // Beat cross frequency (Hz)
+  mad Float? // Mean angular displacement
+
+  // Hyperactivation Parameters
+  hyperactive_percent      Float? // Percentage of hyperactivated sperm
+  hyperactivation_criteria String? // VCL > 100, ALH > 7, LIN < 50
+
+  // ========== MORPHOLOGY PARAMETERS ==========
+  // Strict Kruger Criteria (WHO 2021)
+  normal_forms_percent   Float? // ≥4% normal
+  abnormal_forms_percent Float? // Total abnormal
+
+  // Head Defects
+  head_defects_percent Float?
+  head_defects_types   Json? // {large: %, small: %, tapered: %, pyriform: %, round: %, amorphous: %, vacuolated: %, double: %}
+
+  // Midpiece Defects
+  midpiece_defects_percent Float?
+  midpiece_defects_types   Json? // {bent: %, thick: %, thin: %, irregular: %}
+
+  // Tail Defects
+  tail_defects_percent Float?
+  tail_defects_types   Json? // {bent: %, coiled: %, short: %, multiple: %, broken: %}
+
+  // Cytoplasmic Droplets
+  cytoplasmic_droplets_percent Float? // Normal ≤0.5
+  droplet_size                 String? // Small, Large
+
+  // Teratozoospermia Index (TZI)
+  teratozoospermia_index Float? // TZI = (cH + cM + cT)/cN
+
+  // ========== VITALITY PARAMETERS ==========
+  // Eosin-Nigrosin or Hypo-osmotic Swelling Test
+  live_percent    Float? // ≥54% live
+  dead_percent    Float?
+  vitality_method String? // Eosin-Nigrosin, HOS Test
+
+  // HOS Test Results
+  hos_positive_percent Float? // ≥60% normal
+  hos_negative_percent Float?
+
+  // ========== FRUCTOSE & BIOCHEMICAL PARAMETERS ==========
+  fructose_mg_per_dl          Float? // Normal ≥120 mg/dL
+  zinc_ug_per_ml              Float? // Normal ≥80 µg/mL
+  acid_phosphatase_u_per_ml   Float? // Normal ≥200 U/mL
+  alpha_glucosidase_mu_per_ml Float? // Normal ≥20 mU/mL
+
+  // ========== IMMUNOLOGICAL PARAMETERS ==========
+  // Mixed Antiglobulin Reaction (MAR) Test
+  mar_test_igg_percent Float? // <50% bound (normal)
+  mar_test_iga_percent Float?
+  mar_test_type        String? // IgG, IgA, IgM
+
+  // Immunobead Test (IBT)
+  ibt_percent Float? // <20% bound (normal)
+  ibt_pattern String? // Head, Tail, Mixed
+
+  // ========== LEUKOCYTE & NON-SPERM CELLS ==========
+  leukocyte_count_million_per_ml Float? // <1.0 million/mL (normal)
+  round_cells_million_per_ml     Float?
+  epithelial_cells               String? // Few, Moderate, Many
+
+  // ========== AGGLUTINATION & AGGREGATION ==========
+  agglutination_degree String? // None, Mild, Moderate, Severe
+  agglutination_type   String? // Head-to-head, Tail-to-tail, Mixed
+  aggregation_degree   String? // None, Mild, Moderate, Severe
+
+  // ========== SPERM DNA FRAGMENTATION (Optional) ==========
+  dna_fragmentation_index  Float? // DFI < 30% normal
+  dna_fragmentation_method String? // SCSA, TUNEL, SCD
+  high_dna_stainability    Float? // HDS < 15% normal
+
+  // ========== OXIDATIVE STRESS ==========
+  reactive_oxygen_species_count Float? // ROS < 20×10³ cpm normal
+  total_antioxidant_capacity    Float? // TAC (mM)
+
+  // ========== SPERM FUNCTION TESTS ==========
+  // Acrosome Reaction
+  spontaneous_ar_percent Float? // Spontaneous acrosome reaction
+  induced_ar_percent     Float? // Ionophore-induced AR
+  ar_index               Float? // Induced - Spontaneous
+
+  // Sperm Penetration Assay (Hamster Egg)
+  zona_free_hamster_test Float? // ≥10% penetration normal
+
+  // ========== QUALITY CONTROL ==========
+  technician_name       String?
+  analysis_time_minutes Int?
+  duplicate_variation   Float? // <20% acceptable
+  chamber_type          String? // Makler, Neubauer, Microcell
+  magnification_used    String? // 200x, 400x, 1000x
+
+  // ========== INTERPRETATION ==========
+  who_classification      String? // Normal, OAT, Azoospermia, etc.
+  andrology_diagnosis     Json? // Array of diagnoses
+  clinical_interpretation String?
+  recommendations         Json? // Array of recommendations
+
+  // ========== IMAGES & DOCUMENTATION ==========
+  microscopy_images   Json? // Array of image metadata
+  motility_video_path String?
+  analysis_report_pdf String?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("casa_analysis")
+}
+
+model TestImage {
+  id      String @id @default(uuid())
+  test_id String
+  test    Test   @relation(fields: [test_id], references: [id], onDelete: Cascade)
+
+  file_name String
+  file_path String // Relative path in storage
+  file_size Int
+  mime_type String // image/jpeg, image/png
+  caption   String?
+
+  // For CASA-specific images
+  image_type    TestImageType? // Motility, Morphology, Agglutination, etc.
+  magnification String? // 400x, 1000x
+
+  uploaded_by String // User ID
+  uploaded_at DateTime @default(now())
+
+  @@index([test_id])
+  @@map("test_images")
+}
+
+enum TestImageType {
+  Motility
+  Morphology
+  Agglutination
+  Viability
+  Concentration
+  Other
+}
+
+// Additional test types for comprehensive andrology
+enum AndrologyTestType {
+  SemenAnalysis
+  CASA
+  SpermDNAFragmentation
+  SpermFunctionTests
+  PostCoitalTest
+  SpermCryopreservation
+  SpermPreparation
+}
+
+enum UserRole {
+  SuperAdmin
+  Admin
+}
+
+enum SyncStatus {
+  Pending
+  Synced
+  Conflict
+}
+
+enum TestStatus {
+  Pending
+  InProgress
+  Completed
+  Cancelled
+}
+
+enum Gender {
+  Male
+  Female
+  Other
+}
+
+// Discount type enum
+enum DiscountType {
+  Percentage
+  Fixed
+}
+
+enum PaymentStatus {
+  Unpaid
+  PartiallyPaid
+  Paid
+  Insurance
+}
+
+model ExternalLab {
+  id              String   @id @default(uuid())
+  name            String
+  contact_number  String?
+  address         String?
+  email           String?
+
+  is_deleted      Boolean  @default(false)
+  deleted_at      DateTime?
+  deleted_by      String?
+  
+  tests           Test[]
+  prices          ExternalLabTestPrice[]
+
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+  
+  @@map("external_labs")
+}
+
+model ExternalLabTestPrice {
+  id               String       @id @default(uuid())
+  external_lab_id  String
+  test_template_id String
+  price            Float
+  updated_at       DateTime     @updatedAt
+
+  external_lab     ExternalLab  @relation(fields: [external_lab_id], references: [id], onDelete: Cascade)
+  test_template    TestTemplate @relation(fields: [test_template_id], references: [id], onDelete: Cascade)
+
+  @@unique([external_lab_id, test_template_id])
+  @@map("external_lab_test_prices")
+}

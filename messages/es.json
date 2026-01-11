@@ -1,0 +1,2243 @@
+{
+  "Navigation": {
+    "dashboard": "Panel de Control",
+    "patients": "Pacientes",
+    "doctors": "Médicos",
+    "tests": "Pruebas",
+    "templates": "Plantillas",
+    "categories": "Categorías",
+    "admin": "Administración",
+    "welcome": "Bienvenido a LabManagerPro",
+    "description": "Sistema Avanzado de Gestión de Laboratorios Médicos",
+    "logout": "Cerrar sesión"
+  },
+  "HomePage": {
+    "hero": {
+      "managementSystem": "Su Sistema de Gestión de Laboratorio",
+      "manageOperations": "Optimice las operaciones de su laboratorio con precisión y eficiencia"
+    },
+    "quickStats": {
+      "todayTests": "Pruebas de Hoy",
+      "newPatients": "Pacientes Nuevos",
+      "pendingSync": "Sincronización Pendiente"
+    },
+    "quickActions": {
+      "title": "Acciones Rápidas",
+      "subtitle": "Todo lo que necesita para gestionar su laboratorio",
+      "patients": {
+        "title": "Pacientes",
+        "description": "Gestionar registros de pacientes y pruebas de laboratorio"
+      },
+      "doctors": {
+        "title": "Médicos",
+        "description": "Gestionar médicos remitentes y su información"
+      },
+      "tests": {
+        "title": "Pruebas",
+        "description": "Gestionar pruebas de laboratorio y resultados"
+      },
+      "templates": {
+        "title": "Plantillas",
+        "description": "Gestionar plantillas de pruebas y parámetros"
+      },
+      "categories": {
+        "title": "Categorías",
+        "description": "Organizar categorías y grupos de pruebas"
+      },
+      "sync": {
+        "title": "Estado de Sincronización",
+        "description": "Verificar estado de sincronización de datos"
+      }
+    },
+    "recentActivity": {
+      "title": "Actividad Reciente",
+      "viewAll": "Ver Todo",
+      "noTests": "No hay pruebas recientes",
+      "testsWillAppear": "Las pruebas aparecerán aquí a medida que se creen"
+    },
+    "systemStatus": {
+      "title": "Estado del Sistema",
+      "database": "Base de Datos",
+      "connected": "Conectada",
+      "disconnected": "Desconectada",
+      "syncQueue": "Cola de Sincronización",
+      "items": "{count, plural, =0 {Sin elementos} one {# elemento} other {# elementos}}",
+      "activeUsers": "Usuarios Activos",
+      "users": "{count, plural, =0 {Sin usuarios} one {# usuario} other {# usuarios}}",
+      "adminPanel": "Panel de Administración",
+      "dashboard": "Panel de Control",
+      "manageUsers": "Gestionar Usuarios"
+    }
+  },
+  "Common": {
+    "welcome": "¡Bienvenido de nuevo!",
+    "welcomeWithName": "¡Bienvenido de nuevo, {name}!"
+  },
+  "AdminLayout": {
+    "nav": {
+      "dashboard": "Panel de Control",
+      "manageAdmins": "Gestionar Administradores",
+      "auditLogs": "Registros de Auditoría",
+      "pdfSettings": "Configuración PDF",
+      "discountSettings": "Configuración de Descuentos"
+    },
+    "brand": "Administración",
+    "superAdminRole": "Super Administrador"
+  },
+  "AdminPage": {
+    "hero": {
+      "title": "Panel de Administración",
+      "subtitle": "¡Bienvenido de nuevo! Esto es lo que sucede hoy."
+    },
+    "stats": {
+      "dailyRevenue": {
+        "title": "Ingresos Diarios",
+        "subtitle": "Recaudación total de hoy"
+      },
+      "dailyNetRevenue": {
+        "subtitle": "Bruto: {gross} - Costos Lab: {costs}"
+      },
+      "monthlyRevenue": {
+        "title": "Ingresos Mensuales",
+        "subtitle": "Recaudación total este mes"
+      },
+      "monthlyNetRevenue": {
+        "subtitle": "Bruto: {gross} - Costos Lab: {costs}"
+      },
+      "completedTests": {
+        "title": "Total de Pruebas",
+        "subtitle": "Pruebas completadas (todo el tiempo)"
+      },
+      "externalLabTests": {
+        "title": "Pruebas Lab-a-Lab",
+        "subtitle": "{daily} hoy ({dailyPercentage}), {monthly} este mes ({monthlyPercentage})"
+      },
+      "adminUsers": {
+        "title": "Usuarios Admin",
+        "subtitle": "Administradores activos"
+      }
+    },
+    "sections": {
+      "topTests": {
+        "title": "Pruebas Más Realizadas",
+        "subtitle": "Últimos 30 días"
+      },
+      "recentLogins": {
+        "title": "Inicios de Sesión Recientes de Admin",
+        "viewAll": "Ver Todos"
+      },
+      "systemStatus": {
+        "title": "Estado del Sistema",
+        "database": {
+          "title": "Base de Datos",
+          "description": "Todos los sistemas normales"
+        },
+        "syncStatus": {
+          "title": "Estado de Sincronización",
+          "ok": "Todos los datos sincronizados",
+          "pending": "{count, plural, =1 {# elemento pendiente} other {# elementos pendientes}}"
+        },
+        "auditLogs": {
+          "title": "Registros de Auditoría",
+          "description": "Registro activo"
+        },
+        "labToLab": {
+          "title": "Operaciones Lab-a-Lab",
+          "description": "Costos mensuales lab: {cost}, {percentage} de pruebas externalizadas"
+        }
+      }
+    },
+    "statuses": {
+      "operational": "Operativo",
+      "warning": "Advertencia",
+      "error": "Error"
+    },
+    "quickLinks": {
+      "title": "Enlaces Rápidos de Admin",
+      "subtitle": "Acceso rápido a funciones administrativas",
+      "moreComingSoon": "Más funciones administrativas pronto...",
+      "users": {
+        "title": "Gestionar Usuarios",
+        "description": "Ver, editar y gestionar usuarios del sistema y sus permisos"
+      },
+      "discountSettings": {
+        "title": "Configuración de Descuentos",
+        "description": "Gestionar permisos y límites de descuento para empleados"
+      },
+      "auditLogs": {
+        "title": "Registros de Auditoría",
+        "description": "Revisar la actividad del sistema y rastrear todas las acciones de usuario"
+      },
+      "pdfSettings": {
+        "title": "Configuración PDF",
+        "description": "Configurar plantillas de informes y ajustes de generación PDF"
+      },
+      "receiptSettings": {
+        "title": "Configuración de Recibos",
+        "description": "Configurar generación de recibos y códigos QR de pago"
+      },
+      "backup": {
+        "title": "Copia de Seguridad BD",
+        "description": "Respaldar y restaurar su base de datos de laboratorio para garantizar la seguridad de los datos"
+      }
+    },
+    "revenue": {
+      "title": "Análisis de Ingresos",
+      "subtitle": "Rendimiento financiero con costos lab-a-lab",
+      "grossView": "Vista Bruta",
+      "netView": "Vista Neta",
+      "dailyBreakdown": "Desglose Diario de Ingresos",
+      "monthlyBreakdown": "Desglose Mensual de Ingresos",
+      "netRevenue": "Ingresos Netos",
+      "grossRevenue": "Ingresos Brutos",
+      "labCosts": "Costos Lab-a-Lab",
+      "tests": "pruebas",
+      "profitMargin": "Margen de Beneficio"
+    }
+  },
+  "AdminUsersPage": {
+    "hero": {
+      "title": "Gestión de usuarios",
+      "subtitle": "Gestionar administradores y sus permisos"
+    },
+    "createAdminForm": {
+      "title": "Crear nuevo administrador",
+      "nameLabel": "Nombre completo",
+      "namePlaceholder": "Ingrese el nombre completo",
+      "emailLabel": "Correo electrónico",
+      "emailPlaceholder": "Ingrese el correo electrónico",
+      "passwordLabel": "Contraseña",
+      "passwordPlaceholder": "Ingrese la contraseña",
+      "roleLabel": "Rol",
+      "submitButton": "Crear administrador"
+    },
+    "editUserForm": {
+      "title": "Editar usuario",
+      "nameLabel": "Nombre completo",
+      "emailLabel": "Correo electrónico",
+      "roleLabel": "Rol",
+      "statusLabel": "Estado"
+    },
+    "adminList": {
+      "title": "Todos los administradores",
+      "totalAdmins": "Total: {count}",
+      "activeAdmins": "Activos: {count}"
+    },
+    "table": {
+      "headers": {
+        "user": "Usuario",
+        "roleStatus": "Rol y Estado",
+        "discountStatus": "Estado de descuento",
+        "actions": "Acciones"
+      }
+    },
+    "status": {
+      "active": "Activo",
+      "inactive": "Inactivo",
+      "you": "Tú",
+      "enabled": "Habilitado",
+      "disabled": "Deshabilitado"
+    },
+    "tabs": {
+      "basicInfo": "Información básica",
+      "permissions": "Permisos",
+      "password": "Contraseña"
+    },
+    "types": {
+      "percentage": "Porcentaje",
+      "fixed": "Monto fijo",
+      "percentageDiscount": "Descuento porcentual",
+      "fixedDiscount": "Descuento de monto fijo",
+      "noDiscount": "Sin descuento"
+    },
+    "roles": {
+      "admin": "Administrador",
+      "superAdmin": "Super Administrador"
+    },
+    "permissions": {
+      "discount": {
+        "title": "Permisos de descuento",
+        "description": "Permitir que este usuario aplique descuentos a los pacientes",
+        "typeLabel": "Tipo de descuento",
+        "maxPercentage": "Porcentaje máximo de descuento",
+        "maxAmount": "Monto máximo de descuento"
+      },
+      "createTemplates": "Crear plantillas",
+      "editTemplates": "Editar plantillas",
+      "deleteTestTemplates": "Eliminar plantillas de pruebas",
+      "editReferenceRanges": "Editar rangos de referencia",
+      "editFees": "Editar tarifas",
+      "archiveTestTemplates": "Archivar plantillas",
+      "createTestTemplates": "Crear plantillas de pruebas",
+      "editTestTemplates": "Editar plantillas de pruebas",
+      "otherPermissions": "Otros permisos",
+      "viewTestTemplates": "Ver plantillas de pruebas",
+      "createPatients": "Crear pacientes",
+      "editPatients": "Editar pacientes",
+      "deletePatients": "Eliminar pacientes",
+      "viewAllPatients": "Ver todos los pacientes",
+      "canAccessMedicalHistory": "Acceder al historial médico"
+    },
+    "password": {
+      "resetTitle": "Restablecer contraseña",
+      "resetDescription": "Establecer una nueva contraseña para este usuario. Déjelo en blanco para mantener la contraseña actual.",
+      "newPassword": "Nueva contraseña",
+      "newPasswordPlaceholder": "Ingrese la nueva contraseña",
+      "confirmPassword": "Confirmar contraseña",
+      "confirmPasswordPlaceholder": "Confirme la nueva contraseña",
+      "strengthIndicator": "Fortaleza de la contraseña: {length} caracteres",
+      "strengthGood": "Buena fortaleza de contraseña",
+      "strengthWeak": "Contraseña débil - considere usar al menos 8 caracteres con mayúsculas, minúsculas, números y símbolos"
+    },
+    "labels": {
+      "created": "Creado",
+      "never": "Nunca"
+    },
+    "actions": {
+      "edit": "Editar",
+      "delete": "Eliminar",
+      "deleteUser": "Eliminar usuario",
+      "activate": "Activar",
+      "activateUser": "Activar usuario",
+      "deactivate": "Desactivar",
+      "deactivateUser": "Desactivar usuario",
+      "saveChanges": "Guardar cambios",
+      "saving": "Guardando...",
+      "cancel": "Cancelar",
+      "creating": "Creando...",
+      "confirm": "Confirmar",
+      "change": "Cambiar",
+      "changeRole": "Cambiar rol",
+      "updateUser": "Actualizar usuario",
+      "resetPassword": "Restablecer contraseña",
+      "toggleVisibility": "Alternar visibilidad de contraseña"
+    },
+    "messages": {
+      "success": "Éxito",
+      "userUpdated": "Usuario actualizado exitosamente",
+      "userDeactivated": "El usuario {name} ha sido desactivado",
+      "userActivated": "El usuario {name} ha sido activado",
+      "userDeleted": "El usuario {name} ha sido eliminado",
+      "confirmDeactivate": "¿Está seguro de que desea desactivar a {name}?",
+      "confirmActivate": "¿Está seguro de que desea activar a {name}?",
+      "confirmDelete": "¿Está seguro de que desea eliminar a {name}? Esta acción no se puede deshacer.",
+      "confirmRoleChange": "¿Cambiar el rol de {name} de {oldRole} a {newRole}?",
+      "confirmUpdate": "¿Está seguro de que desea actualizar este usuario?",
+      "roleChanged": "El rol de {name} ha sido cambiado a {role}",
+      "passwordResetSuccess": "Contraseña restablecida exitosamente",
+      "discountSettingsUpdated": "Configuraciones de descuento actualizadas exitosamente",
+      "superAdminAllPermissions": "Los Super Administradores tienen todos los permisos habilitados por defecto",
+      "permissionsUpdated": "Permisos actualizados exitosamente",
+      "editingOwnAccount": "Editando tu propia cuenta",
+      "cannotChangeOwnRole": "No puedes cambiar tu propio rol",
+      "cannotChangeOwnStatus": "No puedes cambiar tu propio estado",
+      "currentSuperAdminAllPermissions": "Como Super Administrador, tienes todos los permisos habilitados",
+      "currentSuperAdminDiscountFixed": "Tu descuento está fijado al 100% como Super Administrador",
+      "currentSuperAdminDiscountFixedAt100": "Fijado al 100% para Super Administrador",
+      "cannotEditOtherSuperAdmin": "No se pueden editar otras cuentas de Super Administrador",
+      "cannotDeactivateOtherSuperAdmin": "No se pueden desactivar otras cuentas de superadministrador",
+      "cannotDeactivateCurrentSuperAdmin": "No se puede desactivar tu propia cuenta de Super Administrador"
+    },
+    "errors": {
+      "passwordMinLength": "La contraseña debe tener al menos 8 caracteres",
+      "passwordMismatch": "Las contraseñas no coinciden",
+      "validationError": "Error de validación",
+      "updateFailed": "Error al actualizar",
+      "deleteFailed": "Error al eliminar",
+      "cannotSelfAction": "Acción no permitida",
+      "cannotDeactivateSelf": "No puede desactivar su propia cuenta",
+      "cannotDeleteSelf": "No puede eliminar su propia cuenta",
+      "cannotChangeOwnRole": "No puede cambiar su propio rol",
+      "unknownError": "Ocurrió un error desconocido. Por favor, intente nuevamente.",
+      "passwordResetFailed": "Error al restablecer la contraseña",
+      "discountUpdateFailed": "Error al actualizar configuraciones de descuento",
+      "permissionsUpdateFailed": "Error al actualizar permisos",
+      "invalidDiscountType": "Tipo de descuento inválido",
+      "invalidDiscountValue": "Valor de descuento inválido"
+    }
+  },
+  "AddVisitPage": {
+    "hero": {
+      "title": "Agregar nueva visita para {name}",
+      "subtitle": "Agregar pruebas y gestionar el pago para esta visita"
+    },
+    "patientInfo": {
+      "title": "Información del paciente",
+      "name": "Nombre",
+      "gender": "Género",
+      "genderMale": "Masculino",
+      "genderFemale": "Femenino",
+      "genderOther": "Otro",
+      "age": "Edad",
+      "phone": "Teléfono",
+      "due": "Debido",
+      "paid": "Pagado"
+    },
+    "form": {
+      "tests": {
+        "title": "Seleccionar pruebas",
+        "description": "Elija las pruebas a realizar durante esta visita"
+      },
+      "doctors": {
+        "title": "Médicos referentes",
+        "noDoctors": "No se encontraron médicos.",
+        "addDoctorsLink": "Agregar médicos primero",
+        "selectedDoctors": "Médicos seleccionados"
+      }
+    },
+    "warnings": {
+      "unpaidBalance": "El paciente tiene un saldo pendiente de €{amount}",
+      "cantPrintTests": "Las pruebas de esta visita no se pueden imprimir o archivar hasta que el paciente pague su saldo"
+    },
+    "actions": {
+      "backToPatient": "← Volver al paciente",
+      "cancel": "Cancelar",
+      "saveVisit": "Guardar visita",
+      "saveGenerateReceipt": "Guardar y generar recibo",
+      "creating": "Creando..."
+    },
+    "validation": {
+      "atLeastOneTest": "Por favor seleccione al menos una prueba",
+      "ageNonNegative": "La edad no puede ser negativa",
+      "fixErrors": "Por favor corrija los siguientes errores:"
+    },
+    "messages": {
+      "createVisitFailed": "Error al crear la visita",
+      "unknownError": "Ocurrió un error desconocido"
+    },
+    "totalFees": "Tarifas totales",
+    "currency": "€{amount}",
+    "saved": "Ahorrado",
+    "amountPaidNow": "Monto pagado ahora",
+    "remainingAmount": "Monto restante"
+  },
+  "PdfSettingsPage": {
+    "hero": {
+      "title": "Configuración del Informe PDF",
+      "subtitle": "Personalice encabezados, pies de página, logos y firmas para sus informes de laboratorio."
+    },
+    "header": {
+      "title": "Configuración del Encabezado",
+      "enableLabel": "Activar Encabezado",
+      "enableDescription": "Mostrar información del laboratorio en cada página del informe",
+      "labNameLabel": "Nombre del Laboratorio",
+      "labNamePlaceholder": "Ingrese el nombre del laboratorio",
+      "specialization1": "Especialización 1",
+      "specialization1Placeholder": "Ingrese la Especialización 1",
+      "specialization2": "Especialización 2",
+      "specialization2Placeholder": "Ingrese la Especialización 2",
+      "specialization3Label": "Especialización 3",
+      "specialization3Placeholder": "Ingrese la Especialización 3",
+      "preservedSpaceLabel": "Altura del Espacio Reservado",
+      "preservedSpacePlaceholder": "ej.: 100px",
+      "preservedSpaceDescription": "Reservar espacio para encabezados preimpresos cuando esté desactivado"
+    },
+    "footer": {
+      "title": "Configuración del Pie de Página",
+      "enableLabel": "Activar Pie de Página",
+      "enableDescription": "Mostrar información del director y datos de contacto",
+      "directorNameLabel": "Nombre del Director",
+      "directorNamePlaceholder": "ej.: Dra. Sarah Johnson, MD",
+      "directorTitleLabel": "Cargo del Director",
+      "directorTitlePlaceholder": "ej.: Director del Laboratorio Médico",
+      "labHoursLabel": "Horario del Laboratorio",
+      "labHoursPlaceholder": "Lun–Vie: 7 a. m.–6 p. m.\\nSáb: 8 a. m.–2 p. m.",
+      "addressLabel": "Dirección del Laboratorio",
+      "addressPlaceholder": "ej.: 123 Calle Principal, Ciudad, País",
+      "mobileNumberLabel": "Número Móvil",
+      "mobileNumberPlaceholder": "ej.: (555) 123-EMER",
+      "landlineNumberLabel": "Número de Línea Fija",
+      "landlineNumberPlaceholder": "ej.: (555) 123-4567",
+      "preservedSpaceLabel": "Altura del Espacio Reservado",
+      "preservedSpacePlaceholder": "ej.: 120px",
+      "preservedSpaceDescription": "Reservar espacio para pies de página preimpresos cuando esté desactivado"
+    },
+    "esign": {
+      "title": "Configuración de la Firma Electrónica",
+      "enableLabel": "Activar Firma Electrónica",
+      "enableDescription": "Mostrar una firma digital en el pie de página del informe",
+      "imageUrlLabel": "URL de la Imagen de Firma",
+      "imageUrlPlaceholder": "/signatures/director-signature.png",
+      "imageUrlDescription": "Ruta a una imagen PNG de la firma",
+      "widthLabel": "Ancho",
+      "heightLabel": "Alto",
+      "previewLabel": "Vista Previa",
+      "previewPlaceholder": "Suba o ingrese una URL para previsualizar la firma"
+    },
+    "logo": {
+      "title": "Configuración del Logo",
+      "enableLabel": "Activar Logo",
+      "enableDescription": "Mostrar el logo del laboratorio en el encabezado del PDF",
+      "pngUrlLabel": "URL del Logo PNG",
+      "pngUrlDescription": "Ruta del archivo PNG o URL completa. La carga se guardará en el directorio public/logos.",
+      "uploadButton": "Cargar",
+      "widthLabel": "Ancho",
+      "heightLabel": "Alto",
+      "alignLabel": "Alineación",
+      "previewLabel": "Vista Previa del Logo",
+      "previewPlaceholder": "Active el logo y cargue un PNG para ver la vista previa"
+    },
+    "actions": {
+      "title": "Guardar & Vista Previa",
+      "description": "Los cambios se guardan automáticamente. Use el botón de vista previa para ver el informe.",
+      "resetButton": "Restablecer",
+      "saveButton": "Guardar Cambios",
+      "savingButton": "Guardando...",
+      "initializeButton": "Inicializar Configuración",
+      "initializingButton": "Inicializando..."
+    },
+    "common": {
+      "height": "Altura"
+    },
+    "messages": {
+      "saveSuccess": "¡Configuración guardada con éxito!",
+      "saveError": "Error al guardar: {error}",
+      "saveErrorGeneric": "Error al guardar la configuración. Por favor, inténtelo de nuevo.",
+      "loadError": "Error al cargar la configuración del servidor.",
+      "initializeSuccess": "Configuración por defecto inicializada con éxito.",
+      "initializeError": "Error al inicializar la configuración.",
+      "initializeErrorGeneric": "Error al inicializar. Por favor, inténtelo de nuevo.",
+      "successKeyword": "éxito"
+    },
+    "loading": "Cargando configuración..."
+  },
+  "ReceiptSettingsPage": {
+    "labSettings": {
+      "title": "Información del Laboratorio",
+      "subtitle": "Configure los detalles de su laboratorio que aparecen en los recibos",
+      "name": "Nombre del Laboratorio",
+      "address": "Dirección del Laboratorio",
+      "phone": "Teléfono del Laboratorio",
+      "email": "Correo Electrónico del Laboratorio",
+      "logo": "Logo del Laboratorio",
+      "logoHelp": "Recomendado: 200×200px, PNG o JPG, máx. 2 MB"
+    },
+    "displayMode": {
+      "label": "Elegir Modo de Visualización:",
+      "text": "Información de Texto",
+      "logo": "Solo Logo",
+      "textDescription": "El nombre, dirección, teléfono y correo del laboratorio se mostrarán en el encabezado.",
+      "logoDescription": "Solo el logo se mostrará en el encabezado. La información de contacto se moverá al pie de página."
+    },
+    "textInfo": {
+      "title": "Información de Texto",
+      "subtitle": "Mostrar detalles del laboratorio como texto en el encabezado del recibo",
+      "nameLabel": "Nombre del Laboratorio *",
+      "namePlaceholder": "Ingrese el nombre de su laboratorio",
+      "addressLabel": "Dirección del Laboratorio *",
+      "addressPlaceholder": "Ingrese la dirección de su laboratorio",
+      "phoneLabel": "Teléfono del Laboratorio *",
+      "phonePlaceholder": "+123 456 7890",
+      "emailLabel": "Correo Electrónico del Laboratorio *",
+      "emailPlaceholder": "info@lab.com"
+    },
+    "logo": {
+      "title": "Logo",
+      "subtitle": "Muestre su logo en el encabezado del recibo",
+      "altText": "Logo del Laboratorio",
+      "deleteButton": "Eliminar logo",
+      "uploadPrompt": "Haga clic para cargar",
+      "uploadLabel": "Logo",
+      "recommendations": "Recomendado: 200×200px, PNG o JPG, máx. 2 MB",
+      "uploadSuccess": "Logo cargado exitosamente",
+      "uploadWarning": "Por favor, cargue un logo para usar el modo logo.",
+      "logoModeActive": "El logo se mostrará en el encabezado. La información de contacto estará en el pie de página.",
+      "uploading": "Cargando imagen...",
+      "changePrompt": "Haga clic en la imagen para cambiarla",
+      "hiddenInTextMode": "Logo oculto en modo texto",
+      "tipTitle": "Consejo",
+      "tipContent": "Para mejores resultados, use un PNG transparente con fondo blanco o claro."
+    },
+    "alerts": {
+      "invalidFileType": "Por favor, cargue un archivo de imagen válido (JPEG, PNG, GIF, WebP)",
+      "fileTooLarge": "El tamaño de la imagen debe ser menor a 2 MB",
+      "confirmDeleteLogo": "¿Está seguro de que desea eliminar este logo?"
+    },
+    "hero": {
+      "title": "Configuración de Recibos",
+      "subtitle": "Configurar la generación de recibos y opciones de pago"
+    },
+    "qrCode": {
+      "title": "Código QR de Instapay",
+      "enableLabel": "Habilitar Código QR",
+      "enableDescription": "Mostrar código QR de Instapay en recibos para facilitar el pago",
+      "instapayIdLabel": "ID de Instapay",
+      "instapayIdPlaceholder": "Ingrese su ID de cuenta de Instapay",
+      "instapayIdDescription": "Este ID se integrará en el código QR para el pago",
+      "accountNameLabel": "Nombre del Titular de la Cuenta",
+      "accountNamePlaceholder": "Ingrese el nombre del titular de la cuenta",
+      "bankNameLabel": "Nombre del Banco",
+      "bankNamePlaceholder": "Ingrese el nombre del banco",
+      "qrImageUrlLabel": "Imagen Personalizada del Código QR",
+      "qrImageUrlPlaceholder": "Cargar o ingresar URL de la imagen",
+      "qrImageUrlDescription": "Cargue una imagen personalizada de código QR o ingrese una URL. Déjelo vacío para mostrar una representación de texto.",
+      "noteLabel": "Instrucciones de Pago",
+      "notePlaceholder": "Escanee este código QR para pagar vía Instapay",
+      "positionLabel": "Posición del Código QR",
+      "position": {
+        "top": "Arriba",
+        "bottom": "Abajo",
+        "right": "Lado Derecho",
+        "left": "Lado Izquierdo"
+      },
+      "preview": {
+        "title": "Vista Previa del Código QR",
+        "instapayId": "ID de Instapay",
+        "accountName": "Nombre de la Cuenta",
+        "bankName": "Nombre del Banco",
+        "enterInstapayId": "Ingrese un ID de Instapay para ver la vista previa",
+        "autoGenerated": "El código QR se generará automáticamente"
+      }
+    },
+    "actions": {
+      "title": "Guardar Configuración",
+      "description": "Guarde su configuración de recibos para aplicarla a todos los futuros recibos",
+      "resetButton": "Restablecer Valores Predeterminados",
+      "saveButton": "Guardar Configuración",
+      "savingButton": "Guardando...",
+      "confirmReset": "¿Está seguro de que desea restablecer toda la configuración a los valores predeterminados?"
+    },
+    "messages": {
+      "loadError": "Error al cargar la configuración de recibos",
+      "saveSuccess": "Configuración de recibos guardada exitosamente",
+      "saveError": "Error al guardar: {error}",
+      "saveErrorGeneric": "Error al guardar la configuración. Por favor, intente nuevamente.",
+      "successKeyword": "éxito",
+      "uploadFailed": "Error al cargar la imagen",
+      "uploadFailedGeneric": "Error al cargar la imagen. Por favor, intente nuevamente.",
+      "deleteFailed": "Error al eliminar la imagen",
+      "deleteFailedGeneric": "Error al eliminar la imagen. Por favor, intente nuevamente."
+    },
+    "info": {
+      "title": "Información",
+      "qrCodeDescription": "Los códigos QR aparecerán en los recibos cuando estén habilitados y el paciente tenga un saldo pendiente.",
+      "instapayIntegration": "Los códigos QR de Instapay permiten a los pacientes escanear y pagar directamente desde su aplicación de banca móvil.",
+      "securityNote": "Ingrese solo su ID oficial de Instapay. Nunca comparta información confidencial de la cuenta."
+    },
+    "loading": "Cargando..."
+  },
+  "ImageUpload": {
+    "clickToUpload": "Haga clic para cargar imagen",
+    "supportedFormats": "Formatos admitidos",
+    "maxSize": "Tamaño máximo",
+    "uploading": "Cargando...",
+    "uploadedImage": "Imagen cargada",
+    "changeImage": "Cambiar imagen",
+    "deleteImage": "Eliminar imagen",
+    "viewFullSize": "Ver tamaño completo",
+    "imageUrlLabel": "O ingresar URL de la imagen",
+    "imageUrlPlaceholder": "https://example.com/image.png",
+    "imageUrlHelp": "Ingrese una URL directa de imagen o cargue un archivo arriba",
+    "confirmDelete": "¿Está seguro de que desea eliminar esta imagen?",
+    "errors": {
+      "invalidType": "Tipo de archivo no válido. Por favor, cargue una imagen (JPEG, PNG, GIF, WebP)",
+      "tooLarge": "Archivo demasiado grande. El tamaño máximo es {maxSize} MB",
+      "uploadFailed": "Error al cargar la imagen. Por favor, intente nuevamente.",
+      "deleteFailed": "Error al eliminar la imagen. Por favor, intente nuevamente."
+    }
+  },
+  "AuditLogsPage": {
+    "loading": "Cargando configuraciones...",
+    "audit": {
+      "update_doctors": "Médicos actualizados para {patient_name} (de {old_count} a {new_count})",
+      "add_test": "Prueba {test_name} añadida a {patient_name}",
+      "payment_received": "Pago recibido: ${amount_paid}. Restante: ${amount_due}",
+      "visit_payment": "Pago recibido para visita #{visit_number}: ${amount_paid}",
+      "create_visit": "Visita #{visit_number} creada para paciente {patient_name}",
+      "create_tests_batch": "{tests_count} pruebas añadidas a {patient_name} (Total: ${total_fees})",
+      "apply_discount": "Descuento {discount_value} {discount_type} aplicado al paciente {patient_name}",
+      "remove_discount": "Descuento eliminado del paciente {patient_name}",
+      "additional_payment_received": "Pago adicional recibido: ${amount_paid}",
+      "assign_doctors": "{doctors_count} médicos asignados a {patient_name}",
+      "create_patient": "Paciente creado: {patient_name}",
+      "update_patient": "Paciente actualizado: {patient_name}",
+      "delete_patient": "Paciente eliminado: {patient_name}",
+      "create_test": "Prueba creada: {test_name} para el paciente {patient_name}",
+      "update_test": "Resultados de la prueba {test_name} actualizados",
+      "delete_test": "Prueba eliminada: {test_name}",
+      "user_login": "Usuario {user_name} inició sesión",
+      "user_logout": "Usuario {user_name} cerró sesión",
+      "apply_discount_permission": "Permisos de descuento actualizados para el usuario {user_name}",
+      "print_test": "Prueba impresa: {test_name}",
+      "archive_test": "Prueba archivada: {test_name}",
+      "bulk_archive": "{count} pruebas archivadas",
+      "collect_payment": "Pago recaudado: ${amount} del paciente {patient_name}",
+      "user_created": "Nuevo usuario creado: {user_name}",
+      "user_updated": "Usuario actualizado: {user_name}",
+      "user_activated": "Usuario activado: {user_name}",
+      "user_deactivated": "Usuario desactivado: {user_name}",
+      "user_role_changed": "Rol cambiado para {user_name} de {old_role} a {new_role}",
+      "user_deleted": "Usuario eliminado: {user_name}",
+      "password_reset": "Contraseña restablecida para el usuario: {user_name}",
+      "user_login_denied": "Inicio de sesión denegado para cuenta inactiva: {user_name}",
+      "user_login_failed": "Inicio de sesión fallido para el usuario: {user_name}",
+      "update_settings": "Configuración actualizada: {setting_key}",
+      "assign_to_external_lab_with_cost": "Prueba asignada al laboratorio externo: {lab_name} por ${cost}",
+      "remove_external_lab_assignment_with_lab": "Asignación de laboratorio externo eliminada. Anteriormente asignado a: {lab_name}",
+      "user_created_with_role": "Nuevo usuario creado: {user_name} con rol: {role}"
+    },
+    "hero": {
+      "title": "Registros de Auditoría",
+      "subtitle": "Rastrea todas las actividades del sistema y acciones de usuarios"
+    },
+    "table": {
+      "title": "Actividades Recientes",
+      "headers": {
+        "user": "Usuario",
+        "action": "Acción",
+        "entity": "Entidad",
+        "description": "Descripción",
+        "timestamp": "Fecha y Hora"
+      },
+      "no_data": "No se encontraron registros de auditoría"
+    },
+    "actions": {
+      "user_login": "Inicio de sesión de usuario",
+      "user_logout": "Cierre de sesión de usuario",
+      "create_user": "Crear usuario",
+      "update_user": "Actualizar usuario",
+      "delete_user": "Eliminar usuario",
+      "create_patient": "Crear paciente",
+      "update_patient": "Actualizar paciente",
+      "create_test": "Crear prueba",
+      "create_tests_batch": "Añadir prueba",
+      "update_test": "Actualizar prueba",
+      "delete_test": "Eliminar prueba",
+      "create_doctor": "Crear médico",
+      "assign_doctors": "Asignar médico",
+      "delete_doctor": "Eliminar médico",
+      "apply_discount": "Aplicar descuento",
+      "discount_permission_updated": "Actualizar permiso de descuento",
+      "update_discount_permission": "Actualizar permiso de descuento",
+      "remove_discount": "Eliminar descuento",
+      "payment_received": "Pago recibido",
+      "visit_payment": "Pago de visita",
+      "create_visit": "Crear visita",
+      "delete_patient": "Eliminar paciente",
+      "login": "Iniciar sesión",
+      "logout": "Cerrar sesión",
+      "print_test": "Imprimir prueba",
+      "archive_test": "Archivar prueba",
+      "bulk_archive": "Archivado masivo",
+      "generate_report": "Generar informe",
+      "collect_payment": "Recaudar pago",
+      "additional_payment_received": "Pago adicional",
+      "update_settings": "Actualizar configuración",
+      "user_created": "Crear usuario",
+      "user_updated": "Actualizar usuario",
+      "user_activated": "Usuario activado",
+      "user_deactivated": "Usuario desactivado",
+      "user_deleted": "Eliminar usuario",
+      "user_role_changed": "Rol de usuario cambiado",
+      "password_reset": "Restablecer contraseña",
+      "user_login_denied": "Inicio de sesión denegado",
+      "user_login_failed": "Inicio de sesión fallido",
+      "delete_external_lab": "Eliminar laboratorio externo",
+      "remove_external_lab_assignment": "Remover asignación de laboratorio externo",
+      "assign_to_external_lab": "Asignar a laboratorio externo"
+    },
+    "entity": {
+      "user": "Usuario",
+      "patient": "Paciente",
+      "patient_visit": "Visita del paciente",
+      "test": "Prueba",
+      "doctor": "Doctor",
+      "external_lab": "Laboratorio externo",
+      "system": "Sistema",
+      "visit": "Visita"
+    },
+    "pagination": {
+      "previous": "Anterior",
+      "next": "Siguiente",
+      "pageInfo": "Página {current} de {total}"
+    },
+    "filters": {
+      "title": "Filtros",
+      "clearAll": "Limpiar todo",
+      "action": "Acción",
+      "allActions": "Todas las acciones",
+      "entityType": "Tipo de entidad",
+      "allEntities": "Todas las entidades",
+      "user": "Usuario",
+      "allUsers": "Todos los usuarios",
+      "dateFrom": "Fecha desde",
+      "dateTo": "Fecha hasta",
+      "active": "Filtros activos",
+      "actions": {
+        "create": "Crear",
+        "update": "Actualizar",
+        "delete": "Eliminar",
+        "login": "Iniciar sesión",
+        "apply_discount": "Aplicar descuento",
+        "update_discount_permission": "Actualizar permiso de descuento",
+        "activate": "Activar",
+        "deactivate": "Desactivar",
+        "password_reset": "Restablecer contraseña"
+      },
+      "discountActionsLabel": "Acciones de descuento",
+      "discount_actions": {
+        "all": "Todas las acciones",
+        "discount_only": "Solo acciones de descuento",
+        "no_discount": "Excluir acciones de descuento"
+      },
+      "entities": {
+        "user": "Usuario",
+        "patient": "Paciente",
+        "test": "Prueba",
+        "doctor": "Médico"
+      }
+    },
+    "exportButton": "Exportar a CSV",
+    "resultsSummary": "Se encontraron {total} registros de auditoría",
+    "emptyState": {
+      "title": "No se encontraron registros de auditoría",
+      "noResults": "No hay registros que coincidan con tus filtros actuales",
+      "noLogs": "Aún no se han registrado registros de auditoría"
+    }
+  },
+  "DoctorsPage": {
+    "hero": {
+      "title": "Médicos",
+      "subtitle": "Gestionar médicos remitentes"
+    },
+    "actions": {
+      "addNew": "Agregar Nuevo Médico",
+      "addFirstDoctor": "Agregue su primer médico"
+    },
+    "filters": {
+      "searchLabel": "Buscar Médicos",
+      "searchPlaceholder": "Buscar por nombre, especialización, teléfono, email o dirección...",
+      "specializationLabel": "Especialización",
+      "allSpecializations": "Todas las Especializaciones",
+      "sortLabel": "Ordenar Por",
+      "sortNameAsc": "Nombre (A-Z)",
+      "sortNameDesc": "Nombre (Z-A)",
+      "sortPatientsDesc": "Más Pacientes Primero",
+      "sortPatientsAsc": "Menos Pacientes Primero"
+    },
+    "messages": {
+      "noMatchingDoctors": "No hay médicos que coincidan con sus criterios de búsqueda.",
+      "noDoctorsFound": "No se encontraron médicos.",
+      "deleteError": "Error al eliminar médico. Por favor, intente nuevamente."
+    },
+    "card": {
+      "patient": "{count, plural, =0 {pacientes} =1 {paciente} other {pacientes}}",
+      "viewDetails": "Ver Detalles",
+      "edit": "Editar",
+      "delete": "Eliminar",
+      "deleting": "Eliminando..."
+    },
+    "title": "Eliminar Médico",
+    "message": "¿Está seguro de que desea eliminar al Dr. {name}? Esta acción no se puede deshacer.",
+    "confirmText": "Eliminar Médico",
+    "deleteDialog": {
+      "title": "Eliminar Médico",
+      "message": "¿Está seguro de que desea eliminar al Dr. {name}? Esta acción no se puede deshacer.",
+      "confirmText": "Eliminar Médico"
+    }
+  },
+  "Pagination": {
+    "first": "Primero",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "last": "Último",
+    "show": "Mostrar",
+    "perPage": "por página",
+    "results": "resultados",
+    "pageOf": "Mostrando {start} a {end} de {total}"
+  },
+  "CreateDoctorPage": {
+    "hero": {
+      "title": "Agregar Nuevo Médico",
+      "subtitle": "Crear un nuevo registro de médico"
+    },
+    "form": {
+      "basicInfo": {
+        "title": "Información del Médico",
+        "nameLabel": "Nombre Completo",
+        "namePlaceholder": "Dr. Juan Pérez",
+        "specializationLabel": "Especialización",
+        "specializationPlaceholder": "ej., Cardiólogo"
+      },
+      "contactInfo": {
+        "title": "Información de Contacto",
+        "emailLabel": "Correo Electrónico",
+        "emailPlaceholder": "doctor@ejemplo.com",
+        "phoneLabel": "Número de Teléfono",
+        "phonePlaceholder": "",
+        "addressLabel": "Dirección de la Clínica",
+        "addressPlaceholder": "123 Avenida Centro Médico"
+      },
+      "actions": {
+        "submit": "Crear Médico",
+        "submitting": "Creando...",
+        "cancel": "Cancelar"
+      }
+    }
+  },
+  "DoctorDetailPage": {
+    "actions": {
+      "backToDoctors": "Volver a Médicos",
+      "edit": "Editar Médico",
+      "delete": "Eliminar Médico",
+      "deleting": "Eliminando..."
+    },
+    "sections": {
+      "contactInfo": "Información de Contacto",
+      "patients": "Pacientes Remitidos"
+    },
+    "contact": {
+      "phone": "Teléfono",
+      "email": "Email",
+      "address": "Dirección de la Clínica",
+      "notProvided": "No proporcionado"
+    },
+    "patientCount": "{count} pacientes",
+    "hero": {
+      "doctorPrefix": "Dr.",
+      "patientCount": "{count, plural, =0 {pacientes} =1 {paciente} other {pacientes}} bajo cuidado"
+    },
+    "contactInfo": {
+      "title": "Información de Contacto",
+      "phoneLabel": "Teléfono",
+      "emailLabel": "Email",
+      "addressLabel": "Dirección de la Clínica"
+    },
+    "recentTests": {
+      "title": "Pruebas Recientes",
+      "patientLabel": "Paciente",
+      "codeLabel": "Código",
+      "testedOnLabel": "Probado el",
+      "noTests": "No hay pruebas recientes"
+    },
+    "patients": {
+      "title": "Pacientes",
+      "referredOn": "Remitido el",
+      "primary": "Principal",
+      "noPatients": "Aún no hay pacientes",
+      "addFirst": "Agregue su primer paciente",
+      "testCount": "{count} pruebas"
+    },
+    "messages": {
+      "deleteError": "Error al eliminar médico. Por favor, intente nuevamente."
+    },
+    "deleteDialog": {
+      "title": "Eliminar Médico",
+      "message": "¿Está seguro de que desea eliminar al Dr. {name}? Esta acción no se puede deshacer.",
+      "confirmText": "Eliminar Médico"
+    }
+  },
+  "EditDoctorPage": {
+    "hero": {
+      "title": "Editar Médico",
+      "subtitle": "Actualizar información del médico"
+    },
+    "form": {
+      "basicInfo": {
+        "title": "Información del Médico",
+        "nameLabel": "Nombre Completo",
+        "namePlaceholder": "Dr. Juan Pérez",
+        "specializationLabel": "Especialización",
+        "specializationPlaceholder": "ej., Cardiología"
+      },
+      "contactInfo": {
+        "title": "Información de Contacto",
+        "emailLabel": "Correo Electrónico",
+        "emailPlaceholder": "doctor@ejemplo.com",
+        "phoneLabel": "Número de Teléfono",
+        "phonePlaceholder": "",
+        "addressLabel": "Dirección de la Clínica",
+        "addressPlaceholder": ""
+      }
+    },
+    "actions": {
+      "submit": "Actualizar Médico",
+      "submitting": "Actualizando...",
+      "cancel": "Cancelar",
+      "backToDetails": "← Volver a Detalles del Médico"
+    }
+  },
+  "PatientsPage": {
+    "ageUnits": {
+      "years": "años",
+      "months": "meses",
+      "days": "días",
+      "year": "año",
+      "month": "mes",
+      "day": "día"
+    },
+    "hero": {
+      "title": "Pacientes",
+      "subtitle": "Gestionar registros de pacientes"
+    },
+    "actions": {
+      "addNew": "Agregar Nuevo Paciente",
+      "view": "Ver",
+      "edit": "Editar",
+      "delete": "Eliminar",
+      "deleting": "Eliminando..."
+    },
+    "filters": {
+      "searchLabel": "Buscar Pacientes",
+      "searchPlaceholder": "Buscar por nombre, teléfono, email, dirección o médico...",
+      "doctorLabel": "Médico",
+      "allDoctors": "Todos los Médicos",
+      "doctorPrefix": "Dr.",
+      "dateLabel": "Fecha de Registro",
+      "allTime": "Todo el Tiempo",
+      "today": "Hoy",
+      "last7Days": "Últimos 7 Días",
+      "last30Days": "Últimos 30 Días",
+      "sortLabel": "Ordenar Por",
+      "sortNewest": "Más Recientes Primero",
+      "sortOldest": "Más Antiguos Primero",
+      "sortNameAsc": "Nombre A-Z",
+      "sortNameDesc": "Nombre Z-A",
+      "clearFilters": "Limpiar filtros",
+      "resultsCount": "Mostrando {start} a {end} de {total} pacientes"
+    },
+    "messages": {
+      "noMatchingPatients": "No hay pacientes que coincidan con sus criterios de búsqueda",
+      "noPatientsFound": "No se encontraron pacientes",
+      "deleteError": "Error al eliminar paciente"
+    },
+    "warnings": {
+      "testsExpiringSoon": "{count} prueba(s) expirarán en 15 días",
+      "viewTemplates": "Ver plantillas"
+    },
+    "table": {
+      "headers": {
+        "name": "Nombre",
+        "contact": "Contacto",
+        "referringDoctors": "Médicos Remitentes",
+        "created": "Creado",
+        "actions": "Acciones"
+      },
+      "age": "Edad: {value} {unit}"
+    },
+    "deleteDialog": {
+      "title": "Eliminar Paciente",
+      "message": "¿Está seguro de que desea eliminar al paciente \"{name}\"? Esta acción no se puede deshacer.",
+      "confirmText": "Eliminar Paciente"
+    }
+  },
+  "PatientView": {
+    "loading": "Cargando detalles del paciente...",
+    "financialInfo": "Información Financiera",
+    "addVisit": "Agregar Visita",
+    "title": "Detalles del Paciente",
+    "subtitle": "Ver información del paciente e historial de pruebas",
+    "backToPatients": "Volver a Pacientes",
+    "editPatient": "Editar Paciente",
+    "personalInfo": "Información Personal",
+    "referringDoctors": "Médicos Referentes",
+    "recentTests": "Pruebas Recientes",
+    "discountInfo": "Información de Descuento",
+    "form": {
+      "name": "Nombre Completo",
+      "gender": "Género",
+      "age": "Edad",
+      "phone": "Teléfono",
+      "email": "Correo Electrónico",
+      "address": "Dirección"
+    },
+    "dialog": {
+      "error": "Error",
+      "success": "Éxito",
+      "warning": "Advertencia",
+      "archiveTitle": "Archivar Prueba",
+      "bulkArchiveTitle": "Archivar Pruebas",
+      "archiveAfterPrintTitle": "Archivar Después de Imprimir",
+      "confirm": "Confirmar"
+    },
+    "messages": {
+      "noTestsSelected": "Por favor, seleccione pruebas para imprimir",
+      "someTestsNoResults": "{count} prueba(s) seleccionada(s) aún no tienen resultados.",
+      "selectedForPrinting": "{count} prueba(s) seleccionada(s) para imprimir",
+      "cannotPrintDueToPayment": "No se puede imprimir debido a pagos pendientes"
+    },
+    "gender": {
+      "male": "Hombre",
+      "female": "Mujer",
+      "other": "Otro"
+    },
+    "ageUnit": {
+      "Years": "Años",
+      "Months": "Meses",
+      "Days": "Días"
+    },
+    "patientId": "ID del Paciente",
+    "createdAt": "Creado el",
+    "primaryDoctor": "Médico Principal",
+    "referredAt": "Referido el",
+    "noDoctors": "Sin médicos referentes",
+    "noTests": "No se encontraron pruebas",
+    "testCode": "Código de Prueba",
+    "doctor": "Médico",
+    "created": "Creado el",
+    "fees": "Tarifas",
+    "viewAllTests": "Ver Todas las Pruebas",
+    "createFirstTest": "Crear Primera Prueba",
+    "editPatientInfo": "Editar Información del Paciente",
+    "manageTests": "Gestionar Pruebas",
+    "discountType": "Tipo de Descuento",
+    "discountPercentage": "Porcentaje de Descuento",
+    "discountAmount": "Monto de Descuento",
+    "discountReason": "Razón del Descuento",
+    "status": {
+      "pending": "Pendiente",
+      "inProgress": "En Progreso",
+      "completed": "Completado",
+      "cancelled": "Cancelado"
+    },
+    "testsHistory": "Historial de Pruebas",
+    "testStatistics": "Estadísticas de Pruebas",
+    "totalTests": "Pruebas Totales",
+    "completed": "Completadas",
+    "inProgress": "En Progreso",
+    "pending": "Pendientes",
+    "showingTests": "Mostrando {{start}} a {{end}} de {{total}} pruebas",
+    "itemsPerPage": "Elementos por página",
+    "clearFilters": "Limpiar Filtros",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "pageInfo": "Página {current} de {total}",
+    "noMatchingTests": "No hay pruebas que coincidan con sus criterios de búsqueda",
+    "filters": {
+      "search": "Buscar",
+      "searchPlaceholder": "Buscar por nombre o código de prueba...",
+      "status": "Estado",
+      "allStatuses": "Todos los Estados",
+      "dateFrom": "Fecha Desde",
+      "dateTo": "Fecha Hasta"
+    },
+    "financial": {
+      "currency": "€",
+      "totalAmount": "Monto Total",
+      "totalAmountValue": "€{amount}",
+      "amountPaid": "Monto Pagado",
+      "amountPaidValue": "€{amount}",
+      "amountDue": "Monto Debido",
+      "amountDueValue": "€{amount}",
+      "paymentStatus": "Estado del Pago",
+      "discountApplied": "Descuento Aplicado",
+      "discountAppliedValue": "€{amount}",
+      "discountReason": "Razón del Descuento"
+    },
+    "labAssignment": {
+      "title": "Detalles de asignación del laboratorio",
+      "assignedToExternalLab": "Esta prueba está asignada a un laboratorio externo",
+      "labName": "Nombre del laboratorio",
+      "contactNumber": "Número de contacto",
+      "email": "Correo electrónico",
+      "address": "Dirección",
+      "price": "Precio",
+      "outsourcingCost": "Costo de externalización",
+      "currencySymbol": "$",
+      "note": "Esta prueba ha sido externalizada a un laboratorio externo para análisis.",
+      "close": "Cerrar",
+      "assignedTo": "Asignado a"
+    },
+    "table": {
+      "createdDate": "Fecha de Creación",
+      "testName": "Nombre de la Prueba",
+      "status": "Estado",
+      "result": "Resultado",
+      "fees": "Tarifas",
+      "feesValue": "{currency}{amount}",
+      "actions": "Acciones",
+      "viewAllResults": "Ver todos los resultados",
+      "available": "Disponible",
+      "notAvailable": "No Disponible",
+      "showing": "Mostrando",
+      "to": "a",
+      "of": "de",
+      "tests": "pruebas",
+      "labAssignment": "Asignación de lab"
+    },
+    "modal": {
+      "results": "Resultados de la Prueba",
+      "close": "Cerrar",
+      "noResults": "No hay resultados disponibles",
+      "table": {
+        "testName": "PRUEBA",
+        "result": "RESULTADO",
+        "refRange": "RANGO DE REFERENCIA",
+        "unit": "UNIDAD",
+        "notAvailable": "No Disponible"
+      }
+    },
+    "actions": {
+      "addVisit": "Agregar Visita",
+      "printTest": "Imprimir Reporte de Prueba",
+      "printSelected": "Imprimir Seleccionados",
+      "clearSelection": "Limpiar Selección",
+      "backToPatientTests": "← Volver a Pruebas del Paciente",
+      "backToPatients": "← Volver a Pacientes",
+      "editPatient": "Editar Paciente",
+      "cannotAddVisitTooltip": "No se puede agregar visita - El paciente tiene saldo pendiente"
+    },
+    "contact": {
+      "phone": "Teléfono",
+      "email": "Correo Electrónico"
+    }
+  },
+  "CreatePatientPage": {
+    "amountPaidNowLabel": "Monto pagado ahora",
+    "remainingAmountLabel": "Monto restante",
+    "savePatientButton": "Guardar Paciente",
+    "saveGenerateReceiptButton": "Guardar y Generar Recibo",
+    "hero": {
+      "title": "Agregar Nuevo Paciente",
+      "subtitle": "Crear un nuevo registro de paciente con pruebas de laboratorio"
+    },
+    "table": {
+      "age": "Edad: {value} {unit}"
+    },
+    "ageUnits": {
+      "years": "años",
+      "months": "meses",
+      "days": "días",
+      "year": "año",
+      "month": "mes",
+      "day": "día"
+    },
+    "genders": {
+      "Male": "Masculino",
+      "Female": "Femenino",
+      "Other": "Otro"
+    },
+    "totalFees": "Tarifas Totales",
+    "saved": "ahorró",
+    "currency": "{amount} €",
+    "actions": {
+      "backToPatients": "← Volver a Pacientes",
+      "cancel": "Cancelar",
+      "submit": "Crear Paciente y Pruebas",
+      "creating": "Creando..."
+    },
+    "form": {
+      "basicInfo": {
+        "title": "Información del Paciente",
+        "nameLabel": "Nombre Completo",
+        "genderLabel": "Género",
+        "genderMale": "Masculino",
+        "genderFemale": "Femenino",
+        "genderOther": "Otro",
+        "ageLabel": "Edad",
+        "agePlaceholder": "Ingrese edad",
+        "ageYears": "Años",
+        "ageMonths": "Meses",
+        "ageDays": "Días",
+        "nameFormatHint": "Por favor ingrese el nombre completo incluyendo el nombre del paciente, nombre del padre y nombre del abuelo",
+        "namePlaceholder": "Ingrese el nombre completo del paciente"
+      },
+      "contactInfo": {
+        "phoneLabel": "Número de Teléfono",
+        "phonePlaceholder": "Número de teléfono",
+        "emailLabel": "Correo Electrónico",
+        "emailPlaceholder": "Dirección de correo electrónico",
+        "addressLabel": "Dirección",
+        "addressPlaceholder": "Dirección completa"
+      },
+      "tests": {
+        "title": "Pruebas de Laboratorio",
+        "description": "Seleccione al menos una prueba para el paciente"
+      },
+      "doctors": {
+        "title": "Médicos Remitentes",
+        "noDoctors": "No hay médicos disponibles.",
+        "addDoctorsLink": "Agregar médicos primero"
+      }
+    },
+    "validation": {
+      "fixErrors": "Por favor, corrija los siguientes errores:",
+      "nameRequired": "El nombre del paciente es requerido",
+      "ageNonNegative": "La edad debe ser un número no negativo",
+      "ageUnrealistic": "La edad parece poco realista. Por favor, verifique la edad.",
+      "atLeastOneTest": "Debe seleccionarse al menos una prueba",
+      "possibleDuplicate": "Posible paciente duplicado encontrado: {name}",
+      "nameThreeParts": "El nombre del paciente debe incluir al menos tres partes (nombre, nombre del padre, nombre del abuelo)"
+    },
+    "messages": {
+      "createPatientFailed": "Error al crear paciente",
+      "unknownError": "Error desconocido"
+    },
+    "ageSuggestions": {
+      "title": "Información de Edad",
+      "months": "≈ {months} meses",
+      "days": "≈ {days} días",
+      "childAdolescent": "Niño/Adolescente",
+      "senior": "Paciente adulto mayor",
+      "newborn": "Recién Nacido",
+      "infant03": "Bebé (0-3 meses)",
+      "infant312": "Bebé (3-12 meses)",
+      "years": "≈ {years} años",
+      "neonate": "Recién Nacido (neonato)"
+    },
+    "ageGuidelines": {
+      "title": "Pautas de Edad",
+      "newborns": "Recién nacidos: Usar días o meses",
+      "infants": "Bebés: Usar meses para mayor precisión",
+      "children": "Niños: Usar años o meses",
+      "adults": "Adultos: Usar años"
+    }
+  },
+  "TestSelectionForm": {
+    "searchPlaceholder": "Buscar pruebas por nombre, código o categoría...",
+    "loading": "Cargando catálogo de pruebas...",
+    "addButton": "Agregar",
+    "unknownCategory": "Categoría Desconocida",
+    "noResults": "No se encontraron pruebas para \"{query}\"",
+    "categoriesTitle": "Categorías de Pruebas",
+    "noCategories": "No hay categorías de pruebas disponibles",
+    "selectedTestsTitle": "Pruebas Seleccionadas ({count})",
+    "noTestsSelected": "No hay pruebas seleccionadas. Por favor, seleccione al menos una prueba.",
+    "totalFees": "Tarifas Totales",
+    "selectAtLeastOneTest": "Por favor, seleccione al menos una prueba para continuar."
+  },
+  "BillingReceipt": {
+    "title": "Imprimir recibo",
+    "subtitle": "Revisar e imprimir recibo de facturación",
+    "receipt": "Recibo",
+    "patientInformation": "Información del paciente",
+    "fields": {
+      "name": "Nombre",
+      "ageSex": "Edad/Sexo",
+      "mobile": "Teléfono",
+      "address": "Dirección",
+      "referredBy": "Referido por",
+      "self": "Propio",
+      "date": "Fecha",
+      "receivedBy": "Recibido por"
+    },
+    "gender": {
+      "male": "Masculino",
+      "female": "Femenino",
+      "other": "Otro"
+    },
+    "ageUnit": {
+      "years": "años",
+      "months": "meses",
+      "days": "días"
+    },
+    "testsTable": {
+      "title": "Pruebas solicitadas",
+      "no": "No.",
+      "investigations": "Exámenes",
+      "amount": "Monto"
+    },
+    "totals": {
+      "subtitle": "Subtotal",
+      "discount": "Descuento",
+      "discountReason": "Razón del descuento",
+      "finalTotal": "Total final",
+      "subtotal": "Subtotal"
+    },
+    "payment": {
+      "title": "Información de pago",
+      "partialPayment": "Pago parcial",
+      "amountPaidNow": "Monto pagado ahora",
+      "maxAmount": "Máximo: €{amount}",
+      "remainingAmount": "Monto restante",
+      "remainingNote": "Los resultados no se imprimirán hasta que se reciba el pago completo"
+    },
+    "footer": {
+      "thankYou": "Gracias por elegir nuestros servicios de laboratorio",
+      "terms": "Este recibo es válido para fines fiscales"
+    },
+    "actions": {
+      "cancel": "Cancelar",
+      "printReceipt": "Imprimir recibo",
+      "printing": "Imprimiendo..."
+    },
+    "errors": {
+      "printFailed": "Error al imprimir el recibo"
+    }
+  },
+  "PatientTestsPage": {
+    "loading": "Cargando pruebas del paciente...",
+    "hero": {
+      "title": "Pruebas para {name}",
+      "subtitle": "Gestionar y generar informes para pruebas del paciente"
+    },
+    "dialog": {
+      "error": "Error",
+      "success": "Éxito",
+      "warning": "Advertencia",
+      "archiveTitle": "Archivar prueba",
+      "bulkArchiveTitle": "Archivar pruebas",
+      "archiveAfterPrintTitle": "Archivar después de imprimir",
+      "confirm": "Confirmar",
+      "paymentLoading": "Cargando información de pago",
+      "paymentLoadingMessage": "Por favor, espere mientras cargamos la información de pago...",
+      "paymentSuccess": "Pago exitoso",
+      "paymentSuccessMessage": "Pago completo de €{amount} recibido exitosamente. El paciente está ahora pagado en su totalidad.",
+      "paymentFailed": "Pago fallido",
+      "paymentFailedMessage": "Error al procesar el pago: {error}",
+      "archiveWarning": "No se pueden archivar las pruebas",
+      "archiveWarningMessage": "No se pueden archivar las pruebas. El paciente tiene €{{amount}} restante por pagar.",
+      "labAssignedSuccess": "Prueba asignada exitosamente a laboratorio externo",
+      "labAssignFailed": "Error al asignar la prueba a laboratorio externo",
+      "failedToFetchLabs": "Error al cargar la lista de laboratorios. Intente nuevamente.",
+      "labAssignmentRemoved": "La asignación del laboratorio ha sido eliminada exitosamente",
+      "labRemoveFailed": "Error al eliminar la asignación del laboratorio"
+    },
+    "actions": {
+      "backToPatients": "← Volver a pacientes",
+      "inputResults": "Ingresar resultados",
+      "editResults": "Editar resultados",
+      "addFirstTest": "Agregar prueba",
+      "addVisit": "Agregar Visita",
+      "clearSelection": "Limpiar selección",
+      "printSelected": "Imprimir selección",
+      "archiveSelected": "Archivar selección",
+      "viewPrint": "Ver/Imprimir",
+      "archiveTest": "Archivar prueba",
+      "viewArchived": "Ver archivados",
+      "archive": "Archivar",
+      "skip": "Omitir",
+      "cancel": "Cancelar",
+      "collectPayment": "Cobrar Pago",
+      "collectFullPayment": "Cobrar Pago Completo",
+      "cannotAddVisitTooltip": "No se puede agregar visita - El paciente tiene saldo pendiente",
+      "assignToLab": "Asignar a laboratorio externo",
+      "updateAssignment": "Actualizar asignación",
+      "ok": "Aceptar",
+      "currency": "€"
+    },
+    "payment": {
+      "required": "Pago Requerido",
+      "requiredMessage": "El paciente tiene €{amount} restante por pagar. El pago completo es requerido para habilitar la generación de PDF y el archivado de pruebas.",
+      "collectFullPayment": "Cobrar Pago Completo",
+      "amountToCollect": "Monto a Cobrar",
+      "fullPaymentRequired": "Pago completo requerido para habilitar la generación de PDF y el archivado de pruebas",
+      "method": "Método de Pago",
+      "processing": "Procesando...",
+      "collectAmount": "Cobrar Pago Completo (€{amount})",
+      "patient": "Paciente",
+      "receiptNumber": "N° de Recibo",
+      "alreadyPaid": "Ya Pagado",
+      "alreadyPaidValue": "€{amount}",
+      "amountDue": "Monto Debido",
+      "amountDueValue": "€{amount}",
+      "cancel": "Cancelar"
+    },
+    "paymentMethods": {
+      "cash": "Efectivo",
+      "card": "Tarjeta de Crédito/Débito",
+      "bankTransfer": "Transferencia Bancaria",
+      "insurance": "Seguro"
+    },
+    "table": {
+      "selectAllTitle": "Seleccionar todas las pruebas con resultados",
+      "noResultsTooltip": "No se puede seleccionar prueba sin resultados",
+      "selectTooltip": "Seleccionar para informe",
+      "headers": {
+        "testName": "Nombre de la Prueba",
+        "status": "Estado",
+        "results": "Resultados",
+        "created": "Creado",
+        "actions": "Acciones"
+      },
+      "code": "Código: {code}",
+      "resultsAvailable": "Resultados Disponibles",
+      "noResults": "Sin Resultados"
+    },
+    "status": {
+      "completed": "Completada",
+      "inprogress": "En Progreso",
+      "pending": "Pendiente",
+      "cancelled": "Cancelada"
+    },
+    "messages": {
+      "noTestsFound": "No se encontraron pruebas para este paciente",
+      "paymentRequired": "El paciente debe €{amount}. Por favor, cobre el pago antes de imprimir los resultados.",
+      "archivedTestsCount": "{count} pruebas archivadas",
+      "selectedCount": "{count} seleccionadas",
+      "archiveConfirm": "¿Está seguro de que desea archivar esta prueba? Será movida a pruebas archivadas.",
+      "archiveError": "Error al archivar prueba",
+      "bulkArchiveConfirm": "¿Archivar {count} pruebas seleccionadas?",
+      "bulkArchiveError": "Error al archivar pruebas",
+      "selectTestsToPrint": "Por favor seleccione pruebas para imprimir",
+      "archiveAfterPrint": "¿Le gustaría archivar {count} prueba(s) completada(s) después de imprimir?",
+      "archiveSuccess": "Prueba archivada exitosamente.",
+      "bulkArchiveSuccess": "{count} pruebas archivadas exitosamente.",
+      "fetchError": "Error al obtener pruebas. Por favor intente nuevamente.",
+      "noTestsSelected": "Por favor seleccione al menos una prueba para generar un informe.",
+      "someTestsNoResults": "{count} prueba(s) seleccionada(s) aún no tienen resultados.",
+      "paymentRequiredPrint": "Pago requerido para imprimir",
+      "paymentRequiredArchive": "Pago requerido para archivar",
+      "archivingInProgress": "Archivando en progreso...",
+      "loadingPaymentInfo": "Cargando información de pago..."
+    },
+    "selection": {
+      "summary": "{selected} seleccionadas de {withResults} pruebas con resultados ({total} total)",
+      "selectedInfo": "{count} prueba{count, plural, =1 {} other {s}} seleccionada{count, plural, =1 {} other {s}} para informe",
+      "generateReportHint": "Haga clic en \"Generar Informe\" para crear un informe combinado de todas las pruebas seleccionadas"
+    }
+  },
+  "LabToLabModal": {
+    "titles": {
+      "editAssignment": "Editar asignación de laboratorio",
+      "assignToLab": "Asignar a laboratorio externo",
+      "addNewLab": "Agregar nuevo laboratorio"
+    },
+    "labels": {
+      "selectLab": "Seleccionar laboratorio",
+      "price": "Precio",
+      "labName": "Nombre del laboratorio",
+      "contactNumber": "Número de contacto",
+      "address": "Dirección",
+      "email": "Correo electrónico"
+    },
+    "buttons": {
+      "close": "Cerrar",
+      "refresh": "Actualizar",
+      "addNewLab": "Agregar nuevo laboratorio",
+      "cancel": "Cancelar",
+      "updateAssignment": "Actualizar asignación",
+      "assignToLab": "Asignar al laboratorio",
+      "back": "Atrás",
+      "saveLab": "Guardar laboratorio",
+      "removeAssignment": "Eliminar asignación",
+      "delete": "Eliminar",
+      "deleteLab": "Eliminar laboratorio"
+    },
+    "messages": {
+      "loadingLabs": "Cargando laboratorios...",
+      "noLabsFound": "No se encontraron laboratorios. Agregue uno abajo.",
+      "currentAssignment": "Asignación actual: {labName} - ${price}"
+    },
+    "alerts": {
+      "selectLabAndPriceTitle": "Información faltante",
+      "selectLabAndPrice": "Por favor, seleccione un laboratorio e ingrese un precio",
+      "labNameRequiredTitle": "Información faltante",
+      "labNameRequired": "El nombre del laboratorio es obligatorio",
+      "confirmRemoveTitle": "Confirmar eliminación",
+      "confirmRemove": "¿Está seguro de que desea eliminar esta asignación de laboratorio?",
+      "removeFailedTitle": "Error",
+      "removeFailed": "Error al eliminar la asignación del laboratorio",
+      "addLabFailedTitle": "Error",
+      "addLabFailed": "Error al agregar el laboratorio",
+      "confirmDeleteLabTitle": "Confirmar eliminación",
+      "confirmDeleteLab": "¿Está seguro de que desea eliminar \"{labName}\"?",
+      "cannotDeleteAssignedTitle": "No se puede eliminar",
+      "cannotDeleteAssigned": "No se puede eliminar un laboratorio asignado actualmente a esta prueba. Por favor, elimine la asignación primero.",
+      "labDeletedTitle": "Éxito",
+      "labDeleted": "El laboratorio \"{labName}\" ha sido eliminado exitosamente",
+      "deleteLabFailedTitle": "Error",
+      "deleteLabFailed": "Error al eliminar el laboratorio"
+    },
+    "selectPlaceholder": {
+      "selectLab": "Seleccionar un laboratorio"
+    },
+    "placeholders": {
+      "price": "0.00",
+      "labName": "Ingrese el nombre del laboratorio",
+      "contactNumber": "Ingrese el número de contacto",
+      "address": "Ingrese la dirección del laboratorio",
+      "email": "Ingrese el correo electrónico"
+    }
+  },
+  "EditPatientPage": {
+    "hero": {
+      "title": "Editar Paciente",
+      "subtitle": "Actualizar información del paciente y pruebas"
+    },
+    "totalFees": "Tarifas Totales",
+    "loading": "Cargando datos del paciente...",
+    "actions": {
+      "backToPatient": "← Volver al Paciente",
+      "cancel": "Cancelar",
+      "submit": "Actualizar Paciente y Pruebas",
+      "updating": "Actualizando Paciente..."
+    },
+    "form": {
+      "basicInfo": {
+        "title": "Información del Paciente",
+        "nameLabel": "Nombre Completo",
+        "namePlaceholder": "Ingrese nombre completo del paciente",
+        "genderLabel": "Género",
+        "genderMale": "Masculino",
+        "genderFemale": "Femenino",
+        "genderOther": "Otro",
+        "ageLabel": "Edad",
+        "agePlaceholder": "Ingrese edad",
+        "ageYears": "Años",
+        "ageMonths": "Meses",
+        "ageDays": "Días",
+        "ageYearsShort": "Años",
+        "ageMonthsShort": "Meses",
+        "ageDaysShort": "Días"
+      },
+      "contactInfo": {
+        "phoneLabel": "Número de Teléfono",
+        "phonePlaceholder": "Número de teléfono",
+        "emailLabel": "Correo Electrónico",
+        "emailPlaceholder": "Dirección de correo electrónico",
+        "addressLabel": "Dirección",
+        "addressPlaceholder": "Dirección completa"
+      },
+      "tests": {
+        "title": "Pruebas de Laboratorio",
+        "syntheticCategory": "Pruebas Agregadas Anteriormente",
+        "currentSelection": "Actualmente {count} prueba(s) seleccionada(s). Agregue o elimine pruebas según sea necesario.",
+        "noTestsSelected": "No hay pruebas seleccionadas. Por favor, agregue al menos una prueba."
+      },
+      "doctors": {
+        "title": "Médicos Remitentes",
+        "noDoctors": "No hay médicos disponibles.",
+        "addDoctorsLink": "Agregar médicos primero",
+        "selectDoctors": "Seleccionar médicos remitentes...",
+        "selected": "seleccionado",
+        "selectedDoctors": "Médicos Seleccionados"
+      }
+    },
+    "validation": {
+      "fixErrors": "Por favor, corrija los siguientes errores:",
+      "nameRequired": "El nombre del paciente es requerido",
+      "ageNonNegative": "La edad debe ser un número no negativo",
+      "atLeastOneTest": "Debe seleccionarse al menos una prueba"
+    },
+    "messages": {
+      "updatePatientFailed": "Error al actualizar paciente",
+      "unknownError": "Error desconocido"
+    },
+    "ageSuggestions": {
+      "title": "Información de Edad",
+      "months": "≈ {months} meses",
+      "days": "≈ {days} días",
+      "childAdolescent": "Niño/Adolescente",
+      "senior": "Paciente adulto mayor",
+      "newborn": "Recién Nacido",
+      "infant03": "Bebé (0-3 meses)",
+      "infant312": "Bebé (3-12 meses)",
+      "years": "≈ {years} años",
+      "neonate": "Recién Nacido (neonato)"
+    }
+  },
+  "PatientDetailPage": {
+    "hero": {
+      "subtitle": "Detalles del Paciente"
+    },
+    "actions": {
+      "backToPatients": "← Volver a Pacientes",
+      "editPatient": "Editar Paciente",
+      "deletePatient": "Eliminar Paciente",
+      "deleting": "Eliminando..."
+    },
+    "basicInfo": {
+      "title": "Información Básica",
+      "fullName": "Nombre Completo",
+      "gender": "Género",
+      "genderMale": "Masculino",
+      "genderFemale": "Femenino",
+      "genderOther": "Otro",
+      "age": "Edad",
+      "ageUnit": {
+        "Years": "Años",
+        "Months": "Meses",
+        "Days": "Días"
+      },
+      "phone": "Teléfono",
+      "email": "Email",
+      "address": "Dirección"
+    },
+    "tests": {
+      "title": "Pruebas de Laboratorio",
+      "manageTests": "Gestionar Pruebas",
+      "code": "Código: {code}",
+      "referredBy": "Remitido por: Dr. {doctor}",
+      "testedOn": "Probado: {date}",
+      "noTests": "Aún no hay pruebas",
+      "addFirstTest": "Agregar Primera Prueba"
+    },
+    "doctors": {
+      "title": "Médicos Remitentes",
+      "referredSince": "Desde {date}",
+      "primary": "Principal",
+      "noDoctors": "Sin médicos remitentes",
+      "addDoctors": "Agregar médicos remitentes"
+    },
+    "quickActions": {
+      "title": "Acciones Rápidas",
+      "viewAllTests": "Ver Todas las Pruebas"
+    },
+    "status": {
+      "completed": "Completada",
+      "inprogress": "En Progreso",
+      "pending": "Pendiente",
+      "cancelled": "Cancelada"
+    },
+    "messages": {
+      "deleteError": "Error al eliminar paciente"
+    },
+    "deleteDialog": {
+      "title": "Eliminar Paciente",
+      "message": "¿Está seguro de que desea eliminar al paciente \"{name}\"? Esto también eliminará todas sus pruebas y no se puede deshacer.",
+      "confirmText": "Eliminar Paciente"
+    }
+  },
+  "TestsPage": {
+    "hero": {
+      "title": "Pacientes",
+      "subtitle": "Ver pacientes y su historial de pruebas"
+    },
+    "actions": {
+      "addNewPatient": "Agregar Nuevo Paciente",
+      "addFirstPatient": "Agregar Primer Paciente"
+    },
+    "filters": {
+      "searchLabel": "Buscar Pacientes",
+      "searchPlaceholder": "Buscar por nombre, teléfono o email...",
+      "sortLabel": "Ordenar Por",
+      "sortNewest": "Más Reciente",
+      "sortOldest": "Más Antiguo",
+      "sortNameAsc": "Nombre A–Z",
+      "sortNameDesc": "Nombre Z–A",
+      "dateLabel": "Fecha de Registro",
+      "allTime": "Todo el Tiempo",
+      "today": "Hoy",
+      "last7Days": "Últimos 7 Días",
+      "last30Days": "Últimos 30 Días",
+      "resultsCount": "Mostrando {start}–{end} de {total} pacientes"
+    },
+    "table": {
+      "headers": {
+        "name": "Nombre",
+        "phone": "Teléfono",
+        "gender": "Género",
+        "age": "Edad",
+        "created": "Creado"
+      }
+    },
+    "gender": {
+      "male": "Masculino",
+      "female": "Femenino",
+      "other": "Otro"
+    },
+    "ageUnit": {
+      "Years": "Años",
+      "Months": "Meses",
+      "Days": "Días"
+    },
+    "messages": {
+      "noPatientsFound": "No se encontraron pacientes"
+    }
+  },
+  "TestCategoriesPage": {
+    "hero": {
+      "title": "Categorías de Pruebas",
+      "subtitle": "Gestionar categorías de pruebas y jerarquía"
+    },
+    "actions": {
+      "manageTemplates": "Gestionar Plantillas",
+      "addCategory": "Agregar Categoría",
+      "createFirstCategory": "Cree su primera categoría",
+      "edit": "Editar",
+      "delete": "Eliminar",
+      "deleting": "Eliminando..."
+    },
+    "category": {
+      "stats": {
+        "tests": "{count, plural, =0 {Sin pruebas} one {# prueba} other {# pruebas}}",
+        "subcategories": "{count, plural, =0 {Sin subcategorías} one {# subcategoría} other {# subcategorías}}"
+      },
+      "status": {
+        "active": "Activa",
+        "inactive": "Inactiva"
+      }
+    },
+    "messages": {
+      "noCategoriesFound": "No se encontraron categorías",
+      "deleteError": "Error al eliminar categoría"
+    },
+    "deleteDialog": {
+      "title": "Eliminar Categoría",
+      "message": "¿Está seguro de que desea eliminar la categoría \"{name}\"? Esta acción no se puede deshacer.",
+      "confirmText": "Eliminar Categoría"
+    }
+  },
+  "CreateTestCategoryPage": {
+    "hero": {
+      "title": "Agregar Nueva Categoría",
+      "subtitle": "Crear una nueva categoría de pruebas"
+    },
+    "actions": {
+      "backToCategories": "← Volver a Categorías",
+      "cancel": "Cancelar",
+      "submit": "Crear Categoría",
+      "creating": "Creando..."
+    },
+    "form": {
+      "basicInfo": {
+        "title": "Información de la Categoría",
+        "nameLabel": "Nombre de la Categoría",
+        "namePlaceholder": "Ingrese nombre de categoría",
+        "descriptionLabel": "Descripción",
+        "descriptionPlaceholder": "Descripción de la categoría",
+        "parentLabel": "Categoría Padre",
+        "noParent": "Sin Padre (Nivel Superior)",
+        "activeLabel": "Categoría Activa"
+      }
+    },
+    "messages": {
+      "createError": "Error al crear categoría"
+    },
+    "help": {
+      "title": "Consejos para Crear Categorías",
+      "nameTip": "Use nombres claros y descriptivos para una fácil organización",
+      "parentTip": "Seleccione una categoría padre para crear una estructura jerárquica",
+      "activeTip": "Las categorías inactivas no estarán disponibles para asignación de pruebas"
+    }
+  },
+  "EditTestCategoryPage": {
+    "hero": {
+      "title": "Editar Categoría",
+      "subtitle": "Actualizar información de la categoría"
+    },
+    "form": {
+      "basicInfo": {
+        "title": "Información de la Categoría",
+        "nameLabel": "Nombre de la Categoría",
+        "namePlaceholder": "Ingrese nombre de categoría",
+        "descriptionLabel": "Descripción",
+        "descriptionPlaceholder": "Ingrese descripción de la categoría",
+        "parentLabel": "Categoría Padre",
+        "noParent": "Sin Padre (Nivel Superior)",
+        "activeLabel": "Categoría Activa"
+      },
+      "stats": {
+        "title": "Estadísticas de la Categoría",
+        "subcategories": "Subcategorías",
+        "tests": "Pruebas"
+      }
+    },
+    "actions": {
+      "backToCategories": "← Volver a Categorías",
+      "cancel": "Cancelar",
+      "submit": "Actualizar Categoría",
+      "submitting": "Actualizando..."
+    },
+    "messages": {
+      "updateError": "Error al actualizar categoría: {error}",
+      "updateErrorGeneric": "Error al actualizar categoría",
+      "unknownError": "Error desconocido"
+    }
+  },
+  "TestTemplatesPage": {
+    "hero": {
+      "title": "Plantillas de Pruebas",
+      "subtitle": "Gestionar plantillas de pruebas de laboratorio y parámetros"
+    },
+    "actions": {
+      "manageCategories": "Gestionar Categorías",
+      "addNew": "Agregar Nueva Plantilla",
+      "createFirstTemplate": "Crear una plantilla",
+      "editTemplate": "Editar Plantilla",
+      "delete": "Eliminar",
+      "deleting": "Eliminando...",
+      "clearSelection": "Limpiar Selección"
+    },
+    "search": {
+      "label": "Buscar Plantillas",
+      "placeholder": "Buscar plantillas por nombre, código o categoría..."
+    },
+    "status": {
+      "active": "Activa",
+      "inactive": "Inactiva",
+      "expired": "Expirada"
+    },
+    "summary": {
+      "total": "Plantillas Totales",
+      "active": "Activas",
+      "expiringSoon": "Por Expirar Pronto",
+      "expired": "Expiradas"
+    },
+    "filters": {
+      "expirationStatus": "Estado de Expiración",
+      "allTemplates": "Todas las Plantillas",
+      "activeOnly": "Solo Activas",
+      "expiringSoon": "Por Expirar Pronto (15 días)",
+      "expired": "Expiradas",
+      "resultsCount": "Mostrando {count} plantillas",
+      "clearFilters": "Limpiar Filtros"
+    },
+    "card": {
+      "specimen": "Muestra: {specimen}",
+      "turnaroundTime": "TAT: {time}",
+      "parameters": "{count, plural, =0 {Sin parámetros} =1 {# parámetro} other {# parámetros}}",
+      "expired": "Expirada",
+      "expiresToday": "Expira hoy",
+      "expiresInOneDay": "Expira en 1 día",
+      "expiresInDays": "Expira en {days} días",
+      "expiredStatus": "Expirada"
+    },
+    "messages": {
+      "noMatchingTemplates": "No se encontraron plantillas que coincidan con su búsqueda",
+      "noTemplatesFound": "No se encontraron plantillas de pruebas",
+      "deleteError": "Error al eliminar plantilla: {error}",
+      "deleteErrorGeneric": "Error al eliminar plantilla"
+    },
+    "warnings": {
+      "expiringSoon": "por expirar pronto",
+      "expired": "expirada",
+      "templatesExpiringSoon": "{count} plantilla(s) expirarán en 15 días",
+      "templatesExpired": "{count} plantilla(s) han expirado"
+    },
+    "deleteDialog": {
+      "title": "Eliminar Plantilla de Prueba",
+      "message": "¿Está seguro de que desea eliminar la plantilla \"{name}\"? Esta acción no se puede deshacer y evitará que esta plantilla se use en nuevas pruebas.",
+      "confirmText": "Eliminar Plantilla"
+    },
+    "pagination": {
+      "next": "Siguiente",
+      "previous": "Anterior"
+    }
+  },
+  "CreateTestTemplatePage": {
+    "hero": {
+      "title": "Agregar Nueva Plantilla de Prueba",
+      "subtitle": "Crear una nueva plantilla de prueba de laboratorio"
+    },
+    "form": {
+      "basicInfo": {
+        "title": "Información Básica",
+        "nameLabel": "Nombre de la Plantilla",
+        "namePlaceholder": "Ingrese nombre de plantilla",
+        "codeLabel": "Código",
+        "codePlaceholder": "Ingrese código único",
+        "categoryLabel": "Categoría",
+        "selectCategory": "Seleccionar Categoría",
+        "descriptionLabel": "Descripción",
+        "descriptionPlaceholder": "Descripción de la plantilla"
+      },
+      "testDetails": {
+        "title": "Detalles de la Prueba",
+        "feesLabel": "Tarifas",
+        "specimenLabel": "Muestra",
+        "specimenPlaceholder": "ej., Sangre Entera, Suero",
+        "containerLabel": "Contenedor",
+        "containerPlaceholder": "ej., Tapón Lavanda, Tapón Rojo",
+        "volumeLabel": "Volumen",
+        "volumePlaceholder": "ej., 3 mL, 5 mL",
+        "storageLabel": "Almacenamiento",
+        "storagePlaceholder": "ej., Temperatura Ambiente, Refrigerado",
+        "turnaroundTimeLabel": "Tiempo de Respuesta",
+        "turnaroundTimePlaceholder": "ej., 24h, 48h",
+        "methodologyLabel": "Metodología",
+        "methodologyPlaceholder": "Metodología de prueba",
+        "activeLabel": "Plantilla Activa",
+        "expirationDateLabel": "Fecha de Expiración",
+        "expirationDateHelp": "Dejar vacío si la plantilla no expira"
+      },
+      "parameters": {
+        "title": "Parámetros de la Prueba",
+        "addButton": "Agregar Parámetro",
+        "noParameters": "No hay parámetros definidos",
+        "addFirstParameter": "Agregue su primer parámetro",
+        "parameterNumber": "Parámetro {number}",
+        "removeButton": "Eliminar",
+        "nameLabel": "Nombre",
+        "codeLabel": "Código",
+        "unitsLabel": "Unidades",
+        "sortOrderLabel": "Orden de Clasificación",
+        "normalRangeMinLabel": "Rango Normal Mín",
+        "normalRangeMaxLabel": "Rango Normal Máx",
+        "normalRangeTextLabel": "Texto de Rango Normal",
+        "normalRangeTextPlaceholder": "ej., Negativo, Positivo, Ver Informe",
+        "defaultValueLabel": "Valor Predeterminado",
+        "defaultValuePlaceholder": "Ingrese valor predeterminado",
+        "criticalLabel": "Parámetro Crítico"
+      }
+    },
+    "actions": {
+      "backToTemplates": "← Volver a Plantillas de Pruebas",
+      "cancel": "Cancelar",
+      "submit": "Crear Plantilla",
+      "submitting": "Creando..."
+    },
+    "messages": {
+      "createError": "Error al crear plantilla: {error}",
+      "createErrorGeneric": "Error al crear plantilla",
+      "unknownError": "Error desconocido"
+    }
+  },
+  "EditTestTemplatePage": {
+    "hero": {
+      "title": "Editar Plantilla de Prueba",
+      "subtitle": "Actualizar detalles de plantilla de prueba y parámetros"
+    },
+    "form": {
+      "basicInfo": {
+        "title": "Información Básica",
+        "nameLabel": "Nombre de la Plantilla",
+        "codeLabel": "Código",
+        "categoryLabel": "Categoría",
+        "selectCategory": "Seleccionar Categoría",
+        "descriptionLabel": "Descripción"
+      },
+      "testDetails": {
+        "title": "Detalles de la Prueba",
+        "feesLabel": "Tarifas",
+        "specimenLabel": "Muestra",
+        "containerLabel": "Contenedor",
+        "volumeLabel": "Volumen",
+        "storageLabel": "Almacenamiento",
+        "turnaroundTimeLabel": "Tiempo de Respuesta",
+        "methodologyLabel": "Metodología",
+        "activeLabel": "Plantilla Activa",
+        "expirationDateLabel": "Fecha de Expiración",
+        "expirationDateHelp": "Dejar vacío si la plantilla no expira"
+      },
+      "parameters": {
+        "title": "Parámetros de la Prueba",
+        "addButton": "Agregar Parámetro",
+        "noParameters": "No hay parámetros definidos",
+        "addFirstParameter": "Agregue su primer parámetro",
+        "parameterNumber": "Parámetro {number}",
+        "removeButton": "Eliminar",
+        "nameLabel": "Nombre",
+        "codeLabel": "Código",
+        "unitsLabel": "Unidades",
+        "sortOrderLabel": "Orden de Clasificación",
+        "normalRangeMinLabel": "Rango Normal Mín",
+        "normalRangeMaxLabel": "Rango Normal Máx",
+        "normalRangeTextLabel": "Texto de Rango Normal",
+        "normalRangeTextPlaceholder": "ej., Negativo, Positivo, Ver Informe",
+        "defaultValueLabel": "Valor Predeterminado",
+        "defaultValuePlaceholder": "Ingrese valor predeterminado",
+        "criticalLabel": "Parámetro Crítico"
+      }
+    },
+    "actions": {
+      "backToTemplates": "← Volver a Plantillas de Pruebas",
+      "cancel": "Cancelar",
+      "submit": "Actualizar Plantilla",
+      "saving": "Guardando..."
+    },
+    "messages": {
+      "updateError": "Error al actualizar plantilla: {error}",
+      "updateErrorGeneric": "Error al actualizar plantilla",
+      "unknownError": "Error desconocido"
+    }
+  },
+  "DiscountSettings": {
+    "hero": {
+      "title": "Gestión de Configuración de Descuentos",
+      "subtitle": "Gestionar permisos y límites de descuentos para empleados"
+    },
+    "settings": {
+      "title": "Permisos de Descuento para Empleados",
+      "subtitle": "Controlar quién puede aplicar descuentos y sus límites"
+    },
+    "table": {
+      "headers": {
+        "user": "Usuario",
+        "discountPermission": "Permiso de Descuento",
+        "discountType": "Tipo de Descuento",
+        "limits": "Límites",
+        "actions": "Acciones"
+      }
+    },
+    "status": {
+      "enabled": "Habilitado",
+      "disabled": "Deshabilitado",
+      "notApplicable": "N/A"
+    },
+    "types": {
+      "percentage": "Porcentaje",
+      "fixed": "Monto Fijo"
+    },
+    "limits": {
+      "maxPercentage": "Porcentaje Máximo",
+      "maxAmount": "Monto Máximo",
+      "max": "Máx"
+    },
+    "actions": {
+      "save": "Guardar Límites",
+      "reset": "Restablecer Contraseña",
+      "deactivate": "Desactivar",
+      "activate": "Activar",
+      "loading": "Cargando...",
+      "saving": "Guardando...",
+      "resetting": "Restableciendo..."
+    },
+    "info": {
+      "title": "Información de Configuración de Descuentos",
+      "point1": "Solo los usuarios Administradores pueden recibir permisos de descuento",
+      "point2": "Los usuarios Super Administrador tienen automáticamente privilegios completos de descuento",
+      "point3": "Establezca límites apropiados para controlar los montos de descuento",
+      "point4": "Todas las aplicaciones de descuento se registran para fines de auditoría"
+    },
+    "messages": {
+      "updateFailed": "Error al actualizar configuración de descuentos",
+      "updateSuccess": "Configuración de descuentos actualizada exitosamente"
+    },
+    "editModal": {
+      "title": "Editar Configuración de Descuentos de Usuario",
+      "nameLabel": "Nombre",
+      "emailLabel": "Email",
+      "roleLabel": "Rol",
+      "statusLabel": "Estado",
+      "saveButton": "Guardar Cambios",
+      "cancelButton": "Cancelar"
+    },
+    "resetPasswordModal": {
+      "title": "Restablecer Contraseña",
+      "newPasswordLabel": "Nueva Contraseña",
+      "passwordPlaceholder": "Ingrese nueva contraseña",
+      "resetButton": "Restablecer Contraseña",
+      "cancelButton": "Cancelar",
+      "success": "Contraseña restablecida exitosamente"
+    }
+  },
+  "DiscountSection": {
+    "currency": "€",
+    "title": "Aplicación de Descuento",
+    "actions": {
+      "addDiscount": "Aplicar Descuento",
+      "removeDiscount": "Eliminar Descuento"
+    },
+    "discountType": {
+      "label": "Tipo de Descuento",
+      "percentage": "Porcentaje %",
+      "fixed": "Monto Fijo"
+    },
+    "discountValue": {
+      "percentage": "Porcentaje de Descuento",
+      "fixed": "Monto de Descuento"
+    },
+    "reason": {
+      "label": "Razón del Descuento",
+      "optional": "Opcional",
+      "placeholder": "Ingrese razón para aplicar descuento..."
+    },
+    "validation": {
+      "maxPercentageExceeded": "El porcentaje de descuento excede su límite máximo permitido de {max}%",
+      "maxAmountExceeded": "El monto de descuento excede su límite máximo permitido de €{max}",
+      "discountExceedsTotal": "El monto de descuento no puede exceder las tarifas totales",
+      "negativeDiscount": "El descuento no puede ser negativo",
+      "possibleDuplicate": "Posible Paciente Duplicado"
+    },
+    "summary": {
+      "title": "Resumen de Descuento",
+      "originalTotal": "Total Original",
+      "discount": "Descuento",
+      "finalTotal": "Total Final",
+      "currency": "€",
+      "enterDiscountValue": "Ingrese un valor de descuento arriba"
+    },
+    "limits": {
+      "max": "Máx"
+    }
+  },
+  "PaymentSection": {
+    "fullPayment": "Pago Completo",
+    "clearPayment": "Limpiar",
+    "title": "Información de Pago",
+    "partialPaymentLabel": "Pago Parcial",
+    "amountPaidNowLabel": "Monto Pagado Ahora",
+    "currency": "€",
+    "noTestsSelected": "No se han seleccionado pruebas. Por favor, agregue al menos una prueba.",
+    "amountPlaceholder": "Ingrese monto",
+    "maxAmount": "Máximo",
+    "paymentMethodLabel": "Método de Pago",
+    "paymentMethods": {
+      "cash": "Efectivo",
+      "card": "Tarjeta de Crédito/Débito",
+      "insurance": "Seguro",
+      "bankTransfer": "Transferencia Bancaria"
+    },
+    "summary": {
+      "title": "Resumen de Pago",
+      "finalTotal": "Total Final",
+      "amountPaidNow": "Monto Pagado Ahora",
+      "remainingAmount": "Monto Restante"
+    },
+    "validation": {
+      "amountExceedsTotal": "El monto no puede exceder",
+      "negativeAmount": "El monto no puede ser negativo",
+      "warningTitle": "Error de Validación de Pago"
+    },
+    "remainingNote": {
+      "title": "Monto Restante",
+      "description": "Este monto será adeudado por el paciente"
+    }
+  },
+  "LoginPage": {
+    "title": "Iniciar sesión en el sistema de laboratorio médico",
+    "subtitle": "Ingrese sus credenciales para acceder al sistema",
+    "email": {
+      "label": "Correo electrónico",
+      "placeholder": "Ingrese su dirección de correo electrónico",
+      "required": "El correo electrónico es obligatorio",
+      "invalid": "Por favor, ingrese un correo electrónico válido"
+    },
+    "password": {
+      "label": "Contraseña",
+      "placeholder": "Ingrese su contraseña",
+      "required": "La contraseña es obligatoria",
+      "minLength": "La contraseña debe tener al menos 8 caracteres"
+    },
+    "buttons": {
+      "login": "Iniciar sesión",
+      "loggingIn": "Iniciando sesión...",
+      "resetPassword": "¿Olvidó su contraseña?",
+      "rememberMe": "Recordarme"
+    },
+    "errors": {
+      "invalidCredentials": "Correo electrónico o contraseña inválidos",
+      "accountLocked": "Cuenta temporalmente bloqueada. Intente de nuevo en 15 minutos",
+      "inactiveAccount": "Su cuenta está inactiva. Por favor, contacte al soporte",
+      "networkError": "Error de red. Por favor, verifique su conexión",
+      "serverError": "Error del servidor. Por favor, intente de nuevo más tarde",
+      "unknownError": "Ocurrió un error durante el inicio de sesión",
+      "requiredFields": "Por favor, complete todos los campos obligatorios",
+      "tooManyAttempts": "Demasiados intentos de inicio de sesión. Por favor, intente de nuevo más tarde"
+    },
+    "validation": {
+      "title": "Error de validación",
+      "fixErrors": "Por favor, corrija los siguientes errores:"
+    },
+    "security": {
+      "title": "Aviso de seguridad",
+      "message": "Este sistema contiene información confidencial. El acceso no autorizado está prohibido."
+    }
+  },
+  "AdminBackupPage": {
+    "title": "Copia de seguridad de la base de datos",
+    "exportSection": {
+      "title": "Exportar base de datos",
+      "description": "Cree una copia de seguridad completa de la base de datos de su laboratorio. El archivo de copia de seguridad (formato SQL) se puede guardar en su disco local o en una unidad externa para su seguridad.",
+      "warning": "Este proceso puede tardar unos momentos dependiendo del tamaño de la base de datos.",
+      "buttons": {
+        "download": "Descargar copia de seguridad",
+        "generating": "Generando copia de seguridad..."
+      }
+    },
+    "restoreSection": {
+      "title": "Restaurar base de datos",
+      "description": "Cargue un archivo de copia de seguridad SQL creado previamente para restaurar la base de datos.",
+      "warning": "ADVERTENCIA: Esta acción es destructiva y reemplazará todos los datos actuales.",
+      "selectFile": "Seleccionar archivo de copia de seguridad (.sql)",
+      "buttons": {
+        "restore": "Restaurar base de datos",
+        "restoring": "Restaurando (No cerrar)..."
+      }
+    },
+    "messages": {
+      "backupStartFailed": "La copia de seguridad no pudo iniciarse",
+      "backupError": "Error de copia de seguridad:",
+      "backupFailedTitle": "Copia de seguridad fallida",
+      "backupFailedMessage": "Error al generar la copia de seguridad. Asegúrese de revisar los registros del servidor.",
+      "restoreSuccessfulTitle": "Restauración exitosa",
+      "restoreSuccessfulMessage": "¡Base de datos restaurada con éxito! Actualice la página para ver los cambios.",
+      "restoreFailedTitle": "Restauración fallida",
+      "restoreFailedPrefix": "Restauración fallida: ",
+      "confirmRestoreTitle": "Confirmar restauración",
+      "confirmRestoreMessage": "PELIGRO: Esto SOBRESCRIBIRÁ toda la base de datos con la copia de seguridad seleccionada. Todos los datos actuales se perderán. ¿Está seguro de que desea continuar?"
+    }
+  }
+}

@@ -1,0 +1,113 @@
+/*
+  Warnings:
+
+  - You are about to drop the `casa_analyses` table. If the table is not empty, all the data it contains will be lost.
+
+*/
+-- DropForeignKey
+ALTER TABLE "public"."casa_analyses" DROP CONSTRAINT "casa_analyses_test_id_fkey";
+
+-- DropTable
+DROP TABLE "public"."casa_analyses";
+
+-- CreateTable
+CREATE TABLE "casa_analysis" (
+    "id" TEXT NOT NULL,
+    "test_id" TEXT NOT NULL,
+    "collection_date" TIMESTAMP(3),
+    "abstinence_days" INTEGER,
+    "collection_method" TEXT,
+    "collection_complete" BOOLEAN,
+    "volume_ml" DOUBLE PRECISION,
+    "appearance" TEXT,
+    "viscosity" TEXT,
+    "liquefaction_time_min" INTEGER,
+    "ph" DOUBLE PRECISION,
+    "odor" TEXT,
+    "concentration_million_per_ml" DOUBLE PRECISION,
+    "total_sperm_number_million" DOUBLE PRECISION,
+    "dilution_factor" DOUBLE PRECISION DEFAULT 1,
+    "chamber_depth_mm" DOUBLE PRECISION DEFAULT 0.01,
+    "counting_chamber" TEXT,
+    "total_motility_percent" DOUBLE PRECISION,
+    "progressive_motility_percent" DOUBLE PRECISION,
+    "non_progressive_percent" DOUBLE PRECISION,
+    "immotile_percent" DOUBLE PRECISION,
+    "grade_a_percent" DOUBLE PRECISION,
+    "grade_b_percent" DOUBLE PRECISION,
+    "grade_c_percent" DOUBLE PRECISION,
+    "grade_d_percent" DOUBLE PRECISION,
+    "vcl" DOUBLE PRECISION,
+    "vsl" DOUBLE PRECISION,
+    "vap" DOUBLE PRECISION,
+    "lin" DOUBLE PRECISION,
+    "str" DOUBLE PRECISION,
+    "wob" DOUBLE PRECISION,
+    "alh" DOUBLE PRECISION,
+    "bcf" DOUBLE PRECISION,
+    "mad" DOUBLE PRECISION,
+    "hyperactive_percent" DOUBLE PRECISION,
+    "hyperactivation_criteria" TEXT,
+    "normal_forms_percent" DOUBLE PRECISION,
+    "abnormal_forms_percent" DOUBLE PRECISION,
+    "head_defects_percent" DOUBLE PRECISION,
+    "head_defects_types" JSONB,
+    "midpiece_defects_percent" DOUBLE PRECISION,
+    "midpiece_defects_types" JSONB,
+    "tail_defects_percent" DOUBLE PRECISION,
+    "tail_defects_types" JSONB,
+    "cytoplasmic_droplets_percent" DOUBLE PRECISION,
+    "droplet_size" TEXT,
+    "teratozoospermia_index" DOUBLE PRECISION,
+    "live_percent" DOUBLE PRECISION,
+    "dead_percent" DOUBLE PRECISION,
+    "vitality_method" TEXT,
+    "hos_positive_percent" DOUBLE PRECISION,
+    "hos_negative_percent" DOUBLE PRECISION,
+    "fructose_mg_per_dl" DOUBLE PRECISION,
+    "zinc_ug_per_ml" DOUBLE PRECISION,
+    "acid_phosphatase_u_per_ml" DOUBLE PRECISION,
+    "alpha_glucosidase_mu_per_ml" DOUBLE PRECISION,
+    "mar_test_igg_percent" DOUBLE PRECISION,
+    "mar_test_iga_percent" DOUBLE PRECISION,
+    "mar_test_type" TEXT,
+    "ibt_percent" DOUBLE PRECISION,
+    "ibt_pattern" TEXT,
+    "leukocyte_count_million_per_ml" DOUBLE PRECISION,
+    "round_cells_million_per_ml" DOUBLE PRECISION,
+    "epithelial_cells" TEXT,
+    "agglutination_degree" TEXT,
+    "agglutination_type" TEXT,
+    "aggregation_degree" TEXT,
+    "dna_fragmentation_index" DOUBLE PRECISION,
+    "dna_fragmentation_method" TEXT,
+    "high_dna_stainability" DOUBLE PRECISION,
+    "reactive_oxygen_species_count" DOUBLE PRECISION,
+    "total_antioxidant_capacity" DOUBLE PRECISION,
+    "spontaneous_ar_percent" DOUBLE PRECISION,
+    "induced_ar_percent" DOUBLE PRECISION,
+    "ar_index" DOUBLE PRECISION,
+    "zona_free_hamster_test" DOUBLE PRECISION,
+    "technician_name" TEXT,
+    "analysis_time_minutes" INTEGER,
+    "duplicate_variation" DOUBLE PRECISION,
+    "chamber_type" TEXT,
+    "magnification_used" TEXT,
+    "who_classification" TEXT,
+    "andrology_diagnosis" JSONB,
+    "clinical_interpretation" TEXT,
+    "recommendations" JSONB,
+    "microscopy_images" JSONB,
+    "motility_video_path" TEXT,
+    "analysis_report_pdf" TEXT,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "casa_analysis_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateIndex
+CREATE UNIQUE INDEX "casa_analysis_test_id_key" ON "casa_analysis"("test_id");
+
+-- AddForeignKey
+ALTER TABLE "casa_analysis" ADD CONSTRAINT "casa_analysis_test_id_fkey" FOREIGN KEY ("test_id") REFERENCES "tests"("id") ON DELETE CASCADE ON UPDATE CASCADE;

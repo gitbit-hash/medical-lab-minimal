@@ -2093,46 +2093,6 @@
       "success": "Contraseña restablecida exitosamente"
     }
   },
-  "DiscountSection": {
-    "currency": "€",
-    "title": "Aplicación de Descuento",
-    "actions": {
-      "addDiscount": "Aplicar Descuento",
-      "removeDiscount": "Eliminar Descuento"
-    },
-    "discountType": {
-      "label": "Tipo de Descuento",
-      "percentage": "Porcentaje %",
-      "fixed": "Monto Fijo"
-    },
-    "discountValue": {
-      "percentage": "Porcentaje de Descuento",
-      "fixed": "Monto de Descuento"
-    },
-    "reason": {
-      "label": "Razón del Descuento",
-      "optional": "Opcional",
-      "placeholder": "Ingrese razón para aplicar descuento..."
-    },
-    "validation": {
-      "maxPercentageExceeded": "El porcentaje de descuento excede su límite máximo permitido de {max}%",
-      "maxAmountExceeded": "El monto de descuento excede su límite máximo permitido de €{max}",
-      "discountExceedsTotal": "El monto de descuento no puede exceder las tarifas totales",
-      "negativeDiscount": "El descuento no puede ser negativo",
-      "possibleDuplicate": "Posible Paciente Duplicado"
-    },
-    "summary": {
-      "title": "Resumen de Descuento",
-      "originalTotal": "Total Original",
-      "discount": "Descuento",
-      "finalTotal": "Total Final",
-      "currency": "€",
-      "enterDiscountValue": "Ingrese un valor de descuento arriba"
-    },
-    "limits": {
-      "max": "Máx"
-    }
-  },
   "PaymentSection": {
     "fullPayment": "Pago Completo",
     "clearPayment": "Limpiar",

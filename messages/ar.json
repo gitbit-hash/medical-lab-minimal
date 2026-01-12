@@ -2096,47 +2096,6 @@
       "success": "تم إعادة تعيين كلمة المرور بنجاح"
     }
   },
-  "DiscountSection": {
-    "currency": "ج.م.",
-    "title": "تطبيق الخصم",
-    "actions": {
-      "addDiscount": "تطبيق خصم",
-      "removeDiscount": "إزالة الخصم"
-    },
-    "discountType": {
-      "label": "نوع الخصم",
-      "percentage": "نسبة مئوية %",
-      "fixed": "مبلغ ثابت"
-    },
-    "discountValue": {
-      "percentage": "نسبة الخصم",
-      "fixed": "مبلغ الخصم"
-    },
-    "reason": {
-      "label": "سبب الخصم",
-      "optional": "اختياري",
-      "placeholder": "أدخل سبب تطبيق الخصم..."
-    },
-    "validation": {
-      "maxPercentageExceeded": "نسبة الخصم تتجاوز الحد الأقصى المسموح به وهو {max} ٪",
-      "maxAmountExceeded": "مبلغ الخصم يتجاوز الحد الأقصى المسموح به وهو {max}",
-      "discountExceedsTotal": "لا يمكن أن يتجاوز مبلغ الخصم إجمالي الرسوم",
-      "negativeDiscount": "لا يمكن أن يكون الخصم سالبًا",
-      "possibleDuplicate": "مريض مكرر محتمل"
-    },
-    "summary": {
-      "title": "ملخص الخصم",
-      "originalTotal": "الإجمالي الأصلي",
-      "discount": "الخصم",
-      "finalTotal": "الإجمالي النهائي",
-      "currency": "ج.م.",
-      "enterDiscountValue": "أدخل قيمة الخصم أعلاه",
-      "invalidDiscount": "يرجى إصلاح قيمة الخصم أعلاه"
-    },
-    "limits": {
-      "max": "الحد الأقصى"
-    }
-  },
   "PaymentSection": {
     "fullPayment": "دفع كامل",
     "clearPayment": "مسح",

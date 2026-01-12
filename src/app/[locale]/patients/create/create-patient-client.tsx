@@ -6,9 +6,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { TestSelectionForm } from '../../../components/test-selection-form';
-import { DiscountSection } from '../../../components/discount-section';
 import { ReceiptPDFViewerModal } from '@/app/components/ReceiptPDFViewerModal';
-import { PaymentSection } from '../../../components/payment-section';
 import { TestTemplateSearchResult } from '../../../types';
 
 // Update the Doctor interface to match Prisma's return type
@@ -99,8 +97,6 @@ export function CreatePatientClient({ locale, initialDoctors, session }: CreateP
   const translateAgeUnit = (unit: string | null, value: number | null) => {
     if (!unit || !value) return '';
 
-    // Handle pluralization
-    const isPlural = value !== 1;
     const unitKey = unit.toLowerCase()
 
     return t(`ageUnits.${unitKey}`);

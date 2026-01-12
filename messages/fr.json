@@ -2092,47 +2092,6 @@
       "success": "Mot de passe réinitialisé avec succès"
     }
   },
-  "DiscountSection": {
-    "currency": "€",
-    "title": "Application de remise",
-    "actions": {
-      "addDiscount": "Appliquer une remise",
-      "removeDiscount": "Supprimer la remise"
-    },
-    "discountType": {
-      "label": "Type de remise",
-      "percentage": "Pourcentage %",
-      "fixed": "Montant fixe"
-    },
-    "discountValue": {
-      "percentage": "Pourcentage de remise",
-      "fixed": "Montant de la remise"
-    },
-    "reason": {
-      "label": "Raison de la remise",
-      "optional": "Optionnel",
-      "placeholder": "Entrer la raison de l'application de la remise..."
-    },
-    "validation": {
-      "maxPercentageExceeded": "Le pourcentage de remise dépasse votre limite maximale autorisée de {max}%",
-      "maxAmountExceeded": "Le montant de la remise dépasse votre limite maximale autorisée de {max}€",
-      "discountExceedsTotal": "Le montant de la remise ne peut pas dépasser les frais totaux",
-      "negativeDiscount": "La remise ne peut pas être négative",
-      "possibleDuplicate": "Patient en doublon possible"
-    },
-    "summary": {
-      "title": "Résumé de la remise",
-      "originalTotal": "Total original",
-      "discount": "Remise",
-      "finalTotal": "Total final",
-      "currency": "€",
-      "enterDiscountValue": "Entrez une valeur de remise ci-dessus",
-      "invalidDiscount": "Veuillez corriger la valeur de la remise ci-dessus"
-    },
-    "limits": {
-      "max": "Max"
-    }
-  },
   "PaymentSection": {
     "fullPayment": "Paiement Complet",
     "clearPayment": "Effacer",

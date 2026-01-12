@@ -2119,46 +2119,6 @@
       "success": "Password reset successfully"
     }
   },
-  "DiscountSection": {
-    "currency": "$",
-    "title": "Discount",
-    "actions": {
-      "addDiscount": "Add Discount",
-      "removeDiscount": "Remove Discount"
-    },
-    "discountType": {
-      "label": "Discount Type",
-      "percentage": "Percentage",
-      "fixed": "Fixed Amount"
-    },
-    "discountValue": {
-      "percentage": "Discount Percentage",
-      "fixed": "Discount Amount"
-    },
-    "limits": {
-      "max": "Max"
-    },
-    "reason": {
-      "label": "Reason for Discount",
-      "optional": "Optional",
-      "placeholder": "Enter reason for discount (e.g., regular customer, special offer, etc.)"
-    },
-    "validation": {
-      "maxPercentageExceeded": "Discount percentage cannot exceed {max}%",
-      "maxAmountExceeded": "Discount amount cannot exceed ${max}",
-      "discountExceedsTotal": "Discount cannot exceed total fees",
-      "negativeDiscount": "Discount cannot be negative"
-    },
-    "summary": {
-      "title": "Discount Summary",
-      "originalTotal": "Original Total",
-      "discount": "Discount",
-      "finalTotal": "Final Total",
-      "currency": "$",
-      "enterDiscountValue": "Enter a discount value above",
-      "invalidDiscount": "Please fix the discount value above"
-    }
-  },
   "PaymentSection": {
     "fullPayment": "Full Payment",
     "clearPayment": "Clear",

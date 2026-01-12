@@ -7,7 +7,6 @@ import { TestWithRelations, PatientWithRelations } from '../../../../types';
 import { TestStatus } from '@prisma/client';
 import { TestEditorDrawer } from '../../../../components/TestEditorDrawer';
 import { PDFViewerModal } from '../../../../components/PDFViewerModal';
-import { LabToLabModal } from '../../../../components/LabToLabModal';
 import { Dialog } from '../../../../components/Dialog';
 import {
   IoPrint,
@@ -1046,26 +1045,6 @@ export function PatientTestsClient({
               </div>
             </div>
           </div>
-        )}
-        {labModalOpen && currentTestForLab && (
-          <LabToLabModal
-            isOpen={labModalOpen}
-            onClose={() => {
-              setLabModalOpen(false);
-              setCurrentTestForLab(null);
-            }}
-            onAssign={handleAssignToLab}
-            onRemoveAssignment={handleRemoveAssignment}
-            onDeleteLab={handleDeleteLab} // Add this
-            onAddLab={handleAddNewLab}
-            testId={currentTestForLab.testId}
-            currentAssignment={currentTestForLab.currentAssignment}
-            labs={labs}
-            isLoadingLabs={isLoadingLabs}
-            onRefreshLabs={fetchLabs}
-            locale={locale}
-            currencySymbol={t('actions.currency')}
-          />
         )}
       </div>
     </div>

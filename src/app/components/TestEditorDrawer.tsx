@@ -6,8 +6,7 @@ import { Dialog } from '@headlessui/react';
 import { TestResultsForm } from './test-results-form'; // Keep import for non-CASA tests
 import { TestTemplateWithCategoryAndParams, TestWithRelations } from '../types';
 import { TestStatus, AndrologyTestType } from '@prisma/client';
-import { ComprehensiveCASAForm } from './casa/ComprehensiveCASAForm';
-import { Download, Eye, TestTube, Microscope } from 'lucide-react';
+import { Microscope } from 'lucide-react';
 
 interface TestEditorDrawerProps {
   isOpen: boolean;
@@ -341,23 +340,6 @@ export function TestEditorDrawer({
               </div>
             ) : (
               <>
-                {/* CASA Form - Always rendered if CASA test, no tab switching needed now */}
-                {isCasaTest && (
-                  <ComprehensiveCASAForm
-                    testId={test.id}
-                    initialData={casaAnalysis}
-                    onSave={handleCasaSave}
-                    testResults={results}
-                    patientData={{
-                      id: patientId,
-                      name: test.patient?.name || 'Unknown Patient',
-                      age_value: test.patient?.age_value,
-                      age_unit: test.patient?.age_unit,
-                      gender: test.patient?.gender,
-                    }}
-                  />
-                )}
-
                 {/* General Test Form - Only for Non-CASA tests */}
                 {!isCasaTest && (
                   <>

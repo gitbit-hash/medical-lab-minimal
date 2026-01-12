@@ -96,38 +96,6 @@ export default async function HomePage({ params }: HomePageProps) {
       color: "blue",
       icon: "👥",
       gradient: "from-blue-500 to-blue-600"
-    },
-    {
-      titleKey: 'quickActions.doctors.title',
-      descriptionKey: 'quickActions.doctors.description',
-      href: `/${locale}/doctors`, // Add locale prefix
-      color: "green",
-      icon: "👨‍⚕️",
-      gradient: "from-green-500 to-green-600"
-    },
-    {
-      titleKey: 'quickActions.templates.title',
-      descriptionKey: 'quickActions.templates.description',
-      href: `/${locale}/test-templates`, // Add locale prefix
-      color: "orange",
-      icon: "📋",
-      gradient: "from-orange-500 to-orange-600"
-    },
-    {
-      titleKey: 'quickActions.categories.title',
-      descriptionKey: 'quickActions.categories.description',
-      href: `/${locale}/test-categories`, // Add locale prefix
-      color: "yellow",
-      icon: "📁",
-      gradient: "from-yellow-500 to-yellow-600"
-    },
-    {
-      titleKey: 'quickActions.sync.title',
-      descriptionKey: 'quickActions.sync.description',
-      href: `/${locale}/sync`, // Add locale prefix
-      color: "gray",
-      icon: "🔄",
-      gradient: "from-gray-500 to-gray-600"
     }
   ];
 

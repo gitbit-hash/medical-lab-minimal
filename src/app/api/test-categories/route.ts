@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { localPrisma } from '../../lib/db/local-client';
 import { globalCache } from '../../lib/utils/cashe';
-import { ApiResponse } from '@/app/types';
 
 // Cache categories for 10 minutes
 const CATEGORIES_CACHE_TTL = 10 * 60 * 1000;
@@ -106,73 +105,6 @@ export async function GET() {
         success: false,
         error: `Failed to load test categories: ${errorMessage}`,
         timestamp: new Date().toISOString()
-      },
-      { status: 500 }
-    );
-  }
-}
-
-export async function POST(request: Request): Promise<NextResponse<ApiResponse<any>>> {
-  try {
-    const body = await request.json();
-    const { name, description, parent_id, is_active = true } = body;
-
-    // Check if category name already exists
-    const existingCategory = await localPrisma.testCategory.findUnique({
-      where: { name },
-    });
-
-    if (existingCategory) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'A category with this name already exists'
-        },
-        { status: 400 }
-      );
-    }
-
-    // Validate parent exists if provided
-    if (parent_id) {
-      const parentCategory = await localPrisma.testCategory.findUnique({
-        where: { id: parent_id },
-      });
-
-      if (!parentCategory) {
-        return NextResponse.json(
-          {
-            success: false,
-            error: 'Parent category not found'
-          },
-          { status: 400 }
-        );
-      }
-    }
-
-    // Create category
-    const category = await localPrisma.testCategory.create({
-      data: {
-        name,
-        description,
-        parent_id: parent_id || null,
-        is_active,
-      },
-      include: {
-        parent: true,
-        children: true,
-      },
-    });
-
-    return NextResponse.json({
-      success: true,
-      data: category,
-    });
-  } catch (error) {
-    console.error('Failed to create test category:', error);
-    return NextResponse.json(
-      {
-        success: false,
-        error: 'Failed to create test category'
       },
       { status: 500 }
     );

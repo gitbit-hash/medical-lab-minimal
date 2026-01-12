@@ -81,27 +81,3 @@ export async function GET(request: Request) {
     );
   }
 }
-
-export async function POST(request: Request) {
-  try {
-    const body = await request.json();
-    const { name, specialization, phone, email, clinic_address } = body;
-
-    // Use offline queue to handle doctor creation
-    const doctor = await offlineQueue.addDoctor({
-      name,
-      specialization,
-      phone,
-      email,
-      clinic_address,
-    });
-
-    return NextResponse.json(doctor);
-  } catch (error) {
-    console.error('Failed to create doctor:', error);
-    return NextResponse.json(
-      { error: 'Failed to create doctor' },
-      { status: 500 }
-    );
-  }
-}

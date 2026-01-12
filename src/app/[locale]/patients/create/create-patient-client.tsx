@@ -51,7 +51,6 @@ export function CreatePatientClient({ locale, initialDoctors, session }: CreateP
   const t = useTranslations('CreatePatientPage');
   const direction = locale === 'ar' ? 'rtl' : 'ltr';
 
-  const [doctors] = useState<Doctor[]>(initialDoctors);
   const [selectedDoctors, setSelectedDoctors] = useState<string[]>([]);
   const [selectedTests, setSelectedTests] = useState<TestTemplateSearchResult[]>([]);
   const [testSubtotal, setTestSubtotal] = useState(0);
@@ -354,14 +353,6 @@ export function CreatePatientClient({ locale, initialDoctors, session }: CreateP
     }));
   };
 
-  const handleDoctorToggle = (doctorId: string) => {
-    setSelectedDoctors(prev =>
-      prev.includes(doctorId)
-        ? prev.filter(id => id !== doctorId)
-        : [...prev, doctorId]
-    );
-  };
-
   // Helper to display age suggestions
   const getAgeSuggestions = () => {
     if (!formData.age_value) return null;
@@ -637,68 +628,6 @@ export function CreatePatientClient({ locale, initialDoctors, session }: CreateP
               />
             </div>
 
-            {/* Discount Section */}
-            <DiscountSection
-              isDisabled={isSubmitting || selectedTests.length === 0}
-              totalFees={totalFees}
-              userDiscountPermission={userDiscountPermission}
-              onDiscountChange={setDiscount}
-              locale={locale}
-            />
-
-            <PaymentSection
-              isDisabled={isSubmitting || selectedTests.length === 0}
-              finalTotal={finalTotal}
-              amountPaidNow={amountPaidNow}
-              setAmountPaidNow={(amount) => {
-                setAmountPaidNow(amount);
-                setIsAmountManuallyModified(true); // Mark as manually modified
-              }}
-              remainingAmount={remainingAmount}
-              setRemainingAmount={setRemainingAmount}
-              paymentMethod={paymentMethod}
-              setPaymentMethod={setPaymentMethod}
-              locale={locale}
-              // Add new prop to reset manual modification flag when discount changes
-              onDiscountApplied={() => setIsAmountManuallyModified(false)}
-            />
-
-            {/* Referring Doctors */}
-            <div>
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">{t('form.doctors.title')}</h2>
-              <div className="border border-gray-200 rounded-md p-4 max-h-60 overflow-y-auto">
-                {doctors.length === 0 ? (
-                  <div className="text-center text-gray-500 py-4">
-                    {t('form.doctors.noDoctors')}{' '}
-                    <Link href={`/${locale}/doctors/create`} className="text-blue-500 hover:text-blue-700">
-                      {t('form.doctors.addDoctorsLink')}
-                    </Link>
-                  </div>
-                ) : (
-                  <div className="space-y-2">
-                    {doctors.map((doctor) => (
-                      <label key={doctor.id} className="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded">
-                        <input
-                          type="checkbox"
-                          checked={selectedDoctors.includes(doctor.id)}
-                          onChange={() => handleDoctorToggle(doctor.id)}
-                          disabled={isSubmitting || selectedTests.length === 0}
-                          className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 disabled:cursor-not-allowed"
-                        />
-                        <span className="flex-1">
-                          <span className="font-medium text-gray-800">{doctor.name}</span>
-                          {doctor.specialization && (
-                            <span className="text-gray-500 text-sm ml-2">
-                              - {doctor.specialization}
-                            </span>
-                          )}
-                        </span>
-                      </label>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
             {/* Form Actions */}
             <div className="flex justify-between items-center">
               <div className="space-y-2">
@@ -725,14 +654,6 @@ export function CreatePatientClient({ locale, initialDoctors, session }: CreateP
                   className="px-6 py-3 bg-green-500 text-white rounded-md hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium"
                 >
                   {isSubmitting ? t('actions.creating') : t('savePatientButton')}
-                </button>
-                <button
-                  type="button"
-                  onClick={(e) => handleSubmit(e, true)}
-                  disabled={isSubmitting || selectedTests.length === 0}
-                  className="px-8 py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium"
-                >
-                  {isSubmitting ? t('actions.creating') : t('saveGenerateReceiptButton')}
                 </button>
               </div>
             </div>

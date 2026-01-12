@@ -44,12 +44,6 @@ export function MainNavigation({ serverLocale }: MainNavigationProps) {
   const navigation = [
     { name: t('dashboard'), href: '/', icon: TbLayoutDashboard },
     { name: t('patients'), href: '/patients', icon: TbUsers },
-    { name: t('doctors'), href: '/doctors', icon: TbStethoscope },
-    { name: t('templates'), href: '/test-templates', icon: TbClipboardText },
-    { name: t('categories'), href: '/test-categories', icon: TbFolders },
-    ...(session?.user?.role === "SuperAdmin"
-      ? [{ name: t('admin'), href: "/admin", icon: TbSettings }]
-      : []),
   ];
 
   const isRTL = locale === 'ar';

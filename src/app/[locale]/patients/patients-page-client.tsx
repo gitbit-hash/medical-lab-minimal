@@ -7,7 +7,6 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { PatientWithRelations } from '../../types';
 import { Pagination } from '../../components/pagination';
-import { DeleteConfirmationDialog } from '../../components/delete-confirmation-dialog';
 
 interface DoctorForFilter {
   id: string;
@@ -40,7 +39,6 @@ export function PatientsPageClient({
   initialItemsPerPage,
   initialDoctors,
   session,
-  initialSearchParams,
 }: PatientsPageClientProps) {
 
   const translateAgeUnit = (unit: string | null, value: number | null) => {
@@ -51,10 +49,6 @@ export function PatientsPageClient({
     const unitKey = unit.toLowerCase();
 
     return t(`ageUnits.${unitKey}`);
-  };
-
-  const translateGender = (gender: string) => {
-    return t(`genders.${gender}`);
   };
 
   const t = useTranslations('PatientsPage');
@@ -68,10 +62,6 @@ export function PatientsPageClient({
   const [totalPages, setTotalPages] = useState(initialTotalPages);
   const [itemsPerPage, setItemsPerPage] = useState(initialItemsPerPage);
   const [uniqueDoctors] = useState(initialDoctors);
-  const [isDeleting, setIsDeleting] = useState<string | null>(null);
-  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
-  const [patientToDelete, setPatientToDelete] = useState<{ id: string; name: string } | null>(null);
-  const [expiringTestsCount, setExpiringTestsCount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
   const currentPage = Number(searchParams.get('page')) || 1;
@@ -123,22 +113,6 @@ export function PatientsPageClient({
     }
   }, [limitParam, itemsPerPage]);
 
-  useEffect(() => {
-    const loadExpiringTestsCount = async () => {
-      try {
-        const response = await fetch('/api/tests/expiration-stats');
-        if (response.ok) {
-          const result = await response.json();
-          setExpiringTestsCount(result.data.expiringSoon || 0);
-        }
-      } catch (error) {
-        console.error('Failed to load expiring tests count:', error);
-      }
-    };
-
-    loadExpiringTestsCount();
-  }, []);
-
   // Function to update URL parameters
   const updateURLParams = (params: Record<string, string | number>) => {
     const newParams = new URLSearchParams(searchParams.toString());
@@ -174,54 +148,8 @@ export function PatientsPageClient({
     updateURLParams({ [name]: value });
   };
 
-  // Delete functionality
-  const handleDeleteClick = (patientId: string, patientName: string) => {
-    setPatientToDelete({ id: patientId, name: patientName });
-    setShowDeleteDialog(true);
-  };
-
-  const handleDeleteConfirm = async () => {
-    if (!patientToDelete) return;
-    setIsDeleting(patientToDelete.id);
-    try {
-      const response = await fetch(`/api/patients/${patientToDelete.id}`, {
-        method: 'DELETE',
-      });
-      const result = await response.json();
-      if (result.success) {
-        // Refresh the data
-        await fetchPatients();
-        setShowDeleteDialog(false);
-        setPatientToDelete(null);
-      } else {
-        alert(t('messages.deleteError'));
-        setShowDeleteDialog(false);
-      }
-    } catch (error) {
-      console.error('Failed to delete patient:', error);
-      alert(t('messages.deleteError'));
-      setShowDeleteDialog(false);
-    } finally {
-      setIsDeleting(null);
-    }
-  };
-
-  const handleDeleteCancel = () => {
-    setShowDeleteDialog(false);
-    setPatientToDelete(null);
-  };
-
   return (
     <div className="min-h-screen bg-gray-50 p-6" dir={direction}>
-      <DeleteConfirmationDialog
-        isOpen={showDeleteDialog}
-        onClose={handleDeleteCancel}
-        onConfirm={handleDeleteConfirm}
-        title={t('deleteDialog.title')}
-        message={t('deleteDialog.message', { name: patientToDelete?.name || '' })}
-        confirmText={t('deleteDialog.confirmText')}
-        isLoading={isDeleting === patientToDelete?.id}
-      />
 
       <div className="max-w-7xl mx-auto">
         {/* Header */}
@@ -240,25 +168,6 @@ export function PatientsPageClient({
           )}
         </div>
 
-        {/* Expiring Tests Warning - Small Alert */}
-        {expiringTestsCount > 0 && (
-          <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <span className="text-yellow-600 text-sm font-medium">
-                  ⚠️ {t('warnings.testsExpiringSoon', { count: expiringTestsCount })}
-                </span>
-              </div>
-              <Link
-                href={`/${locale}/test-templates`}
-                className="text-yellow-600 hover:text-yellow-800 text-xs font-medium"
-              >
-                {t('warnings.viewTemplates')}
-              </Link>
-            </div>
-          </div>
-        )}
-
         {/* Search and Filters */}
         <div className="bg-white rounded-lg shadow p-6 mb-6">
           <div className="space-y-4">
@@ -273,7 +182,7 @@ export function PatientsPageClient({
                   id="search"
                   value={searchQuery}
                   onChange={(e) => handleFilterChange('search', e.target.value)}
-                  onKeyPress={(e) => {
+                  onKeyUp={(e) => {
                     if (e.key === 'Enter') {
                       e.preventDefault();
                     }
@@ -393,9 +302,6 @@ export function PatientsPageClient({
                 <th className={`px-6 py-3 ${locale === 'ar' ? 'text-right' : 'text-left'} text-xs font-medium text-gray-500 uppercase tracking-wider`}>
                   {t('table.headers.created')}
                 </th>
-                <th className={`px-6 py-3 ${locale === 'ar' ? 'text-right' : 'text-left'} text-xs font-medium text-gray-500 uppercase tracking-wider`}>
-                  {t('table.headers.actions')}
-                </th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
@@ -428,27 +334,6 @@ export function PatientsPageClient({
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     {new Date(patient.created_at).toLocaleDateString(locale)}
-                  </td>
-                  <td className="py-4 px-6 whitespace-nowrap text-sm font-medium">
-                    {(session.user?.can_access_medical_history || session.user?.role === 'SuperAdmin') && (<Link
-                      href={`/${locale}/patients/${patient.id}/view`}
-                      className="text-blue-600 hover:text-blue-900 px-4"
-                    >
-                      {t('actions.view')}
-                    </Link>)}
-                    {(session.user?.can_edit_patients || session.user?.role === 'SuperAdmin') && (<Link
-                      href={`/${locale}/patients/${patient.id}/edit`}
-                      className="text-green-600 hover:text-green-900 px-4"
-                    >
-                      {t('actions.edit')}
-                    </Link>)}
-                    {(session.user?.can_delete_patients || session.user?.role === 'SuperAdmin') && (<button
-                      onClick={() => handleDeleteClick(patient.id, patient.name)}
-                      className="text-red-600 hover:text-red-900 px-4"
-                      disabled={isDeleting === patient.id}
-                    >
-                      {isDeleting === patient.id ? t('actions.deleting') : t('actions.delete')}
-                    </button>)}
                   </td>
                 </tr>
               ))}

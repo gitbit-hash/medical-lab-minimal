@@ -93,8 +93,6 @@ const SelectedTestItem = memo(({ test, onRemove, onUpdate }: {
     setIsEditing(false);
   };
 
-  const canEditPrice = session?.user?.can_edit_fees || session?.user?.role === 'SuperAdmin';
-
   return (
     <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
       <div className="flex-1">
@@ -140,15 +138,6 @@ const SelectedTestItem = memo(({ test, onRemove, onUpdate }: {
               <span className="font-semibold text-green-600 mr-2">
                 {(test.fees || 0).toFixed(2)}
               </span>
-              {canEditPrice && (
-                <button
-                  onClick={() => setIsEditing(true)}
-                  className="text-gray-400 hover:text-blue-600 transition-colors"
-                  type="button"
-                >
-                  <FaEdit size={14} />
-                </button>
-              )}
             </div>
           )}
         </div>

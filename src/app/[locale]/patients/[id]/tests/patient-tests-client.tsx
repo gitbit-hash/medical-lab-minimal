@@ -1,24 +1,20 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { TestWithRelations, PatientWithRelations } from '../../../../types';
 import { TestStatus } from '@prisma/client';
 import { TestEditorDrawer } from '../../../../components/TestEditorDrawer';
 import { PDFViewerModal } from '../../../../components/PDFViewerModal';
-import { CasaPDFViewerModal } from '@/app/components/casa/CasaPDFViewerModal';
 import { LabToLabModal } from '../../../../components/LabToLabModal';
 import { Dialog } from '../../../../components/Dialog';
 import {
   IoPrint,
-  IoArchiveOutline,
   IoPencilSharp,
   IoCreateOutline,
   IoCashOutline,
 } from 'react-icons/io5';
-import { ArrowLeftRight } from 'lucide-react';
 
 interface PatientTestsClientProps {
   locale: string;
@@ -54,22 +50,16 @@ export function PatientTestsClient({
   initialArchivedTestsCount,
   session
 }: PatientTestsClientProps) {
-  const router = useRouter();
   const t = useTranslations('PatientTestsPage');
   const direction = locale === 'ar' ? 'rtl' : 'ltr';
 
   const [patient] = useState<PatientWithRelations>(initialPatient);
   const [tests, setTests] = useState<TestWithRelations[]>(initialTests);
-  const [archivedTestsCount, setArchivedTestsCount] = useState<number>(initialArchivedTestsCount);
   const [selectedTests, setSelectedTests] = useState<Set<string>>(new Set());
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [selectedTestId, setSelectedTestId] = useState<string | null>(null);
   const [pdfModalOpen, setPdfModalOpen] = useState(false);
-  const [casaModalOpen, setCasaModalOpen] = useState(false);
-  const [selectedCasaTestId, setSelectedCasaTestId] = useState<string | null>(null);
   const [showArchived, setShowArchived] = useState(false);
-  const [isArchiving, setIsArchiving] = useState<string | null>(null);
-  const [isBulkArchiving, setIsBulkArchiving] = useState(false);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
   const [patientPaymentInfo, setPatientPaymentInfo] = useState<any | undefined>(undefined);
@@ -247,100 +237,12 @@ export function PatientTestsClient({
       );
       return;
     }
+    // For non-CASA tests, use the existing PDF modal
+    const newSet = new Set(selectedTests);
+    newSet.add(testId);
+    setSelectedTests(newSet);
+    setPdfModalOpen(true);
 
-    // Check if it's a CASA test
-    if (isCasaTest(test)) {
-      // For CASA tests, open the CASA PDF modal
-      setSelectedCasaTestId(testId);
-      setCasaModalOpen(true);
-    } else {
-      // For non-CASA tests, use the existing PDF modal
-      const newSet = new Set(selectedTests);
-      newSet.add(testId);
-      setSelectedTests(newSet);
-      setPdfModalOpen(true);
-    }
-  };
-
-  const handleCasaPrint = async (testId: string) => {
-    // Check payment status
-    if (!hasPaidInFull) {
-      showDialog(
-        t('dialog.warning'),
-        t('messages.paymentRequired', { amount: amountDue }),
-        'alert',
-        {
-          confirmText: t('actions.collectPayment'),
-          onConfirm: () => setShowPaymentModal(true)
-        }
-      );
-      return;
-    }
-
-    try {
-      // Generate CASA PDF
-      const response = await fetch(`/api/generate-casa-pdf?testId=${testId}`);
-      if (response.ok) {
-        const blob = await response.blob();
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `CASA-Report-${testId}.pdf`;
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-        document.body.removeChild(a);
-
-        // After printing, optionally archive the test
-        const test = tests.find(t => t.id === testId);
-        if (test && test.status === TestStatus.Completed) {
-          showDialog(
-            t('dialog.archiveAfterPrintTitle'),
-            t('messages.archiveAfterPrint', { count: 1 }),
-            'confirm',
-            {
-              confirmText: t('actions.archive'),
-              cancelText: t('actions.skip'),
-              onConfirm: async () => {
-                try {
-                  const archiveResponse = await fetch('/api/tests/bulk-archive', {
-                    method: 'PUT',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                      testIds: [testId],
-                      printed_by: session.user?.id
-                    })
-                  });
-
-                  if (archiveResponse.ok) {
-                    // Update local state
-                    setTests(prev => prev.filter(t => t.id !== testId));
-                    setArchivedTestsCount(prev => prev + 1);
-
-                    showDialog(
-                      t('dialog.success'),
-                      t('messages.archiveSuccess'),
-                      'success'
-                    );
-                  }
-                } catch (error) {
-                  console.error('Failed to archive CASA test:', error);
-                }
-              }
-            }
-          );
-        }
-      } else {
-        throw new Error('Failed to generate PDF');
-      }
-    } catch (error) {
-      console.error('Failed to print CASA test:', error);
-      showDialog(
-        t('dialog.error'),
-        t('messages.printError'),
-        'alert'
-      );
-    }
   };
 
   const fetchLabs = async () => {
@@ -360,27 +262,6 @@ export function PatientTestsClient({
       );
     } finally {
       setIsLoadingLabs(false);
-    }
-  };
-
-  const handleOpenLabModal = (testId: string) => {
-    const test = tests.find(t => t.id === testId);
-    if (test) {
-      setCurrentTestForLab({
-        testId,
-        currentAssignment: test.external_lab_id ? {
-          labId: test.external_lab_id,
-          labName: test.external_lab?.name || 'External Lab',
-          price: test.outsourcing_cost || 0
-        } : undefined
-      });
-
-      // Refresh labs list when opening modal
-      if (labs.length === 0) {
-        fetchLabs();
-      }
-
-      setLabModalOpen(true);
     }
   };
 
@@ -587,90 +468,6 @@ export function PatientTestsClient({
     });
   };
 
-
-  // Handle bulk archive
-  const handleBulkArchive = async () => {
-    if (selectedTests.size === 0) return;
-
-    // Check payment status
-    if (!hasPaidInFull) {
-      showDialog(
-        t('dialog.archiveWarning'),
-        t('dialog.archiveWarningMessage', { amount: amountDue.toFixed(2) }),
-        'alert',
-        {
-          confirmText: t('actions.collectPayment'),
-          onConfirm: () => setShowPaymentModal(true)
-        }
-      );
-      return;
-    }
-
-    // Continue with archive logic...
-    showDialog(
-      t('dialog.bulkArchiveTitle'),
-      t('messages.bulkArchiveConfirm', { count: selectedTests.size }),
-      'confirm',
-      {
-        confirmText: t('actions.archiveSelected'),
-        cancelText: t('actions.cancel'),
-        onConfirm: async () => {
-          await performBulkArchive();
-        }
-      }
-    );
-  };
-
-  const performBulkArchive = async () => {
-    setIsBulkArchiving(true);
-    try {
-      const response = await fetch('/api/tests/bulk-archive', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          testIds: Array.from(selectedTests),
-          printed_by: session.user?.id
-        })
-      });
-
-      if (response.ok) {
-        // Remove archived tests from current list
-        setTests(tests.filter(test => !selectedTests.has(test.id)));
-        // Update archived count
-        setArchivedTestsCount(prev => prev + selectedTests.size);
-        // Clear selection
-        setSelectedTests(new Set());
-
-        // Show success message with OK button
-        showDialog(
-          t('dialog.success'),
-          t('messages.bulkArchiveSuccess', { count: selectedTests.size }),
-          'success',
-          {
-            confirmText: t('actions.ok'),
-            onConfirm: closeDialog
-          }
-        );
-      } else {
-        const error = await response.json();
-        showDialog(
-          t('dialog.error'),
-          error.message || t('messages.bulkArchiveError'),
-          'alert'
-        );
-      }
-    } catch (error) {
-      console.error('Failed to bulk archive tests:', error);
-      showDialog(
-        t('dialog.error'),
-        t('messages.bulkArchiveError'),
-        'alert'
-      );
-    } finally {
-      setIsBulkArchiving(false);
-    }
-  };
-
   const handleGenerateReport = () => {
     // Check payment
     if (patientPaymentInfo?.payment_status !== 'Paid' && patientPaymentInfo?.amount_due > 0) {
@@ -720,40 +517,9 @@ export function PatientTestsClient({
       // FIX: Check if test exists before proceeding
       if (!test) return;
 
-      if (isCasaTest(test)) {
-        casaTestIds.push(testId);
-      } else {
-        regularTestIds.push(testId);
-      }
+      regularTestIds.push(testId);
+
     });
-
-    // Case 1: Mixed Selection (Cannot open two different modals at once)
-    if (casaTestIds.length > 0 && regularTestIds.length > 0) {
-      showDialog(
-        t('dialog.warning'),
-        'Mixed selection detected. Please select either Regular tests or a single CASA test to generate the report.',
-        'alert'
-      );
-      return;
-    }
-
-    // Case 2: Multiple CASA Tests Selected
-    // The CasaPDFViewerModal only supports a single testId, so we limit selection here.
-    if (casaTestIds.length > 1) {
-      showDialog(
-        t('dialog.warning'),
-        'Bulk printing is not supported for CASA tests. Please select only one CASA test at a time.',
-        'alert'
-      );
-      return;
-    }
-
-    // Case 3: Single CASA Test Selected -> Open CASA Modal
-    if (casaTestIds.length === 1) {
-      setSelectedCasaTestId(casaTestIds[0]);
-      setCasaModalOpen(true);
-      return;
-    }
 
     // Case 4: Only Regular Tests Selected -> Open Regular PDF Modal
     setPdfModalOpen(true);
@@ -897,58 +663,8 @@ export function PatientTestsClient({
               </p>
             </div>
 
-            {/* Add Visit button */}
-            {patientPaymentInfo !== undefined && (
-              <div className="flex space-x-3">
-                {hasPaidInFull ? (
-                  <Link
-                    href={`/${locale}/patients/${patient.id}/add-visit`}
-                    className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors text-sm font-medium inline-flex items-center"
-                  >
-                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                    </svg>
-                    {t('actions.addVisit')}
-                  </Link>
-                ) : (
-                  <div className="relative group">
-                    <button
-                      disabled
-                      className="px-4 py-2 bg-gray-400 text-white rounded-lg cursor-not-allowed text-sm font-medium inline-flex items-center"
-                      title={`${t('actions.cannotAddVisitTooltip')} $${amountDue.toFixed(2)}`}
-                    >
-                      <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                      </svg>
-                      {t('actions.addVisit')}
-                    </button>
-                  </div>
-                )}
-              </div>
-            )}
           </div>
         </div>
-
-        {/* Archived Tests Info */}
-        {archivedTestsCount > 0 && (
-          <div className="mb-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <IoArchiveOutline className="h-5 w-5 text-blue-600 mr-2" />
-                <span className="text-blue-700">
-                  {t('messages.archivedTestsCount', { count: archivedTestsCount })}
-                </span>
-              </div>
-              {(session.user?.role === 'SuperAdmin' || session.user?.can_access_medical_history) && (
-                <button
-                  onClick={() => router.push(`/${locale}/patients/${patient.id}/view`)}
-                  className="text-blue-600 hover:text-blue-800 text-sm font-medium hover:cursor-pointer"
-                >
-                  {t('actions.viewArchived')}
-                </button>)}
-            </div>
-          </div>
-        )}
         {patientPaymentInfo !== undefined && !hasPaidInFull && (
           <div className="mb-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
             <div className="flex items-center justify-between">
@@ -991,29 +707,7 @@ export function PatientTestsClient({
                 >
                   <IoPrint className="mr-2" />
                   {t('actions.printSelected')}
-                </button>
-
-                <button
-                  onClick={handleBulkArchive}
-                  className={`px-4 py-2 ${hasPaidInFull && !isBulkArchiving ? 'bg-purple-500 hover:bg-purple-600 hover:cursor-pointer' : 'bg-gray-400 cursor-not-allowed'} text-white rounded-lg flex items-center`}
-                  disabled={!hasPaidInFull || selectedTests.size === 0 || isBulkArchiving}
-                  title={!hasPaidInFull ? t('messages.paymentRequiredArchive') : isBulkArchiving ? t('messages.archivingInProgress') : undefined}                >
-                  {isBulkArchiving ? (
-                    <>
-                      <svg className="animate-spin h-4 w-4 mr-2 text-white" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                      </svg>
-                      {t('messages.archivingInProgress')}
-                    </>
-                  ) : (
-                    <>
-                      <IoArchiveOutline className="h-4 w-4 mr-2" />
-                      {t('actions.archiveSelected')}
-                    </>
-                  )}
-                </button>
-                <button
+                </button>                <button
                   onClick={() => setSelectedTests(new Set())}
                   className="px-4 py-2 border border-gray-300 rounded-lg bg-gray-200 text-gray-600 hover:bg-gray-300 hover:cursor-pointer"
                 >
@@ -1148,19 +842,6 @@ export function PatientTestsClient({
                         </button>
                       )}
 
-                      {/* Lab to Lab button */}
-                      <button
-                        onClick={() => handleOpenLabModal(test.id)}
-                        className={`${test.external_lab_id ? 'text-purple-600' : 'text-gray-600 hover:text-purple-900'}`}
-                        title={test.external_lab_id ? `Assigned to: ${test.external_lab?.name}` : t('actions.assignToLab')}
-                      >
-                        {test.external_lab_id ? (
-                          <ArrowLeftRight className="text-2xl inline" />
-                        ) : (
-                          <ArrowLeftRight className="text-2xl inline" />
-                        )}
-                      </button>
-
                       {/* View/Print button */}
                       {test.status === TestStatus.Completed && testHasResults && (
                         <button
@@ -1180,23 +861,6 @@ export function PatientTestsClient({
               })}
             </tbody>
           </table>
-
-          {tests.length === 0 && (
-            <div className="text-center py-12">
-              <div className="text-gray-400 text-lg mb-4">
-                {t('messages.noTestsFound')}
-              </div>
-              <Link
-                href={`/${locale}/patients/${patient.id}/add-visit`}
-                className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors text-sm font-medium inline-flex items-center"
-              >
-                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                </svg>
-                {t('actions.addVisit')}
-              </Link>
-            </div>
-          )}
         </div>
 
         {/* Selection Summary */}
@@ -1243,101 +907,11 @@ export function PatientTestsClient({
               return test?.status === TestStatus.Completed;
             });
 
-            if (completedTestIds.length > 0) {
-              showDialog(
-                t('dialog.archiveAfterPrintTitle'),
-                t('messages.archiveAfterPrint', { count: completedTestIds.length }),
-                'confirm',
-                {
-                  confirmText: t('actions.archive'),
-                  cancelText: t('actions.skip'),
-                  onConfirm: async () => {
-                    try {
-                      const response = await fetch('/api/tests/bulk-archive', {
-                        method: 'PUT',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                          testIds: completedTestIds,
-                          printed_by: session.user?.id
-                        })
-                      });
-
-                      if (response.ok) {
-                        // Update local state
-                        setTests(prev => prev.filter(test => !completedTestIds.includes(test.id)));
-                        setArchivedTestsCount(prev => prev + completedTestIds.length);
-                        // Clear selection
-                        setSelectedTests(new Set());
-
-                        showDialog(
-                          t('dialog.success'),
-                          t('messages.archiveSuccess'),
-                          'success'
-                        );
-                      }
-                    } catch (error) {
-                      console.error('Failed to archive after print:', error);
-                    }
-                  }
-                }
-              );
-            }
           }}
           patientId={patient.id}
           testIds={Array.from(selectedTests)}
           patientPhone={patientPhone}
         />
-        {casaModalOpen && selectedCasaTestId && (
-          <CasaPDFViewerModal
-            isOpen={casaModalOpen}
-            onClose={() => {
-              setCasaModalOpen(false);
-              setSelectedCasaTestId(null);
-
-              // After closing, check if we should archive the test
-              const test = tests.find(t => t.id === selectedCasaTestId);
-              if (test && test.status === TestStatus.Completed) {
-                showDialog(
-                  t('dialog.archiveAfterPrintTitle'),
-                  t('messages.archiveAfterPrint', { count: 1 }),
-                  'confirm',
-                  {
-                    confirmText: t('actions.archive'),
-                    cancelText: t('actions.skip'),
-                    onConfirm: async () => {
-                      try {
-                        const archiveResponse = await fetch('/api/tests/bulk-archive', {
-                          method: 'PUT',
-                          headers: { 'Content-Type': 'application/json' },
-                          body: JSON.stringify({
-                            testIds: [selectedCasaTestId],
-                            printed_by: session.user?.id
-                          })
-                        });
-
-                        if (archiveResponse.ok) {
-                          // Update local state
-                          setTests(prev => prev.filter(t => t.id !== selectedCasaTestId));
-                          setArchivedTestsCount(prev => prev + 1);
-
-                          showDialog(
-                            t('dialog.success'),
-                            t('messages.archiveSuccess'),
-                            'success'
-                          );
-                        }
-                      } catch (error) {
-                        console.error('Failed to archive CASA test:', error);
-                      }
-                    }
-                  }
-                );
-              }
-            }}
-            testId={selectedCasaTestId}
-            patientPhone={patientPhone}
-          />
-        )}
         {showPaymentModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
             <div className="bg-white rounded-lg shadow-xl max-w-md w-full">

@@ -73,26 +73,6 @@
     "welcome": "مرحباً بعودتك!",
     "welcomeWithName": "مرحباً بعودتك، {name}!"
   },
-  "ImageUpload": {
-    "clickToUpload": "انقر لرفع صورة",
-    "supportedFormats": "الصيغ المدعومة",
-    "maxSize": "الحجم الأقصى",
-    "uploading": "جاري الرفع...",
-    "uploadedImage": "الصورة المرفوعة",
-    "changeImage": "تغيير الصورة",
-    "deleteImage": "حذف الصورة",
-    "viewFullSize": "عرض بالحجم الكامل",
-    "imageUrlLabel": "أو أدخل رابط الصورة",
-    "imageUrlPlaceholder": "https://example.com/image.png",
-    "imageUrlHelp": "أدخل رابط صورة مباشر أو قم برفع ملف من الأعلى",
-    "confirmDelete": "هل أنت متأكد من رغبتك في حذف هذه الصورة؟",
-    "errors": {
-      "invalidType": "نوع ملف غير صالح. الرجاء رفع صورة (JPEG, PNG, GIF, WebP)",
-      "tooLarge": "الملف كبير جداً. الحد الأقصى للحجم هو {maxSize} ميجابايت",
-      "uploadFailed": "فشل رفع الصورة. الرجاء المحاولة مرة أخرى.",
-      "deleteFailed": "فشل حذف الصورة. الرجاء المحاولة مرة أخرى."
-    }
-  },
   "Pagination": {
     "first": "الأول",
     "previous": "السابق",

@@ -73,26 +73,6 @@
     "welcome": "¡Bienvenido de nuevo!",
     "welcomeWithName": "¡Bienvenido de nuevo, {name}!"
   },
-  "ImageUpload": {
-    "clickToUpload": "Haga clic para cargar imagen",
-    "supportedFormats": "Formatos admitidos",
-    "maxSize": "Tamaño máximo",
-    "uploading": "Cargando...",
-    "uploadedImage": "Imagen cargada",
-    "changeImage": "Cambiar imagen",
-    "deleteImage": "Eliminar imagen",
-    "viewFullSize": "Ver tamaño completo",
-    "imageUrlLabel": "O ingresar URL de la imagen",
-    "imageUrlPlaceholder": "https://example.com/image.png",
-    "imageUrlHelp": "Ingrese una URL directa de imagen o cargue un archivo arriba",
-    "confirmDelete": "¿Está seguro de que desea eliminar esta imagen?",
-    "errors": {
-      "invalidType": "Tipo de archivo no válido. Por favor, cargue una imagen (JPEG, PNG, GIF, WebP)",
-      "tooLarge": "Archivo demasiado grande. El tamaño máximo es {maxSize} MB",
-      "uploadFailed": "Error al cargar la imagen. Por favor, intente nuevamente.",
-      "deleteFailed": "Error al eliminar la imagen. Por favor, intente nuevamente."
-    }
-  },
   "Pagination": {
     "first": "Primero",
     "previous": "Anterior",

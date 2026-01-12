@@ -83,23 +83,3 @@ export async function GET() {
     );
   }
 }
-
-function getReceiptSettingDescription(key: string): string {
-  const descriptions: Record<string, string> = {
-    'qrCode.enabled': 'Enable/disable QR code for Instapay payments on receipts',
-    'qrCode.instapayId': 'Instapay ID/account number for QR code generation',
-    'qrCode.accountName': 'Account holder name for Instapay',
-    'qrCode.bankName': 'Bank name associated with Instapay',
-    'qrCode.qrImageUrl': 'Custom QR code image URL (optional)',
-    'qrCode.note': 'Instructions or note to display with QR code',
-    'qrCode.showOnPaidReceipts': 'Show QR code even when receipt is fully paid',
-    'qrCode.position': 'Position of QR code on receipt (top, bottom, right, left)',
-    'lab.name': 'Laboratory name to display on receipts',
-    'lab.address': 'Laboratory address to display on receipts',
-    'lab.phone': 'Laboratory phone number to display on receipts',
-    'lab.email': 'Laboratory email to display on receipts',
-    'lab.logoUrl': 'Laboratory logo image URL for receipts',
-    'lab.displayMode': 'Display mode for lab information: "logo" (show only logo) or "text" (show lab details as text)',
-  };
-  return descriptions[key] || 'Receipt setting';
-}

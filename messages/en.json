@@ -95,26 +95,6 @@
     "warning": "Warning",
     "info": "Information"
   },
-  "ImageUpload": {
-    "clickToUpload": "Click to upload image",
-    "supportedFormats": "Supported formats",
-    "maxSize": "Maximum size",
-    "uploading": "Uploading...",
-    "uploadedImage": "Uploaded Image",
-    "changeImage": "Change Image",
-    "deleteImage": "Delete Image",
-    "viewFullSize": "View Full Size",
-    "imageUrlLabel": "Or enter image URL",
-    "imageUrlPlaceholder": "https://example.com/image.png",
-    "imageUrlHelp": "Enter a direct image URL or upload a file above",
-    "confirmDelete": "Are you sure you want to delete this image?",
-    "errors": {
-      "invalidType": "Invalid file type. Please upload an image (JPEG, PNG, GIF, WebP)",
-      "tooLarge": "File is too large. Maximum size is {maxSize}MB",
-      "uploadFailed": "Failed to upload image. Please try again.",
-      "deleteFailed": "Failed to delete image. Please try again."
-    }
-  },
   "Pagination": {
     "first": "First",
     "previous": "Previous",

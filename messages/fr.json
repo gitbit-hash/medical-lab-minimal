@@ -262,26 +262,6 @@
     },
     "loading": "Chargement..."
   },
-  "ImageUpload": {
-    "clickToUpload": "Cliquez pour télécharger une image",
-    "supportedFormats": "Formats acceptés",
-    "maxSize": "Taille maximale",
-    "uploading": "Téléchargement en cours...",
-    "uploadedImage": "Image téléchargée",
-    "changeImage": "Modifier l'image",
-    "deleteImage": "Supprimer l'image",
-    "viewFullSize": "Voir en taille réelle",
-    "imageUrlLabel": "Ou saisir l'URL de l'image",
-    "imageUrlPlaceholder": "https://example.com/image.png",
-    "imageUrlHelp": "Saisissez une URL directe d'image ou téléchargez un fichier ci-dessus",
-    "confirmDelete": "Êtes-vous sûr de vouloir supprimer cette image ?",
-    "errors": {
-      "invalidType": "Type de fichier invalide. Veuillez télécharger une image (JPEG, PNG, GIF, WebP)",
-      "tooLarge": "Fichier trop volumineux. La taille maximale est de {maxSize} Mo",
-      "uploadFailed": "Échec du téléchargement de l'image. Veuillez réessayer.",
-      "deleteFailed": "Échec de la suppression de l'image. Veuillez réessayer."
-    }
-  },
   "CreatePatientPage": {
     "amountPaidNowLabel": "Montant payé maintenant",
     "remainingAmountLabel": "Montant restant",

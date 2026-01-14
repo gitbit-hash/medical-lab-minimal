@@ -5,8 +5,8 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { PatientWithRelations } from '../../types';
-import { Pagination } from '../../components/pagination';
+import { PatientWithRelations } from '@/app/types';
+import { Pagination } from '@/app/components/pagination';
 
 interface DoctorForFilter {
   id: string;

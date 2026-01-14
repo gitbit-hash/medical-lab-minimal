@@ -3,11 +3,11 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { TestWithRelations, PatientWithRelations } from '../../../../types';
+import { TestWithRelations, PatientWithRelations } from '@/app/types';
 import { TestStatus } from '@prisma/client';
-import { TestEditorDrawer } from '../../../../components/TestEditorDrawer';
-import { PDFViewerModal } from '../../../../components/PDFViewerModal';
-import { Dialog } from '../../../../components/Dialog';
+import { TestEditorDrawer } from '@/app/components/TestEditorDrawer';
+import { PDFViewerModal } from '@/app/components/PDFViewerModal';
+import { Dialog } from '@/app/components/Dialog';
 import {
   IoPrint,
   IoPencilSharp,

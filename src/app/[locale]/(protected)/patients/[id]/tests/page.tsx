@@ -1,9 +1,9 @@
 // app/[locale]/patients/[id]/tests/page.tsx
 import { getServerSession } from "next-auth";
 import { authOptions } from '@/app/api/auth/auth-options';
-import { localPrisma } from "../../../../lib/db/local-client";
+import { localPrisma } from "@/app/lib/db/local-client";
 import { PatientTestsClient } from "./patient-tests-client";
-import { TestWithRelations, PatientWithRelations } from "../../../../types";
+import { TestWithRelations, PatientWithRelations } from "@/app/types";
 import { redirect, notFound } from "next/navigation";
 
 const locales = ['en', 'ar', 'fr', 'es'] as const;

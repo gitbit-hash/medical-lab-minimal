@@ -1,9 +1,9 @@
 // app/[locale]/patients/page.tsx
 import { getServerSession } from "next-auth";
 import { authOptions } from '@/app/api/auth/auth-options';
-import { localPrisma } from "../../lib/db/local-client";
+import { localPrisma } from "@/app/lib/db/local-client";
 import { PatientsPageClient } from "./patients-page-client";
-import { PatientWithRelations } from "../../types";
+import { PatientWithRelations } from "@/app/types";
 import { redirect } from "next/navigation";
 import { notFound } from 'next/navigation';
 

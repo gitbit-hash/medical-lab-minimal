@@ -5,9 +5,9 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { TestSelectionForm } from '../../../components/test-selection-form';
+import { TestSelectionForm } from '@/app/components/test-selection-form';
 import { ReceiptPDFViewerModal } from '@/app/components/ReceiptPDFViewerModal';
-import { TestTemplateSearchResult } from '../../../types';
+import { TestTemplateSearchResult } from '@/app/types';
 
 // Update the Doctor interface to match Prisma's return type
 interface Doctor {
@@ -399,10 +399,10 @@ export function CreatePatientClient({ locale, initialDoctors, session }: CreateP
   };
 
   return (
-    <div className="min-h-full bg-blue-200" dir={direction}>
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-full bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-200" dir={direction}>
+      <div className="max-w-6xl mx-auto bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-200">
         {/* Header */}
-        <div className="mb-6">
+        <div className="mb-6 p-6">
           <Link
             href={`/${locale}/patients`}
             className="text-blue-500 hover:text-blue-700 mb-4 inline-block"

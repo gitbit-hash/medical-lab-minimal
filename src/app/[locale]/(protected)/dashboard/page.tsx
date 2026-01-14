@@ -1,7 +1,7 @@
 
 import { getServerSession } from "next-auth";
 import { authOptions } from '@/app/api/auth/auth-options';
-import { localPrisma } from '../../lib/db/local-client';
+import { localPrisma } from '@/app/lib/db/local-client';
 import { HomePageClient } from './home-page-client';
 
 interface HomePageProps {

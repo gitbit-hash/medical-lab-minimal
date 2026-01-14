@@ -40,7 +40,13 @@ export default async function RootLayout({
     );
   }
 
-  const session = await getServerSession(authOptions);
+  let session = null;
+  try {
+    session = await getServerSession(authOptions);
+  } catch (error) {
+    console.error("Failed to get session:", error);
+    // Ignore error and continue as unauthenticated
+  }
 
   return (
     // Add the required html and body tags

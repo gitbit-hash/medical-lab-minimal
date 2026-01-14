@@ -1,36 +1,214 @@
 {
+  "Metadata": {
+    "title": "LapManagerPro - Système de Gestion de Laboratoire Médical",
+    "description": "Optimisez les opérations de votre laboratoire avec notre système avancé de gestion."
+  },
   "Navigation": {
-    "dashboard": "Tableau de bord",
+    "home": "Accueil",
+    "features": "Fonctionnalités",
+    "pricing": "Tarifs",
+    "demo": "Essayer la Démo",
+    "login": "Connexion",
+    "signup": "S'inscrire",
+    "dashboard": "Tableau de Bord",
     "patients": "Patients",
     "doctors": "Médecins",
     "tests": "Tests",
     "templates": "Modèles",
     "categories": "Catégories",
-    "admin": "Administration",
+    "admin": "Admin",
     "welcome": "Bienvenue sur LabManagerPro",
-    "description": "Système avancé de gestion de laboratoire médical",
+    "description": "Système de Gestion de Laboratoire Médical Avancé",
     "logout": "Déconnexion"
+  },
+  "Landing": {
+    "hero": {
+      "badge": "Gestion de Laboratoire Médical",
+      "title": "Optimisez Vos Opérations de Laboratoire",
+      "subtitle": "La solution complète pour gérer les patients, les tests, les résultats et les rapports.",
+      "tryDemo": "Essai Gratuit",
+      "contactSales": "Contacter les Ventes",
+      "trustedBy": "Reconnu par plus de 100 laboratoires"
+    },
+    "features": {
+      "title": "Fonctionnalités Puissantes",
+      "subtitle": "Tout ce dont vous avez besoin pour gérer votre laboratoire efficacement",
+      "patientManagement": {
+        "title": "Gestion des Patients",
+        "description": "Dossiers complets des patients avec historique complet."
+      },
+      "testManagement": {
+        "title": "Gestion des Tests",
+        "description": "Gérez les tests de laboratoire avec des modèles personnalisables."
+      },
+      "resultInput": {
+        "title": "Saisie des Résultats",
+        "description": "Interface intuitive pour saisir les résultats des tests."
+      },
+      "pdfReports": {
+        "title": "Rapports PDF",
+        "description": "Générez des rapports de laboratoire professionnels."
+      },
+      "multiLanguage": {
+        "title": "Multi-Langue",
+        "description": "Support pour l'anglais, l'arabe, le français et l'espagnol."
+      },
+      "offlineMode": {
+        "title": "Mode Hors Ligne",
+        "description": "Travaillez sans Internet."
+      },
+      "billing": {
+        "title": "Facturation et Paiements",
+        "description": "Suivez les frais et les paiements."
+      },
+      "auditLogs": {
+        "title": "Journaux d'Audit",
+        "description": "Suivi complet de l'activité."
+      }
+    },
+    "howItWorks": {
+      "title": "Comment Ça Marche",
+      "subtitle": "Commencez en quelques minutes",
+      "step1": {
+        "title": "S'inscrire",
+        "description": "Créez votre compte."
+      },
+      "step2": {
+        "title": "Ajouter des Patients",
+        "description": "Saisissez les informations du patient."
+      },
+      "step3": {
+        "title": "Saisir les Résultats",
+        "description": "Saisissez les résultats des tests."
+      },
+      "step4": {
+        "title": "Générer des Rapports",
+        "description": "Créez des rapports PDF."
+      }
+    },
+    "pricing": {
+      "title": "Tarification Simple et Transparente",
+      "subtitle": "Choisissez le plan qui convient à votre laboratoire",
+      "enterprisePrice": "Contactez-nous",
+      "starter": {
+        "name": "Démarrage",
+        "price": "50",
+        "description": "Idéal pour les petits laboratoires",
+        "features": [
+          "Patients illimités",
+          "Modèles de test illimités",
+          "Connexion internet toujours requise",
+          "Pas d'envoi de résultats WhatsApp",
+          "Pas de personnalisation de marque",
+          "Pas de mises à jour gratuites",
+          "Support limité"
+        ],
+        "cta": "Commencer"
+      },
+      "professional": {
+        "name": "Professionnel",
+        "price": "99",
+        "description": "Pour les laboratoires en croissance",
+        "popular": "Le Plus Populaire",
+        "features": [
+          "Patients illimités",
+          "Modèles de test illimités",
+          "Mode hors ligne",
+          "Envoi de résultats WhatsApp",
+          "Marque personnalisée",
+          "Support prioritaire",
+          "Mises à jour gratuites"
+        ],
+        "cta": "Commencer"
+      },
+      "enterprise": {
+        "name": "Entreprise",
+        "price": "",
+        "description": "Pour les grandes organisations",
+        "features": [
+          "Patients illimités",
+          "Modèles de test illimités",
+          "Mode hors ligne",
+          "Envoi de résultats WhatsApp",
+          "Marque personnalisée",
+          "Support multi-sites",
+          "Mises à jour gratuites",
+          "Accès API",
+          "Intégrations personnalisées",
+          "Gestionnaire de compte dédié",
+          "Garantie SLA"
+        ],
+        "cta": "Contacter les Ventes"
+      }
+    },
+    "faq": {
+      "title": "Questions Fréquentes",
+      "subtitle": "Des questions ? Nous avons des réponses.",
+      "q1": {
+        "question": "Puis-je essayer avant d'acheter ?",
+        "answer": "Oui ! Notre démo gratuite vous permet de créer un patient."
+      },
+      "q2": {
+        "question": "Mes données sont-elles sécurisées ?",
+        "answer": "Absolument. Nous utilisons un cryptage standard."
+      },
+      "q3": {
+        "question": "Puis-je travailler hors ligne ?",
+        "answer": "Oui, avec les plans Professionnel et Entreprise."
+      },
+      "q4": {
+        "question": "Quelles langues sont supportées ?",
+        "answer": "Anglais, Arabe, Français et Espagnol."
+      },
+      "q5": {
+        "question": "Puis-je personnaliser les rapports PDF ?",
+        "answer": "Oui ! Vous pouvez ajouter votre logo."
+      },
+      "q6": {
+        "question": "Comment obtenir du support ?",
+        "answer": "Nous offrons un support par e-mail."
+      }
+    },
+    "cta": {
+      "title": "Prêt à Transformer Votre Laboratoire ?",
+      "subtitle": "Rejoignez des centaines de laboratoires",
+      "button": "Commencer la Démo Gratuite"
+    }
+  },
+  "Footer": {
+    "description": "Système de gestion de laboratoire médical moderne.",
+    "product": "Produit",
+    "features": "Fonctionnalités",
+    "pricing": "Tarifs",
+    "demo": "Démo",
+    "company": "Entreprise",
+    "about": "À Propos",
+    "contact": "Contact",
+    "legal": "Légal",
+    "privacy": "Politique de Confidentialité",
+    "terms": "Conditions d'Utilisation",
+    "copyright": "© 2026 LapManagerPro. Tous droits réservés."
   },
   "HomePage": {
     "hero": {
-      "managementSystem": "Votre système de gestion de laboratoire",
-      "manageOperations": "Rationalisez vos opérations de laboratoire avec précision et efficacité"
+      "managementSystem": "Votre Système de Gestion de Laboratoire",
+      "manageOperations": "Optimisez les opérations de votre laboratoire avec précision et efficacité"
     },
     "quickStats": {
-      "todayTests": "Tests du jour",
-      "newPatients": "Nouveaux patients",
-      "pendingSync": "Synchronisation en attente"
+      "todayTests": "Tests d'Aujourd'hui",
+      "newPatients": "Nouveaux Patients",
+      "pendingSync": "Synchronisation en Attente"
     },
     "quickActions": {
-      "title": "Actions rapides",
-      "subtitle": "Tout ce dont vous avez besoin pour gérer votre labo",
+      "title": "Actions Rapides",
+      "subtitle": "Tout ce dont vous avez besoin pour gérer votre laboratoire",
       "patients": {
         "title": "Patients",
-        "description": "Gérer les dossiers patients et les tests de laboratoire"
+        "description": "Gérer les dossiers des patients et les tests de laboratoire"
       },
       "doctors": {
         "title": "Médecins",
-        "description": "Gérer les médecins prescripteurs et leurs informations"
+        "description": "Gérer les médecins référents et leurs informations"
       },
       "tests": {
         "title": "Tests",
@@ -38,40 +216,402 @@
       },
       "templates": {
         "title": "Modèles",
-        "description": "Gérer les modèles de tests et les paramètres"
+        "description": "Gérer les modèles de test et les paramètres"
       },
       "categories": {
         "title": "Catégories",
         "description": "Organiser les catégories et groupes de tests"
       },
       "sync": {
-        "title": "Statut de synchronisation",
-        "description": "Vérifier le statut de synchronisation des données"
+        "title": "État de Synchro",
+        "description": "Vérifier l'état de synchronisation des données"
       }
     },
     "recentActivity": {
-      "title": "Activité récente",
-      "viewAll": "Voir tout",
+      "title": "Activité Récente",
+      "viewAll": "Voir Tout",
       "noTests": "Aucun test récent",
-      "testsWillAppear": "Les tests apparaîtront ici au fur et à mesure de leur création"
+      "testsWillAppear": "Les tests apparaîtront ici lorsqu'ils seront créés"
     },
     "systemStatus": {
-      "title": "État du système",
-      "database": "Base de données",
+      "title": "État du Système",
+      "database": "Base de Données",
       "connected": "Connecté",
       "disconnected": "Déconnecté",
-      "syncQueue": "File de synchronisation",
+      "syncQueue": "File d'attente Synchro",
       "items": "{count, plural, =0 {Aucun élément} one {# élément} other {# éléments}}",
-      "activeUsers": "Utilisateurs actifs",
+      "activeUsers": "Utilisateurs Actifs",
       "users": "{count, plural, =0 {Aucun utilisateur} one {# utilisateur} other {# utilisateurs}}",
-      "adminPanel": "Panneau d'administration",
-      "dashboard": "Tableau de bord",
-      "manageUsers": "Gérer les utilisateurs"
+      "adminPanel": "Panneau d'Administration",
+      "dashboard": "Tableau de Bord",
+      "manageUsers": "Gérer les Utilisateurs"
     }
   },
   "Common": {
-    "welcome": "Bon retour !",
-    "welcomeWithName": "Bon retour, {name} !"
+    "welcome": "Bienvenue !",
+    "welcomeWithName": "Bienvenue, {name} !",
+    "language": {
+      "en": "English",
+      "ar": "العربية",
+      "fr": "Français",
+      "es": "Español"
+    }
+  },
+  "Auth": {
+    "login": {
+      "title": "Bienvenue",
+      "subtitle": "Connectez-vous",
+      "continueWithGoogle": "Continuer avec Google",
+      "noAccount": "Pas de compte ?",
+      "signUp": "Inscrivez-vous gratuitement"
+    },
+    "signup": {
+      "title": "Commencez votre essai gratuit",
+      "subtitle": "Créez un patient gratuitement",
+      "continueWithGoogle": "Continuer avec Google",
+      "hasAccount": "Vous avez déjà un compte ?",
+      "signIn": "Se connecter",
+      "terms": "En vous inscrivant, vous acceptez nos",
+      "termsLink": "Conditions d'Utilisation",
+      "and": "et",
+      "privacyLink": "Politique de Confidentialité"
+    }
+  },
+  "Demo": {
+    "dashboard": {
+      "title": "Tableau de Bord Démo",
+      "subtitle": "Bienvenue sur la démo de LapManagerPro !",
+      "usage": {
+        "patients": "Patients",
+        "tests": "Tests",
+        "remaining": "restant"
+      },
+      "actions": {
+        "createPatient": "Créer un Patient",
+        "viewPatient": "Voir le Patient",
+        "addTests": "Ajouter des Tests",
+        "enterResults": "Saisir les Résultats",
+        "generateReport": "Générer un Rapport PDF"
+      },
+      "limits": {
+        "patientLimitReached": "Limite de Patients Atteinte",
+        "patientLimitMessage": "La démo est limitée à 1 patient.",
+        "testLimitReached": "Limite de Tests Atteinte",
+        "testLimitMessage": "La démo est limitée à 5 tests.",
+        "upgradeNow": "Mettre à Niveau"
+      },
+      "emptyState": {
+        "title": "Commencer",
+        "message": "Créez votre premier patient pour commencer.",
+        "cta": "Créez Votre Patient"
+      }
+    },
+    "patient": {
+      "back": "Retour",
+      "new": {
+        "title": "Créer un Patient",
+        "subtitle": "Saisissez les informations du patient pour commencer"
+      },
+      "form": {
+        "name": "Nom Complet",
+        "namePlaceholder": "Saisissez le nom du patient",
+        "gender": "Genre",
+        "selectGender": "Sélectionnez le genre",
+        "male": "Homme",
+        "female": "Femme",
+        "other": "Autre",
+        "age": "Âge",
+        "years": "Ans",
+        "months": "Mois",
+        "days": "Jours",
+        "phone": "Téléphone",
+        "phonePlaceholder": "+33 6 12 34 56 78",
+        "email": "Email",
+        "emailPlaceholder": "patient@email.com",
+        "address": "Adresse",
+        "addressPlaceholder": "Saisissez l'adresse",
+        "create": "Créer le Patient",
+        "creating": "Création..."
+      },
+      "view": {
+        "createdAt": "Créé le",
+        "tests": "Tests",
+        "addTests": "Ajouter des Tests",
+        "generateReport": "Générer le Rapport",
+        "noTests": "Aucun Test",
+        "noTestsMessage": "Ajoutez des tests pour commencer à saisir les résultats",
+        "addFirstTest": "Ajoutez Votre Premier Test",
+        "code": "Code",
+        "enterResult": "Saisir le résultat",
+        "save": "Enregistrer",
+        "result": "Résultat"
+      }
+    },
+    "tests": {
+      "back": "Retour au Patient",
+      "selected": "sélectionné",
+      "select": {
+        "title": "Sélectionner des Tests",
+        "subtitle": "Vous pouvez ajouter jusqu'à {remaining} autres tests",
+        "searchPlaceholder": "Rechercher des tests...",
+        "adding": "Ajout en cours...",
+        "addTests": "Ajouter {count} Tests"
+      }
+    },
+    "reports": {
+      "back": "Retour au Patient",
+      "title": "Générer le Rapport",
+      "subtitle": "Créer un rapport PDF des tests terminés",
+      "preview": "Aperçu",
+      "hidePreview": "Masquer l'Aperçu",
+      "print": "Imprimer",
+      "download": "Télécharger PDF",
+      "completedTests": "Tests Terminés",
+      "pendingTests": "Tests En Attente",
+      "noCompletedTests": "Aucun Test Terminé",
+      "noCompletedTestsMessage": "Terminez au moins un test pour générer un rapport",
+      "enterResults": "Saisir les Résultats des Tests"
+    }
+  },
+  "FeaturesShowcase": {
+    "hero": {
+      "title": "Explorez Nos Fonctionnalités",
+      "subtitle": "Découvrez comment LabManagerPro peut transformer les opérations de votre laboratoire avec nos fonctionnalités puissantes"
+    },
+    "sections": {
+      "adminDashboard": {
+        "title": "Tableau de Bord Super Admin",
+        "description": "Outils complets d'analyse et de gestion pour les superviseurs de laboratoire. Surveillez les revenus, suivez les performances et accédez à toutes les fonctions administratives depuis un hub central.",
+        "images": {
+          "1": "Analyses des revenus avec statistiques quotidiennes et mensuelles, total des tests et Labo-à-Labo",
+          "2": "Graphiques de répartition des revenus quotidiens et mensuels pour des informations financières",
+          "3": "Liens rapides d'administration pour un accès rapide aux fonctions administratives",
+          "4": "Tests les plus performants et activité récente de connexion des administrateurs",
+          "5": "Surveillance de l'état du système incluant base de données, synchronisation et opérations Labo-à-Labo"
+        }
+      },
+      "userManagement": {
+        "title": "Gestion des Utilisateurs",
+        "description": "Contrôle total sur les comptes utilisateurs, les rôles et les permissions. Gérez les administrateurs, définissez les niveaux d'accès et configurez les permissions de remise.",
+        "images": {
+          "1": "Liste des utilisateurs avec rôles, statut et actions rapides",
+          "2": "Configuration des permissions utilisateur et des remises"
+        }
+      },
+      "pdfSettings": {
+        "title": "Paramètres des Rapports PDF",
+        "description": "Personnalisez vos rapports de laboratoire avec des en-têtes, pieds de page professionnels, logos et signatures électroniques. Créez des rapports à votre image.",
+        "images": {
+          "1": "Tableau de bord complet des paramètres PDF avec toutes les options de configuration",
+          "2": "Paramètres d'en-tête avec nom du laboratoire et spécialisations",
+          "3": "Paramètres de pied de page avec informations du directeur et coordonnées",
+          "4": "Configuration de la signature électronique",
+          "5": "Téléchargement de logo et paramètres de positionnement"
+        }
+      },
+      "receiptSettings": {
+        "title": "Paramètres des Reçus",
+        "description": "Configurez les reçus de facturation avec les informations du laboratoire, le logo et le code QR Instapay pour des paiements numériques pratiques.",
+        "images": {
+          "1": "Aperçu des paramètres de reçus avec informations du laboratoire",
+          "2": "Configuration des informations textuelles du laboratoire",
+          "3": "Configuration du code QR pour les paiements Instapay",
+          "4": "Aperçu du reçu avec code QR"
+        }
+      },
+      "auditLogs": {
+        "title": "Journaux d'Audit",
+        "description": "Suivi complet de l'activité pour la conformité et la responsabilité. Filtrez et recherchez dans toutes les activités du système pour savoir qui a fait quoi et quand.",
+        "images": {
+          "1": "Tableau des journaux d'audit avec options de filtrage",
+          "2": "Vue détaillée de l'activité avec actions utilisateur"
+        }
+      },
+      "databaseBackup": {
+        "title": "Sauvegarde et Restauration",
+        "description": "Sécurisez les données de votre laboratoire avec une fonctionnalité de sauvegarde et restauration facile. Ne perdez jamais de données importantes sur les patients et les tests.",
+        "images": {
+          "1": "Gestion des sauvegardes avec options de restauration"
+        }
+      },
+      "patientManagement": {
+        "title": "Gestion des Patients",
+        "description": "Dossiers patients complets avec enregistrement facile, recherche et gestion. Suivez les informations des patients, les visites et l'historique des tests.",
+        "images": {
+          "1": "Liste des patients avec options de recherche et de filtrage",
+          "2": "Nouveau formulaire d'inscription patient",
+          "3": "Saisie des informations patient",
+          "4": "Sélection des tests pour les patients",
+          "5": "Options de paiement et de remise",
+          "6": "Résumé de la visite et confirmation"
+        }
+      },
+      "patientHistory": {
+        "title": "Historique Patient",
+        "description": "Accédez à l'historique complet des visites et des dossiers de tests des patients. Suivez les résultats précédents et surveillez la santé des patients au fil du temps.",
+        "images": {
+          "1": "Aperçu de l'historique des visites patient",
+          "2": "Historique détaillé des tests avec résultats"
+        }
+      },
+      "testTemplates": {
+        "title": "Modèles de Tests et Catégories",
+        "description": "Gérez les tests de laboratoire avec des modèles personnalisables, des paramètres et des plages de référence organisés par catégories.",
+        "images": {
+          "1": "Liste des modèles de tests avec catégories",
+          "2": "Configuration détaillée du modèle de test",
+          "3": "Gestion des catégories de tests"
+        }
+      },
+      "resultsEntry": {
+        "title": "Saisie des Résultats",
+        "description": "Interface intuitive pour la saisie des résultats de tests avec validation automatique, vérification des plages de référence et indicateurs d'alerte.",
+        "images": {
+          "1": "Formulaire de saisie des résultats de tests",
+          "2": "Résultats avec validation et indicateurs"
+        }
+      },
+      "labToLab": {
+        "title": "Tests Labo-à-Labo",
+        "description": "Gérez les partenariats avec les laboratoires externes. Sous-traitez des tests à des laboratoires partenaires et suivez les coûts pour des rapports financiers précis.",
+        "images": {
+          "1": "Attribution à un laboratoire externe",
+          "2": "Gestion des laboratoires externes avec tarification"
+        }
+      },
+      "pdfReports": {
+        "title": "Rapports PDF",
+        "description": "Générez des rapports de laboratoire professionnels avec une marque personnalisable, des résultats complets et des plages de référence.",
+        "images": {
+          "1": "Exemple de rapport de test CBC avec histogramme"
+        }
+      },
+      "receipts": {
+        "title": "Reçus de Facturation",
+        "description": "Générez des reçus de facturation professionnels avec tests détaillés, informations de paiement et code QR optionnel pour les paiements numériques.",
+        "images": {
+          "1": "Exemple de reçu de paiement"
+        }
+      },
+      "casaAnalysis": {
+        "title": "Analyse CASA",
+        "description": "Intégration de l'analyse de sperme assistée par ordinateur (CASA) pour les tests de santé reproductive avec suivi détaillé des paramètres.",
+        "images": {
+          "1": "Aperçu de la saisie du test CASA",
+          "2": "Paramètres de mobilité",
+          "3": "Analyse de concentration",
+          "4": "Évaluation de la morphologie",
+          "5": "Paramètres supplémentaires",
+          "6": "Indicateurs de qualité",
+          "7": "Rapport sommaire",
+          "8": "Rapport PDF CASA complet"
+        }
+      }
+    },
+    "navigation": {
+      "screenshots": "Captures d'écran",
+      "viewAll": "Voir toutes les fonctionnalités",
+      "backToHome": "Retour à l'accueil"
+    }
+  },
+  "About": {
+    "title": "À Propos de LapManagerPro",
+    "subtitle": "Gestion de Laboratoire Moderne",
+    "description": "Nous fournissons des solutions de pointe pour les laboratoires médicaux afin de rationaliser leurs opérations, d'améliorer la précision et d'optimiser les soins aux patients.",
+    "mission": {
+      "title": "Notre Mission",
+      "description": "Donner aux laboratoires les moyens technologiques pour simplifier les processus complexes et leur permettre de se concentrer sur l'essentiel : un diagnostic précis."
+    },
+    "vision": {
+      "title": "Notre Vision",
+      "description": "Devenir la norme mondiale pour les logiciels de gestion de laboratoire, reconnus pour l'innovation, la fiabilité et la conception centrée sur l'utilisateur."
+    },
+    "values": {
+      "title": "Nos Valeurs",
+      "description": "L'innovation, l'intégrité, l'excellence et la réussite des clients sont au cœur de tout ce que nous faisons."
+    }
+  },
+  "Contact": {
+    "title": "Contactez-nous",
+    "description": "Nous aimerions avoir de vos nouvelles. Notre équipe est toujours là pour discuter.",
+    "phone": "+2 (011) 26649009",
+    "email": "support@lapmanagerpro.com",
+    "form": {
+      "title": "Envoyez-nous un message",
+      "description": "Remplissez le formulaire ci-dessous et nous vous répondrons dès que possible.",
+      "name": "Nom",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Envoyer le Message"
+    }
+  },
+  "Privacy": {
+    "title": "Politique de Confidentialité",
+    "intro": "Chez LapManagerPro, accessible depuis lapmanagerpro.com, l'une de nos principales priorités est la confidentialité de nos visiteurs. Ce document de politique de confidentialité contient les types d'informations collectées et enregistrées par LapManagerPro et comment nous les utilisons.",
+    "collection": {
+      "title": "Informations que nous collectons",
+      "description": "Les informations personnelles qu'il vous est demandé de fournir, et les raisons pour lesquelles il vous est demandé de les fournir, vous seront précisées au moment où nous vous demandons de fournir vos informations personnelles."
+    },
+    "usage": {
+      "title": "Comment nous utilisons vos informations",
+      "description": "Nous utilisons les informations que nous collectons de diverses manières, notamment pour fournir, exploiter et maintenir notre site Web, améliorer, personnaliser et développer notre site Web, et comprendre et analyser votre utilisation de notre site Web."
+    },
+    "sharing": {
+      "title": "Partage d'informations",
+      "description": "Nous ne partageons pas vos informations personnelles avec des tiers, sauf comme décrit dans cette politique de confidentialité."
+    },
+    "security": {
+      "title": "Sécurité des données",
+      "description": "Nous prenons des mesures raisonnables pour aider à protéger les informations vous concernant contre la perte, le vol, l'utilisation abusive et l'accès non autorisé, la divulgation, l'altération et la destruction."
+    },
+    "cookies": {
+      "title": "Cookies et balises Web",
+      "description": "Comme tout autre site Web, LapManagerPro utilise des 'cookies'.Ces cookies sont utilisés pour stocker des informations, y compris les préférences des visiteurs et les pages du site Web auxquelles le visiteur a accédé ou visité."
+    },
+    "changes": {
+      "title": "Modifications de cette politique de confidentialité",
+      "description": "Nous pouvons mettre à jour notre politique de confidentialité de temps à autre. Ainsi, nous vous conseillons de consulter cette page périodiquement pour tout changement."
+    },
+    "contact": {
+      "title": "Contactez-nous",
+      "description": "Si vous avez des questions ou des suggestions concernant notre politique de confidentialité, n'hésitez pas à nous contacter."
+    }
+  },
+  "Terms": {
+    "title": "Conditions d'Utilisation",
+    "intro": "Ces termes et conditions décrivent les règles et règlements d'utilisation du logiciel LapManagerPro, situé sur lapmanagerpro.com.",
+    "acceptance": {
+      "title": "Acceptation des Conditions",
+      "description": "En accédant à ce site Web, nous supposons que vous acceptez ces termes et conditions. Ne continuez pas à utiliser LapManagerPro si vous n'acceptez pas de prendre tous les termes et conditions énoncés sur cette page."
+    },
+    "usage": {
+      "title": "Licence",
+      "description": "Sauf indication contraire, LapManagerPro et/ou ses concédants de licence détiennent les droits de propriété intellectuelle pour tout le matériel sur LapManagerPro. Tous les droits de propriété intellectuelle sont réservés."
+    },
+    "accounts": {
+      "title": "Comptes Utilisateurs",
+      "description": "Lorsque vous créez un compte avec nous, vous devez nous fournir des informations exactes, complètes et à jour à tout moment. Le non-respect de cette obligation constitue une violation des Conditions, ce qui peut entraîner la résiliation immédiate de votre compte sur notre Service."
+    },
+    "intellectual": {
+      "title": "Propriété Intellectuelle",
+      "description": "Le Service et son contenu original, ses fonctionnalités et ses caractéristiques sont et resteront la propriété exclusive de LapManagerPro et de ses concédants de licence."
+    },
+    "termination": {
+      "title": "Résiliation",
+      "description": "Nous pouvons résilier ou suspendre l'accès à notre Service immédiatement, sans préavis ni responsabilité, pour quelque raison que ce soit, y compris, sans limitation, si vous violez les Conditions."
+    },
+    "liability": {
+      "title": "Limitation de Responsabilité",
+      "description": "En aucun cas LapManagerPro, ni ses directeurs, employés, partenaires, agents, fournisseurs ou affiliés, ne seront responsables de tout dommage indirect, accessoire, spécial, consécutif ou punitif."
+    },
+    "changes": {
+      "title": "Changements",
+      "description": "Nous nous réservons le droit, à notre seule discrétion, de modifier ou de remplacer ces Conditions à tout moment. Si une révision est importante, nous essaierons de fournir un préavis d'au moins 30 jours avant l'entrée en vigueur de toute nouvelle condition."
+    },
+    "contact": {
+      "title": "Contactez-nous",
+      "description": "Si vous avez des questions sur ces Conditions, veuillez nous contacter."
+    }
   },
   "Pagination": {
     "first": "Premier",
@@ -82,6 +622,58 @@
     "perPage": "par page",
     "results": "résultats",
     "pageOf": "Affichage de {start} à {end} sur {total}"
+  },
+  "DoctorDetailPage": {
+    "actions": {
+      "backToDoctors": "Retour aux Médecins",
+      "edit": "Modifier le Médecin",
+      "delete": "Supprimer le Médecin",
+      "deleting": "Suppression..."
+    },
+    "sections": {
+      "contactInfo": "Informations de Contact",
+      "patients": "Patients Référés"
+    },
+    "contact": {
+      "phone": "Téléphone",
+      "email": "Email",
+      "address": "Adresse de la Clinique",
+      "notProvided": "Non fourni"
+    },
+    "patientCount": "{count, plural, =0 {Aucun patient} =1 {1 patient} other {# patients}}",
+    "hero": {
+      "doctorPrefix": "Dr.",
+      "patientCount": "{count, plural, =0 {patient} =1 {patient} other {patients}} sous soins"
+    },
+    "contactInfo": {
+      "title": "Informations de Contact",
+      "phoneLabel": "Téléphone",
+      "emailLabel": "Email",
+      "addressLabel": "Adresse de la Clinique"
+    },
+    "recentTests": {
+      "title": "Tests Récents",
+      "patientLabel": "Patient",
+      "codeLabel": "Code",
+      "testedOnLabel": "Testé le",
+      "noTests": "Aucun test récent"
+    },
+    "patients": {
+      "title": "Patients",
+      "referredOn": "Référé le",
+      "primary": "Principal",
+      "noPatients": "Aucun patient pour le moment",
+      "addFirst": "Ajoutez votre premier patient",
+      "testCount": "{count} tests"
+    },
+    "messages": {
+      "deleteError": "Échec de la suppression du médecin. Veuillez réessayer."
+    },
+    "deleteDialog": {
+      "title": "Supprimer le Médecin",
+      "message": "Êtes-vous sûr de vouloir supprimer le Dr. {name} ? Cette action est irréversible.",
+      "confirmText": "Supprimer le Médecin"
+    }
   },
   "PatientsPage": {
     "ageUnits": {
@@ -94,29 +686,29 @@
     },
     "hero": {
       "title": "Patients",
-      "subtitle": "Gérer les dossiers patients"
+      "subtitle": "Gérer les dossiers des patients"
     },
     "actions": {
-      "addNew": "Ajouter un nouveau patient",
+      "addNew": "Ajouter un Nouveau Patient",
       "view": "Voir",
       "edit": "Modifier",
       "delete": "Supprimer",
       "deleting": "Suppression..."
     },
     "filters": {
-      "searchLabel": "Rechercher des patients",
-      "searchPlaceholder": "Rechercher par nom, téléphone, e-mail, adresse ou médecin...",
+      "searchLabel": "Rechercher des Patients",
+      "searchPlaceholder": "Rechercher par nom, téléphone, email, adresse ou médecin...",
       "doctorLabel": "Médecin",
-      "allDoctors": "Tous les médecins",
-      "doctorPrefix": "Dr",
-      "dateLabel": "Date d'ajout",
-      "allTime": "Tous temps",
+      "allDoctors": "Tous les Médecins",
+      "doctorPrefix": "Dr.",
+      "dateLabel": "Date d'Ajout",
+      "allTime": "Tout le Temps",
       "today": "Aujourd'hui",
-      "last7Days": "7 derniers jours",
-      "last30Days": "30 derniers jours",
-      "sortLabel": "Trier par",
-      "sortNewest": "Plus récents d'abord",
-      "sortOldest": "Plus anciens d'abord",
+      "last7Days": "7 Derniers Jours",
+      "last30Days": "30 Derniers Jours",
+      "sortLabel": "Trier Par",
+      "sortNewest": "Plus Récent d'Abord",
+      "sortOldest": "Plus Ancien d'Abord",
       "sortNameAsc": "Nom A-Z",
       "sortNameDesc": "Nom Z-A",
       "clearFilters": "Effacer les filtres",
@@ -128,147 +720,32 @@
       "deleteError": "Échec de la suppression du patient"
     },
     "warnings": {
-      "testsExpiringSoon": "{count} test(s) expirera dans 15 jours",
+      "testsExpiringSoon": "{count} test(s) expirent dans 15 jours",
       "viewTemplates": "Voir les modèles"
     },
     "table": {
       "headers": {
         "name": "Nom",
         "contact": "Contact",
-        "referringDoctors": "Médecins prescripteurs",
+        "referringDoctors": "Médecins Référents",
         "created": "Créé",
         "actions": "Actions"
       },
       "age": "Âge : {value} {unit}"
     },
     "deleteDialog": {
-      "title": "Supprimer le patient",
-      "message": "Êtes-vous sûr de vouloir supprimer le patient \"{name}\" ? Cette action ne peut pas être annulée.",
-      "confirmText": "Supprimer le patient"
+      "title": "Supprimer le Patient",
+      "message": "Êtes-vous sûr de vouloir supprimer le patient \"{name}\" ? Cette action est irréversible.",
+      "confirmText": "Supprimer le Patient"
     }
   },
-  "ReceiptSettingsPage": {
-    "labSettings": {
-      "title": "Informations du Laboratoire",
-      "subtitle": "Configurez les détails de votre laboratoire qui apparaissent sur les reçus",
-      "name": "Nom du Laboratoire",
-      "address": "Adresse du Laboratoire",
-      "phone": "Téléphone du Laboratoire",
-      "email": "Email du Laboratoire",
-      "logo": "Logo du Laboratoire",
-      "logoHelp": "Recommandé : 200×200px, PNG ou JPG, max 2 Mo"
-    },
-    "displayMode": {
-      "label": "Choisir le Mode d'Affichage :",
-      "text": "Informations Texte",
-      "logo": "Logo Seulement",
-      "textDescription": "Le nom, l'adresse, le téléphone et l'email du laboratoire s'afficheront dans l'en-tête.",
-      "logoDescription": "Seul le logo s'affichera dans l'en-tête. Les informations de contact passeront dans le pied de page."
-    },
-    "textInfo": {
-      "title": "Informations Texte",
-      "subtitle": "Afficher les détails du labo sous forme de texte dans l'en-tête du reçu",
-      "nameLabel": "Nom du Laboratoire *",
-      "namePlaceholder": "Saisissez le nom de votre laboratoire",
-      "addressLabel": "Adresse du Laboratoire *",
-      "addressPlaceholder": "Saisissez l'adresse de votre laboratoire",
-      "phoneLabel": "Téléphone du Laboratoire *",
-      "phonePlaceholder": "+123 456 7890",
-      "emailLabel": "Email du Laboratoire *",
-      "emailPlaceholder": "info@lab.com"
-    },
-    "logo": {
-      "title": "Logo",
-      "subtitle": "Affichez votre logo dans l'en-tête du reçu",
-      "altText": "Logo du Labo",
-      "deleteButton": "Supprimer le logo",
-      "uploadPrompt": "Cliquez pour télécharger",
-      "uploadLabel": "Logo",
-      "recommendations": "Recommandé : 200×200px, PNG ou JPG, max 2 Mo",
-      "uploadSuccess": "Logo téléchargé avec succès",
-      "uploadWarning": "Veuillez télécharger un logo pour utiliser le mode logo.",
-      "logoModeActive": "Le logo s'affichera dans l'en-tête. Les infos de contact seront dans le pied de page.",
-      "uploading": "Téléchargement de l'image...",
-      "changePrompt": "Cliquez sur l'image pour la modifier",
-      "hiddenInTextMode": "Logo masqué en mode texte",
-      "tipTitle": "Astuce",
-      "tipContent": "Pour de meilleurs résultats, utilisez un PNG transparent avec un fond blanc ou clair."
-    },
-    "alerts": {
-      "invalidFileType": "Veuillez télécharger un fichier image valide (JPEG, PNG, GIF, WebP)",
-      "fileTooLarge": "La taille de l'image doit être inférieure à 2 Mo",
-      "confirmDeleteLogo": "Êtes-vous sûr de vouloir supprimer ce logo ?"
-    },
-    "hero": {
-      "title": "Paramètres des Reçus",
-      "subtitle": "Configurer la génération des reçus et les options de paiement"
-    },
-    "qrCode": {
-      "title": "QR Code Instapay",
-      "enableLabel": "Activer le QR Code",
-      "enableDescription": "Afficher le QR code Instapay sur les reçus pour faciliter le paiement",
-      "instapayIdLabel": "ID Instapay",
-      "instapayIdPlaceholder": "Saisissez votre identifiant de compte Instapay",
-      "instapayIdDescription": "Cet ID sera intégré dans le QR code pour le paiement",
-      "accountNameLabel": "Nom du Titulaire du Compte",
-      "accountNamePlaceholder": "Saisissez le nom du titulaire du compte",
-      "bankNameLabel": "Nom de la Banque",
-      "bankNamePlaceholder": "Saisissez le nom de la banque",
-      "qrImageUrlLabel": "Image Personnalisée du QR Code",
-      "qrImageUrlPlaceholder": "Télécharger ou saisir l'URL de l'image",
-      "qrImageUrlDescription": "Téléchargez une image personnalisée de QR code ou saisissez une URL. Laissez vide pour afficher une représentation texte.",
-      "noteLabel": "Instructions de Paiement",
-      "notePlaceholder": "Scannez ce QR code pour payer via Instapay",
-      "positionLabel": "Position du QR Code",
-      "position": {
-        "top": "Haut",
-        "bottom": "Bas",
-        "right": "Côté Droit",
-        "left": "Côté Gauche"
-      },
-      "preview": {
-        "title": "Aperçu du QR Code",
-        "instapayId": "ID Instapay",
-        "accountName": "Nom du Compte",
-        "bankName": "Nom de la Banque",
-        "enterInstapayId": "Saisissez un ID Instapay pour voir l'aperçu",
-        "autoGenerated": "Le QR code sera généré automatiquement"
-      }
-    },
-    "actions": {
-      "title": "Enregistrer les Paramètres",
-      "description": "Enregistrez vos paramètres de reçu pour les appliquer à tous les futurs reçus",
-      "resetButton": "Réinitialiser aux Valeurs par Défaut",
-      "saveButton": "Enregistrer les Paramètres",
-      "savingButton": "Enregistrement...",
-      "confirmReset": "Êtes-vous sûr de vouloir réinitialiser tous les paramètres aux valeurs par défaut ?"
-    },
-    "messages": {
-      "loadError": "Échec du chargement des paramètres de reçu",
-      "saveSuccess": "Paramètres de reçu enregistrés avec succès",
-      "saveError": "Échec de l'enregistrement : {error}",
-      "saveErrorGeneric": "Échec de l'enregistrement des paramètres. Veuillez réessayer.",
-      "successKeyword": "succès",
-      "uploadFailed": "Échec du téléchargement de l'image",
-      "uploadFailedGeneric": "Échec du téléchargement de l'image. Veuillez réessayer.",
-      "deleteFailed": "Échec de la suppression de l'image",
-      "deleteFailedGeneric": "Échec de la suppression de l'image. Veuillez réessayer."
-    },
-    "info": {
-      "title": "Information",
-      "qrCodeDescription": "Les QR codes apparaîtront sur les reçus lorsqu'ils sont activés et que le patient a un solde restant à payer.",
-      "instapayIntegration": "Les QR codes Instapay permettent aux patients de scanner et payer directement depuis leur application bancaire mobile.",
-      "securityNote": "Saisissez uniquement votre ID Instapay officiel. Ne partagez jamais d'informations de compte sensibles."
-    },
-    "loading": "Chargement..."
-  },
   "CreatePatientPage": {
-    "amountPaidNowLabel": "Montant payé maintenant",
-    "remainingAmountLabel": "Montant restant",
+    "amountPaidNowLabel": "Montant Payé Maintenant",
+    "remainingAmountLabel": "Montant Restant",
     "savePatientButton": "Enregistrer le Patient",
-    "saveGenerateReceiptButton": "Enregistrer et Générer un Reçu",
+    "saveGenerateReceiptButton": "Enregistrer et Générer Reçu",
     "hero": {
-      "title": "Ajouter un nouveau patient",
+      "title": "Ajouter un Nouveau Patient",
       "subtitle": "Créer un nouveau dossier patient avec des tests de laboratoire"
     },
     "table": {
@@ -287,47 +764,48 @@
       "Female": "Femme",
       "Other": "Autre"
     },
-    "totalFees": "Frais totaux",
-    "saved": "économisé",
-    "currency": "{amount} €",
+    "totalFees": "Frais Totaux",
+    "saved": "Économisé",
+    "currency": "${amount}",
     "actions": {
-      "backToPatients": "← Retour aux patients",
+      "backToPatients": "← Retour aux Patients",
       "cancel": "Annuler",
-      "submit": "Créer le patient et les tests",
+      "submit": "Créer le Patient et les Tests",
       "creating": "Création..."
     },
     "form": {
       "basicInfo": {
-        "title": "Informations du patient",
-        "nameLabel": "Nom complet",
+        "title": "Informations du Patient",
+        "nameLabel": "Nom Complet",
+        "namePlaceholder": "Saisissez le nom complet du patient",
         "genderLabel": "Genre",
         "genderMale": "Homme",
         "genderFemale": "Femme",
         "genderOther": "Autre",
         "ageLabel": "Âge",
-        "agePlaceholder": "Entrer l'âge",
+        "agePlaceholder": "Saisissez l'âge",
         "ageYears": "Ans",
         "ageMonths": "Mois",
         "ageDays": "Jours",
-        "nameFormatHint": "Veuillez entrer le nom complet y compris le nom du patient, le nom du père et le nom du grand-père",
-        "namePlaceholder": "Entrez le nom complet du patient"
+        "nameFormatHint": "Veuillez saisir le nom complet incluant le nom du patient, le nom du père et le nom du grand-père",
+        "patientSearchHint": "Appuyez sur Entrée ou cliquez pour sélectionner un patient existant"
       },
       "contactInfo": {
-        "phoneLabel": "Numéro de téléphone",
+        "phoneLabel": "Numéro de Téléphone",
         "phonePlaceholder": "Numéro de téléphone",
-        "emailLabel": "Adresse e-mail",
-        "emailPlaceholder": "Adresse e-mail",
+        "emailLabel": "Adresse Email",
+        "emailPlaceholder": "Adresse email",
         "addressLabel": "Adresse",
         "addressPlaceholder": "Adresse complète"
       },
       "tests": {
-        "title": "Tests de laboratoire",
-        "description": "Sélectionner au moins un test pour le patient"
+        "title": "Tests de Laboratoire",
+        "description": "Sélectionnez au moins un test pour le patient"
       },
       "doctors": {
-        "title": "Médecins prescripteurs",
+        "title": "Médecins Référents",
         "noDoctors": "Aucun médecin disponible.",
-        "addDoctorsLink": "Ajouter d'abord des médecins"
+        "addDoctorsLink": "Ajouter des médecins d'abord"
       }
     },
     "validation": {
@@ -336,179 +814,183 @@
       "ageNonNegative": "L'âge doit être un nombre non négatif",
       "ageUnrealistic": "L'âge semble irréaliste. Veuillez vérifier l'âge.",
       "atLeastOneTest": "Au moins un test doit être sélectionné",
-      "possibleDuplicate": "Patient en doublon possible trouvé : {name}",
-      "nameThreeParts": "Le nom du patient doit inclure au moins trois parties (nom, prénom du père, prénom du grand-père)"
+      "possibleDuplicate": "Doublon de patient possible trouvé : {name}",
+      "nameThreeParts": "Le nom du patient doit inclure au moins trois parties (nom, nom du père, nom du grand-père)"
     },
     "messages": {
       "createPatientFailed": "Échec de la création du patient",
       "unknownError": "Erreur inconnue"
     },
     "ageSuggestions": {
-      "title": "Informations sur l'âge",
+      "title": "Info Âge",
       "months": "≈ {months} mois",
       "days": "≈ {days} jours",
       "childAdolescent": "Enfant/Adolescent",
-      "senior": "Patient âgé",
+      "senior": "Patient senior",
       "newborn": "Nouveau-né",
       "infant03": "Nourrisson (0-3 mois)",
       "infant312": "Nourrisson (3-12 mois)",
       "years": "≈ {years} ans",
-      "neonate": "Nouveau-né (néonatal)"
+      "neonate": "Nouveau-né (néonat)"
     },
     "ageGuidelines": {
-      "title": "Recommandations d'âge",
-      "newborns": "Nouveaux-nés : Utiliser des jours ou des mois",
-      "infants": "Nourrissons : Utiliser des mois pour plus de précision",
-      "children": "Enfants : Utiliser des années ou des mois",
-      "adults": "Adultes : Utiliser des années"
+      "title": "Directives d'Âge",
+      "newborns": "Nouveau-nés : Utilisez les jours ou les mois",
+      "infants": "Nourrissons : Utilisez les mois pour la précision",
+      "children": "Enfants : Utilisez les années ou les mois",
+      "adults": "Adultes : Utilisez les années"
     }
   },
   "TestSelectionForm": {
     "searchPlaceholder": "Rechercher des tests par nom, code ou catégorie...",
     "loading": "Chargement du catalogue de tests...",
     "addButton": "Ajouter",
-    "unknownCategory": "Catégorie inconnue",
+    "unknownCategory": "Catégorie Inconnue",
     "noResults": "Aucun test trouvé pour \"{query}\"",
-    "categoriesTitle": "Catégories de tests",
+    "categoriesTitle": "Catégories de Tests",
     "noCategories": "Aucune catégorie de test disponible",
-    "selectedTestsTitle": "Tests sélectionnés ({count})",
+    "selectedTestsTitle": "Tests Sélectionnés ({count})",
     "noTestsSelected": "Aucun test sélectionné. Veuillez sélectionner au moins un test.",
-    "totalFees": "Frais totaux",
+    "totalFees": "Frais Totaux",
     "selectAtLeastOneTest": "Veuillez sélectionner au moins un test pour continuer."
   },
   "PatientTestsPage": {
-    "loading": "Cargandoles tests du patient...",
+    "loading": "Chargement des tests du patient...",
     "errors": {
       "unknown": "Erreur inconnue"
     },
     "hero": {
       "title": "Tests pour {name}",
-      "subtitle": "Gérer et générer des rapports pour les tests du patient"
+      "subtitle": "Gérer et générer des rapports pour les tests des patients"
     },
     "dialog": {
       "error": "Erreur",
       "success": "Succès",
       "warning": "Avertissement",
-      "archiveTitle": "Archiver le test",
-      "bulkArchiveTitle": "Archiver les tests",
-      "archiveAfterPrintTitle": "Archiver après impression",
+      "archiveTitle": "Archiver le Test",
+      "bulkArchiveTitle": "Archiver les Tests",
+      "archiveAfterPrintTitle": "Archiver Après Impression",
       "confirm": "Confirmer",
-      "paymentLoading": "Chargement des informations de paiement",
+      "paymentLoading": "Chargement des infos de paiement",
       "paymentLoadingMessage": "Veuillez patienter pendant le chargement des informations de paiement...",
-      "paymentSuccess": "Paiement réussi",
-      "paymentSuccessMessage": "Paiement complet de €{amount} reçu avec succès. Le patient est maintenant payé en entier.",
-      "paymentFailed": "Échec du paiement",
+      "paymentSuccess": "Paiement Réussi",
+      "paymentSuccessMessage": "Paiement intégral de {amount}$ reçu avec succès. Le patient est maintenant payé en totalité.",
+      "paymentFailed": "Échec du Paiement",
       "paymentFailedMessage": "Échec du traitement du paiement : {error}",
-      "archiveWarning": "Impossible d'archiver les tests",
-      "archiveWarningMessage": "Impossible d'archiver les tests. Le patient a €{{amount}} restant à payer.",
-      "labAssignedSuccess": "Test affecté avec succès à un laboratoire externe",
-      "labAssignFailed": "Échec de l'affectation du test à un laboratoire externe",
+      "archiveWarning": "Impossible d'Archiver les Tests",
+      "archiveWarningMessage": "Les tests ne peuvent pas être archivés. Le patient a {amount}$ restant à payer.",
+      "labAssignedSuccess": "Test assigné au laboratoire externe avec succès",
+      "labAssignFailed": "Échec de l'assignation du test au laboratoire externe",
       "failedToFetchLabs": "Échec du chargement de la liste des laboratoires. Veuillez réessayer.",
-      "labAssignmentRemoved": "L'affectation du laboratoire a été supprimée avec succès",
-      "labRemoveFailed": "Échec de la suppression de l'affectation du laboratoire"
+      "labAssignmentRemoved": "L'assignation du laboratoire a été supprimée avec succès",
+      "labRemoveFailed": "Échec de la suppression de l'assignation du laboratoire"
     },
     "actions": {
-      "addVisit": "Ajouter une visite",
-      "backToPatients": "← Retour aux patients",
-      "inputResults": "Saisir les résultats",
-      "editResults": "Modifier les résultats",
-      "addFirstTest": "Ajouter un test",
-      "clearSelection": "Effacer la sélection",
-      "printSelected": "Imprimer la sélection",
-      "archiveSelected": "Archiver la sélection",
+      "backToPatients": "Retour aux Patients",
+      "addVisit": "Ajouter une Visite",
+      "viewArchived": "Voir Archivés",
+      "printSelected": "Imprimer Sélection",
+      "archiveSelected": "Archiver Sélection",
+      "clearSelection": "Effacer Sélection",
+      "editResults": "Modifier Résultats",
+      "inputResults": "Saisir Résultats",
       "viewPrint": "Voir/Imprimer",
-      "archiveTest": "Archiver le test",
-      "viewArchived": "Voir les archives",
+      "assignToLab": "Assigner à un Laboratoire Externe",
+      "updateAssignment": "Mettre à Jour l'Assignation",
       "archive": "Archiver",
       "skip": "Passer",
       "cancel": "Annuler",
-      "collectPayment": "Collecter le paiement",
-      "collectFullPayment": "Collecter le paiement complet",
+      "collectPayment": "Encaisser le Paiement",
+      "collectFullPayment": "Encaisser le Paiement Complet",
       "cannotAddVisitTooltip": "Impossible d'ajouter une visite - Le patient a un solde impayé",
-      "assignToLab": "Affecter à un laboratoire externe",
-      "updateAssignment": "Mettre à jour l'affectation",
       "ok": "OK",
-      "currency": "€"
+      "currency": "$"
     },
     "table": {
       "selectAllTitle": "Sélectionner tous les tests avec résultats",
       "noResultsTooltip": "Impossible de sélectionner un test sans résultats",
       "selectTooltip": "Sélectionner pour le rapport",
       "headers": {
-        "testName": "Nom du test",
+        "testName": "Nom du Test",
         "status": "Statut",
         "results": "Résultats",
         "created": "Créé",
         "actions": "Actions"
       },
       "code": "Code : {code}",
-      "resultsAvailable": "Résultats disponibles",
-      "noResults": "Aucun résultat"
+      "resultsAvailable": "Résultats Disponibles",
+      "noResults": "Aucun Résultat"
     },
     "status": {
       "completed": "Terminé",
-      "inprogress": "En cours",
-      "pending": "En attente",
+      "inprogress": "En Cours",
+      "pending": "En Attente",
       "cancelled": "Annulé"
     },
     "messages": {
       "noTestsFound": "Aucun test trouvé pour ce patient",
-      "paymentRequired": "Le patient doit €{amount}. Veuillez collecter le paiement avant d'imprimer les résultats.",
       "archivedTestsCount": "{count} tests archivés",
       "selectedCount": "{count} sélectionné(s)",
       "archiveConfirm": "Êtes-vous sûr de vouloir archiver ce test ? Il sera déplacé vers les tests archivés.",
       "archiveError": "Échec de l'archivage du test",
+      "archiveAfterPrint": "Souhaitez-vous archiver les {count} test(s) imprimé(s) ?",
+      "archiveSuccess": "Tests archivés avec succès",
+      "fetchError": "Échec de la récupération des tests",
       "bulkArchiveConfirm": "Archiver {count} tests sélectionnés ?",
+      "bulkArchiveSuccess": "{count} test(s) archivé(s) avec succès",
       "bulkArchiveError": "Échec de l'archivage des tests",
-      "selectTestsToPrint": "Veuillez sélectionner des tests à imprimer",
-      "paymentRequiredPrint": "Paiement requis pour l'impression",
-      "paymentRequiredArchive": "Paiement requis pour l'archivage",
+      "selectTestsToPrint": "Veuillez sélectionner les tests à imprimer",
+      "noTestsSelected": "Veuillez sélectionner au moins un test pour générer un rapport.",
+      "paymentRequired": "Le patient a {amount}$ restant à payer. Le paiement intégral est requis pour activer la génération de PDF et l'archivage des tests.",
+      "paymentRequiredPrint": "Paiement requis pour imprimer",
+      "paymentRequiredArchive": "Paiement requis pour archiver",
+      "someTestsNoResults": "{count} test(s) sélectionné(s) n'ont pas encore de résultats. Veuillez compléter tous les résultats de test avant de générer un rapport.",
       "archivingInProgress": "Archivage en cours...",
-      "loadingPaymentInfo": "Chargement des informations de paiement..."
+      "loadingPaymentInfo": "Chargement des infos de paiement..."
     },
     "selection": {
-      "summary": "{selected} sélectionné(s) sur {withResults} tests avec résultats ({total} au total)",
+      "summary": "{selected} sélectionné(s) sur {withResults} tests avec résultats ({total} total)",
       "selectedInfo": "{count} test{count, plural, =1 {} other {s}} sélectionné(s) pour le rapport",
-      "generateReportHint": "Cliquez sur \"Générer le rapport\" pour créer un rapport combiné pour tous les tests sélectionnés"
+      "generateReportHint": "Cliquez sur \"Générer le Rapport\" pour créer un rapport combiné pour tous les tests sélectionnés"
     },
     "payment": {
-      "required": "Paiement requis",
-      "requiredMessage": "Le patient a €{amount} restant à payer. Le paiement complet est requis pour activer la génération PDF et l'archivage des tests.",
-      "collectFullPayment": "Collecter le paiement complet",
-      "amountToCollect": "Montant à collecter",
-      "fullPaymentRequired": "Paiement complet requis pour activer la génération PDF et l'archivage des tests",
-      "method": "Méthode de paiement",
-      "processing": "Traitement en cours...",
-      "collectAmount": "Collecter le paiement complet (€{amount})",
+      "required": "Paiement Requis",
+      "requiredMessage": "Le patient a {amount}$ restant à payer. Le paiement intégral est requis pour activer la génération de PDF et l'archivage des tests.",
+      "collectFullPayment": "Encaisser le Paiement Complet",
+      "amountToCollect": "Montant à Encaisser",
+      "fullPaymentRequired": "Paiement intégral requis pour activer la génération de PDF et l'archivage des tests",
+      "method": "Méthode de Paiement",
+      "processing": "Traitement...",
+      "collectAmount": "Encaisser le Paiement Complet ({amount})",
       "patient": "Patient",
-      "receiptNumber": "N° de reçu",
-      "alreadyPaid": "Déjà payé",
-      "alreadyPaidValue": "€{amount}",
-      "amountDue": "Montant dû",
-      "amountDueValue": "€{amount}",
+      "receiptNumber": "N° Reçu",
+      "alreadyPaid": "Déjà Payé",
+      "alreadyPaidValue": "${amount}",
+      "amountDue": "Montant Dû",
+      "amountDueValue": "${amount}",
       "cancel": "Annuler"
     },
     "paymentMethods": {
       "cash": "Espèces",
-      "card": "Carte de crédit/débit",
-      "bankTransfer": "Virement bancaire",
+      "card": "Carte de Crédit/Débit",
+      "bankTransfer": "Virement Bancaire",
       "insurance": "Assurance"
     }
   },
   "LoginPage": {
-    "title": "Connexion au système de laboratoire médical",
+    "title": "Connexion au Système de Laboratoire Médical",
     "subtitle": "Entrez vos identifiants pour accéder au système",
     "email": {
-      "label": "E-mail",
-      "placeholder": "Entrez votre adresse e-mail",
-      "required": "L'e-mail est requis",
-      "invalid": "Veuillez entrer une adresse e-mail valide"
+      "label": "Email",
+      "placeholder": "Entrez votre adresse email",
+      "required": "L'email est requis",
+      "invalid": "Veuillez entrer une adresse email valide"
     },
     "password": {
       "label": "Mot de passe",
       "placeholder": "Entrez votre mot de passe",
       "required": "Le mot de passe est requis",
-      "minLength": "Le mot de passe doit comporter au moins 8 caractères"
+      "minLength": "Le mot de passe doit contenir au moins 8 caractères"
     },
     "buttons": {
       "login": "Se connecter",
@@ -517,21 +999,21 @@
       "rememberMe": "Se souvenir de moi"
     },
     "errors": {
-      "invalidCredentials": "E-mail ou mot de passe invalide",
+      "invalidCredentials": "Email ou mot de passe invalide",
       "accountLocked": "Compte temporairement verrouillé. Réessayez dans 15 minutes",
       "inactiveAccount": "Votre compte est inactif. Veuillez contacter le support",
       "networkError": "Erreur réseau. Veuillez vérifier votre connexion",
       "serverError": "Erreur serveur. Veuillez réessayer plus tard",
-      "unknownError": "Une erreur s'est produite lors de la connexion",
+      "unknownError": "Une erreur est survenue lors de la connexion",
       "requiredFields": "Veuillez remplir tous les champs obligatoires",
       "tooManyAttempts": "Trop de tentatives de connexion. Veuillez réessayer plus tard"
     },
     "validation": {
-      "title": "Erreur de validation",
+      "title": "Erreur de Validation",
       "fixErrors": "Veuillez corriger les erreurs suivantes :"
     },
     "security": {
-      "title": "Avis de sécurité",
+      "title": "Avis de Sécurité",
       "message": "Ce système contient des informations confidentielles. L'accès non autorisé est interdit."
     }
   }

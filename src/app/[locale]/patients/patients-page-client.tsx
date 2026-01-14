@@ -158,16 +158,13 @@ export function PatientsPageClient({
             <h1 className="text-3xl font-bold text-gray-900">{t('hero.title')}</h1>
             <p className="text-gray-600 mt-2">{t('hero.subtitle')}</p>
           </div>
-          {(session.user?.can_create_patients || session.user?.role === 'SuperAdmin') && (
-            <Link
-              href={`/${locale}/patients/create`}
-              className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
-            >
-              {t('actions.addNew')}
-            </Link>
-          )}
+          <Link
+            href={`/${locale}/patients/create`}
+            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
+          >
+            {t('actions.addNew')}
+          </Link>
         </div>
-
         {/* Search and Filters */}
         <div className="bg-white rounded-lg shadow p-6 mb-6">
           <div className="space-y-4">
@@ -348,7 +345,7 @@ export function PatientsPageClient({
                   : t('messages.noPatientsFound')
                 }
               </div>
-              {totalCount === 0 && (session.user?.can_create_patients || session.user?.role === 'SuperAdmin') && (
+              {totalCount === 0 && (
                 <Link
                   href={`/${locale}/patients/create`}
                   className="inline-block mt-4 bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors"

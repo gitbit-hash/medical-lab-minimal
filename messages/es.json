@@ -1,5 +1,15 @@
 {
+  "Metadata": {
+    "title": "LapManagerPro - Sistema de Gestión de Laboratorio",
+    "description": "Optimice las operaciones de su laboratorio."
+  },
   "Navigation": {
+    "home": "Inicio",
+    "features": "Características",
+    "pricing": "Precios",
+    "demo": "Probar Demo",
+    "login": "Iniciar Sesión",
+    "signup": "Registrarse",
     "dashboard": "Panel de Control",
     "patients": "Pacientes",
     "doctors": "Médicos",
@@ -10,6 +20,174 @@
     "welcome": "Bienvenido a LabManagerPro",
     "description": "Sistema Avanzado de Gestión de Laboratorios Médicos",
     "logout": "Cerrar sesión"
+  },
+  "Landing": {
+    "hero": {
+      "badge": "Gestión de Laboratorio",
+      "title": "Optimice las Operaciones de Su Laboratorio",
+      "subtitle": "La solución completa para gestionar pacientes, pruebas e informes.",
+      "tryDemo": "Probar Demo Gratis",
+      "contactSales": "Contactar",
+      "trustedBy": "Utilizado por más de 100 laboratorios"
+    },
+    "features": {
+      "title": "Características Potentes",
+      "subtitle": "Todo lo que necesita",
+      "patientManagement": {
+        "title": "Gestión de Pacientes",
+        "description": "Registros completos de pacientes."
+      },
+      "testManagement": {
+        "title": "Gestión de Pruebas",
+        "description": "Gestione pruebas de laboratorio."
+      },
+      "resultInput": {
+        "title": "Entrada de Resultados",
+        "description": "Interfaz intuitiva para ingresar resultados."
+      },
+      "pdfReports": {
+        "title": "Informes PDF",
+        "description": "Genere informes profesionales."
+      },
+      "multiLanguage": {
+        "title": "Multiidioma",
+        "description": "Soporte para varios idiomas."
+      },
+      "offlineMode": {
+        "title": "Modo Sin Conexión",
+        "description": "Trabaje sin internet."
+      },
+      "billing": {
+        "title": "Facturación",
+        "description": "Rastree tarifas y pagos."
+      },
+      "auditLogs": {
+        "title": "Registros de Auditoría",
+        "description": "Seguimiento completo de actividades."
+      }
+    },
+    "howItWorks": {
+      "title": "Cómo Funciona",
+      "subtitle": "Comience en minutos",
+      "step1": {
+        "title": "Regístrese",
+        "description": "Cree su cuenta."
+      },
+      "step2": {
+        "title": "Agregue Pacientes",
+        "description": "Ingrese la información."
+      },
+      "step3": {
+        "title": "Ingrese Resultados",
+        "description": "Ingrese los resultados."
+      },
+      "step4": {
+        "title": "Genere Informes",
+        "description": "Cree informes PDF."
+      }
+    },
+    "pricing": {
+      "title": "Precios Simples y Transparentes",
+      "subtitle": "Elija el plan que funcione para su laboratorio",
+      "enterprisePrice": "Contáctenos",
+      "starter": {
+        "name": "Inicial",
+        "price": "50",
+        "description": "Ideal para laboratorios pequeños",
+        "features": [
+          "Pacientes ilimitados",
+          "Plantillas de pruebas ilimitadas",
+          "Siempre requiere conexión a Internet",
+          "Sin función de envío de resultados por WhatsApp",
+          "Sin personalización de marca",
+          "Sin actualizaciones gratuitas",
+          "Soporte limitado"
+        ],
+        "cta": "Comenzar ahora"
+      },
+      "professional": {
+        "name": "Profesional",
+        "price": "99",
+        "description": "Para laboratorios en crecimiento",
+        "popular": "Más Popular",
+        "features": [
+          "Pacientes ilimitados",
+          "Plantillas de pruebas ilimitadas",
+          "Modo sin conexión",
+          "Función de envío de resultados por WhatsApp",
+          "Personalización de marca",
+          "Soporte prioritario",
+          "Actualizaciones gratuitas"
+        ],
+        "cta": "Comenzar ahora"
+      },
+      "enterprise": {
+        "name": "Empresa",
+        "price": "",
+        "description": "Para grandes organizaciones",
+        "features": [
+          "Pacientes ilimitados",
+          "Plantillas de pruebas ilimitadas",
+          "Modo sin conexión",
+          "Función de envío de resultados por WhatsApp",
+          "Personalización de marca",
+          "Soporte multi-ubicación",
+          "Actualizaciones gratuitas",
+          "Acceso API",
+          "Integraciones personalizadas",
+          "Gerente de cuenta dedicado",
+          "Garantía SLA"
+        ],
+        "cta": "Contactar ventas"
+      }
+    },
+    "faq": {
+      "title": "Preguntas Frecuentes",
+      "subtitle": "¿Tiene preguntas?",
+      "q1": {
+        "question": "¿Puedo probar antes de comprar?",
+        "answer": "¡Sí! Nuestra demo gratuita le permite crear un paciente."
+      },
+      "q2": {
+        "question": "¿Son seguros mis datos?",
+        "answer": "Absolutamente. Usamos encriptación estándar."
+      },
+      "q3": {
+        "question": "¿Puedo trabajar sin conexión?",
+        "answer": "Sí, con nuestros planes Profesional y Empresa."
+      },
+      "q4": {
+        "question": "¿Qué idiomas son compatibles?",
+        "answer": "Inglés, árabe, francés y español."
+      },
+      "q5": {
+        "question": "¿Puedo personalizar los informes?",
+        "answer": "¡Sí! Puede agregar su logo."
+      },
+      "q6": {
+        "question": "¿Cómo obtengo soporte?",
+        "answer": "Ofrecemos soporte por email."
+      }
+    },
+    "cta": {
+      "title": "¿Listo para Transformar Su Laboratorio?",
+      "subtitle": "Únase a cientos de laboratorios",
+      "button": "Comenzar Demo"
+    }
+  },
+  "Footer": {
+    "description": "Sistema moderno de gestión de laboratorio.",
+    "product": "Producto",
+    "features": "Características",
+    "pricing": "Precios",
+    "demo": "Demo",
+    "company": "Empresa",
+    "about": "Sobre Nosotros",
+    "contact": "Contacto",
+    "legal": "Legal",
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "copyright": "© 2026 LapManagerPro. Todos los derechos reservados."
   },
   "HomePage": {
     "hero": {
@@ -71,7 +249,369 @@
   },
   "Common": {
     "welcome": "¡Bienvenido de nuevo!",
-    "welcomeWithName": "¡Bienvenido de nuevo, {name}!"
+    "welcomeWithName": "¡Bienvenido de nuevo, {name}!",
+    "language": {
+      "en": "English",
+      "ar": "العربية",
+      "fr": "Français",
+      "es": "Español"
+    }
+  },
+  "Auth": {
+    "login": {
+      "title": "Bienvenido de Nuevo",
+      "subtitle": "Inicie sesión",
+      "continueWithGoogle": "Continuar con Google",
+      "noAccount": "¿No tiene cuenta?",
+      "signUp": "Regístrese"
+    },
+    "signup": {
+      "title": "Comience Su Prueba",
+      "subtitle": "Cree un paciente gratis",
+      "continueWithGoogle": "Continuar con Google",
+      "hasAccount": "¿Ya tiene cuenta?",
+      "signIn": "Iniciar sesión",
+      "terms": "Al registrarse, acepta nuestros",
+      "termsLink": "Términos",
+      "and": "y",
+      "privacyLink": "Privacidad"
+    }
+  },
+  "Demo": {
+    "dashboard": {
+      "title": "Panel de Demo",
+      "subtitle": "¡Bienvenido a su demo!",
+      "usage": {
+        "patients": "Pacientes",
+        "tests": "Pruebas",
+        "remaining": "restante"
+      },
+      "actions": {
+        "createPatient": "Crear Paciente",
+        "viewPatient": "Ver Paciente",
+        "addTests": "Agregar Pruebas",
+        "enterResults": "Ingresar Resultados",
+        "generateReport": "Generar Informe"
+      },
+      "limits": {
+        "patientLimitReached": "Límite Alcanzado",
+        "patientLimitMessage": "Limitado a 1 paciente.",
+        "testLimitReached": "Límite de Pruebas",
+        "testLimitMessage": "Limitado a 5 pruebas.",
+        "upgradeNow": "Actualizar"
+      },
+      "emptyState": {
+        "title": "Comenzar",
+        "message": "Cree su primer paciente.",
+        "cta": "Crear"
+      }
+    },
+    "patient": {
+      "back": "Volver",
+      "new": {
+        "title": "Crear Paciente",
+        "subtitle": "Ingrese la información del paciente para comenzar"
+      },
+      "form": {
+        "name": "Nombre Completo",
+        "namePlaceholder": "Ingrese el nombre del paciente",
+        "gender": "Género",
+        "selectGender": "Seleccionar género",
+        "male": "Masculino",
+        "female": "Femenino",
+        "other": "Otro",
+        "age": "Edad",
+        "years": "Años",
+        "months": "Meses",
+        "days": "Días",
+        "phone": "Teléfono",
+        "phonePlaceholder": "+34 612 345 678",
+        "email": "Email",
+        "emailPlaceholder": "paciente@email.com",
+        "address": "Dirección",
+        "addressPlaceholder": "Ingrese la dirección",
+        "create": "Crear Paciente",
+        "creating": "Creando..."
+      },
+      "view": {
+        "createdAt": "Creado",
+        "tests": "Pruebas",
+        "addTests": "Agregar Pruebas",
+        "generateReport": "Generar Informe",
+        "noTests": "Sin Pruebas",
+        "noTestsMessage": "Agregue pruebas para comenzar",
+        "addFirstTest": "Agregar Primera Prueba",
+        "code": "Código",
+        "enterResult": "Ingresar resultado",
+        "save": "Guardar",
+        "result": "Resultado"
+      }
+    },
+    "tests": {
+      "back": "Volver al Paciente",
+      "selected": "seleccionado(s)",
+      "select": {
+        "title": "Seleccionar Pruebas",
+        "subtitle": "Puede agregar hasta {remaining} pruebas más",
+        "searchPlaceholder": "Buscar pruebas...",
+        "adding": "Agregando...",
+        "addTests": "Agregar {count} Pruebas"
+      }
+    },
+    "reports": {
+      "back": "Volver al Paciente",
+      "title": "Generar Informe",
+      "subtitle": "Cree un informe PDF de las pruebas completadas",
+      "preview": "Vista Previa",
+      "hidePreview": "Ocultar Vista Previa",
+      "print": "Imprimir",
+      "download": "Descargar PDF",
+      "completedTests": "Pruebas Completadas",
+      "pendingTests": "Pruebas Pendientes",
+      "noCompletedTests": "Sin Pruebas Completadas",
+      "noCompletedTestsMessage": "Complete al menos una prueba para generar un informe",
+      "enterResults": "Ingresar Resultados"
+    }
+  },
+  "FeaturesShowcase": {
+    "hero": {
+      "title": "Explore Nuestras Características",
+      "subtitle": "Descubra cómo LabManagerPro puede transformar las operaciones de su laboratorio con nuestras potentes características"
+    },
+    "sections": {
+      "adminDashboard": {
+        "title": "Panel de Super Administrador",
+        "description": "Herramientas integrales de análisis y gestión para supervisores de laboratorio. Supervise ingresos, rastree el rendimiento y acceda a todas las funciones administrativas desde un centro central.",
+        "images": {
+          "1": "Análisis de ingresos con ingresos diarios y mensuales, total de pruebas y estadísticas de Lab-to-Lab",
+          "2": "Gráficos de desglose de ingresos diarios y mensuales para información financiera",
+          "3": "Enlaces rápidos de administración para acceso rápido a funciones administrativas",
+          "4": "Pruebas de mejor rendimiento y actividad reciente de inicio de sesión de administrador",
+          "5": "Monitoreo del estado del sistema, incluyendo base de datos, sincronización y operaciones Lab-to-Lab"
+        }
+      },
+      "userManagement": {
+        "title": "Gestión de Usuarios",
+        "description": "Control completo sobre cuentas de usuario, roles y permisos. Gestione administradores, establezca niveles de acceso y configure permisos de descuento.",
+        "images": {
+          "1": "Lista de usuarios con roles, estado y acciones rápidas",
+          "2": "Configuración de permisos de usuario y descuentos"
+        }
+      },
+      "pdfSettings": {
+        "title": "Configuración de Informes PDF",
+        "description": "Personalice sus informes de laboratorio con encabezados y pies de página profesionales, logotipos y firmas electrónicas. Cree informes de marca que representen a su laboratorio.",
+        "images": {
+          "1": "Panel completo de configuración de PDF con todas las opciones",
+          "2": "Configuración de encabezado con nombre del laboratorio y especializaciones",
+          "3": "Configuración de pie de página con información del director y detalles de contacto",
+          "4": "Configuración de firma electrónica",
+          "5": "Carga de logotipo y configuración de posicionamiento"
+        }
+      },
+      "receiptSettings": {
+        "title": "Configuración de Recibos",
+        "description": "Configure recibos de facturación con información del laboratorio, logotipo y código QR de Instapay para pagos digitales convenientes.",
+        "images": {
+          "1": "Descripción general de la configuración de recibos con información del laboratorio",
+          "2": "Configuración de información de texto del laboratorio",
+          "3": "Configuración de código QR para pagos Instapay",
+          "4": "Vista previa del recibo con código QR"
+        }
+      },
+      "auditLogs": {
+        "title": "Registros de Auditoría",
+        "description": "Seguimiento completo de actividad para cumplimiento y responsabilidad. Filtre y busque a través de todas las actividades del sistema para saber quién hizo qué y cuándo.",
+        "images": {
+          "1": "Tabla de registros de auditoría con opciones de filtrado",
+          "2": "Vista detallada de la actividad con acciones del usuario"
+        }
+      },
+      "databaseBackup": {
+        "title": "Copia de Seguridad y Restauración de Base de Datos",
+        "description": "Asegure los datos de su laboratorio con una fácil funcionalidad de copia de seguridad y restauración. Nunca pierda datos importantes de pacientes y pruebas.",
+        "images": {
+          "1": "Gestión de copias de seguridad con opciones de restauración"
+        }
+      },
+      "patientManagement": {
+        "title": "Gestión de Pacientes",
+        "description": "Registros completos de pacientes con fácil registro, búsqueda y gestión. Rastree información del paciente, visitas e historial de pruebas.",
+        "images": {
+          "1": "Lista de pacientes con opciones de búsqueda y filtrado",
+          "2": "Nuevo formulario de registro de paciente",
+          "3": "Entrada de información del paciente",
+          "4": "Selección de pruebas para pacientes",
+          "5": "Opciones de pago y descuento",
+          "6": "Resumen de visita y confirmación"
+        }
+      },
+      "patientHistory": {
+        "title": "Historial del Paciente",
+        "description": "Acceda al historial completo de visitas del paciente y registros de pruebas. Rastree resultados anteriores y monitoree la salud del paciente a lo largo del tiempo.",
+        "images": {
+          "1": "Descripción general del historial de visitas del paciente",
+          "2": "Historial detallado de pruebas con resultados"
+        }
+      },
+      "testTemplates": {
+        "title": "Plantillas de Pruebas y Categorías",
+        "description": "Gestione pruebas de laboratorio con plantillas personalizables, parámetros y rangos de referencia organizados por categorías.",
+        "images": {
+          "1": "Lista de plantillas de pruebas con categorías",
+          "2": "Configuración detallada de plantilla de prueba",
+          "3": "Gestión de categorías de pruebas"
+        }
+      },
+      "resultsEntry": {
+        "title": "Entrada de Resultados",
+        "description": "Interfaz intuitiva para ingresar resultados de pruebas con validación automática, verificación de rango de referencia e indicadores de bandera.",
+        "images": {
+          "1": "Formulario de entrada de resultados de prueba",
+          "2": "Resultados con validación y banderas"
+        }
+      },
+      "labToLab": {
+        "title": "Pruebas Lab-to-Lab",
+        "description": "Gestione asociaciones con laboratorios externos. Externalice pruebas a laboratorios asociados y rastree costos para informes financieros precisos.",
+        "images": {
+          "1": "Asignación de laboratorio externo",
+          "2": "Gestión de laboratorios externos con precios"
+        }
+      },
+      "pdfReports": {
+        "title": "Informes PDF",
+        "description": "Genere informes de laboratorio profesionales con marca personalizable, resultados completos y rangos de referencia.",
+        "images": {
+          "1": "Informe de muestra de prueba CBC con histograma"
+        }
+      },
+      "receipts": {
+        "title": "Recibos de Facturación",
+        "description": "Genere recibos de facturación profesionales con pruebas detalladas, información de pago y código QR opcional para pagos digitales.",
+        "images": {
+          "1": "Muestra de recibo de facturación"
+        }
+      },
+      "casaAnalysis": {
+        "title": "Análisis CASA",
+        "description": "Integración de Análisis de Semen Asistido por Computadora (CASA) para pruebas de salud reproductiva con seguimiento detallado de parámetros.",
+        "images": {
+          "1": "Descripción general de entrada de prueba CASA",
+          "2": "Parámetros de motilidad",
+          "3": "Análisis de concentración",
+          "4": "Evaluación de morfología",
+          "5": "Parámetros adicionales",
+          "6": "Indicadores de calidad",
+          "7": "Informe de resumen",
+          "8": "Informe completo CASA PDF"
+        }
+      }
+    },
+    "navigation": {
+      "screenshots": "Capturas de pantalla",
+      "viewAll": "Ver Todas las Características",
+      "backToHome": "Volver al Inicio"
+    }
+  },
+  "About": {
+    "title": "Sobre LapManagerPro",
+    "subtitle": "Gestión Moderna de Laboratorio",
+    "description": "Proporcionamos soluciones de vanguardia para laboratorios médicos para optimizar sus operaciones, mejorar la precisión y mejorar la atención al paciente.",
+    "mission": {
+      "title": "Nuestra Misión",
+      "description": "Empoderar a los laboratorios con tecnología que simplifica procesos complejos y les permite centrarse en lo que más importa: diagnósticos precisos."
+    },
+    "vision": {
+      "title": "Nuestra Visión",
+      "description": "Convertirse en el estándar global para software de gestión de laboratorios, conocido por su innovación, fiabilidad y diseño centrado en el usuario."
+    },
+    "values": {
+      "title": "Nuestros Valores",
+      "description": "Innovación, Integridad, Excelencia y Éxito del Cliente están en el centro de todo lo que hacemos."
+    }
+  },
+  "Contact": {
+    "title": "Póngase en Contacto",
+    "description": "Nos encantaría saber de usted. Nuestro equipo siempre está aquí para charlar.",
+    "phone": "+2 (011) 26649009",
+    "email": "support@lapmanagerpro.com",
+    "form": {
+      "title": "Envíenos un mensaje",
+      "description": "Complete el formulario a continuación y nos pondremos en contacto con usted lo antes posible.",
+      "name": "Nombre",
+      "email": "Email",
+      "message": "Mensaje",
+      "submit": "Enviar Mensaje"
+    }
+  },
+  "Privacy": {
+    "title": "Política de Privacidad",
+    "intro": "En LapManagerPro, accesible desde lapmanagerpro.com, una de nuestras principales prioridades es la privacidad de nuestros visitantes. Este documento de Política de Privacidad contiene tipos de información que es recopilada y registrada por LapManagerPro y cómo la usamos.",
+    "collection": {
+      "title": "Información que Recopilamos",
+      "description": "La información personal que se le pide que proporcione, y las razones por las que se le pide que la proporcione, se le aclararán en el punto en que le pidamos que proporcione su información personal."
+    },
+    "usage": {
+      "title": "Cómo Usamos Su Información",
+      "description": "Usamos la información que recopilamos de varias maneras, incluyendo para proporcionar, operar y mantener nuestro sitio web, mejorar, personalizar y expandir nuestro sitio web, y comprender y analizar cómo usa nuestro sitio web."
+    },
+    "sharing": {
+      "title": "Intercambio de Información",
+      "description": "No compartimos su información personal con terceros excepto como se describe en esta política de privacidad."
+    },
+    "security": {
+      "title": "Seguridad de Datos",
+      "description": "Tomamos medidas razonables para ayudar a proteger la información sobre usted contra pérdida, robo, uso indebido y acceso no autorizado, divulgación, alteración y destrucción."
+    },
+    "cookies": {
+      "title": "Cookies y Balizas Web",
+      "description": "Como cualquier otro sitio web, LapManagerPro utiliza 'cookies'. Estas cookies se utilizan para almacenar información, incluidas las preferencias de los visitantes, y las páginas del sitio web a las que el visitante accedió o visitó."
+    },
+    "changes": {
+      "title": "Cambios a Esta Política de Privacidad",
+      "description": "Podemos actualizar nuestra Política de Privacidad de vez en cuando. Por lo tanto, le recomendamos que revise esta página periódicamente para ver si hay cambios."
+    },
+    "contact": {
+      "title": "Contáctenos",
+      "description": "Si tiene alguna pregunta o sugerencia sobre nuestra Política de Privacidad, no dude en contactarnos."
+    }
+  },
+  "Terms": {
+    "title": "Términos de Servicio",
+    "intro": "Estos términos y condiciones describen las reglas y regulaciones para el uso del sitio web de LapManagerPro, ubicado en lapmanagerpro.com.",
+    "acceptance": {
+      "title": "Aceptación de los Términos",
+      "description": "Al acceder a este sitio web asumimos que acepta estos términos y condiciones. No continúe usando LapManagerPro si no acepta tomar todos los términos y condiciones establecidos en esta página."
+    },
+    "usage": {
+      "title": "Licencia",
+      "description": "A menos que se indique lo contrario, LapManagerPro y/o sus licenciantes poseen los derechos de propiedad intelectual de todo el material en LapManagerPro. Todos los derechos de propiedad intelectual están reservados."
+    },
+    "accounts": {
+      "title": "Cuentas de Usuario",
+      "description": "Cuando crea una cuenta con nosotros, debe proporcionarnos información que sea precisa, completa y actual en todo momento. El no hacerlo constituye un incumplimiento de los Términos, lo que puede resultar en la terminación inmediata de su cuenta en nuestro Servicio."
+    },
+    "intellectual": {
+      "title": "Propiedad Intelectual",
+      "description": "El Servicio y su contenido original, características y funcionalidad son y seguirán siendo propiedad exclusiva de LapManagerPro y sus licenciantes."
+    },
+    "termination": {
+      "title": "Terminación",
+      "description": "Podemos terminar o suspender el acceso a nuestro Servicio inmediatamente, sin previo aviso o responsabilidad, por cualquier motivo, incluido, entre otros, si incumple los Términos."
+    },
+    "liability": {
+      "title": "Limitación de Responsabilidad",
+      "description": "En ningún caso LapManagerPro, ni sus directores, empleados, socios, agentes, proveedores o afiliados, serán responsables de ningún daño indirecto, incidental, especial, consecuente o punitivo."
+    },
+    "changes": {
+      "title": "Cambios",
+      "description": "Nos reservamos el derecho, a nuestra entera discreción, de modificar o reemplazar estos Términos en cualquier momento. Si una revisión es material, intentaremos proporcionar un aviso de al menos 30 días antes de que entren en vigor los nuevos términos."
+    },
+    "contact": {
+      "title": "Contáctenos",
+      "description": "Si tiene alguna pregunta sobre estos Términos, contáctenos."
+    }
   },
   "Pagination": {
     "first": "Primero",

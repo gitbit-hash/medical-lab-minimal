@@ -156,6 +156,7 @@ export async function middleware(request: NextRequest) {
 
   // Check if this is a login page
   const isLoginPage = pathname.includes('/login');
+  const isSignupPage = pathname.includes('/signup');
 
   // Log successful login attempts
   if (isLoginPage && token && request.method === 'GET') {
@@ -183,8 +184,32 @@ export async function middleware(request: NextRequest) {
     }
   }
 
+  // Define public paths
+  const publicPathnames = [
+    '/login',
+    '/signup',
+    '/',
+    '/about',
+    '/contact',
+    '/features',
+    '/privacy',
+    '/terms'
+  ];
+
+  function isPublicPath(path: string) {
+    const pathWithoutLocale = locales.some(loc => path.startsWith(`/${loc}`))
+      ? path.replace(new RegExp(`^/(${locales.join('|')})`), '') || '/'
+      : path;
+
+    return publicPathnames.some(publicPath =>
+      pathWithoutLocale === publicPath || pathWithoutLocale.startsWith(publicPath + '/')
+    );
+  }
+
+  const isPublic = isPublicPath(pathname);
+
   // Authentication check for protected routes
-  if (!isLoginPage) {
+  if (!isPublic) {
     // Redirect to login if not authenticated
     if (!token) {
       const loginUrl = new URL(`/${currentPathLocale || getLocale(request)}/login`, request.url);
@@ -241,14 +266,14 @@ export async function middleware(request: NextRequest) {
 
       return new Response('Unauthorized', { status: 401 });
     }
-  } else if (token) {
-    // If user is already authenticated and trying to access login page
-    // Redirect to home page or callbackUrl
+  } else if (token && (isLoginPage || isSignupPage)) {
+    // If user is already authenticated and trying to access login/signup page
+    // Redirect to dashboard or callbackUrl
     const callbackUrl = searchParams.get('callbackUrl');
     if (callbackUrl && !callbackUrl.includes('/login')) {
       return Response.redirect(new URL(callbackUrl, request.url));
     }
-    return Response.redirect(new URL(`/${currentPathLocale || token.preferred_language || 'en'}`, request.url));
+    return Response.redirect(new URL(`/${currentPathLocale || token.preferred_language || 'en'}/dashboard`, request.url));
   }
 
   // Set a cookie to mark that the user has seen this page in this locale

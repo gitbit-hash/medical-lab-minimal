@@ -1,5 +1,15 @@
 {
+  "Metadata": {
+    "title": "LapManagerPro - Medical Laboratory Management System",
+    "description": "Streamline your laboratory operations with our advanced medical lab management system. Try our free demo today."
+  },
   "Navigation": {
+    "home": "Home",
+    "features": "Features",
+    "pricing": "Pricing",
+    "demo": "Try Demo",
+    "login": "Login",
+    "signup": "Sign Up",
     "dashboard": "Dashboard",
     "patients": "Patients",
     "doctors": "Doctors",
@@ -10,6 +20,174 @@
     "welcome": "Welcome to LabManagerPro",
     "description": "Advanced Medical Laboratory Management System",
     "logout": "Logout"
+  },
+  "Landing": {
+    "hero": {
+      "badge": "Medical Lab Management",
+      "title": "Streamline Your Laboratory Operations",
+      "subtitle": "The complete solution for managing patients, tests, results, and reports. Designed for modern medical laboratories.",
+      "tryDemo": "Try Free Demo",
+      "contactSales": "Contact Sales",
+      "trustedBy": "Trusted by 100+ laboratories worldwide"
+    },
+    "features": {
+      "title": "Powerful Features",
+      "subtitle": "Everything you need to run your laboratory efficiently",
+      "patientManagement": {
+        "title": "Patient Management",
+        "description": "Comprehensive patient records with full history, visit tracking, and easy search capabilities."
+      },
+      "testManagement": {
+        "title": "Test Management",
+        "description": "Manage laboratory tests with customizable templates, parameters, and reference ranges."
+      },
+      "resultInput": {
+        "title": "Result Input",
+        "description": "Intuitive interface for entering test results with automatic validation and flag indicators."
+      },
+      "pdfReports": {
+        "title": "PDF Reports",
+        "description": "Generate professional lab reports with customizable headers, footers, and e-signatures."
+      },
+      "multiLanguage": {
+        "title": "Multi-Language",
+        "description": "Support for English, Arabic, French, and Spanish with RTL layout for Arabic users."
+      },
+      "offlineMode": {
+        "title": "Offline Mode",
+        "description": "Work without internet and sync data when you're back online. Never lose your work."
+      },
+      "billing": {
+        "title": "Billing & Payments",
+        "description": "Track fees, partial payments, and outstanding balances with automated calculations."
+      },
+      "auditLogs": {
+        "title": "Audit Logs",
+        "description": "Complete activity tracking for compliance and accountability. Know who did what and when."
+      }
+    },
+    "howItWorks": {
+      "title": "How It Works",
+      "subtitle": "Get started in minutes, not days",
+      "step1": {
+        "title": "Sign Up",
+        "description": "Create your account with Google in seconds."
+      },
+      "step2": {
+        "title": "Add Patients",
+        "description": "Enter patient information and select the tests to perform."
+      },
+      "step3": {
+        "title": "Enter Results",
+        "description": "Input test results with automatic reference range checking."
+      },
+      "step4": {
+        "title": "Generate Reports",
+        "description": "Create professional PDF reports ready for delivery."
+      }
+    },
+    "pricing": {
+      "title": "Simple, Transparent Pricing",
+      "subtitle": "Choose the plan that works for your laboratory",
+      "enterprisePrice": "Contact us",
+      "starter": {
+        "name": "Starter",
+        "price": "50",
+        "description": "Ideal for small laboratories",
+        "features": [
+          "Unlimited patients",
+          "Unlimited test templates",
+          "Always requires internet connection",
+          "No WhatsApp results sending feature",
+          "No custom branding customization",
+          "No free updates",
+          "Limited support"
+        ],
+        "cta": "Start Now"
+      },
+      "professional": {
+        "name": "Professional",
+        "price": "99",
+        "description": "For growing laboratories",
+        "popular": "Most Popular",
+        "features": [
+          "Unlimited patients",
+          "Unlimited test templates",
+          "Offline mode",
+          "WhatsApp results sending feature",
+          "Custom branding",
+          "Priority support",
+          "Free updates"
+        ],
+        "cta": "Start Now"
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "",
+        "description": "For large organizations",
+        "features": [
+          "Unlimited patients",
+          "Unlimited test templates",
+          "Offline mode",
+          "WhatsApp results sending feature",
+          "Custom branding",
+          "Multi-location support",
+          "Free updates",
+          "API access",
+          "Custom integrations",
+          "Dedicated account manager",
+          "SLA guarantee"
+        ],
+        "cta": "Contact Sales"
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Got questions? We've got answers.",
+      "q1": {
+        "question": "Can I try before I buy?",
+        "answer": "Yes! Our free demo lets you create one patient with up to 5 tests and generate PDF reports. No credit card required."
+      },
+      "q2": {
+        "question": "Is my data secure?",
+        "answer": "Absolutely. We use industry-standard encryption, and your data is stored securely on trusted cloud infrastructure."
+      },
+      "q3": {
+        "question": "Can I work offline?",
+        "answer": "Yes, with our Professional and Enterprise plans, you can work completely offline. Data syncs automatically when you reconnect."
+      },
+      "q4": {
+        "question": "What languages are supported?",
+        "answer": "LapManagerPro supports English, Arabic (with RTL), French, and Spanish."
+      },
+      "q5": {
+        "question": "Can I customize the PDF reports?",
+        "answer": "Yes! You can add your laboratory logo, customize headers and footers, and even add e-signatures to your reports."
+      },
+      "q6": {
+        "question": "How do I get support?",
+        "answer": "We offer email support for all plans, with priority support for Professional users."
+      }
+    },
+    "cta": {
+      "title": "Ready to Transform Your Laboratory?",
+      "subtitle": "Join hundreds of laboratories already using LapManagerPro",
+      "button": "Start Free Demo"
+    }
+  },
+  "Footer": {
+    "description": "Modern medical laboratory management system designed for efficiency and accuracy.",
+    "product": "Product",
+    "features": "Features",
+    "pricing": "Pricing",
+    "demo": "Demo",
+    "company": "Company",
+    "about": "About Us",
+    "contact": "Contact",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "copyright": "© 2026 LapManagerPro. All rights reserved."
   },
   "HomePage": {
     "hero": {
@@ -94,6 +272,362 @@
     "success": "Success",
     "warning": "Warning",
     "info": "Information"
+  },
+  "Auth": {
+    "login": {
+      "title": "Welcome Back",
+      "subtitle": "Sign in to access your laboratory dashboard",
+      "continueWithGoogle": "Continue with Google",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up for free"
+    },
+    "signup": {
+      "title": "Start Your Free Trial",
+      "subtitle": "Create one patient, add up to 5 tests, and generate PDF reports — completely free",
+      "continueWithGoogle": "Continue with Google",
+      "hasAccount": "Already have an account?",
+      "signIn": "Sign in",
+      "terms": "By signing up, you agree to our",
+      "termsLink": "Terms of Service",
+      "and": "and",
+      "privacyLink": "Privacy Policy"
+    }
+  },
+  "Demo": {
+    "dashboard": {
+      "title": "Demo Dashboard",
+      "subtitle": "Welcome to your LapManagerPro demo. Try the features below!",
+      "usage": {
+        "patients": "Patients",
+        "tests": "Tests",
+        "remaining": "remaining"
+      },
+      "actions": {
+        "createPatient": "Create Patient",
+        "viewPatient": "View Patient",
+        "addTests": "Add Tests",
+        "enterResults": "Enter Results",
+        "generateReport": "Generate PDF Report"
+      },
+      "limits": {
+        "patientLimitReached": "Patient Limit Reached",
+        "patientLimitMessage": "Demo limited to 1 patient.",
+        "testLimitReached": "Test Limit Reached",
+        "testLimitMessage": "Demo limited to 5 tests.",
+        "upgradeNow": "Upgrade Now"
+      },
+      "emptyState": {
+        "title": "Get Started",
+        "message": "Create your first patient to begin.",
+        "cta": "Create Your Patient"
+      }
+    },
+    "patient": {
+      "back": "Back",
+      "new": {
+        "title": "Create Patient",
+        "subtitle": "Enter patient information to get started"
+      },
+      "form": {
+        "name": "Full Name",
+        "namePlaceholder": "Enter patient name",
+        "gender": "Gender",
+        "selectGender": "Select gender",
+        "male": "Male",
+        "female": "Female",
+        "other": "Other",
+        "age": "Age",
+        "years": "Years",
+        "months": "Months",
+        "days": "Days",
+        "phone": "Phone",
+        "phonePlaceholder": "+1 234 567 8900",
+        "email": "Email",
+        "emailPlaceholder": "patient@email.com",
+        "address": "Address",
+        "addressPlaceholder": "Enter address",
+        "create": "Create Patient",
+        "creating": "Creating..."
+      },
+      "view": {
+        "createdAt": "Created",
+        "tests": "Tests",
+        "addTests": "Add Tests",
+        "generateReport": "Generate Report",
+        "noTests": "No Tests Yet",
+        "noTestsMessage": "Add tests to start entering results",
+        "addFirstTest": "Add Your First Test",
+        "code": "Code",
+        "enterResult": "Enter result",
+        "save": "Save",
+        "result": "Result"
+      }
+    },
+    "tests": {
+      "back": "Back to Patient",
+      "selected": "selected",
+      "select": {
+        "title": "Select Tests",
+        "subtitle": "You can add up to {remaining} more tests",
+        "searchPlaceholder": "Search tests...",
+        "adding": "Adding tests...",
+        "addTests": "Add {count} Tests"
+      }
+    },
+    "reports": {
+      "back": "Back to Patient",
+      "title": "Generate Report",
+      "subtitle": "Create a PDF report of completed tests",
+      "preview": "Preview",
+      "hidePreview": "Hide Preview",
+      "print": "Print",
+      "download": "Download PDF",
+      "completedTests": "Completed Tests",
+      "pendingTests": "Pending Tests",
+      "noCompletedTests": "No Completed Tests",
+      "noCompletedTestsMessage": "Complete at least one test to generate a report",
+      "enterResults": "Enter Test Results"
+    }
+  },
+  "FeaturesShowcase": {
+    "hero": {
+      "title": "Explore Our Features",
+      "subtitle": "Discover how LabManagerPro can transform your laboratory operations with our powerful features"
+    },
+    "sections": {
+      "adminDashboard": {
+        "title": "Super Admin Dashboard",
+        "description": "Comprehensive analytics and management tools for laboratory supervisors. Monitor revenue, track performance, and access all administrative functions from one central hub.",
+        "images": {
+          "1": "Revenue Analytics with Daily & Monthly Revenue, Total Tests, and Lab-to-Lab statistics",
+          "2": "Daily and Monthly Revenue Breakdown charts for financial insights",
+          "3": "Admin Quick Links for fast access to administrative functions",
+          "4": "Top Performed Tests and Recent Admin Login activity",
+          "5": "System Status monitoring including Database, Sync, and Lab-to-Lab Operations"
+        }
+      },
+      "userManagement": {
+        "title": "User Management",
+        "description": "Complete control over user accounts, roles, and permissions. Manage admin users, set access levels, and configure discount permissions.",
+        "images": {
+          "1": "User list with roles, status, and quick actions",
+          "2": "User permissions and discount settings configuration"
+        }
+      },
+      "pdfSettings": {
+        "title": "PDF Report Settings",
+        "description": "Customize your laboratory reports with professional headers, footers, logos, and electronic signatures. Create branded reports that represent your laboratory.",
+        "images": {
+          "1": "Complete PDF settings dashboard with all configuration options",
+          "2": "Header settings with laboratory name and specializations",
+          "3": "Footer settings with director information and contact details",
+          "4": "Electronic signature configuration",
+          "5": "Logo upload and positioning settings"
+        }
+      },
+      "receiptSettings": {
+        "title": "Receipt Settings",
+        "description": "Configure billing receipts with laboratory information, logo, and Instapay QR code for convenient digital payments.",
+        "images": {
+          "1": "Receipt settings overview with lab information",
+          "2": "Laboratory text information configuration",
+          "3": "QR code setup for Instapay payments",
+          "4": "Receipt preview with QR code"
+        }
+      },
+      "auditLogs": {
+        "title": "Audit Logs",
+        "description": "Complete activity tracking for compliance and accountability. Filter and search through all system activities to know who did what and when.",
+        "images": {
+          "1": "Audit logs table with filtering options",
+          "2": "Detailed activity view with user actions"
+        }
+      },
+      "databaseBackup": {
+        "title": "Database Backup & Restore",
+        "description": "Secure your laboratory data with easy backup and restore functionality. Never lose important patient and test data.",
+        "images": {
+          "1": "Backup management with restore options"
+        }
+      },
+      "patientManagement": {
+        "title": "Patient Management",
+        "description": "Comprehensive patient records with easy registration, search, and management. Track patient information, visits, and test history.",
+        "images": {
+          "1": "Patient list with search and filter options",
+          "2": "New patient registration form",
+          "3": "Patient information entry",
+          "4": "Test selection for patients",
+          "5": "Payment and discount options",
+          "6": "Visit summary and confirmation"
+        }
+      },
+      "patientHistory": {
+        "title": "Patient History",
+        "description": "Access complete patient visit history and test records. Track previous results and monitor patient health over time.",
+        "images": {
+          "1": "Patient visit history overview",
+          "2": "Detailed test history with results"
+        }
+      },
+      "testTemplates": {
+        "title": "Test Templates & Categories",
+        "description": "Manage laboratory tests with customizable templates, parameters, and reference ranges organized by categories.",
+        "images": {
+          "1": "Test template list with categories",
+          "2": "Detailed test template configuration",
+          "3": "Test categories management"
+        }
+      },
+      "resultsEntry": {
+        "title": "Results Entry",
+        "description": "Intuitive interface for entering test results with automatic validation, reference range checking, and flag indicators.",
+        "images": {
+          "1": "Test results entry form",
+          "2": "Results with validation and flags"
+        }
+      },
+      "labToLab": {
+        "title": "Lab-to-Lab Tests",
+        "description": "Manage external laboratory partnerships. Outsource tests to partner labs and track costs for accurate financial reporting.",
+        "images": {
+          "1": "External lab assignment",
+          "2": "External lab management with pricing"
+        }
+      },
+      "pdfReports": {
+        "title": "PDF Reports",
+        "description": "Generate professional laboratory reports with customizable branding, complete results, and reference ranges.",
+        "images": {
+          "1": "Sample CBC test report with histogram"
+        }
+      },
+      "receipts": {
+        "title": "Billing Receipts",
+        "description": "Generate professional billing receipts with itemized tests, payment information, and optional QR code for digital payments.",
+        "images": {
+          "1": "Sample billing receipt"
+        }
+      },
+      "casaAnalysis": {
+        "title": "CASA Analysis",
+        "description": "Computer-Assisted Semen Analysis (CASA) integration for reproductive health testing with detailed parameter tracking.",
+        "images": {
+          "1": "CASA test entry overview",
+          "2": "Motility parameters",
+          "3": "Concentration analysis",
+          "4": "Morphology assessment",
+          "5": "Additional parameters",
+          "6": "Quality indicators",
+          "7": "Summary report",
+          "8": "Complete CASA PDF report"
+        }
+      }
+    },
+    "navigation": {
+      "screenshots": "Screenshots",
+      "viewAll": "View All Features",
+      "backToHome": "Back to Home"
+    }
+  },
+  "About": {
+    "title": "About LapManagerPro",
+    "subtitle": "Modern Laboratory Management",
+    "description": "We provide cutting-edge solutions for medical laboratories to streamline their operations, improve accuracy, and enhance patient care.",
+    "mission": {
+      "title": "Our Mission",
+      "description": "To empower laboratories with technology that simplifies complex processes and enables them to focus on what matters most: accurate diagnostics."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To become the global standard for laboratory management software, known for innovation, reliability, and user-centric design."
+    },
+    "values": {
+      "title": "Our Values",
+      "description": "Innovation, Integrity, Excellence, and Customer Success are at the core of everything we do."
+    }
+  },
+  "Contact": {
+    "title": "Get in Touch",
+    "description": "We'd love to hear from you. Our team is always here to chat.",
+    "phone": "+2 (011) 26649009",
+    "email": "support@lapmanagerpro.com",
+    "form": {
+      "title": "Send us a message",
+      "description": "Fill out the form below and we'll get back to you as soon as possible.",
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Send Message"
+    }
+  },
+  "Privacy": {
+    "title": "Privacy Policy",
+    "intro": "At LapManagerPro, accessible from lapmanagerpro.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by LapManagerPro and how we use it.",
+    "collection": {
+      "title": "Information We Collect",
+      "description": "The personal information that you are asked to provide, and the reasons why you are asked to provide it, will be made clear to you at the point we ask you to provide your personal information."
+    },
+    "usage": {
+      "title": "How We Use Your Information",
+      "description": "We use the information we collect in various ways, including to provide, operate, and maintain our website, improve, personalize, and expand our website, and understand and analyze how you use our website."
+    },
+    "sharing": {
+      "title": "Information Sharing",
+      "description": "We do not share your personal information with third parties except as described in this privacy policy."
+    },
+    "security": {
+      "title": "Data Security",
+      "description": "We take reasonable measures to help protect information about you from loss, theft, misuse and unauthorized access, disclosure, alteration and destruction."
+    },
+    "cookies": {
+      "title": "Cookies and Web Beacons",
+      "description": "Like any other website, LapManagerPro uses 'cookies'. These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited."
+    },
+    "changes": {
+      "title": "Changes to This Privacy Policy",
+      "description": "We may update our Privacy Policy from time to time. Thus, we advise you to review this page periodically for any changes."
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us."
+    }
+  },
+  "Terms": {
+    "title": "Terms of Service",
+    "intro": "These terms and conditions outline the rules and regulations for the use of LapManagerPro's Website, located at lapmanagerpro.com.",
+    "acceptance": {
+      "title": "Acceptance of Terms",
+      "description": "By accessing this website we assume you accept these terms and conditions. Do not continue to use LapManagerPro if you do not agree to take all of the terms and conditions stated on this page."
+    },
+    "usage": {
+      "title": "License",
+      "description": "Unless otherwise stated, LapManagerPro and/or its licensors own the intellectual property rights for all material on LapManagerPro. All intellectual property rights are reserved."
+    },
+    "accounts": {
+      "title": "User Accounts",
+      "description": "When you create an account with us, you must provide us information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of your account on our Service."
+    },
+    "intellectual": {
+      "title": "Intellectual Property",
+      "description": "The Service and its original content, features and functionality are and will remain the exclusive property of LapManagerPro and its licensors."
+    },
+    "termination": {
+      "title": "Termination",
+      "description": "We may terminate or suspend access to our Service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms."
+    },
+    "liability": {
+      "title": "Limitation of Liability",
+      "description": "In no event shall LapManagerPro, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages."
+    },
+    "changes": {
+      "title": "Changes",
+      "description": "We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material we will try to provide at least 30 days notice prior to any new terms taking effect."
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "If you have any questions about these Terms, please contact us."
+    }
   },
   "Pagination": {
     "first": "First",

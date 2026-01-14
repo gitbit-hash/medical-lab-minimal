@@ -12,10 +12,6 @@ import Image from 'next/image';
 import {
   TbLayoutDashboard,
   TbUsers,
-  TbStethoscope,
-  TbClipboardText,
-  TbFolders,
-  TbSettings,
   TbMenu2,
   TbX
 } from 'react-icons/tb';

@@ -2,6 +2,7 @@
 import { ReactNode } from 'react';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
+import { setRequestLocale } from 'next-intl/server';
 
 const locales = ['en', 'ar', 'fr', 'es'] as const;
 
@@ -19,6 +20,7 @@ export default async function LocaleLayout({
   params
 }: LocaleLayoutProps) {
   const { locale } = await params;
+  setRequestLocale(locale);
 
   // Validate locale
   if (!locales.includes(locale as any)) {

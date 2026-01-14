@@ -4,10 +4,6 @@ import { localPrisma } from '../../../lib/db/local-client';
 import { ApiResponse } from '../../../types';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../../auth/auth-options';
-import { Prisma } from '@prisma/client';
-import { getTranslatedEntityType } from '@/app/lib/audit/get-translated-entity-type';
-
-const getCurrencySymbol = () => '$';
 
 export async function GET(
   request: Request,
@@ -110,31 +106,6 @@ export async function PUT(
         },
       });
 
-      // Create audit log for patient update
-      await tx.auditLog.create({
-        data: {
-          user_id: session.user.id,
-          action: 'UPDATE_PATIENT',
-          entity_type: getTranslatedEntityType('User'),
-          entity_id: id,
-          description: 'audit.update_patient',
-          translation_params: {
-            patient_name: patient.name
-          },
-          old_values: currentPatient as Prisma.InputJsonValue,
-          new_values: {
-            name: patient.name,
-            gender: patient.gender,
-            age_value: patient.age_value,
-            age_unit: patient.age_unit,
-            phone: patient.phone,
-            email: patient.email,
-            address: patient.address
-          },
-          created_at: new Date(),
-        },
-      });
-
       // 2️⃣ Update doctor relationships
       if (doctorIds) {
 
@@ -154,23 +125,6 @@ export async function PUT(
             })),
           });
         }
-        await tx.auditLog.create({
-          data: {
-            user_id: session.user.id,
-            action: 'UPDATE_DOCTORS',
-            entity_type: getTranslatedEntityType('Patient'),
-            entity_id: id,
-            description: 'audit.update_doctors',
-            translation_params: {
-              patient_name: patient.name,
-              old_count: currentDoctors.length,
-              new_count: doctorIds.length
-            },
-            old_values: { doctor_ids: currentDoctors.map(d => d.doctor_id) },
-            new_values: { doctor_ids: doctorIds },
-            created_at: new Date(),
-          },
-        });
       }
 
       const newTests = tests || selectedTests || [];
@@ -255,29 +209,7 @@ export async function PUT(
                 is_deleted: false,
               },
             });
-
-            await tx.auditLog.create({
-              data: {
-                user_id: session.user.id,
-                action: 'ADD_TEST',
-                entity_type: getTranslatedEntityType('Patient'),
-                entity_id: id,
-                description: 'audit.add_test',
-                translation_params: {
-                  patient_name: patient.name,
-                  test_name: template.name
-                },
-                new_values: {
-                  test_id: newTest.id,
-                  test_type: template.name,
-                  test_code: template.code
-                },
-                created_at: new Date(),
-              },
-            });
           }
-          // If existing test is not archived (is_printed: false), do nothing
-          // This prevents duplicate non-archived tests
         }
       }
 
@@ -375,26 +307,6 @@ export async function DELETE(
         data: {
           is_deleted: true,
           sync_status: 'Pending',
-        },
-      });
-
-      await tx.auditLog.create({
-        data: {
-          user_id: session.user.id,
-          action: 'DELETE_PATIENT',
-          entity_type: getTranslatedEntityType('Patient'),
-          entity_id: id,
-          description: 'audit.delete_patient',
-          translation_params: {
-            patient_name: existingPatient.name,
-            tests_deleted: existingPatient.tests.length
-          },
-          old_values: {
-            name: existingPatient.name,
-            gender: existingPatient.gender,
-            tests_count: existingPatient.tests.length
-          },
-          created_at: new Date(),
         },
       });
 

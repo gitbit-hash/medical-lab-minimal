@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/api/auth/auth-options';
 import { localPrisma } from '@/app/lib/db/local-client'; // Use localPrisma consistently
-import { getTranslatedEntityType } from '@/app/lib/audit/get-translated-entity-type';
 
 export async function POST(request: Request) {
   try {
@@ -118,51 +117,12 @@ export async function POST(request: Request) {
       }
     });
 
-    // Create discount audit record
-    await localPrisma.discountAudit.create({
-      data: {
-        patient_id: patientId,
-        user_id: session.user.id,
-        original_total: testTotal,
-        discount_amount: discountAmount,
-        discount_percentage: discountPercentage,
-        discount_type: discountType,
-        discount_reason: discountReason,
-      }
-    });
-
     const patient = await localPrisma.patient.findUnique({
       where: { id: patientId },
       select: { name: true }
     });
 
     const patientName = patient?.name;
-
-
-    // Create audit log
-    await localPrisma.auditLog.create({
-      data: {
-        user_id: session.user.id,
-        action: 'APPLY_DISCOUNT',
-        entity_type: getTranslatedEntityType('Patient'),
-        entity_id: patientId,
-        description: 'audit.apply_discount', // Translation key
-        translation_params: {
-          discount_type: discountType === 'Percentage' ? 'percentage' : 'fixed',
-          discount_value: discountType === 'Percentage' ? `${discountPercentage}%` : `$${discountAmount}`,
-          patient_name: patientName // You'll need to get patient name
-        },
-        new_values: {
-          discount_amount: discountAmount,
-          discount_percentage: discountPercentage,
-          discount_type: discountType,
-          discount_reason: discountReason,
-          total_amount: actualFinalTotal,
-          amount_due: actualFinalTotal - (currentPatient.amount_paid || 0)
-        },
-        created_at: new Date(),
-      },
-    });
 
     return NextResponse.json({
       success: true,
@@ -234,30 +194,6 @@ export async function DELETE(request: Request) {
     });
 
     const patientName = patient?.name;
-
-
-    // Create audit log for discount removal
-    await localPrisma.auditLog.create({
-      data: {
-        user_id: session.user.id,
-        action: 'REMOVE_DISCOUNT',
-        entity_type: getTranslatedEntityType('Patient'),
-        entity_id: patientId,
-        description: 'audit.remove_discount', // Translation key
-        translation_params: {
-          patient_name: patientName // You'll need to get patient name
-        },
-        new_values: {
-          discount_amount: null,
-          discount_percentage: null,
-          discount_type: null,
-          discount_reason: null,
-          total_amount: testTotal,
-          amount_due: testTotal - (currentPatient.amount_paid || 0)
-        },
-        created_at: new Date(),
-      },
-    });
 
     return NextResponse.json({
       success: true,

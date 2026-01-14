@@ -11,7 +11,10 @@ function isValidLocale(locale: string): locale is Locale {
   return locales.includes(locale as Locale);
 }
 
-export default getRequestConfig(async ({ locale }) => {
+export default getRequestConfig(async ({ requestLocale }) => {
+  // This typically corresponds to the `[locale]` segment
+  let locale = await requestLocale;
+
   // Validate the incoming locale
   let safeLocale: Locale = defaultLocale;
 

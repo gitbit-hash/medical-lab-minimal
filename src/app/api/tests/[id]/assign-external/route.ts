@@ -3,7 +3,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/api/auth/auth-options';
 import { localPrisma } from '@/app/lib/db/local-client';
-import { getTranslatedEntityType } from '@/app/lib/audit/get-translated-entity-type';
 export async function PUT(
     request: NextRequest,
     context: { params: Promise<{ id: string }> }
@@ -46,26 +45,6 @@ export async function PUT(
                     },
                 },
                 external_lab: true,
-            }
-        });
-
-        // Create audit log with translation
-        await localPrisma.auditLog.create({
-            data: {
-                user_id: session.user.id,
-                action: 'ASSIGN_TO_EXTERNAL_LAB',
-                entity_type: getTranslatedEntityType('Test'),
-                entity_id: testId,
-                description: 'audit.assign_to_external_lab_with_cost',
-                translation_params: {
-                    lab_name: lab.name,
-                    cost: data.outsourcing_cost
-                },
-                old_values: {},
-                new_values: {
-                    external_lab_id: data.external_lab_id,
-                    outsourcing_cost: data.outsourcing_cost
-                }
             }
         });
 
@@ -117,28 +96,6 @@ export async function DELETE(
                     },
                 },
                 external_lab: true,
-            }
-        });
-
-        // Create audit log with translation
-        await localPrisma.auditLog.create({
-            data: {
-                user_id: session.user.id,
-                action: 'REMOVE_EXTERNAL_LAB_ASSIGNMENT',
-                entity_type: getTranslatedEntityType('Test'),
-                entity_id: testId,
-                description: 'audit.remove_external_lab_assignment_with_lab',
-                translation_params: {
-                    lab_name: currentTest?.external_lab?.name || 'Unknown Lab'
-                },
-                old_values: {
-                    external_lab_id: currentTest?.external_lab_id,
-                    outsourcing_cost: currentTest?.outsourcing_cost
-                },
-                new_values: {
-                    external_lab_id: null,
-                    outsourcing_cost: 0
-                }
             }
         });
 

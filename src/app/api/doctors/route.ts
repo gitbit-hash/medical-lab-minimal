@@ -1,6 +1,5 @@
 // app/api/doctors/route.ts
 import { NextResponse } from 'next/server';
-import { offlineQueue } from '../../lib/sync/offline-queue';
 import { localPrisma } from '@/app/lib/db/local-client';
 
 export async function GET(request: Request) {

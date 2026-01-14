@@ -1,10 +1,10 @@
 
-import { Locale } from '@/i18n/config';
-import { useLocale, useTranslations } from 'next-intl';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 
-export default function PrivacyPage() {
-  const t = useTranslations('Privacy');
-  const locale = useLocale() as Locale;
+export default async function PrivacyPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations('Privacy');
   const direction = locale === 'ar' ? 'rtl' : 'ltr';
 
   return (

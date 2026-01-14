@@ -1,10 +1,9 @@
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 
-import { Locale } from '@/i18n/config';
-import { useLocale, useTranslations } from 'next-intl';
-
-export default function AboutPage() {
-  const t = useTranslations('About');
-  const locale = useLocale() as Locale;
+export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations('About');
   const direction = locale === 'ar' ? 'rtl' : 'ltr';
 
   return (

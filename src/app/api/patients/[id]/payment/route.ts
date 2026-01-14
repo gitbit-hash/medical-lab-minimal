@@ -3,7 +3,6 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/api/auth/auth-options';
 import { localPrisma } from '@/app/lib/db/local-client';
 import { syncPatientFinancials } from '@/app/lib/utils/financial-sync';
-import { getTranslatedEntityType } from '@/app/lib/audit/get-translated-entity-type';
 
 export async function POST(
   request: Request,
@@ -128,61 +127,6 @@ export async function POST(
 
     // 4. Sync financials to ensure consistency
     await syncPatientFinancials(id);
-
-    // 5. Create audit logs ONLY if this is NOT a visit payment
-    // (Visit creation already logs VISIT_PAYMENT)
-    if (!isVisitPayment) {
-      if (isAdditionalPayment) {
-        // Log additional payment
-        await localPrisma.auditLog.create({
-          data: {
-            user_id: session.user.id,
-            action: 'ADDITIONAL_PAYMENT_RECEIVED',
-            entity_type: getTranslatedEntityType('Patient'),
-            entity_id: id,
-            description: 'audit.additional_payment_received',
-            translation_params: {
-              patient_name: currentPatient.name,
-              amount_paid: transactionAmount.toFixed(2),
-              total_paid: amount_paid.toFixed(2),
-              remaining_due: amount_due.toFixed(2),
-            },
-            new_values: {
-              previous_amount_paid: previousAmountPaid,
-              new_payment: transactionAmount,
-              total_amount_paid: amount_paid,
-              amount_due,
-              payment_status,
-              receipt_number,
-            },
-            created_at: new Date(),
-          },
-        });
-      } else {
-        // Log payment (not additional)
-        await localPrisma.auditLog.create({
-          data: {
-            user_id: session.user.id,
-            action: 'PAYMENT_RECEIVED',
-            entity_type: getTranslatedEntityType('Patient'),
-            entity_id: id,
-            description: 'audit.payment_received',
-            translation_params: {
-              patient_name: currentPatient.name,
-              amount_paid: transactionAmount.toFixed(2),
-              remaining_due: amount_due.toFixed(2),
-            },
-            new_values: {
-              amount_paid,
-              amount_due,
-              payment_status,
-              receipt_number,
-            },
-            created_at: new Date(),
-          },
-        });
-      }
-    }
 
     // 6. If partial payment, record it
     if (payment_status === 'PartiallyPaid') {

@@ -1,11 +1,14 @@
 
-import { useTranslations } from 'next-intl';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 
-export default function ContactPage() {
-  const t = useTranslations('Contact');
+export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations('Contact');
+  const direction = locale === 'ar' ? 'rtl' : 'ltr';
 
   return (
-    <div className="bg-white dark:bg-slate-900 min-h-screen">
+    <div className="bg-white dark:bg-slate-900 min-h-screen" dir={direction}>
       <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-lg mx-auto md:max-w-none md:grid md:grid-cols-2 md:gap-8">
           <div>

@@ -4,7 +4,6 @@ import { ApiResponse } from '../../types';
 import { localPrisma } from '../../lib/db/local-client';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../auth/auth-options';
-import { getTranslatedEntityType } from '@/app/lib/audit/get-translated-entity-type';
 
 export async function GET(request: Request) {
   try {
@@ -118,13 +117,6 @@ export async function GET(request: Request) {
   }
 }
 
-// app/api/patients/route.ts - POST handler
-// Add this helper function at the top
-const getCurrencySymbol = (locale: string = 'en') => {
-  // You might want to make this configurable
-  return '$';
-};
-
 export async function POST(request: Request): Promise<NextResponse<ApiResponse<any>>> {
   try {
     // Get the session to know who's creating the patient
@@ -193,35 +185,6 @@ export async function POST(request: Request): Promise<NextResponse<ApiResponse<a
         },
       });
 
-      // 2. Create audit log for patient creation
-      await prisma.auditLog.create({
-        data: {
-          user_id: session.user.id,
-          action: 'CREATE_PATIENT',
-          entity_type: getTranslatedEntityType('Patient'),
-          entity_id: patient.id,
-          description: 'audit.create_patient',
-          translation_params: {
-            patient_name: patient.name,
-            amount_paid: amount_paid.toFixed(2),
-            amount_due: amount_due.toFixed(2),
-            currency: getCurrencySymbol(),
-            discount_amount: discount_amount ? discount_amount.toFixed(2) : '0'
-          },
-          new_values: {
-            name: patient.name,
-            gender: patient.gender,
-            age_value: patient.age_value,
-            age_unit: patient.age_unit,
-            amount_paid: amount_paid,
-            amount_due: amount_due,
-            payment_status: payment_status,
-            discount_amount: discount_amount
-          },
-          created_at: new Date(),
-        },
-      });
-
       // 3. Create initial visit for the patient
       const initialVisit = await prisma.patientVisit.create({
         data: {
@@ -242,33 +205,6 @@ export async function POST(request: Request): Promise<NextResponse<ApiResponse<a
         }
       });
 
-      // 4. Create audit log for visit creation
-      await prisma.auditLog.create({
-        data: {
-          user_id: session.user.id,
-          action: 'CREATE_VISIT',
-          entity_type: getTranslatedEntityType('PatientVisit'),
-          entity_id: initialVisit.id,
-          description: 'audit.create_visit',
-          translation_params: {
-            patient_name: patient.name,
-            visit_number: initialVisit.visit_number,
-            amount_paid: amount_paid.toFixed(2),
-            amount_due: amount_due.toFixed(2),
-            currency: getCurrencySymbol(),
-            discount_amount: discount_amount ? discount_amount.toFixed(2) : '0'
-          },
-          new_values: {
-            visit_number: initialVisit.visit_number,
-            total_amount: 0,
-            amount_paid: amount_paid,
-            amount_due: amount_due,
-            payment_status: payment_status
-          },
-          created_at: new Date(),
-        },
-      });
-
       // 5. Handle doctor relationships
       if (doctorIds && doctorIds.length > 0) {
         for (const doctorId of doctorIds) {
@@ -280,25 +216,6 @@ export async function POST(request: Request): Promise<NextResponse<ApiResponse<a
             },
           });
         }
-
-        // Create audit log for doctor assignment
-        await prisma.auditLog.create({
-          data: {
-            user_id: session.user.id,
-            action: 'ASSIGN_DOCTORS',
-            entity_type: getTranslatedEntityType('Patient'),
-            entity_id: patient.id,
-            description: 'audit.assign_doctors',
-            translation_params: {
-              patient_name: patient.name,
-              doctors_count: doctorIds.length.toString()
-            },
-            new_values: {
-              doctor_ids: doctorIds
-            },
-            created_at: new Date(),
-          },
-        });
       }
 
       // 6. Create tests if provided and link to the visit
@@ -332,51 +249,7 @@ export async function POST(request: Request): Promise<NextResponse<ApiResponse<a
 
           createdTests.push(test);
           visitTotalFees += fees;
-
-          // Create audit log for test creation
-          await prisma.auditLog.create({
-            data: {
-              user_id: session.user.id,
-              action: 'CREATE_TEST',
-              entity_type: getTranslatedEntityType('Test'),
-              entity_id: test.id,
-              description: 'audit.create_test',
-              translation_params: {
-                patient_name: patient.name,
-                test_name: testData.test_type,
-                test_code: testData.test_code || 'N/A'
-              },
-              new_values: {
-                test_type: testData.test_type,
-                test_code: testData.test_code,
-                status: 'Pending'
-              },
-              created_at: new Date(),
-            },
-          });
         }
-
-        // Create audit log for batch test creation
-        await prisma.auditLog.create({
-          data: {
-            user_id: session.user.id,
-            action: 'CREATE_TESTS_BATCH',
-            entity_type: getTranslatedEntityType('Patient'),
-            entity_id: patient.id,
-            description: 'audit.create_tests_batch',
-            translation_params: {
-              patient_name: patient.name,
-              tests_count: tests.length.toString(),
-              total_fees: visitTotalFees.toFixed(2),
-              currency: getCurrencySymbol()
-            },
-            new_values: {
-              tests_count: tests.length,
-              total_fees: visitTotalFees
-            },
-            created_at: new Date(),
-          },
-        });
       }
 
       // 7. Update visit with calculated financials
@@ -425,61 +298,6 @@ export async function POST(request: Request): Promise<NextResponse<ApiResponse<a
           }
         }
       });
-
-      // 9. Create discount audit log if discount was applied
-      if (discount_amount > 0) {
-        await prisma.auditLog.create({
-          data: {
-            user_id: session.user.id,
-            action: 'APPLY_DISCOUNT',
-            entity_type: getTranslatedEntityType('Patient'),
-            entity_id: patient.id,
-            description: 'audit.apply_discount',
-            translation_params: {
-              patient_name: patient.name,
-              discount_type: discount_type === 'Percentage' ? 'percentage' : 'fixed',
-              discount_value: discount_type === 'Percentage' ?
-                `${discount_percentage}%` :
-                `${getCurrencySymbol()}${discount_amount.toFixed(2)}`
-            },
-            new_values: {
-              discount_amount: discount_amount,
-              discount_percentage: discount_percentage,
-              discount_type: discount_type,
-              discount_reason: discount_reason,
-              total_amount: finalVisitTotal,
-              amount_due: finalVisitTotal - amount_paid
-            },
-            created_at: new Date(),
-          },
-        });
-      }
-
-      // 10. Create payment audit log if payment was made
-      if (amount_paid > 0) {
-        await prisma.auditLog.create({
-          data: {
-            user_id: session.user.id,
-            action: 'PAYMENT_RECEIVED',
-            entity_type: getTranslatedEntityType('Patient'),
-            entity_id: patient.id,
-            description: 'audit.payment_received',
-            translation_params: {
-              patient_name: patient.name,
-              amount_paid: amount_paid.toFixed(2),
-              amount_due: (finalVisitTotal - amount_paid).toFixed(2),
-            },
-            new_values: {
-              amount_paid: amount_paid,
-              amount_due: finalVisitTotal - amount_paid,
-              payment_status: finalVisitTotal - amount_paid === 0 ? 'Paid' :
-                amount_paid > 0 ? 'PartiallyPaid' : 'Unpaid',
-              receipt_number: receipt_number
-            },
-            created_at: new Date(),
-          },
-        });
-      }
 
       return {
         patient: updatedPatient,

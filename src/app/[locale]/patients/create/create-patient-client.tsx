@@ -399,7 +399,7 @@ export function CreatePatientClient({ locale, initialDoctors, session }: CreateP
   };
 
   return (
-    <div className="min-h-full" dir={direction}>
+    <div className="min-h-full bg-blue-200" dir={direction}>
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-6">

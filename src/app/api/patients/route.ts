@@ -7,6 +7,15 @@ import { authOptions } from '../auth/auth-options';
 
 export async function GET(request: Request) {
   try {
+    const session = await getServerSession(authOptions);
+
+    if (!session) {
+      return NextResponse.json(
+        { success: false, error: 'Unauthorized' },
+        { status: 401 }
+      );
+    }
+
     const { searchParams } = new URL(request.url);
     const page = parseInt(searchParams.get('page') || '1');
     const limit = parseInt(searchParams.get('limit') || '25');
@@ -18,7 +27,10 @@ export async function GET(request: Request) {
     const skip = (page - 1) * limit;
 
     // Build where clause
-    let where: any = { is_deleted: false };
+    let where: any = {
+      is_deleted: false,
+      user_id: session.user.id
+    };
 
     if (search) {
       where.OR = [
@@ -178,6 +190,7 @@ export async function POST(request: Request): Promise<NextResponse<ApiResponse<a
           receipt_number: receipt_number,
           current_visit_number: 1,
           sync_status: 'Pending',
+          user_id: session.user.id,
           discount_amount: discount_amount,
           discount_percentage: discount_percentage,
           discount_type: discount_type,

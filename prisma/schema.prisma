@@ -60,8 +60,13 @@ model Patient {
   is_deleted     Boolean    @default(false)
   version        Int        @default(1)
 
+  // User Isolation
+  user_id        String?
+  user           User?      @relation(fields: [user_id], references: [id])
+
   @@index([is_deleted])
   @@index([sync_status])
+  @@index([user_id])
   @@map("patients")
 }
 
@@ -351,6 +356,7 @@ model User {
   can_access_medical_history Boolean @default(false)
 
   // ✅ Relations
+  patients        Patient[]
   created_tests   Test[]          @relation("UserCreatedTests")
   updated_tests   Test[]          @relation("UserUpdatedTests")
   audit_logs      AuditLog[]

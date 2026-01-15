@@ -585,16 +585,6 @@
       "description": "Si tiene alguna pregunta sobre estos Términos, contáctenos."
     }
   },
-  "Pagination": {
-    "first": "Primero",
-    "previous": "Anterior",
-    "next": "Siguiente",
-    "last": "Último",
-    "show": "Mostrar",
-    "perPage": "por página",
-    "results": "resultados",
-    "pageOf": "Mostrando {start} a {end} de {total}"
-  },
   "PatientsPage": {
     "ageUnits": {
       "years": "años",
@@ -614,25 +604,6 @@
       "edit": "Editar",
       "delete": "Eliminar",
       "deleting": "Eliminando..."
-    },
-    "filters": {
-      "searchLabel": "Buscar Pacientes",
-      "searchPlaceholder": "Buscar por nombre, teléfono, email, dirección o médico...",
-      "doctorLabel": "Médico",
-      "allDoctors": "Todos los Médicos",
-      "doctorPrefix": "Dr.",
-      "dateLabel": "Fecha de Registro",
-      "allTime": "Todo el Tiempo",
-      "today": "Hoy",
-      "last7Days": "Últimos 7 Días",
-      "last30Days": "Últimos 30 Días",
-      "sortLabel": "Ordenar Por",
-      "sortNewest": "Más Recientes Primero",
-      "sortOldest": "Más Antiguos Primero",
-      "sortNameAsc": "Nombre A-Z",
-      "sortNameDesc": "Nombre Z-A",
-      "clearFilters": "Limpiar filtros",
-      "resultsCount": "Mostrando {start} a {end} de {total} pacientes"
     },
     "messages": {
       "noMatchingPatients": "No hay pacientes que coincidan con sus criterios de búsqueda",
@@ -660,10 +631,7 @@
     }
   },
   "CreatePatientPage": {
-    "amountPaidNowLabel": "Monto pagado ahora",
-    "remainingAmountLabel": "Monto restante",
     "savePatientButton": "Guardar Paciente",
-    "saveGenerateReceiptButton": "Guardar y Generar Recibo",
     "hero": {
       "title": "Agregar Nuevo Paciente",
       "subtitle": "Crear un nuevo registro de paciente con pruebas de laboratorio"
@@ -823,29 +791,6 @@
       "updateAssignment": "Actualizar asignación",
       "ok": "Aceptar",
       "currency": "€"
-    },
-    "payment": {
-      "required": "Pago Requerido",
-      "requiredMessage": "El paciente tiene €{amount} restante por pagar. El pago completo es requerido para habilitar la generación de PDF y el archivado de pruebas.",
-      "collectFullPayment": "Cobrar Pago Completo",
-      "amountToCollect": "Monto a Cobrar",
-      "fullPaymentRequired": "Pago completo requerido para habilitar la generación de PDF y el archivado de pruebas",
-      "method": "Método de Pago",
-      "processing": "Procesando...",
-      "collectAmount": "Cobrar Pago Completo (€{amount})",
-      "patient": "Paciente",
-      "receiptNumber": "N° de Recibo",
-      "alreadyPaid": "Ya Pagado",
-      "alreadyPaidValue": "€{amount}",
-      "amountDue": "Monto Debido",
-      "amountDueValue": "€{amount}",
-      "cancel": "Cancelar"
-    },
-    "paymentMethods": {
-      "cash": "Efectivo",
-      "card": "Tarjeta de Crédito/Débito",
-      "bankTransfer": "Transferencia Bancaria",
-      "insurance": "Seguro"
     },
     "table": {
       "selectAllTitle": "Seleccionar todas las pruebas con resultados",

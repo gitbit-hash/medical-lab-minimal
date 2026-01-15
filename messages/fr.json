@@ -585,16 +585,6 @@
       "description": "Si vous avez des questions sur ces Conditions, veuillez nous contacter."
     }
   },
-  "Pagination": {
-    "first": "Premier",
-    "previous": "Précédent",
-    "next": "Suivant",
-    "last": "Dernier",
-    "show": "Afficher",
-    "perPage": "par page",
-    "results": "résultats",
-    "pageOf": "Affichage de {start} à {end} sur {total}"
-  },
   "PatientsPage": {
     "ageUnits": {
       "years": "ans",
@@ -614,25 +604,6 @@
       "edit": "Modifier",
       "delete": "Supprimer",
       "deleting": "Suppression..."
-    },
-    "filters": {
-      "searchLabel": "Rechercher des Patients",
-      "searchPlaceholder": "Rechercher par nom, téléphone, email, adresse ou médecin...",
-      "doctorLabel": "Médecin",
-      "allDoctors": "Tous les Médecins",
-      "doctorPrefix": "Dr.",
-      "dateLabel": "Date d'Ajout",
-      "allTime": "Tout le Temps",
-      "today": "Aujourd'hui",
-      "last7Days": "7 Derniers Jours",
-      "last30Days": "30 Derniers Jours",
-      "sortLabel": "Trier Par",
-      "sortNewest": "Plus Récent d'Abord",
-      "sortOldest": "Plus Ancien d'Abord",
-      "sortNameAsc": "Nom A-Z",
-      "sortNameDesc": "Nom Z-A",
-      "clearFilters": "Effacer les filtres",
-      "resultsCount": "Affichage de {start} à {end} sur {total} patients"
     },
     "messages": {
       "noMatchingPatients": "Aucun patient ne correspond à vos critères de recherche",
@@ -660,10 +631,7 @@
     }
   },
   "CreatePatientPage": {
-    "amountPaidNowLabel": "Montant Payé Maintenant",
-    "remainingAmountLabel": "Montant Restant",
     "savePatientButton": "Enregistrer le Patient",
-    "saveGenerateReceiptButton": "Enregistrer et Générer Reçu",
     "hero": {
       "title": "Ajouter un Nouveau Patient",
       "subtitle": "Créer un nouveau dossier patient avec des tests de laboratoire"
@@ -776,9 +744,6 @@
   },
   "PatientTestsPage": {
     "loading": "Chargement des tests du patient...",
-    "errors": {
-      "unknown": "Erreur inconnue"
-    },
     "hero": {
       "title": "Tests pour {name}",
       "subtitle": "Gérer et générer des rapports pour les tests des patients"
@@ -872,29 +837,6 @@
       "summary": "{selected} sélectionné(s) sur {withResults} tests avec résultats ({total} total)",
       "selectedInfo": "{count} test{count, plural, =1 {} other {s}} sélectionné(s) pour le rapport",
       "generateReportHint": "Cliquez sur \"Générer le Rapport\" pour créer un rapport combiné pour tous les tests sélectionnés"
-    },
-    "payment": {
-      "required": "Paiement Requis",
-      "requiredMessage": "Le patient a {amount}$ restant à payer. Le paiement intégral est requis pour activer la génération de PDF et l'archivage des tests.",
-      "collectFullPayment": "Encaisser le Paiement Complet",
-      "amountToCollect": "Montant à Encaisser",
-      "fullPaymentRequired": "Paiement intégral requis pour activer la génération de PDF et l'archivage des tests",
-      "method": "Méthode de Paiement",
-      "processing": "Traitement...",
-      "collectAmount": "Encaisser le Paiement Complet ({amount})",
-      "patient": "Patient",
-      "receiptNumber": "N° Reçu",
-      "alreadyPaid": "Déjà Payé",
-      "alreadyPaidValue": "${amount}",
-      "amountDue": "Montant Dû",
-      "amountDueValue": "${amount}",
-      "cancel": "Annuler"
-    },
-    "paymentMethods": {
-      "cash": "Espèces",
-      "card": "Carte de Crédit/Débit",
-      "bankTransfer": "Virement Bancaire",
-      "insurance": "Assurance"
     }
   },
   "LoginPage": {

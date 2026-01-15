@@ -37,8 +37,7 @@ export default async function PatientsPage({ params, searchParams }: PatientsPag
   const doctorId = resolvedSearchParams.doctorId as string || 'all';
   const dateFilter = resolvedSearchParams.dateFilter as string || 'all';
   const sortBy = resolvedSearchParams.sort as string || 'newest';
-  const limit = Number(resolvedSearchParams.limit) || ITEMS_PER_PAGE; // Add this line
-
+  const limit = Number(resolvedSearchParams.limit) || ITEMS_PER_PAGE;
 
   const whereClause: any = {
     is_deleted: false,

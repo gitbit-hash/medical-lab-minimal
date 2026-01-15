@@ -529,7 +529,7 @@ export const MultiTestReportPDF = ({ patient, tests, settings = {}, cbcCharts }:
                 <Text style={[styles.th, { flex: 0.6 }]}>UNIT</Text>
               </View>
 
-              {Object.entries(sections).map(([sectionKey, sectionParams]) => {
+              {(Object.entries(sections) as [string, any[]][]).map(([sectionKey, sectionParams]) => {
                 if (sectionParams.length === 0) return null;
 
                 return (

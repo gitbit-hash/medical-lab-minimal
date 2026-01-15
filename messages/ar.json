@@ -585,16 +585,6 @@
       "description": "إذا كان لديك أي أسئلة حول هذه الشروط، يرجى الاتصال بنا."
     }
   },
-  "Pagination": {
-    "first": "الأول",
-    "previous": "السابق",
-    "next": "التالي",
-    "last": "الأخير",
-    "show": "عرض",
-    "perPage": "لكل صفحة",
-    "results": "نتيجة",
-    "pageOf": "عرض {start} إلى {end} من {total}"
-  },
   "PatientsPage": {
     "ageUnits": {
       "years": "سنوات",
@@ -614,25 +604,6 @@
       "edit": "تعديل",
       "delete": "حذف",
       "deleting": "جاري الحذف..."
-    },
-    "filters": {
-      "searchLabel": "بحث في المرضى",
-      "searchPlaceholder": "البحث بالاسم، الهاتف، البريد الإلكتروني، العنوان، أو الطبيب...",
-      "doctorLabel": "الطبيب",
-      "allDoctors": "جميع الأطباء",
-      "doctorPrefix": "د.",
-      "dateLabel": "تاريخ الإضافة",
-      "allTime": "كل الوقت",
-      "today": "اليوم",
-      "last7Days": "آخر 7 أيام",
-      "last30Days": "آخر 30 يومًا",
-      "sortLabel": "ترتيب حسب",
-      "sortNewest": "الأحدث أولاً",
-      "sortOldest": "الأقدم أولاً",
-      "sortNameAsc": "الاسم أ-ي",
-      "sortNameDesc": "الاسم ي-أ",
-      "clearFilters": "مسح الفلاتر",
-      "resultsCount": "عرض {start} إلى {end} من {total} مريض"
     },
     "messages": {
       "noMatchingPatients": "لا توجد مرضى تطابق معايير البحث الخاصة بك",
@@ -660,10 +631,7 @@
     }
   },
   "CreatePatientPage": {
-    "amountPaidNowLabel": "المبلغ المدفوع الآن",
-    "remainingAmountLabel": "المبلغ المتبقي",
     "savePatientButton": "حفظ المريض",
-    "saveGenerateReceiptButton": "حفظ وإنشاء إيصال",
     "hero": {
       "title": "إضافة مريض جديد",
       "subtitle": "إنشاء سجل مريض جديد مع فحوصات المختبر"
@@ -776,9 +744,6 @@
   },
   "PatientTestsPage": {
     "loading": "جاري تحميل فحوصات المريض...",
-    "errors": {
-      "unknown": "خطأ غير معروف"
-    },
     "hero": {
       "title": "الفحوصات لـ {name}",
       "subtitle": "إدارة وإنشاء تقارير لفحوصات المريض"
@@ -875,29 +840,6 @@
       "summary": "{selected} محدد من {withResults} فحص بنتائج ({total} إجمالي)",
       "selectedInfo": "{count} فحص{count, plural, =1 {} other {}} محدد للتقرير",
       "generateReportHint": "انقر على \"إنشاء تقرير\" لإنشاء تقرير مجمع لجميع الفحوصات المحددة"
-    },
-    "payment": {
-      "required": "دفع مطلوب",
-      "requiredMessage": "المريض لديه {amount}{currency} متبقي للدفع. الدفع الكامل مطلوب لتمكين إنشاء PDF وأرشفة الفحوصات.",
-      "collectFullPayment": "تحصيل كامل المبلغ",
-      "amountToCollect": "المبلغ المطلوب تحصيله",
-      "fullPaymentRequired": "الدفع الكامل مطلوب لتمكين إنشاء PDF وأرشفة الفحوصات",
-      "method": "طريقة الدفع",
-      "processing": "جارٍ المعالجة...",
-      "collectAmount": "تحصيل كامل المبلغ ({amount})",
-      "patient": "المريض",
-      "receiptNumber": "رقم الإيصال",
-      "alreadyPaid": "مدفوع بالفعل",
-      "alreadyPaidValue": "{amount} ج.م.",
-      "amountDue": "المبلغ المستحق",
-      "amountDueValue": "{amount} ج.م.",
-      "cancel": "إلغاء"
-    },
-    "paymentMethods": {
-      "cash": "نقداً",
-      "card": "بطاقة ائتمان/خصم",
-      "bankTransfer": "تحويل بنكي",
-      "insurance": "تأمين"
     }
   },
   "LoginPage": {

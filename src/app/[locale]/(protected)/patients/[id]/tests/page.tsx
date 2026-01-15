@@ -92,8 +92,6 @@ export default async function PatientTestsPage({ params }: PatientTestsPageProps
       locale={locale}
       initialPatient={patientData as PatientWithRelations}
       initialTests={testsData as TestWithRelations[]}
-      initialArchivedTestsCount={archivedTestsCount}
-      session={session}
     />
   );
 }

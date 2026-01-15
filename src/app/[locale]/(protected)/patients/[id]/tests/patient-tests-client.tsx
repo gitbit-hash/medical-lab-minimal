@@ -18,8 +18,6 @@ interface PatientTestsClientProps {
   locale: string;
   initialPatient: PatientWithRelations;
   initialTests: TestWithRelations[];
-  initialArchivedTestsCount: number;
-  session: any;
 }
 
 interface DialogState {

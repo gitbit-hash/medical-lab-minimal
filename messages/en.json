@@ -601,16 +601,6 @@
       "description": "If you have any questions about these Terms, please contact us."
     }
   },
-  "Pagination": {
-    "first": "First",
-    "previous": "Previous",
-    "next": "Next",
-    "last": "Last",
-    "show": "Show",
-    "perPage": "per page",
-    "results": "results",
-    "pageOf": "Showing {start} to {end} of {total}"
-  },
   "PatientsPage": {
     "ageUnits": {
       "years": "years",
@@ -630,25 +620,6 @@
       "edit": "Edit",
       "delete": "Delete",
       "deleting": "Deleting..."
-    },
-    "filters": {
-      "searchLabel": "Search Patients",
-      "searchPlaceholder": "Search by name, phone, email, address, or doctor...",
-      "doctorLabel": "Doctor",
-      "allDoctors": "All Doctors",
-      "doctorPrefix": "Dr.",
-      "dateLabel": "Date Added",
-      "allTime": "All Time",
-      "today": "Today",
-      "last7Days": "Last 7 Days",
-      "last30Days": "Last 30 Days",
-      "sortLabel": "Sort By",
-      "sortNewest": "Newest First",
-      "sortOldest": "Oldest First",
-      "sortNameAsc": "Name A-Z",
-      "sortNameDesc": "Name Z-A",
-      "clearFilters": "Clear filters",
-      "resultsCount": "Showing {start} to {end} of {total} patients"
     },
     "messages": {
       "noMatchingPatients": "No patients match your search criteria",
@@ -676,10 +647,7 @@
     }
   },
   "CreatePatientPage": {
-    "amountPaidNowLabel": "Amount Paid Now",
-    "remainingAmountLabel": "Remaining Amount",
     "savePatientButton": "Save Patient",
-    "saveGenerateReceiptButton": "Save & Generate Receipt",
     "hero": {
       "title": "Add New Patient",
       "subtitle": "Create a new patient record with laboratory tests"
@@ -792,9 +760,6 @@
   },
   "PatientTestsPage": {
     "loading": "Loading patient tests...",
-    "errors": {
-      "unknown": "Unknown error"
-    },
     "hero": {
       "title": "Tests for {name}",
       "subtitle": "Manage and generate reports for patient tests"
@@ -887,29 +852,6 @@
       "summary": "{selected} selected out of {withResults} tests with results ({total} total)",
       "selectedInfo": "{count} test{count, plural, =1 {} other {s}} selected for reporting",
       "generateReportHint": "Click \"Generate Report\" to create a combined report for all selected tests"
-    },
-    "payment": {
-      "required": "Payment Required",
-      "requiredMessage": "Patient has ${amount} remaining to pay. Full payment is required to enable PDF generation and test archiving.",
-      "collectFullPayment": "Collect Full Payment",
-      "amountToCollect": "Amount to Collect",
-      "fullPaymentRequired": "Full payment required to enable PDF generation and test archiving",
-      "method": "Payment Method",
-      "processing": "Processing...",
-      "collectAmount": "Collect Full Payment (${amount})",
-      "patient": "Patient",
-      "receiptNumber": "Receipt No",
-      "alreadyPaid": "Already Paid",
-      "alreadyPaidValue": "${amount}",
-      "amountDue": "Amount Due",
-      "amountDueValue": "${amount}",
-      "cancel": "Cancel"
-    },
-    "paymentMethods": {
-      "cash": "Cash",
-      "card": "Credit/Debit Card",
-      "bankTransfer": "Bank Transfer",
-      "insurance": "Insurance"
     }
   },
   "LoginPage": {

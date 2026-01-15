@@ -8,23 +8,6 @@ import { useTranslations } from 'next-intl';
 import { TestSelectionForm } from '@/app/components/test-selection-form';
 import { TestTemplateSearchResult } from '@/app/types';
 
-// Update the Doctor interface to match Prisma's return type
-interface Doctor {
-  id: string;
-  name: string;
-  specialization: string | null;
-}
-
-// Add interface for patient search results
-interface PatientSearchResult {
-  id: string;
-  name: string;
-  age_value: number | null;
-  age_unit: string | null;
-  gender: string;
-  phone: string | null;
-}
-
 // Add interface for created patient
 interface CreatedPatient {
   id: string;
@@ -39,34 +22,18 @@ interface CreatedPatient {
 
 interface CreatePatientClientProps {
   locale: string;
-  initialDoctors: Doctor[];
-  session: any;
 }
 
-export function CreatePatientClient({ locale, initialDoctors, session }: CreatePatientClientProps) {
+export function CreatePatientClient({ locale }: CreatePatientClientProps) {
   const router = useRouter();
   const t = useTranslations('CreatePatientPage');
   const direction = locale === 'ar' ? 'rtl' : 'ltr';
 
-  const [selectedDoctors, setSelectedDoctors] = useState<string[]>([]);
   const [selectedTests, setSelectedTests] = useState<TestTemplateSearchResult[]>([]);
   const [testSubtotal, setTestSubtotal] = useState(0);
   const [createdVisit, setCreatedVisit] = useState<any>(null);
-
-  const [discount, setDiscount] = useState<{
-    amount: number;
-    percentage: number;
-    type: 'Percentage' | 'Fixed';
-    reason?: string;
-  } | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formErrors, setFormErrors] = useState<string[]>([]);
-
-  // Add states for patient name search
-  const [patientSearchResults, setPatientSearchResults] = useState<PatientSearchResult[]>([]);
-  const [isSearchingPatients, setIsSearchingPatients] = useState(false);
-  const [showPatientResults, setShowPatientResults] = useState(false);
-  const [selectedPatientIndex, setSelectedPatientIndex] = useState(-1);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -80,57 +47,14 @@ export function CreatePatientClient({ locale, initialDoctors, session }: CreateP
 
   // Add state for created patient
   const [createdPatient, setCreatedPatient] = useState<CreatedPatient | null>(null);
-  const [showReceiptModal, setShowReceiptModal] = useState(false);
-  const [receiptNumber, setReceiptNumber] = useState<string>('');
 
   // Calculate total fees
   const totalFees = testSubtotal;
-  const finalTotal = discount ? Math.max(0, totalFees - discount.amount) : totalFees;
+  const finalTotal = totalFees;
 
   const [amountPaidNow, setAmountPaidNow] = useState<number>(finalTotal);
   const [remainingAmount, setRemainingAmount] = useState<number>(0);
-  const [paymentMethod, setPaymentMethod] = useState<string>('Cash');
   const [isAmountManuallyModified, setIsAmountManuallyModified] = useState(false);
-
-  // Helper function to translate age unit
-  const translateAgeUnit = (unit: string | null, value: number | null) => {
-    if (!unit || !value) return '';
-
-    const unitKey = unit.toLowerCase()
-
-    return t(`ageUnits.${unitKey}`);
-  };
-
-  // Helper function to translate gender
-  const translateGender = (gender: string) => {
-    return t(`genders.${gender}`);
-  };
-
-  // Function to search for patients by name
-  const searchPatients = async (query: string) => {
-    if (query.length < 3) {
-      setPatientSearchResults([]);
-      setShowPatientResults(false);
-      return;
-    }
-
-    setIsSearchingPatients(true);
-    try {
-      const response = await fetch(`/api/patients/search?query=${encodeURIComponent(query)}`);
-      if (response.ok) {
-        const data = await response.json();
-        if (data.success) {
-          setPatientSearchResults(data.data);
-          setShowPatientResults(true);
-          setSelectedPatientIndex(-1);
-        }
-      }
-    } catch (error) {
-      console.error('Error searching patients:', error);
-    } finally {
-      setIsSearchingPatients(false);
-    }
-  };
 
   // Handle name input change
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -139,49 +63,11 @@ export function CreatePatientClient({ locale, initialDoctors, session }: CreateP
       ...prev,
       name: value
     }));
-
-    // Search for patients as user types
-    searchPatients(value);
-  };
-
-  // Handle keyboard navigation in patient search results
-  const handleNameKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (!showPatientResults || patientSearchResults.length === 0) return;
-
-    switch (e.key) {
-      case 'ArrowDown':
-        e.preventDefault();
-        setSelectedPatientIndex(prev =>
-          prev < patientSearchResults.length - 1 ? prev + 1 : prev
-        );
-        break;
-      case 'ArrowUp':
-        e.preventDefault();
-        setSelectedPatientIndex(prev => prev > 0 ? prev - 1 : -1);
-        break;
-      case 'Enter':
-        e.preventDefault();
-        if (selectedPatientIndex >= 0) {
-          const selectedPatient = patientSearchResults[selectedPatientIndex];
-          router.push(`/${locale}/patients/${selectedPatient.id}/tests`);
-        }
-        break;
-      case 'Escape':
-        setShowPatientResults(false);
-        setSelectedPatientIndex(-1);
-        break;
-    }
-  };
-
-  // Handle patient selection
-  const handlePatientSelect = (patient: PatientSearchResult) => {
-    router.push(`/${locale}/patients/${patient.id}/tests`);
   };
 
   // Update the useEffect that handles amountPaidNow updates
   useEffect(() => {
     if (selectedTests.length === 0) {
-      setDiscount(null);
       setAmountPaidNow(0);
       setRemainingAmount(0);
       setIsAmountManuallyModified(false); // Reset manual modification flag
@@ -206,25 +92,6 @@ export function CreatePatientClient({ locale, initialDoctors, session }: CreateP
     const calculatedRemaining = Math.max(0, finalTotal - amountPaidNow);
     setRemainingAmount(calculatedRemaining);
   }, [finalTotal, amountPaidNow, selectedTests, isAmountManuallyModified]);
-
-  // Close patient search results when clicking outside
-  useEffect(() => {
-    const handleClickOutside = () => {
-      setShowPatientResults(false);
-    };
-
-    document.addEventListener('click', handleClickOutside);
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, []);
-
-  const userDiscountPermission = {
-    can_give_discount: session.user.can_give_discount || false,
-    max_discount_percentage: session.user.max_discount_percentage,
-    max_discount_amount: session.user.max_discount_amount,
-    discount_type: session.user.discount_type,
-  };
 
   const validateForm = () => {
     const errors: string[] = [];
@@ -276,10 +143,6 @@ export function CreatePatientClient({ locale, initialDoctors, session }: CreateP
 
     setIsSubmitting(true);
     try {
-      // Generate receipt number
-      const generatedReceiptNumber = generateReceiptNumber();
-      setReceiptNumber(generatedReceiptNumber);
-
       // Create the patient WITH PAYMENT DATA
       const patientResponse = await fetch('/api/patients', {
         method: 'POST',
@@ -287,7 +150,6 @@ export function CreatePatientClient({ locale, initialDoctors, session }: CreateP
         body: JSON.stringify({
           ...formData,
           age_value: formData.age_value ? parseFloat(formData.age_value) : null,
-          doctorIds: selectedDoctors,
           tests: selectedTests.map(test => ({
             test_template_id: test.id,
             test_type: test.name,
@@ -297,12 +159,6 @@ export function CreatePatientClient({ locale, initialDoctors, session }: CreateP
           amount_paid: amountPaidNow,
           amount_due: remainingAmount,
           payment_status: amountPaidNow === finalTotal ? 'Paid' : amountPaidNow > 0 ? 'PartiallyPaid' : 'Unpaid',
-          discount_amount: discount?.amount || 0,
-          discount_percentage: discount?.percentage || 0,
-          discount_type: discount?.type,
-          discount_reason: discount?.reason,
-          payment_method: paymentMethod,
-          receipt_number: generatedReceiptNumber,
         }),
       });
 
@@ -317,27 +173,13 @@ export function CreatePatientClient({ locale, initialDoctors, session }: CreateP
       setCreatedPatient(patient);
       setCreatedVisit(visit);
 
-      if (generateReceipt) {
-        setShowReceiptModal(true);
-      } else {
-        router.push(`/${locale}/patients`);
-      }
+      router.push(`/${locale}/patients`);
 
     } catch (error) {
       alert(`${t('messages.createPatientFailed')}: ${error instanceof Error ? error.message : t('messages.unknownError')}`);
     } finally {
       setIsSubmitting(false);
     }
-  };
-
-  // Helper function to generate receipt number
-  const generateReceiptNumber = () => {
-    const date = new Date();
-    const year = date.getFullYear().toString().slice(-2);
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const day = date.getDate().toString().padStart(2, '0');
-    const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
-    return `REC-${year}${month}${day}-${random}`;
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -445,50 +287,10 @@ export function CreatePatientClient({ locale, initialDoctors, session }: CreateP
                       required
                       value={formData.name}
                       onChange={handleNameChange}
-                      onKeyDown={handleNameKeyDown}
-                      onFocus={(e) => {
-                        searchPatients(e.target.value);
-                      }}
                       className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                       placeholder={t('form.basicInfo.namePlaceholder')}
                     />
-                    {isSearchingPatients && (
-                      <div className="absolute right-3 top-2.5">
-                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-500"></div>
-                      </div>
-                    )}
                   </div>
-
-                  {/* Patient Search Results Dropdown */}
-                  {showPatientResults && patientSearchResults.length > 0 && (
-                    <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto">
-                      <ul className="py-1">
-                        {patientSearchResults.map((patient, index) => (
-                          <li
-                            key={patient.id}
-                            className={`px-4 py-2 cursor-pointer hover:bg-gray-100 ${index === selectedPatientIndex ? 'bg-blue-50' : ''
-                              }`}
-                            onClick={() => handlePatientSelect(patient)}
-                          >
-                            <div className="font-medium text-gray-800">{patient.name}</div>
-                            <div className="text-sm text-gray-500">
-                              {patient.age_value && patient.age_unit && (
-                                <span>{t('table.age', {
-                                  value: patient.age_value,
-                                  unit: translateAgeUnit(patient.age_unit, patient.age_value)
-                                })}, </span>
-                              )}
-                              {patient.gender && <span>{translateGender(patient.gender)}, </span>}
-                              {patient.phone && <span>{patient.phone}</span>}
-                            </div>
-                          </li>
-                        ))}
-                      </ul>
-                      <div className="px-4 py-2 text-xs text-gray-500 border-t border-gray-200">
-                        {t('form.basicInfo.patientSearchHint')}
-                      </div>
-                    </div>
-                  )}
 
                   {/* Name Format Hint */}
                   <div className="mt-1 text-xs text-gray-500">
@@ -628,11 +430,6 @@ export function CreatePatientClient({ locale, initialDoctors, session }: CreateP
               <div className="space-y-2">
                 <div className="text-lg font-semibold text-gray-900">
                   {t('totalFees')}: {t('currency', { amount: finalTotal })}
-                  {discount && discount.amount > 0 && (
-                    <div className="text-sm text-green-600 ml-2">
-                      ({t('saved')} {t('currency', { amount: discount.amount })})
-                    </div>
-                  )}
                 </div>
               </div>
               <div className="flex space-x-4">

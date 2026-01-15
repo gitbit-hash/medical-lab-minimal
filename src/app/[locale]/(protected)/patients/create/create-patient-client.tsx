@@ -6,7 +6,6 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { TestSelectionForm } from '@/app/components/test-selection-form';
-import { ReceiptPDFViewerModal } from '@/app/components/ReceiptPDFViewerModal';
 import { TestTemplateSearchResult } from '@/app/types';
 
 // Update the Doctor interface to match Prisma's return type
@@ -656,19 +655,6 @@ export function CreatePatientClient({ locale, initialDoctors, session }: CreateP
           </div>
         </form>
       </div>
-      {/* Fix: Use createdPatient instead of patient */}
-      {showReceiptModal && createdPatient && receiptNumber && (
-        <ReceiptPDFViewerModal
-          isOpen={showReceiptModal}
-          onClose={() => {
-            setShowReceiptModal(false);
-            router.push(`/${locale}/patients`);
-          }}
-          patientId={createdPatient.id}
-          receiptNumber={receiptNumber}
-          visitId={createdVisit?.id} // Pass the visit ID
-        />
-      )}
     </div>
   );
 }

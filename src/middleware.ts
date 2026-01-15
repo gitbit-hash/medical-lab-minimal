@@ -104,9 +104,11 @@ export async function middleware(request: NextRequest) {
     return Response.redirect(loginUrl);
   }
 
-  // If no locale in path and not a special route, continue without redirect
+  // If no locale in path and not a special route, redirect to default/preferred locale
   if (!pathnameHasLocale && pathname !== '/' && pathname !== '/login') {
-    return NextResponse.next();
+    const locale = token?.preferred_language || getLocale(request);
+    const newUrl = new URL(`/${locale}${pathname}${searchParams.toString() ? `?${searchParams.toString()}` : ''}`, request.url);
+    return Response.redirect(newUrl);
   }
 
   // IMPORTANT: Check if there's a language change cookie

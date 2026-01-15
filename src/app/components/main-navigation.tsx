@@ -15,7 +15,6 @@ import {
   TbMenu2,
   TbX
 } from 'react-icons/tb';
-import { LanguageSwitcher } from '../components/LanguageSwitcher';
 
 interface MainNavigationProps {
   serverLocale: string;
@@ -99,11 +98,6 @@ export function MainNavigation({ serverLocale }: MainNavigationProps) {
 
           {/* Right Section */}
           <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
-
-            {/* Language Switcher */}
-            <div className="relative">
-              <LanguageSwitcher />
-            </div>
 
             {/* User Info */}
             <div className="hidden sm:flex items-center gap-3">

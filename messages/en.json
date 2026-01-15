@@ -10,13 +10,9 @@
     "demo": "Try Demo",
     "login": "Login",
     "signup": "Sign Up",
-    "dashboard": "Dashboard",
+    "dashboard": "Home",
     "patients": "Patients",
-    "doctors": "Doctors",
     "tests": "Tests",
-    "templates": "Templates",
-    "categories": "Categories",
-    "admin": "Admin",
     "welcome": "Welcome to LabManagerPro",
     "description": "Advanced Medical Laboratory Management System",
     "logout": "Logout"
@@ -194,11 +190,6 @@
       "managementSystem": "Your Lab Management System",
       "manageOperations": "Streamline your laboratory operations with precision and efficiency"
     },
-    "quickStats": {
-      "todayTests": "Today's Tests",
-      "newPatients": "New Patients",
-      "pendingSync": "Pending Sync"
-    },
     "quickActions": {
       "title": "Quick Actions",
       "subtitle": "Everything you need to manage your lab",
@@ -226,25 +217,6 @@
         "title": "Sync Status",
         "description": "Check data synchronization status"
       }
-    },
-    "recentActivity": {
-      "title": "Recent Activity",
-      "viewAll": "View All",
-      "noTests": "No recent tests",
-      "testsWillAppear": "Tests will appear here as they are created"
-    },
-    "systemStatus": {
-      "title": "System Status",
-      "database": "Database",
-      "connected": "Connected",
-      "disconnected": "Disconnected",
-      "syncQueue": "Sync Queue",
-      "items": "{count, plural, =0 {No items} one {# item} other {# items}}",
-      "activeUsers": "Active Users",
-      "users": "{count, plural, =0 {No users} one {# user} other {# users}}",
-      "adminPanel": "Admin Panel",
-      "dashboard": "Dashboard",
-      "manageUsers": "Manage Users"
     }
   },
   "Common": {
@@ -638,58 +610,6 @@
     "perPage": "per page",
     "results": "results",
     "pageOf": "Showing {start} to {end} of {total}"
-  },
-  "DoctorDetailPage": {
-    "actions": {
-      "backToDoctors": "Back to Doctors",
-      "edit": "Edit Doctor",
-      "delete": "Delete Doctor",
-      "deleting": "Deleting..."
-    },
-    "sections": {
-      "contactInfo": "Contact Information",
-      "patients": "Referred Patients"
-    },
-    "contact": {
-      "phone": "Phone",
-      "email": "Email",
-      "address": "Clinic Address",
-      "notProvided": "Not provided"
-    },
-    "patientCount": "{count, plural, =0 {No patients} =1 {1 patient} other {# patients}}",
-    "hero": {
-      "doctorPrefix": "Dr.",
-      "patientCount": "{count, plural, =0 {patients} =1 {patient} other {patients}} under care"
-    },
-    "contactInfo": {
-      "title": "Contact Information",
-      "phoneLabel": "Phone",
-      "emailLabel": "Email",
-      "addressLabel": "Clinic Address"
-    },
-    "recentTests": {
-      "title": "Recent Tests",
-      "patientLabel": "Patient",
-      "codeLabel": "Code",
-      "testedOnLabel": "Tested on",
-      "noTests": "No recent tests"
-    },
-    "patients": {
-      "title": "Patients",
-      "referredOn": "Referred on",
-      "primary": "Primary",
-      "noPatients": "No patients yet",
-      "addFirst": "Add your first patient",
-      "testCount": "{count} tests"
-    },
-    "messages": {
-      "deleteError": "Failed to delete doctor. Please try again."
-    },
-    "deleteDialog": {
-      "title": "Delete Doctor",
-      "message": "Are you sure you want to delete Dr. {name}? This action cannot be undone.",
-      "confirmText": "Delete Doctor"
-    }
   },
   "PatientsPage": {
     "ageUnits": {

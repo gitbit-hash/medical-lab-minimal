@@ -10,13 +10,9 @@
     "demo": "Essayer la Démo",
     "login": "Connexion",
     "signup": "S'inscrire",
-    "dashboard": "Tableau de Bord",
+    "dashboard": "Accueil",
     "patients": "Patients",
-    "doctors": "Médecins",
     "tests": "Tests",
-    "templates": "Modèles",
-    "categories": "Catégories",
-    "admin": "Admin",
     "welcome": "Bienvenue sur LabManagerPro",
     "description": "Système de Gestion de Laboratoire Médical Avancé",
     "logout": "Déconnexion"
@@ -194,11 +190,6 @@
       "managementSystem": "Votre Système de Gestion de Laboratoire",
       "manageOperations": "Optimisez les opérations de votre laboratoire avec précision et efficacité"
     },
-    "quickStats": {
-      "todayTests": "Tests d'Aujourd'hui",
-      "newPatients": "Nouveaux Patients",
-      "pendingSync": "Synchronisation en Attente"
-    },
     "quickActions": {
       "title": "Actions Rapides",
       "subtitle": "Tout ce dont vous avez besoin pour gérer votre laboratoire",
@@ -226,25 +217,6 @@
         "title": "État de Synchro",
         "description": "Vérifier l'état de synchronisation des données"
       }
-    },
-    "recentActivity": {
-      "title": "Activité Récente",
-      "viewAll": "Voir Tout",
-      "noTests": "Aucun test récent",
-      "testsWillAppear": "Les tests apparaîtront ici lorsqu'ils seront créés"
-    },
-    "systemStatus": {
-      "title": "État du Système",
-      "database": "Base de Données",
-      "connected": "Connecté",
-      "disconnected": "Déconnecté",
-      "syncQueue": "File d'attente Synchro",
-      "items": "{count, plural, =0 {Aucun élément} one {# élément} other {# éléments}}",
-      "activeUsers": "Utilisateurs Actifs",
-      "users": "{count, plural, =0 {Aucun utilisateur} one {# utilisateur} other {# utilisateurs}}",
-      "adminPanel": "Panneau d'Administration",
-      "dashboard": "Tableau de Bord",
-      "manageUsers": "Gérer les Utilisateurs"
     }
   },
   "Common": {
@@ -622,58 +594,6 @@
     "perPage": "par page",
     "results": "résultats",
     "pageOf": "Affichage de {start} à {end} sur {total}"
-  },
-  "DoctorDetailPage": {
-    "actions": {
-      "backToDoctors": "Retour aux Médecins",
-      "edit": "Modifier le Médecin",
-      "delete": "Supprimer le Médecin",
-      "deleting": "Suppression..."
-    },
-    "sections": {
-      "contactInfo": "Informations de Contact",
-      "patients": "Patients Référés"
-    },
-    "contact": {
-      "phone": "Téléphone",
-      "email": "Email",
-      "address": "Adresse de la Clinique",
-      "notProvided": "Non fourni"
-    },
-    "patientCount": "{count, plural, =0 {Aucun patient} =1 {1 patient} other {# patients}}",
-    "hero": {
-      "doctorPrefix": "Dr.",
-      "patientCount": "{count, plural, =0 {patient} =1 {patient} other {patients}} sous soins"
-    },
-    "contactInfo": {
-      "title": "Informations de Contact",
-      "phoneLabel": "Téléphone",
-      "emailLabel": "Email",
-      "addressLabel": "Adresse de la Clinique"
-    },
-    "recentTests": {
-      "title": "Tests Récents",
-      "patientLabel": "Patient",
-      "codeLabel": "Code",
-      "testedOnLabel": "Testé le",
-      "noTests": "Aucun test récent"
-    },
-    "patients": {
-      "title": "Patients",
-      "referredOn": "Référé le",
-      "primary": "Principal",
-      "noPatients": "Aucun patient pour le moment",
-      "addFirst": "Ajoutez votre premier patient",
-      "testCount": "{count} tests"
-    },
-    "messages": {
-      "deleteError": "Échec de la suppression du médecin. Veuillez réessayer."
-    },
-    "deleteDialog": {
-      "title": "Supprimer le Médecin",
-      "message": "Êtes-vous sûr de vouloir supprimer le Dr. {name} ? Cette action est irréversible.",
-      "confirmText": "Supprimer le Médecin"
-    }
   },
   "PatientsPage": {
     "ageUnits": {

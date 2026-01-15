@@ -64,28 +64,6 @@ export default async function HomePage({ params }: HomePageProps) {
   const [todayTests, todayPatients, pendingSyncCount] = todayStats;
   const [dbStatus, activeUsers] = systemData;
 
-  // --- Prepare data without translation strings ---
-  const quickStatsData = [
-    {
-      labelKey: 'quickStats.todayTests',
-      value: todayTests,
-      color: "from-blue-500 to-blue-600",
-      icon: "🧪"
-    },
-    {
-      labelKey: 'quickStats.newPatients',
-      value: todayPatients,
-      color: "from-green-500 to-green-600",
-      icon: "👥"
-    },
-    {
-      labelKey: 'quickStats.pendingSync',
-      value: pendingSyncCount,
-      color: pendingSyncCount > 0 ? "from-orange-500 to-orange-600" : "from-gray-500 to-gray-600",
-      icon: "🔄"
-    }
-  ];
-
   // FIX: Add locale prefix to all hrefs
   const quickActionsData = [
     {
@@ -98,39 +76,12 @@ export default async function HomePage({ params }: HomePageProps) {
     }
   ];
 
-  const systemStatusItems = [
-    {
-      labelKey: 'systemStatus.database',
-      valueKey: dbStatus ? 'systemStatus.connected' : 'systemStatus.disconnected',
-      status: dbStatus ? 'success' : 'error',
-      icon: dbStatus ? '🟢' : '🔴'
-    },
-    {
-      labelKey: 'systemStatus.syncQueue',
-      valueKey: 'systemStatus.items',
-      count: pendingSyncCount,
-      status: pendingSyncCount > 0 ? 'warning' : 'success',
-      icon: pendingSyncCount > 0 ? '🟡' : '🟢'
-    },
-    {
-      labelKey: 'systemStatus.activeUsers',
-      valueKey: 'systemStatus.users',
-      count: activeUsers,
-      status: 'success',
-      icon: '👥'
-    }
-  ];
-
   return (
     <HomePageClient
       locale={locale}
       session={session}
       data={{
-        quickStats: quickStatsData,
         quickActions: quickActionsData,
-        recentTests,
-        systemStatusItems,
-        userRole: session?.user?.role
       }}
     />
   );

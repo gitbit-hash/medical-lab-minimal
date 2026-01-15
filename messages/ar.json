@@ -10,13 +10,9 @@
     "demo": "جرب العرض",
     "login": "تسجيل الدخول",
     "signup": "إنشاء حساب",
-    "dashboard": "لوحة التحكم",
+    "dashboard": "الرئيسية",
     "patients": "المرضى",
-    "doctors": "الأطباء",
     "tests": "الفحوصات",
-    "templates": "القوالب",
-    "categories": "الفئات",
-    "admin": "الإدارة",
     "welcome": "مرحباً بكم في لينك لاب",
     "description": "نظام متقدم لإدارة المختبرات الطبية",
     "logout": "خروج"
@@ -194,11 +190,6 @@
       "managementSystem": "نظام إدارة المختبر الخاص بك",
       "manageOperations": "بسّط عمليات مختبرك بدقة وكفاءة"
     },
-    "quickStats": {
-      "todayTests": "فحوصات اليوم",
-      "newPatients": "مرضى جدد",
-      "pendingSync": "معلقة المزامنة"
-    },
     "quickActions": {
       "title": "إجراءات سريعة",
       "subtitle": "كل ما تحتاجه لإدارة مختبرك",
@@ -226,25 +217,6 @@
         "title": "حالة المزامنة",
         "description": "التحقق من حالة مزامنة البيانات"
       }
-    },
-    "recentActivity": {
-      "title": "النشاط الأخير",
-      "viewAll": "عرض الكل",
-      "noTests": "لا توجد فحوصات حديثة",
-      "testsWillAppear": "ستظهر الفحوصات هنا عند إنشائها"
-    },
-    "systemStatus": {
-      "title": "حالة النظام",
-      "database": "قاعدة البيانات",
-      "connected": "متصل",
-      "disconnected": "غير متصل",
-      "syncQueue": "طابور المزامنة",
-      "items": "{count, plural, =0 {لا توجد عناصر} one {# عنصر} other {# عناصر}}",
-      "activeUsers": "المستخدمون النشطون",
-      "users": "{count, plural, =0 {لا يوجد مستخدمون} one {# مستخدم} other {# مستخدمين}}",
-      "adminPanel": "لوحة الإدارة",
-      "dashboard": "لوحة التحكم",
-      "manageUsers": "إدارة المستخدمين"
     }
   },
   "Common": {
@@ -622,58 +594,6 @@
     "perPage": "لكل صفحة",
     "results": "نتيجة",
     "pageOf": "عرض {start} إلى {end} من {total}"
-  },
-  "DoctorDetailPage": {
-    "actions": {
-      "backToDoctors": "العودة إلى الأطباء",
-      "edit": "تعديل الطبيب",
-      "delete": "حذف الطبيب",
-      "deleting": "جاري الحذف..."
-    },
-    "sections": {
-      "contactInfo": "معلومات الاتصال",
-      "patients": "المرضى المحالون"
-    },
-    "contact": {
-      "phone": "الهاتف",
-      "email": "البريد الإلكتروني",
-      "address": "عنوان العيادة",
-      "notProvided": "غير متوفر"
-    },
-    "patientCount": "{count} مرضى",
-    "hero": {
-      "doctorPrefix": "د.",
-      "patientCount": "{count, plural, =0 {مرضى} =1 {مريض} other {مرضى}} تحت الرعاية"
-    },
-    "contactInfo": {
-      "title": "معلومات الاتصال",
-      "phoneLabel": "الهاتف",
-      "emailLabel": "البريد الإلكتروني",
-      "addressLabel": "عنوان العيادة"
-    },
-    "recentTests": {
-      "title": "الفحوصات الحديثة",
-      "patientLabel": "المريض",
-      "codeLabel": "الكود",
-      "testedOnLabel": "تم الفحص في",
-      "noTests": "لا توجد فحوصات حديثة"
-    },
-    "patients": {
-      "title": "المرضى",
-      "referredOn": "تم التحويل في",
-      "primary": "رئيسي",
-      "noPatients": "لا توجد مرضى بعد",
-      "addFirst": "أضف مريضك الأول",
-      "testCount": "{count} فحوصات"
-    },
-    "messages": {
-      "deleteError": "فشل حذف الطبيب. يرجى المحاولة مرة أخرى."
-    },
-    "deleteDialog": {
-      "title": "حذف الطبيب",
-      "message": "هل أنت متأكد من أنك تريد حذف الدكتور {name}؟ لا يمكن التراجع عن هذا الإجراء.",
-      "confirmText": "حذف الطبيب"
-    }
   },
   "PatientsPage": {
     "ageUnits": {

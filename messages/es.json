@@ -10,13 +10,9 @@
     "demo": "Probar Demo",
     "login": "Iniciar Sesión",
     "signup": "Registrarse",
-    "dashboard": "Panel de Control",
+    "dashboard": "Inicio",
     "patients": "Pacientes",
-    "doctors": "Médicos",
     "tests": "Pruebas",
-    "templates": "Plantillas",
-    "categories": "Categorías",
-    "admin": "Administración",
     "welcome": "Bienvenido a LabManagerPro",
     "description": "Sistema Avanzado de Gestión de Laboratorios Médicos",
     "logout": "Cerrar sesión"
@@ -194,11 +190,6 @@
       "managementSystem": "Su Sistema de Gestión de Laboratorio",
       "manageOperations": "Optimice las operaciones de su laboratorio con precisión y eficiencia"
     },
-    "quickStats": {
-      "todayTests": "Pruebas de Hoy",
-      "newPatients": "Pacientes Nuevos",
-      "pendingSync": "Sincronización Pendiente"
-    },
     "quickActions": {
       "title": "Acciones Rápidas",
       "subtitle": "Todo lo que necesita para gestionar su laboratorio",
@@ -226,25 +217,6 @@
         "title": "Estado de Sincronización",
         "description": "Verificar estado de sincronización de datos"
       }
-    },
-    "recentActivity": {
-      "title": "Actividad Reciente",
-      "viewAll": "Ver Todo",
-      "noTests": "No hay pruebas recientes",
-      "testsWillAppear": "Las pruebas aparecerán aquí a medida que se creen"
-    },
-    "systemStatus": {
-      "title": "Estado del Sistema",
-      "database": "Base de Datos",
-      "connected": "Conectada",
-      "disconnected": "Desconectada",
-      "syncQueue": "Cola de Sincronización",
-      "items": "{count, plural, =0 {Sin elementos} one {# elemento} other {# elementos}}",
-      "activeUsers": "Usuarios Activos",
-      "users": "{count, plural, =0 {Sin usuarios} one {# usuario} other {# usuarios}}",
-      "adminPanel": "Panel de Administración",
-      "dashboard": "Panel de Control",
-      "manageUsers": "Gestionar Usuarios"
     }
   },
   "Common": {
@@ -622,58 +594,6 @@
     "perPage": "por página",
     "results": "resultados",
     "pageOf": "Mostrando {start} a {end} de {total}"
-  },
-  "DoctorDetailPage": {
-    "actions": {
-      "backToDoctors": "Volver a Médicos",
-      "edit": "Editar Médico",
-      "delete": "Eliminar Médico",
-      "deleting": "Eliminando..."
-    },
-    "sections": {
-      "contactInfo": "Información de Contacto",
-      "patients": "Pacientes Remitidos"
-    },
-    "contact": {
-      "phone": "Teléfono",
-      "email": "Email",
-      "address": "Dirección de la Clínica",
-      "notProvided": "No proporcionado"
-    },
-    "patientCount": "{count} pacientes",
-    "hero": {
-      "doctorPrefix": "Dr.",
-      "patientCount": "{count, plural, =0 {pacientes} =1 {paciente} other {pacientes}} bajo cuidado"
-    },
-    "contactInfo": {
-      "title": "Información de Contacto",
-      "phoneLabel": "Teléfono",
-      "emailLabel": "Email",
-      "addressLabel": "Dirección de la Clínica"
-    },
-    "recentTests": {
-      "title": "Pruebas Recientes",
-      "patientLabel": "Paciente",
-      "codeLabel": "Código",
-      "testedOnLabel": "Probado el",
-      "noTests": "No hay pruebas recientes"
-    },
-    "patients": {
-      "title": "Pacientes",
-      "referredOn": "Remitido el",
-      "primary": "Principal",
-      "noPatients": "Aún no hay pacientes",
-      "addFirst": "Agregue su primer paciente",
-      "testCount": "{count} pruebas"
-    },
-    "messages": {
-      "deleteError": "Error al eliminar médico. Por favor, intente nuevamente."
-    },
-    "deleteDialog": {
-      "title": "Eliminar Médico",
-      "message": "¿Está seguro de que desea eliminar al Dr. {name}? Esta acción no se puede deshacer.",
-      "confirmText": "Eliminar Médico"
-    }
   },
   "PatientsPage": {
     "ageUnits": {

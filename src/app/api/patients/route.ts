@@ -171,6 +171,21 @@ export async function POST(request: Request): Promise<NextResponse<ApiResponse<a
       );
     }
 
+    // Check if user already has a patient
+    const existingPatient = await localPrisma.patient.findFirst({
+      where: {
+        user_id: session.user.id,
+        is_deleted: false
+      }
+    });
+
+    if (existingPatient) {
+      return NextResponse.json(
+        { success: false, error: 'You can only create one patient.' },
+        { status: 400 }
+      );
+    }
+
     const result = await localPrisma.$transaction(async (prisma) => {
       // 1. Create the patient
       const patient = await prisma.patient.create({

@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "clean": "rm -rf .next node_modules/.cache",
-    "clean:all": "rm -rf .next node_modules/.cache dist",
+    "clean:all": "rm -rf .next node_modules/.cache",
     "db:generate": "dotenv -e .env -- prisma generate",
     "db:push": "dotenv -e .env -- prisma db push",
     "db:studio": "dotenv -e .env -- prisma studio",
@@ -16,10 +16,6 @@
     "db:seed": "tsx prisma/seed-data.ts",
     "db:reset": "dotenv -e .env -- prisma migrate reset",
     "db:format": "dotenv -e .env -- prisma format",
-    "dist:build": "node scripts/build-distribution.js",
-    "dist:installer": "node scripts/create-installer.js",
-    "dist:all": "npm run build && npm run dist:build && npm run dist:installer",
-    "build:installer": "node scripts/build-distribution.js && node scripts/create-installer.js",
     "rebuild": "npm run clean && npm run db:generate && npm run build"
   },
   "dependencies": {

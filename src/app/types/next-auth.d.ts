@@ -6,6 +6,7 @@ declare module "next-auth" {
     id: string;
     email: string;
     name: string;
+    image?: string | null;
     role: "SuperAdmin" | "Admin";
     preferred_language: string | null;
     language: Language.code | null;
@@ -33,6 +34,7 @@ declare module "next-auth" {
       id: string;
       email: string;
       name: string;
+      image?: string | null;
       role: "SuperAdmin" | "Admin";
       preferred_language: string | null;
       language: Language.code | null;
@@ -61,6 +63,7 @@ declare module "next-auth" {
 declare module "next-auth/jwt" {
   interface JWT {
     id?: string;
+    image?: string | null;
     role?: "SuperAdmin" | "Admin";
     preferred_language: string | null;
     language: Language.code | null;

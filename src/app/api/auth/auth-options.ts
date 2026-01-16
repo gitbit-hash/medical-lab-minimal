@@ -9,11 +9,17 @@ import { Adapter } from "next-auth/adapters";
 
 
 
+import GoogleProvider from "next-auth/providers/google";
+
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma) as Adapter,
   session: { strategy: "jwt" },
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID || "",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
+    }),
     CredentialsProvider({
       name: "Credentials",
       credentials: {
@@ -33,10 +39,13 @@ export const authOptions: NextAuthOptions = {
 
           if (!user) return null;
 
+          // Google users might not have a password hash
+          if (!user.password_hash) {
+            return null;
+          }
+
           // ✅ Check if user is active
           if (!user.is_active) {
-
-
             return null;
           }
 
@@ -99,26 +108,28 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user, account, profile }) {
       // Initial sign in - user object is available
       if (user) {
-        token.role = user.role;
+        token.role = user.role || 'SuperAdmin';
         token.preferred_language = user.preferred_language;
         token.language = user.language;
-        token.can_give_discount = user.can_give_discount;
+        token.can_give_discount = user.can_give_discount ?? false;
         token.max_discount_percentage = user.max_discount_percentage;
         token.max_discount_amount = user.max_discount_amount;
         token.discount_type = user.discount_type;
         token.is_active = user.is_active;
-        token.can_create_test_templates = user.can_create_test_templates;
-        token.can_edit_test_templates = user.can_edit_test_templates;
-        token.can_delete_test_templates = user.can_delete_test_templates;
-        token.can_edit_reference_ranges = user.can_edit_reference_ranges;
-        token.can_edit_fees = user.can_edit_fees;
-        token.can_view_test_templates = user.can_view_test_templates;
-        token.can_archive_test_templates = user.can_archive_test_templates;
-        token.can_create_patients = user.can_create_patients;
-        token.can_edit_patients = user.can_edit_patients;
-        token.can_delete_patients = user.can_delete_patients;
-        token.can_view_all_patients = user.can_view_all_patients;
-        token.can_access_medical_history = user.can_access_medical_history;
+
+        // Default permissions for new users (including OAuth)
+        token.can_create_test_templates = user.can_create_test_templates ?? true;
+        token.can_edit_test_templates = user.can_edit_test_templates ?? true;
+        token.can_delete_test_templates = user.can_delete_test_templates ?? true;
+        token.can_edit_reference_ranges = user.can_edit_reference_ranges ?? true;
+        token.can_edit_fees = user.can_edit_fees ?? true;
+        token.can_view_test_templates = user.can_view_test_templates ?? true;
+        token.can_archive_test_templates = user.can_archive_test_templates ?? true;
+        token.can_create_patients = user.can_create_patients ?? true;
+        token.can_edit_patients = user.can_edit_patients ?? true;
+        token.can_delete_patients = user.can_delete_patients ?? true;
+        token.can_view_all_patients = user.can_view_all_patients ?? true;
+        token.can_access_medical_history = user.can_access_medical_history ?? true;
       }
       // Subsequent calls - user object is undefined, fetch from database
       else if (token.sub) {

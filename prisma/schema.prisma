@@ -322,9 +322,11 @@ model ReportTemplate {
 model User {
   id                      String        @id @default(uuid())
   email                   String        @unique
-  password_hash           String
+  emailVerified           DateTime?
+  password_hash           String?
   name                    String
-  role                    UserRole      @default(Admin)
+  image                   String?
+  role                    UserRole      @default(SuperAdmin)
   last_login_at           DateTime?
   is_active               Boolean       @default(true)
   created_at              DateTime      @default(now())
@@ -352,6 +354,7 @@ model User {
 
   // ✅ Relations
   patients        Patient[]
+  accounts        Account[]
   created_tests   Test[]          @relation("UserCreatedTests")
   updated_tests   Test[]          @relation("UserUpdatedTests")
 
@@ -361,6 +364,26 @@ model User {
   language           Language? @relation(fields: [preferred_language], references: [code])
 
   @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
 }
 
 

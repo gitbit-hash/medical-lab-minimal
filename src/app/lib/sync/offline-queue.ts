@@ -2,8 +2,7 @@
 import { SyncStatus, Prisma } from '@prisma/client';
 import { PatientQueueData, DoctorQueueData, TestQueueData } from '../../types/sync';
 import { SyncService } from './sync-service';
-import { auditLogger } from '../utils/audit-log';
-import { getTranslatedEntityType } from '../audit/get-translated-entity-type';
+
 import { getOptionalEnvVarNumber } from '../env-validation';
 
 class OfflineQueue {
@@ -17,7 +16,7 @@ class OfflineQueue {
     // Minimum: 5 seconds, Maximum: 5 minutes
     const envInterval = getOptionalEnvVarNumber('SYNC_INTERVAL', 30000);
     this.SYNC_INTERVAL_MS = Math.max(5000, Math.min(300000, envInterval));
-    
+
     if (process.env.SYNC_INTERVAL) {
       console.log(`📡 Sync interval configured: ${this.SYNC_INTERVAL_MS}ms (${this.SYNC_INTERVAL_MS / 1000}s)`);
     }
@@ -72,15 +71,7 @@ class OfflineQueue {
         is_deleted: patientData.is_deleted || false,
       });
 
-      await auditLogger.createPatient(result.id, {
-        name: result.name,
-        gender: result.gender,
-        age_value: result.age_value,
-        age_unit: result.age_unit,
-        phone: result.phone,
-        email: result.email,
-        sync_status: result.sync_status,
-      });
+
 
       // If online, try immediate sync
       if (this.isOnline) {
@@ -122,14 +113,7 @@ class OfflineQueue {
         },
       });
 
-      // ✅ AUDIT LOG: Log doctor deletion
-      await auditLogger.deleteDoctor(deletedDoctor.id, {
-        name: deletedDoctor.name,
-        specialization: deletedDoctor.specialization,
-        phone: deletedDoctor.phone,
-        email: deletedDoctor.email,
-        sync_status: deletedDoctor.sync_status,
-      });
+
 
       // If online, try immediate sync
       if (this.isOnline) {
@@ -171,16 +155,7 @@ class OfflineQueue {
         },
       });
 
-      // ✅ AUDIT LOG: Log patient deletion
-      await auditLogger.deletePatient(deletedPatient.id, {
-        name: deletedPatient.name,
-        gender: deletedPatient.gender,
-        age_value: deletedPatient.age_value,
-        age_unit: deletedPatient.age_unit,
-        phone: deletedPatient.phone,
-        email: deletedPatient.email,
-        sync_status: deletedPatient.sync_status,
-      });
+
 
       // If online, try immediate sync
       if (this.isOnline) {
@@ -206,14 +181,7 @@ class OfflineQueue {
         sync_status: 'Pending' as SyncStatus,
       });
 
-      // ✅ AUDIT LOG: Log doctor creation
-      await auditLogger.createDoctor(result.id, {
-        name: result.name,
-        specialization: result.specialization,
-        phone: result.phone,
-        email: result.email,
-        sync_status: result.sync_status,
-      });
+
 
       if (this.isOnline) {
         await this.trySync();
@@ -238,39 +206,7 @@ class OfflineQueue {
         sync_status: 'Pending',
       });
 
-      if (typeof window === 'undefined') {
-        // Server-side: import the server audit logger
-        const { auditLogger } = await import('../utils/audit-log');
-        await auditLogger.createTest(result.id, {
-          test_type: result.test_type,
-          test_code: result.test_code,
-          patient_id: result.patient_id,
-          visit_id: result.visit_id, // NEW: Include visit_id in audit
-          visit_number: result.visit_number, // NEW: Include visit_number in audit
-          status: result.status,
-          sync_status: result.sync_status,
-        });
-      } else {
-        // Client-side: use the client audit logger or API call
-        await fetch('/api/audit-logs', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            action: 'CREATE_TEST',
-            entity_type: getTranslatedEntityType('Test'),
-            entity_id: result.id,
-            description: `Created test: ${result.test_type}`,
-            new_values: {
-              test_type: result.test_type,
-              test_code: result.test_code,
-              patient_id: result.patient_id,
-              visit_id: result.visit_id, // NEW
-              visit_number: result.visit_number, // NEW
-              status: result.status,
-            }
-          }),
-        });
-      }
+
 
       // If online, try immediate sync
       if (this.isOnline) {
@@ -316,7 +252,7 @@ class OfflineQueue {
         },
       });
 
-      await auditLogger.updatePatient(updatedPatient.id, existingPatient, updatedPatient);
+
 
       return updatedPatient;
     } else {
@@ -363,7 +299,7 @@ class OfflineQueue {
       });
 
       // Log doctor update
-      await auditLogger.updateDoctor(updatedDoctor.id, existingDoctor, updatedDoctor);
+
 
       return updatedDoctor;
     } else {
@@ -442,7 +378,7 @@ class OfflineQueue {
       });
 
       // ✅ AUDIT LOG: Log test update
-      await auditLogger.updateTest(updatedTest.id, existingTest, updatedTest);
+
 
       return updatedTest;
     } else {
@@ -464,26 +400,16 @@ class OfflineQueue {
   private async trySync(): Promise<boolean> {
     try {
       // Use client-side method if in browser, otherwise direct call
-      const syncResult = typeof window !== 'undefined' 
+      const syncResult = typeof window !== 'undefined'
         ? await SyncService.triggerSyncClient()
         : await SyncService.triggerSync();
 
-      // ✅ AUDIT LOG: Log sync operation
-      if (syncResult) {
-        await auditLogger.syncOperation('AUTO_SYNC', {
-          success: true,
-          timestamp: new Date().toISOString(),
-        });
-      }
+
 
       return syncResult;
     } catch (error) {
       // ✅ AUDIT LOG: Log sync failure
-      await auditLogger.syncOperation('AUTO_SYNC', {
-        success: false,
-        error: error instanceof Error ? error.message : 'Unknown error',
-        timestamp: new Date().toISOString(),
-      });
+
 
       return false;
     }
@@ -497,19 +423,11 @@ class OfflineQueue {
         ? await SyncService.triggerSyncClient()
         : await SyncService.triggerSync();
 
-      // ✅ AUDIT LOG: Log manual sync
-      await auditLogger.syncOperation('MANUAL_SYNC', {
-        success: result,
-        timestamp: new Date().toISOString(),
-      });
+
 
       return result;
     } catch (error) {
-      await auditLogger.syncOperation('MANUAL_SYNC', {
-        success: false,
-        error: error instanceof Error ? error.message : 'Unknown error',
-        timestamp: new Date().toISOString(),
-      });
+
 
       return false;
     }

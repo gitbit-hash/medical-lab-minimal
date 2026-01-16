@@ -359,7 +359,7 @@ model User {
   patients        Patient[]
   created_tests   Test[]          @relation("UserCreatedTests")
   updated_tests   Test[]          @relation("UserUpdatedTests")
-  audit_logs      AuditLog[]
+
   discount_audits DiscountAudit[]
 
   preferred_language String? // Add this field
@@ -368,28 +368,7 @@ model User {
   @@map("users")
 }
 
-model AuditLog {
-  id                 String   @id @default(uuid())
-  user_id            String
-  user               User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
-  action             String
-  entity_type        String
-  entity_id          String?
-  description        String?
-  translation_params Json? // Add this field
-  old_values         Json?
-  new_values         Json?
-  ip_address         String?
-  user_agent         String?
-  metadata           Json?
-  created_at         DateTime @default(now())
 
-  @@index([user_id])
-  @@index([entity_type, entity_id])
-  @@index([action])
-  @@index([created_at])
-  @@map("audit_logs")
-}
 
 model ReportSettings {
   id          String   @id @default(uuid())

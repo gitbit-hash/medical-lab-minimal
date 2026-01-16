@@ -2,10 +2,7 @@
 import { getToken } from "next-auth/jwt";
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { extractRequestInfo } from './app/middleware/audit';
-import { prisma } from '@/app/lib/prisma';
-import { Prisma } from '@prisma/client';
-import { getTranslatedEntityType } from '@/app/lib/audit/get-translated-entity-type';
+
 
 const locales = ['en', 'ar', 'fr', 'es'];
 const defaultLocale = 'en';
@@ -18,51 +15,7 @@ function getLocale(request: NextRequest) {
   return defaultLocale;
 }
 
-// Helper function to create audit logs for system events
-async function createSystemAuditLog(data: {
-  action: string;
-  entityType: string;
-  entityId?: string;
-  description: string;
-  newValues?: Record<string, any>;
-  ip?: string;
-  userAgent?: string;
-}) {
-  try {
-    let systemUser = await prisma.user.findFirst({
-      where: { email: 'system@lab.local' }
-    });
 
-    if (!systemUser) {
-      systemUser = await prisma.user.create({
-        data: {
-          email: 'system@lab.local',
-          password_hash: '',
-          name: 'System',
-          role: 'Admin',
-          is_active: false,
-          can_give_discount: false,
-        },
-      });
-    }
-
-    await prisma.auditLog.create({
-      data: {
-        user_id: systemUser.id,
-        action: data.action,
-        entity_type: data.entityType,
-        entity_id: data.entityId || null,
-        description: data.description,
-        new_values: data.newValues ? data.newValues : Prisma.JsonNull,
-        ip_address: data.ip || null,
-        user_agent: data.userAgent || null,
-        created_at: new Date(),
-      },
-    });
-  } catch (error) {
-    console.error('Failed to create system audit log:', error);
-  }
-}
 
 export async function middleware(request: NextRequest) {
   const { pathname, searchParams } = request.nextUrl;
@@ -161,30 +114,7 @@ export async function middleware(request: NextRequest) {
   const isSignupPage = pathname.includes('/signup');
 
   // Log successful login attempts
-  if (isLoginPage && token && request.method === 'GET') {
-    try {
-      const { ip, userAgent } = extractRequestInfo(request);
-      await prisma.auditLog.create({
-        data: {
-          user_id: token.sub!,
-          action: 'LOGIN_PAGE_ACCESS',
-          entity_type: getTranslatedEntityType('User'),
-          entity_id: token.sub!,
-          description: 'Authenticated user accessed login page',
-          ip_address: ip,
-          user_agent: userAgent,
-          new_values: {
-            email: token.email,
-            role: token.role,
-            preferred_language: token.preferred_language
-          },
-          created_at: new Date(),
-        },
-      });
-    } catch (error) {
-      console.error('Failed to log login page access:', error);
-    }
-  }
+
 
   // Define public paths
   const publicPathnames = [
@@ -216,20 +146,7 @@ export async function middleware(request: NextRequest) {
     if (!token) {
       const loginUrl = new URL(`/${currentPathLocale || getLocale(request)}/login`, request.url);
 
-      // Log failed access attempts using system user
-      const { ip, userAgent } = extractRequestInfo(request);
-      await createSystemAuditLog({
-        action: 'UNAUTHENTICATED_ACCESS',
-        entityType: getTranslatedEntityType('Route'),
-        description: `Unauthenticated access attempt to ${pathname}`,
-        newValues: {
-          path: pathname,
-          method: 'GET',
-          locale: currentPathLocale
-        },
-        ip,
-        userAgent,
-      });
+
 
       // Set callbackUrl to the current page (excluding login pages)
       const currentUrl = new URL(request.url);
@@ -242,29 +159,7 @@ export async function middleware(request: NextRequest) {
 
     // Check admin permissions for super-admin routes
     if (pathname.includes("/super-admin") && token.role !== "SuperAdmin") {
-      try {
-        const { ip, userAgent } = extractRequestInfo(request);
-        await prisma.auditLog.create({
-          data: {
-            user_id: token.sub!,
-            action: 'UNAUTHORIZED_ADMIN_ACCESS',
-            entity_type: getTranslatedEntityType('User'),
-            entity_id: token.sub!,
-            description: `User attempted to access admin route: ${pathname}`,
-            ip_address: ip,
-            user_agent: userAgent,
-            new_values: {
-              email: token.email,
-              role: token.role,
-              attempted_path: pathname,
-              preferred_language: token.preferred_language
-            },
-            created_at: new Date(),
-          },
-        });
-      } catch (error) {
-        console.error('Failed to log unauthorized admin access:', error);
-      }
+
 
       return new Response('Unauthorized', { status: 401 });
     }

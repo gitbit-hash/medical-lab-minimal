@@ -5,26 +5,9 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "../../lib/prisma";
 import bcrypt from "bcrypt";
 import { Adapter } from "next-auth/adapters";
-import { getTranslatedEntityType } from '@/app/lib/audit/get-translated-entity-type';
 
-// Function to get client IP address
-function getClientIp(request?: any): string | null {
-  if (!request) return null;
 
-  const forwarded = request.headers?.get('x-forwarded-for');
-  if (forwarded) {
-    const ips = forwarded.split(',')[0].trim();
-    return ips;
-  }
 
-  return request.headers?.get('x-real-ip') || null;
-}
-
-// Function to get user agent
-function getUserAgent(request?: any): string | null {
-  if (!request) return null;
-  return request.headers?.get('user-agent') || null;
-}
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma) as Adapter,
@@ -52,33 +35,7 @@ export const authOptions: NextAuthOptions = {
 
           // ✅ Check if user is active
           if (!user.is_active) {
-            // Log the inactive account login attempt
-            try {
-              const ipAddress = getClientIp(req);
-              const userAgent = getUserAgent(req);
 
-              await prisma.auditLog.create({
-                data: {
-                  user_id: user.id,
-                  action: 'USER_LOGIN_DENIED',
-                  entity_type: getTranslatedEntityType('User'),
-                  entity_id: user.id,
-                  description: 'audit.user_login_denied',
-                  translation_params: {
-                    user_name: user.name || user.email
-                  },
-                  ip_address: ipAddress,
-                  user_agent: userAgent,
-                  metadata: {
-                    reason: 'account_inactive',
-                    attempted_email: credentials.email,
-                  },
-                  created_at: new Date(),
-                },
-              });
-            } catch (auditError) {
-              console.error('Failed to create inactive login audit log:', auditError);
-            }
 
             return null;
           }
@@ -89,33 +46,7 @@ export const authOptions: NextAuthOptions = {
           );
 
           if (!isValid) {
-            // Log failed login attempt for audit
-            try {
-              const ipAddress = getClientIp(req);
-              const userAgent = getUserAgent(req);
 
-              await prisma.auditLog.create({
-                data: {
-                  user_id: user.id,
-                  action: 'USER_LOGIN_FAILED',
-                  entity_type: getTranslatedEntityType('User'),
-                  entity_id: user.id,
-                  description: 'audit.user_login_failed',
-                  translation_params: {
-                    user_name: user.name || user.email
-                  },
-                  ip_address: ipAddress,
-                  user_agent: userAgent,
-                  metadata: {
-                    reason: 'invalid_credentials',
-                    attempted_email: credentials.email,
-                  },
-                  created_at: new Date(),
-                },
-              });
-            } catch (auditError) {
-              console.error('Failed to create failed login audit log:', auditError);
-            }
 
             return null;
           }
@@ -129,33 +60,7 @@ export const authOptions: NextAuthOptions = {
             },
           });
 
-          // Create login audit log
-          try {
-            const ipAddress = getClientIp(req);
-            const userAgent = getUserAgent(req);
 
-            await prisma.auditLog.create({
-              data: {
-                user_id: user.id,
-                action: 'USER_LOGIN',
-                entity_type: getTranslatedEntityType('User'),
-                entity_id: user.id,
-                description: 'audit.user_login',
-                translation_params: {
-                  user_name: user.name || user.email
-                },
-                ip_address: ipAddress,
-                user_agent: userAgent,
-                new_values: {
-                  last_login_at: updatedUser.last_login_at,
-                  login_method: 'credentials'
-                },
-                created_at: new Date(),
-              },
-            });
-          } catch (auditError) {
-            console.error('Failed to create login audit log:', auditError);
-          }
 
           // Return user with discount permissions
           return {
@@ -315,93 +220,7 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
   },
-  events: {
-    async signIn({ user, account, profile, isNewUser }) {
-      try {
-        // Additional sign-in audit log
-        const existingLog = await prisma.auditLog.findFirst({
-          where: {
-            user_id: user.id,
-            action: 'USER_LOGIN',
-            created_at: {
-              gte: new Date(Date.now() - 60000) // Last minute
-            }
-          },
-          orderBy: { created_at: 'desc' },
-          take: 1
-        });
 
-        if (!existingLog) {
-          await prisma.auditLog.create({
-            data: {
-              user_id: user.id,
-              action: 'USER_LOGIN',
-              entity_type: getTranslatedEntityType('User'),
-              entity_id: user.id,
-              description: 'audit.user_login',
-              translation_params: {
-                user_name: user.name || user.email
-              },
-              new_values: {
-                provider: account?.provider || 'credentials',
-                isNewUser: isNewUser || false
-              },
-              created_at: new Date(),
-            },
-          });
-        }
-      } catch (error) {
-        console.error('Failed to create signIn event audit log:', error);
-      }
-    },
-    async signOut({ token }) {
-      try {
-        // Create logout audit log
-        if (token?.sub) {
-          await prisma.auditLog.create({
-            data: {
-              user_id: token.sub,
-              action: 'USER_LOGOUT',
-              entity_type: getTranslatedEntityType('User'),
-              entity_id: token.sub,
-              description: 'audit.user_logout',
-              translation_params: {
-                user_name: token.name || token.email || 'Unknown'
-              },
-              created_at: new Date(),
-            },
-          });
-        }
-      } catch (error) {
-        console.error('Failed to create logout audit log:', error);
-      }
-    },
-    async createUser({ user }) {
-      try {
-        // Log user creation
-        await prisma.auditLog.create({
-          data: {
-            user_id: user.id,
-            action: 'CREATE_USER',
-            entity_type: getTranslatedEntityType('User'),
-            entity_id: user.id,
-            description: 'audit.user_created',
-            translation_params: {
-              user_name: user.name || user.email
-            },
-            new_values: {
-              email: user.email,
-              name: user.name,
-              created_at: new Date()
-            },
-            created_at: new Date(),
-          },
-        });
-      } catch (error) {
-        console.error('Failed to create user creation audit log:', error);
-      }
-    },
-  },
   pages: {
     signIn: "/login",
     error: "/login", // Redirect to login on auth errors

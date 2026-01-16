@@ -109,48 +109,7 @@ export interface TestParameter {
   default_value: string | null;
 }
 
-export type AuditAction =
-  | 'USER_LOGIN'
-  | 'USER_LOGOUT'
-  | 'CREATE_PATIENT'
-  | 'UPDATE_PATIENT'
-  | 'DELETE_PATIENT'
-  | 'CREATE_DOCTOR'
-  | 'UPDATE_DOCTOR'
-  | 'DELETE_DOCTOR'
-  | 'CREATE_TEST'
-  | 'UPDATE_TEST'
-  | 'DELETE_TEST'
-  | 'CREATE_TEST_TEMPLATE'
-  | 'UPDATE_TEST_TEMPLATE'
-  | 'DELETE_TEST_TEMPLATE'
-  | 'SYNC_DATA'
-  | 'EXPORT_REPORT'
-  | 'APPLY_DISCOUNT'
-  | 'REMOVE_DISCOUNT'
-  | 'CREATE_VISIT'
-  | 'VISIT_PAYMENT'
-  | 'PAYMENT_RECEIVED'
-  | 'PRINT_TEST'
-  | 'USER_LOGIN_DENIED'
-  | 'USER_LOGIN_FAILED'
-  | 'CREATE_TESTS_BATCH'
-  | 'CREATE_TESTS_BATCH'
-  | 'CREATE_TESTS_BATCH'
-  ;
 
-export interface AuditLogParams {
-  action: AuditAction;
-  entity_type: string;
-  entity_id?: string;
-  description?: string;
-  old_values?: any;
-  new_values?: any;
-  ip_address?: string;
-  user_agent?: string;
-  metadata?: any;
-  translation_params?: any;
-}
 
 // NEW: Payment information
 export interface PaymentInfo {

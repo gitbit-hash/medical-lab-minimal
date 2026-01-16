@@ -64,17 +64,17 @@ export function Dialog({
   };
 
   return (
-    <div className="fixed inset-0 z-9999 overflow-y-auto">
+    <div className="fixed inset-0 z-[9999] overflow-y-auto">
       {/* Backdrop */}
-      <div className="fixed inset-0 bg-black bg-opacity-25 transition-opacity" />
+      <div className="fixed inset-0 bg-black bg-opacity-50 transition-opacity" onClick={onClose} />
 
       {/* Dialog */}
-      <div className="flex min-h-full items-center justify-center p-4 text-center">
-        <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+      <div className="fixed inset-0 flex items-end justify-center p-4 pointer-events-none">
+        <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg pointer-events-auto">
           {/* Header */}
           <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
             <div className="sm:flex sm:items-start">
-              <div className="mx-auto flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gray-100 sm:mx-0 sm:h-10 sm:w-10">
+              <div className="mx-auto flex h-12 w-12 shrink-0 items-center justify-end rounded-full bg-gray-100 sm:mx-0 sm:h-10 sm:w-10">
                 {getIcon()}
               </div>
               <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">

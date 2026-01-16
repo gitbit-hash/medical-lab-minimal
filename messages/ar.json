@@ -707,7 +707,8 @@
     },
     "messages": {
       "createPatientFailed": "فشل إنشاء المريض",
-      "unknownError": "خطأ غير معروف"
+      "unknownError": "خطأ غير معروف",
+      "patientLimitReached": "يمكنك إنشاء مريض واحد فقط."
     },
     "ageSuggestions": {
       "title": "معلومات العمر",

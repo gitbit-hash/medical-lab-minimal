@@ -707,7 +707,8 @@
     },
     "messages": {
       "createPatientFailed": "Échec de la création du patient",
-      "unknownError": "Erreur inconnue"
+      "unknownError": "Erreur inconnue",
+      "patientLimitReached": "Vous ne pouvez créer qu'un seul patient."
     },
     "ageSuggestions": {
       "title": "Info Âge",

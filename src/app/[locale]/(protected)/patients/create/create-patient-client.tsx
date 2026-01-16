@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { TestSelectionForm } from '@/app/components/test-selection-form';
 import { TestTemplateSearchResult } from '@/app/types';
+import { Dialog } from '@/app/components/Dialog';
 
 // Add interface for created patient
 interface CreatedPatient {
@@ -34,6 +35,8 @@ export function CreatePatientClient({ locale }: CreatePatientClientProps) {
   const [createdVisit, setCreatedVisit] = useState<any>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formErrors, setFormErrors] = useState<string[]>([]);
+  const [isErrorDialogOpen, setIsErrorDialogOpen] = useState(false);
+  const [errorDialogMessage, setErrorDialogMessage] = useState('');
 
   const [formData, setFormData] = useState({
     name: '',
@@ -164,7 +167,12 @@ export function CreatePatientClient({ locale }: CreatePatientClientProps) {
 
       if (!patientResponse.ok) {
         const errorData = await patientResponse.json();
-        throw new Error(errorData.error || t('messages.createPatientFailed'));
+        const serverError = errorData.error;
+        // Check for specific patient limit error
+        if (serverError === 'You can only create one patient.') {
+          throw new Error('patientLimitReached');
+        }
+        throw new Error(serverError || t('messages.createPatientFailed'));
       }
 
       const patientData = await patientResponse.json();
@@ -176,7 +184,18 @@ export function CreatePatientClient({ locale }: CreatePatientClientProps) {
       router.push(`/${locale}/patients`);
 
     } catch (error) {
-      alert(`${t('messages.createPatientFailed')}: ${error instanceof Error ? error.message : t('messages.unknownError')}`);
+      let message = t('messages.createPatientFailed');
+      if (error instanceof Error) {
+        if (error.message === 'patientLimitReached') {
+          message = t('messages.patientLimitReached');
+        } else {
+          message = `${message}: ${error.message}`;
+        }
+      } else {
+        message = `${message}: ${t('messages.unknownError')}`;
+      }
+      setErrorDialogMessage(message);
+      setIsErrorDialogOpen(true);
     } finally {
       setIsSubmitting(false);
     }
@@ -452,6 +471,16 @@ export function CreatePatientClient({ locale }: CreatePatientClientProps) {
           </div>
         </form>
       </div>
+
+      {/* Error Dialog */}
+      <Dialog
+        isOpen={isErrorDialogOpen}
+        title={t('messages.createPatientFailed')}
+        message={errorDialogMessage}
+        type="error"
+        onClose={() => setIsErrorDialogOpen(false)}
+        confirmText="OK"
+      />
     </div>
   );
 }

@@ -71,7 +71,6 @@ export default async function PatientTestsPage({ params }: PatientTestsPageProps
           parameters: true,
         },
       },
-      external_lab: true,
     },
     orderBy: { created_at: 'desc' },
   });

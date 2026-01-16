@@ -207,7 +207,6 @@ model TestTemplate {
 
   parameters    TestParameter[]
   patient_tests Test[]
-  external_prices ExternalLabTestPrice[]
 
   @@index([is_active])
   @@index([category_id])
@@ -263,9 +262,6 @@ model Test {
   patient       Patient       @relation(fields: [patient_id], references: [id], onDelete: Cascade)
   doctor        Doctor?       @relation(fields: [referring_doctor_id], references: [id], onDelete: SetNull)
   test_template TestTemplate? @relation(fields: [test_template_id], references: [id])
-  external_lab_id String?
-  external_lab    ExternalLab? @relation(fields: [external_lab_id], references: [id])
-  outsourcing_cost Float?
 
   created_by_id String?
   updated_by_id String?
@@ -555,36 +551,3 @@ enum PaymentStatus {
   Insurance
 }
 
-model ExternalLab {
-  id              String   @id @default(uuid())
-  name            String
-  contact_number  String?
-  address         String?
-  email           String?
-
-  is_deleted      Boolean  @default(false)
-  deleted_at      DateTime?
-  deleted_by      String?
-  
-  tests           Test[]
-  prices          ExternalLabTestPrice[]
-
-  created_at      DateTime @default(now())
-  updated_at      DateTime @updatedAt
-  
-  @@map("external_labs")
-}
-
-model ExternalLabTestPrice {
-  id               String       @id @default(uuid())
-  external_lab_id  String
-  test_template_id String
-  price            Float
-  updated_at       DateTime     @updatedAt
-
-  external_lab     ExternalLab  @relation(fields: [external_lab_id], references: [id], onDelete: Cascade)
-  test_template    TestTemplate @relation(fields: [test_template_id], references: [id], onDelete: Cascade)
-
-  @@unique([external_lab_id, test_template_id])
-  @@map("external_lab_test_prices")
-}

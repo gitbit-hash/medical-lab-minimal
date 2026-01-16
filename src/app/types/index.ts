@@ -11,8 +11,7 @@ import {
   DiscountType, // NEW: Import DiscountType
   PaymentStatus, // NEW: Import PaymentStatus
   DiscountAudit as PrismaDiscountAudit,
-  User,
-  ExternalLab
+  User
 } from '@prisma/client';
 
 // Re-export everything from sync
@@ -64,9 +63,6 @@ export type TestWithRelations = Test & {
   doctor: Doctor | null;
   test_template: TestTemplateWithCategoryAndParams | null;
   patient_visit?: PatientVisit | null; // NEW: Add patient visit relation
-  external_lab_id?: string | null;
-  external_lab?: ExternalLab | null;
-  outsourcing_cost?: number | null;
 };
 
 // TestTemplate with category

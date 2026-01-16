@@ -6,7 +6,6 @@ import { AuthSessionProvider } from "./providers/session-provider";
 import { getServerSession } from "next-auth";
 import { authOptions } from './api/auth/auth-options';
 import { validateStartupSafe } from './lib/startup-validation';
-import { LicenseErrorPage } from './components/license-error-page';
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -20,25 +19,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Validate startup requirements (including license)
-  const validation = await validateStartupSafe();
-
-  // If license validation failed, show error page instead of the app
-  if (!validation.valid) {
-    console.error('❌ Startup validation failed:', validation.error);
-
-    return (
-      <html lang="en">
-        <body>
-          <LicenseErrorPage
-            error={validation.error || 'License validation failed'}
-            licenseStatus={validation.licenseStatus}
-            message={validation.message}
-          />
-        </body>
-      </html>
-    );
-  }
+  // Validate startup requirements
+  await validateStartupSafe();
 
   let session = null;
   try {

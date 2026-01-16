@@ -15,7 +15,7 @@ const ROOT_DIR = path.join(__dirname, '..');
 // Create a simple ICO file (base64 encoded placeholder icon)
 function createPlaceholderIcon() {
   console.log('🎨 Creating placeholder icon...');
-  
+
   // This is a minimal 16x16 ICO file encoded in base64
   const iconBase64 = 'AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' +
     'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' +
@@ -48,48 +48,16 @@ function createPlaceholderIcon() {
     'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' +
     'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' +
     'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
-  
+
   const iconBuffer = Buffer.from(iconBase64, 'base64');
   fs.writeFileSync(path.join(DIST_DIR, 'icon.ico'), iconBuffer);
   console.log('✅ Placeholder icon created');
 }
 
-// Create license file
-function createLicenseFile() {
-  console.log('📄 Creating license file...');
-  
-  const licenseText = `MEDICAL LAB MANAGEMENT SOFTWARE LICENSE AGREEMENT
-
-1. GRANT OF LICENSE
-This agreement grants you a non-exclusive, non-transferable license to use the Medical Lab Management software on a single machine.
-
-2. RESTRICTIONS
-You may not:
-- Copy, modify, or distribute the software
-- Reverse engineer, decompile, or disassemble the software
-- Rent, lease, or lend the software
-- Use the software for any illegal purpose
-
-3. TERM
-This license is valid until terminated. You may terminate it by destroying the software and documentation.
-
-4. WARRANTY DISCLAIMER
-The software is provided "as is" without warranty of any kind.
-
-5. LIMITATION OF LIABILITY
-In no event shall the authors be liable for any damages arising from the use of this software.
-
-By installing this software, you agree to these terms.
-`;
-
-  fs.writeFileSync(path.join(DIST_DIR, 'LICENSE.txt'), licenseText);
-  console.log('✅ License file created');
-}
-
 // Create Windows NSIS installer script (simplified version)
 function createNSISInstaller() {
   console.log('📦 Creating Windows NSIS installer script...');
-  
+
   const nsisScript = `; Medical Lab Management - NSIS Installer Script
 ; Simplified version without icons
 
@@ -109,7 +77,7 @@ RequestExecutionLevel admin
 
 ; Pages
 !insertmacro MUI_PAGE_WELCOME
-; !insertmacro MUI_PAGE_LICENSE "LICENSE.txt" ; Comment out if no license file
+; License page removed
 !insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
@@ -171,7 +139,7 @@ SectionEnd
     path.join(DIST_DIR, 'installer.nsi'),
     nsisScript
   );
-  
+
   console.log('✅ NSIS installer script created');
   console.log('   To build installer, run: makensis installer.nsi');
 }
@@ -179,11 +147,11 @@ SectionEnd
 // Create macOS DMG script
 function createMacDMGScript() {
   console.log('🍎 Creating macOS DMG creation script...');
-  
+
   // Define variables for the bash script
   const dmgName = 'medica-lab-installer';
   const volumeName = 'Medical Lab Management Installer';
-  
+
   const dmgScript = `#!/bin/bash
 # Create macOS DMG Installer
 # Note: Requires create-dmg (brew install create-dmg)
@@ -222,18 +190,18 @@ echo "DMG created: ${OUTPUT_DMG}"
     path.join(DIST_DIR, 'create-dmg.sh'),
     dmgScript
   );
-  
+
   if (process.platform !== 'win32') {
     execSync(`chmod +x "${path.join(DIST_DIR, 'create-dmg.sh')}"`);
   }
-  
+
   console.log('✅ macOS DMG script created');
 }
 
 // Create Linux AppImage script
 function createLinuxAppImage() {
   console.log('🐧 Creating Linux AppImage script...');
-  
+
   const appImageScript = `#!/bin/bash
 # Create Linux AppImage
 # Note: Requires appimagetool
@@ -288,19 +256,19 @@ fi
     path.join(DIST_DIR, 'create-appimage.sh'),
     appImageScript
   );
-  
+
   if (process.platform !== 'win32') {
     execSync(`chmod +x "${path.join(DIST_DIR, 'create-appimage.sh')}"`);
   }
-  
+
   console.log('✅ Linux AppImage script created');
 }
 
 // Create portable ZIP package
 function createPortablePackage() {
   console.log('📦 Creating portable ZIP package...');
-  
-  const zipScript = process.platform === 'win32' 
+
+  const zipScript = process.platform === 'win32'
     ? `@echo off
 echo Creating portable ZIP package...
 if exist medica-lab-portable.zip del medica-lab-portable.zip
@@ -319,18 +287,18 @@ echo "Portable package created: medica-lab-portable.zip"
     path.join(DIST_DIR, `create-portable.${ext}`),
     zipScript
   );
-  
+
   if (process.platform !== 'win32') {
     execSync(`chmod +x "${path.join(DIST_DIR, 'create-portable.sh')}"`);
   }
-  
+
   console.log(`✅ Portable package script created (create-portable.${ext})`);
 }
 
 // Create README for installer scripts
 function createInstallerREADME() {
   console.log('📖 Creating installer README...');
-  
+
   const readme = `# Installer Scripts
 
 This directory contains scripts to create platform-specific installers for the Medical Lab Management system.
@@ -392,14 +360,14 @@ Test the installer on a clean system before distribution.
     path.join(DIST_DIR, 'README.md'),
     readme
   );
-  
+
   console.log('✅ Installer README created');
 }
 
 // Create a batch file to make building easier
 function createBuildHelper() {
   console.log('🔧 Creating build helper script...');
-  
+
   const buildScript = `@echo off
 echo Medical Lab Management - Build Helper
 echo ======================================
@@ -474,24 +442,24 @@ pause
     path.join(ROOT_DIR, 'build-installer.bat'),
     buildScript
   );
-  
+
   console.log('✅ Build helper script created (build-installer.bat)');
 }
 
 // Main function
 function createInstallers() {
   console.log('🔨 Creating installer scripts...\n');
-  
+
   if (!fs.existsSync(PACKAGE_DIR)) {
     console.error('❌ Package directory not found. Run build-distribution.js first.');
     console.error('   Try running: npm run dist:build');
     process.exit(1);
   }
-  
+
   // Create required files
   createPlaceholderIcon();
-  createLicenseFile();
-  
+  // License file creation removed
+
   // Create installer scripts
   createNSISInstaller();
   createMacDMGScript();
@@ -499,7 +467,7 @@ function createInstallers() {
   createPortablePackage();
   createInstallerREADME();
   createBuildHelper();
-  
+
   console.log('\n✅ Installer scripts created!');
   console.log('\nTo build the Windows installer:');
   console.log('1. Make sure NSIS is installed');

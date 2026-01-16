@@ -2,7 +2,6 @@
 import { NextResponse } from 'next/server';
 import { localPrisma } from '../../lib/db/local-client';
 import { remoteDB } from '../../lib/db/remote-client';
-import { licenseValidator } from '../../lib/license/license-validator';
 
 export const dynamic = 'force-dynamic';
 
@@ -18,12 +17,6 @@ interface HealthCheckResult {
     status: 'healthy' | 'unhealthy';
     responseTime?: number;
     error?: string;
-  };
-  license: {
-    status: string;
-    isValid: boolean;
-    message?: string;
-    daysRemaining?: number;
   };
   sync: {
     pendingPatients: number;
@@ -48,10 +41,6 @@ export async function GET(): Promise<NextResponse<HealthCheckResult>> {
     timestamp: new Date().toISOString(),
     localDb: { status: 'unhealthy' },
     remoteDb: { status: 'unhealthy' },
-    license: {
-      status: 'unknown',
-      isValid: true,
-    },
     sync: {
       pendingPatients: 0,
       pendingDoctors: 0,
@@ -102,32 +91,6 @@ export async function GET(): Promise<NextResponse<HealthCheckResult>> {
     }
   }
 
-  // Check license status
-  try {
-    const licenseResult = await licenseValidator.validateLicense();
-    healthCheck.license = {
-      status: licenseResult.status,
-      isValid: licenseResult.isValid,
-      message: licenseResult.message,
-      daysRemaining: licenseResult.daysRemaining,
-    };
-
-    // License validation failure doesn't make app unhealthy, but marks as degraded
-    if (!licenseResult.isValid && licenseResult.status !== 'grace_period') {
-      if (healthCheck.status === 'healthy') {
-        healthCheck.status = 'degraded';
-      }
-    }
-  } catch (error) {
-    // License check failure doesn't affect overall health
-    console.warn('Failed to check license status:', error);
-    healthCheck.license = {
-      status: 'error',
-      isValid: false,
-      message: 'Failed to validate license',
-    };
-  }
-
   // Get sync queue status (only if local DB is healthy)
   if (healthCheck.localDb.status === 'healthy') {
     try {
@@ -160,9 +123,9 @@ export async function GET(): Promise<NextResponse<HealthCheckResult>> {
   }
 
   // Set appropriate HTTP status code
-  const statusCode = healthCheck.status === 'healthy' ? 200 : 
-                     healthCheck.status === 'degraded' ? 200 : 
-                     503; // Service Unavailable
+  const statusCode = healthCheck.status === 'healthy' ? 200 :
+    healthCheck.status === 'degraded' ? 200 :
+      503; // Service Unavailable
 
   return NextResponse.json(healthCheck, { status: statusCode });
 }

@@ -382,28 +382,7 @@ model ReportSettings {
   @@map("report_settings")
 }
 
-model License {
-  id                    String    @id @default(uuid())
-  license_key           String    @unique
-  status                String    @default("active") // active, expired, suspended, trial
-  expires_at            DateTime?
-  last_validated_at     DateTime?
-  offline_validated_at  DateTime? // Last time validated while offline
-  grace_period_ends_at  DateTime? // When offline grace period ends
-  max_users             Int?
-  max_devices            Int?
-  machine_id             String? // Machine fingerprint - binds license to a specific machine
-  features               Json? // Enabled features
-  metadata               Json? // Additional license metadata
-  created_at             DateTime  @default(now())
-  updated_at             DateTime  @updatedAt
 
-  @@index([status])
-  @@index([expires_at])
-  @@index([license_key])
-  @@index([machine_id])
-  @@map("licenses")
-}
 
 model ErrorLog {
   id        String   @id @default(uuid())

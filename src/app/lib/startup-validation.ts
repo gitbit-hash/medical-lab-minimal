@@ -5,8 +5,6 @@
  */
 
 import { validateEnvVars } from './env-validation';
-import { ErrorLogger, ErrorSeverity } from './error-logger';
-import { licenseValidator } from './license/license-validator';
 
 let hasValidated = false;
 
@@ -23,52 +21,20 @@ export async function validateStartup(): Promise<boolean> {
   try {
     // Validate environment variables
     validateEnvVars();
-    
-    // Validate license (if enabled)
-    const licenseResult = await licenseValidator.validateLicense();
-    
-    if (!licenseResult.isValid && licenseResult.status !== 'grace_period') {
-      const errorMessage = `License validation failed: ${licenseResult.message}`;
-      console.error('❌ License Validation Failed:', errorMessage);
-      
-      // Log error (but don't block if DB is not ready)
-      try {
-        await ErrorLogger.logSystemError(
-          'License validation failed on startup',
-          new Error(errorMessage),
-          ErrorSeverity.CRITICAL
-        );
-      } catch (logError) {
-        // Ignore logging errors during startup
-      }
-      
-      // In production, you might want to throw here to block startup
-      // For now, we'll log and continue (graceful degradation)
-      if (process.env.NODE_ENV === 'production') {
-        throw new Error(errorMessage);
-      } else {
-        console.warn('⚠️ Continuing in development mode despite license validation failure');
-      }
-    } else if (licenseResult.status === 'grace_period') {
-      console.warn('⚠️ License in grace period:', licenseResult.message);
-    } else {
-      console.log('✅ License validation passed');
-    }
-    
-    // Start periodic license validation
-    licenseValidator.startPeriodicValidation();
-    
-    hasValidated = true;
+
+    // No license validation needed anymore
     console.log('✅ Startup validation passed');
+
+    hasValidated = true;
     return true;
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown validation error';
     console.error('❌ Startup validation failed:', errorMessage);
-    
-    // Log the error (but don't use database logging since validation might fail before DB is ready)
+
+    // Log the error
     console.error('Application cannot start without required environment variables.');
     console.error('Please check your .env file and ensure all required variables are set.');
-    
+
     hasValidated = false;
     return false;
   }
@@ -77,64 +43,17 @@ export async function validateStartup(): Promise<boolean> {
 /**
  * Validates startup in a non-blocking way (for Next.js layouts)
  * Returns validation result without throwing
- * Now properly blocks the app if license is invalid
  */
-export async function validateStartupSafe(): Promise<{ valid: boolean; error?: string; licenseStatus?: string; message?: string }> {
+export async function validateStartupSafe(): Promise<{ valid: boolean; error?: string }> {
   if (hasValidated) {
     return { valid: true };
   }
 
   try {
     validateEnvVars();
-    
-    // Validate license
-    const licenseResult = await licenseValidator.validateLicense();
-    const licenseStatus = licenseResult.isValid ? 'valid' : licenseResult.status;
-    
-    // Check if license is valid
-    // Allow grace_period to continue (offline mode)
-    const isLicenseValid = licenseResult.isValid || licenseResult.status === 'grace_period';
-    
-    if (!isLicenseValid) {
-      // License is invalid - block the app
-      const errorMessage = `License validation failed: ${licenseResult.message}`;
-      console.error('❌ License Validation Failed:', errorMessage);
-      
-      // Log error
-      try {
-        await ErrorLogger.logSystemError(
-          'License validation failed on startup',
-          new Error(errorMessage),
-          ErrorSeverity.CRITICAL
-        );
-      } catch (logError) {
-        // Ignore logging errors during startup
-      }
-      
-      hasValidated = false;
-      return { 
-        valid: false,
-        error: errorMessage,
-        licenseStatus: licenseStatus,
-        message: licenseResult.message,
-      };
-    }
-    
-    // License is valid or in grace period
-    if (licenseResult.status === 'grace_period') {
-      console.warn('⚠️ License in grace period:', licenseResult.message);
-    } else {
-      console.log('✅ License validation passed');
-    }
-    
-    // Start periodic validation
-    licenseValidator.startPeriodicValidation();
-    
+
     hasValidated = true;
-    return { 
-      valid: true,
-      licenseStatus: licenseStatus,
-    };
+    return { valid: true };
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown validation error';
     console.error('❌ Startup validation error:', errorMessage);

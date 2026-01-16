@@ -12,7 +12,6 @@ import {
   PaymentStatus, // NEW: Import PaymentStatus
   DiscountAudit as PrismaDiscountAudit,
   User,
-  CasaAnalysis,
   ExternalLab
 } from '@prisma/client';
 
@@ -65,7 +64,6 @@ export type TestWithRelations = Test & {
   doctor: Doctor | null;
   test_template: TestTemplateWithCategoryAndParams | null;
   patient_visit?: PatientVisit | null; // NEW: Add patient visit relation
-  casa_analysis?: CasaAnalysis
   external_lab_id?: string | null;
   external_lab?: ExternalLab | null;
   outsourcing_cost?: number | null;

@@ -213,46 +213,11 @@ export function PatientTestsClient({
       return;
     }
 
-    // ========== NEW LOGIC: SEPARATE CASA AND REGULAR TESTS ==========
-    const regularTestIds: string[] = [];
-
-    Array.from(selectedTests).forEach(testId => {
-      const test = tests.find(t => t.id === testId);
-
-      // FIX: Check if test exists before proceeding
-      if (!test) return;
-
-      regularTestIds.push(testId);
-
-    });
-
-    // Case 4: Only Regular Tests Selected -> Open Regular PDF Modal
+    // For all tests, use the existing PDF modal
     setPdfModalOpen(true);
   };
 
   const hasResults = (test: TestWithRelations): boolean => {
-    // Check for CASA analysis specifically
-    const isCasaTest = test.andrology_test_type === 'CASA' ||
-      test.test_type?.toLowerCase().includes('casa') ||
-      test.test_template?.andrology_test_type === 'CASA';
-
-    if (isCasaTest) {
-      // For CASA tests, check if casa_analysis exists OR if results.casa_inputs exists
-      const hasCasaAnalysis = test.casa_analysis !== null && test.casa_analysis !== undefined;
-
-      // FIX: Wrap the chain in Boolean() to ensure strict boolean type
-      const hasCasaInputs = Boolean(
-        test.results &&
-        typeof test.results === 'object' &&
-        test.results !== null &&
-        !Array.isArray(test.results) &&
-        'casa_inputs' in (test.results as Record<string, any>)
-      );
-
-      return hasCasaAnalysis || hasCasaInputs;
-    }
-
-    // Original logic for non-CASA tests
     if (!test.results) return false;
 
     if (typeof test.results === 'object' && test.results !== null && !Array.isArray(test.results)) {
@@ -278,21 +243,7 @@ export function PatientTestsClient({
 
   // Check if test is eligible for selection (has results and is completed)
   const isSelectable = (test: TestWithRelations): boolean => {
-    const isCompleted = test.status === TestStatus.Completed;
-
-    // For CASA tests, check if they have casa_analysis or casa_inputs
-    const isCasaTest = test.andrology_test_type === 'CASA' ||
-      test.test_type?.toLowerCase().includes('casa');
-
-    if (isCasaTest) {
-      return isCompleted && Boolean(
-        test.casa_analysis !== null ||
-        (test.results && typeof test.results === 'object' &&
-          test.results !== null && 'casa_inputs' in test.results)
-      );
-    }
-
-    return isCompleted && hasResults(test);
+    return test.status === TestStatus.Completed && hasResults(test);
   };
 
   // Check if test can be edited (not archived)

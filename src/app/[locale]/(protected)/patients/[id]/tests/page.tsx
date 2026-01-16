@@ -72,7 +72,6 @@ export default async function PatientTestsPage({ params }: PatientTestsPageProps
         },
       },
       external_lab: true,
-      casa_analysis: true,
     },
     orderBy: { created_at: 'desc' },
   });

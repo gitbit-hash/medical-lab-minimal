@@ -30,27 +30,10 @@ export function TestEditorDrawer({
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [allParametersFilled, setAllParametersFilled] = useState(false);
-  const [casaAnalysis, setCasaAnalysis] = useState<any>(null);
-  const [activeTab, setActiveTab] = useState<'general' | 'casa'>('general');
-
-  // Check if this is a CASA test
-  const isCasaTest = test?.andrology_test_type === 'CASA' ||
-    test?.test_type?.toLowerCase().includes('casa') ||
-    template?.andrology_test_type === 'CASA';
 
   useEffect(() => {
     if (!test) return;
-
     loadTemplate();
-
-    // MODIFIED: If it's a CASA test, we only want the CASA tab
-    if (isCasaTest) {
-      loadCasaAnalysis();
-      setActiveTab('casa');
-    } else {
-      // If not CASA, load template for general form
-      setActiveTab('general');
-    }
   }, [test]);
 
   useEffect(() => {
@@ -60,11 +43,7 @@ export function TestEditorDrawer({
         : {};
       setResults(currentResults as Record<string, any>);
       setAllParametersFilled(false);
-
-      // Only load template for general tests
-      if (!isCasaTest) {
-        loadTemplate();
-      }
+      loadTemplate();
     }
   }, [test?.id]);
 
@@ -83,20 +62,6 @@ export function TestEditorDrawer({
     }
   }
 
-  async function loadCasaAnalysis() {
-    try {
-      const res = await fetch(`/api/tests/${test?.id}/casa-analysis`);
-      if (res.ok) {
-        const data = await res.json();
-        if (data.success) {
-          setCasaAnalysis(data.data);
-        }
-      }
-    } catch (err) {
-      console.error('Failed to load CASA analysis:', err);
-    }
-  }
-
   const checkAllParametersFilled = (currentResults: Record<string, any>, currentTemplate: TestTemplateWithCategoryAndParams | null) => {
     if (!currentTemplate || !currentTemplate.parameters || currentTemplate.parameters.length === 0) {
       return false;
@@ -111,71 +76,6 @@ export function TestEditorDrawer({
   const handleResultsChange = (newResults: Record<string, any>) => {
     setResults(newResults);
     setAllParametersFilled(checkAllParametersFilled(newResults, template));
-  };
-
-  const handleCasaSave = async (casaData: any) => {
-    if (!test) return;
-
-    setSaving(true);
-    setError(null);
-
-    try {
-      // casaData structure from ComprehensiveCASAForm: { inputs: {...}, results: {...} }
-      const inputsToSave = casaData.inputs || {};
-
-      // First, save CASA analysis to CasaAnalysis table
-      const casaResponse = await fetch(`/api/tests/${test.id}/casa-analysis`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(casaData.results || casaData),
-      });
-
-      if (!casaResponse.ok) {
-        const errorData = await casaResponse.json();
-        throw new Error(errorData.error || `HTTP ${casaResponse.status}`);
-      }
-
-      const updatedCasaData = await casaResponse.json();
-
-      // Then update the test status and save inputs to test.results
-      const updateResponse = await fetch(`/api/tests/${test.id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          status: TestStatus.Completed,
-          tested_at: new Date(),
-          completed_at: new Date(),
-          andrology_test_type: AndrologyTestType.CASA,
-          results: {
-            // Preserve existing results if any
-            ...(typeof test.results === 'object' && test.results !== null ? test.results : {}),
-            // Add CASA inputs for future editing
-            casa_inputs: inputsToSave
-          },
-          // This ensures the test appears in the list as completed
-          is_printed: false // Reset printed status if editing
-        }),
-      });
-
-      if (!updateResponse.ok) {
-        const errorData = await updateResponse.json();
-        throw new Error(errorData.error || 'Failed to update test status');
-      }
-
-      const updatedTest = await updateResponse.json();
-
-      // Refresh CASA analysis data
-      await loadCasaAnalysis();
-
-      // Pass the updated test back to the parent
-      onClose(true, updatedTest.data || updatedTest);
-
-    } catch (err) {
-      console.error('Failed to save CASA analysis:', err);
-      setError(err instanceof Error ? err.message : 'Failed to save CASA analysis');
-    } finally {
-      setSaving(false);
-    }
   };
 
   const handleSave = async () => {
@@ -266,12 +166,6 @@ export function TestEditorDrawer({
                   </span>
                 )}
               </h2>
-              {isCasaTest && (
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
-                  <Microscope className="w-4 h-4 mr-1" />
-                  CASA Analysis
-                </span>
-              )}
             </div>
             <button
               onClick={() => onClose()}
@@ -281,32 +175,9 @@ export function TestEditorDrawer({
             </button>
           </div>
 
-          {/* MODIFIED: Only show tabs if it's a CASA test.
-              For Non-CASA, we just show the general form directly.
-          */}
-          {isCasaTest ? (
-            <div className="border-b border-gray-200 bg-gray-50">
-              <nav className="-mb-px flex space-x-8 px-6">
-                <button
-                  onClick={() => setActiveTab('casa')}
-                  className={`
-                    py-4 px-1 border-b-2 font-medium text-sm flex items-center
-                    ${activeTab === 'casa'
-                      ? 'border-blue-500 text-blue-600 bg-blue-50/10'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                    }
-                  `}
-                >
-                  <Microscope className="w-4 h-4 mr-2" />
-                  CASA Analysis
-                </button>
-              </nav>
-            </div>
-          ) : null}
-
           <div className="p-6">
-            {/* Requirement Status for General Tests Only */}
-            {!isCasaTest && template && (
+            {/* Requirement Status */}
+            {template && (
               <div className={`mb-4 p-3 rounded-md ${allParametersFilled
                 ? 'bg-green-50 border border-green-200 text-green-800'
                 : 'bg-yellow-50 border border-yellow-200 text-yellow-800'
@@ -333,30 +204,25 @@ export function TestEditorDrawer({
             )}
 
             {/* Loading State */}
-            {!template && !error && !isCasaTest ? (
+            {!template && !error ? (
               <div className="flex justify-center items-center py-12">
                 <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
                 <span className="ml-3 text-blue-600 text-sm">Loading template...</span>
               </div>
             ) : (
               <>
-                {/* General Test Form - Only for Non-CASA tests */}
-                {!isCasaTest && (
-                  <>
-                    {template ? (
-                      <TestResultsForm
-                        testTemplate={template}
-                        initialResults={
-                          typeof test.results === 'object' && test.results !== null ? test.results : {}
-                        }
-                        onResultsChange={handleResultsChange}
-                      />
-                    ) : (
-                      <div className="p-4 bg-yellow-50 text-yellow-700 rounded">
-                        No test template found for this test.
-                      </div>
-                    )}
-                  </>
+                {template ? (
+                  <TestResultsForm
+                    testTemplate={template}
+                    initialResults={
+                      typeof test.results === 'object' && test.results !== null ? test.results : {}
+                    }
+                    onResultsChange={handleResultsChange}
+                  />
+                ) : (
+                  <div className="p-4 bg-yellow-50 text-yellow-700 rounded">
+                    No test template found for this test.
+                  </div>
                 )}
               </>
             )}
@@ -366,41 +232,25 @@ export function TestEditorDrawer({
             <div className="text-red-600 text-sm px-6 py-4 border-t">{error}</div>
           )}
 
-          {/* Action Buttons for General Tests Only */}
-          {!isCasaTest ? (
-            <div className="flex justify-end border-t p-6 bg-gray-50 space-x-4">
-              <button
-                onClick={() => onClose(true)}
-                className="px-6 py-3 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100 font-medium"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleSave}
-                disabled={saving || !allParametersFilled}
-                className={`px-8 py-3 rounded-md transition font-medium ${allParametersFilled
-                  ? 'bg-blue-600 text-white hover:bg-blue-700'
-                  : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                  } ${saving ? 'opacity-50' : ''}`}
-              >
-                {saving ? 'Saving...' : test.status === TestStatus.Completed ? 'Update Results' : 'Save & Mark as Completed'}
-              </button>
-            </div>
-          ) : (
-            // CASA form has its own internal save/close buttons in the footer area usually, 
-            // but since we removed the tab wrapper, we can close via the X button.
-            // If you want a close button at bottom, add it here.
-            <div className="border-t p-6 bg-gray-50">
-              <div className="flex justify-end space-x-4">
-                <button
-                  onClick={() => onClose(true)}
-                  className="px-6 py-3 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100 font-medium"
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          )}
+          {/* Action Buttons */}
+          <div className="flex justify-end border-t p-6 bg-gray-50 space-x-4">
+            <button
+              onClick={() => onClose(true)}
+              className="px-6 py-3 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100 font-medium"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={handleSave}
+              disabled={saving || !allParametersFilled}
+              className={`px-8 py-3 rounded-md transition font-medium ${allParametersFilled
+                ? 'bg-blue-600 text-white hover:bg-blue-700'
+                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                } ${saving ? 'opacity-50' : ''}`}
+            >
+              {saving ? 'Saving...' : test.status === TestStatus.Completed ? 'Update Results' : 'Save & Mark as Completed'}
+            </button>
+          </div>
         </div>
       </div>
     </Dialog>

@@ -60,10 +60,8 @@ export async function PUT(
     const { id } = await params;
     const body = await request.json();
 
-    // Check if this is a CASA test update
     const existingTest = await localPrisma.test.findUnique({
       where: { id },
-      include: { casa_analysis: true }
     });
 
     if (!existingTest) {
@@ -74,12 +72,6 @@ export async function PUT(
       ...body,
       updated_at: new Date(),
     };
-
-    // If CASA test is being marked as completed
-    if (body.status === 'Completed' && !existingTest.completed_at) {
-      updateData.completed_at = new Date();
-      updateData.tested_at = new Date();
-    }
 
     // Update the test
     const updatedTest = await localPrisma.test.update({
@@ -94,7 +86,6 @@ export async function PUT(
             parameters: true,
           },
         },
-        casa_analysis: true, // Include CASA analysis
       },
     });
 

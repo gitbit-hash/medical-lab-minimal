@@ -273,8 +273,7 @@ model Test {
   updated_by    User?   @relation("UserUpdatedTests", fields: [updated_by_id], references: [id])
 
   andrology_test_type AndrologyTestType?
-  casa_analysis       CasaAnalysis?
-
+  
   test_images TestImage[]
 
   // Sync metadata
@@ -478,164 +477,6 @@ model ReceiptSettings {
   @@map("receipt_settings")
 }
 
-model CasaAnalysis {
-  id      String @id @default(uuid())
-  test_id String @unique
-  test    Test   @relation(fields: [test_id], references: [id], onDelete: Cascade)
-
-  // ========== BASIC SEMEN PARAMETERS ==========
-  collection_date     DateTime?
-  abstinence_days     Int? // Days of sexual abstinence
-  collection_method   String? // Masturbation, Condom, Interruption
-  collection_complete Boolean? // Complete sample or not
-
-  // PHYSICAL CHARACTERISTICS
-  volume_ml             Float? // Volume in mL
-  appearance            String? // Normal, Opalescent, Blood-tinged
-  viscosity             String? // Normal, Increased
-  liquefaction_time_min Int? // Minutes to liquefy (≤60 min normal)
-  ph                    Float? // pH value (7.2-8.0 normal)
-  odor                  String? // Characteristic, Foul
-
-  // ========== SPERM CONCENTRATION PARAMETERS ==========
-  concentration_million_per_ml Float? // Sperm concentration
-  total_sperm_number_million   Float? // Total sperm count per ejaculate
-  dilution_factor              Float?  @default(1)
-  chamber_depth_mm      Float?    @default(0.01)
-  counting_chamber             String? // Makler, Neubauer, Microcell
-
-  // ========== MOTILITY PARAMETERS (WHO 2021) ==========
-  total_motility_percent       Float? // PR + NP (≥42%)
-  progressive_motility_percent Float? // PR (≥30%)
-  non_progressive_percent      Float? // NP
-  immotile_percent             Float? // IM
-
-  // Progressive Motility Grades (A-D)
-  grade_a_percent Float? // Rapid progressive (≥25 µm/s)
-  grade_b_percent Float? // Slow progressive (5-25 µm/s)
-  grade_c_percent Float? // Non-progressive (<5 µm/s)
-  grade_d_percent Float? // Immotile
-
-  // ========== KINETIC PARAMETERS (CASA) ==========
-  // Velocity Parameters (µm/s)
-  vcl Float? // Curvilinear velocity
-  vsl Float? // Straight-line velocity
-  vap Float? // Average path velocity
-
-  // Movement Characteristics
-  lin Float? // Linearity (VSL/VCL × 100)
-  str Float? // Straightness (VSL/VAP × 100)
-  wob Float? // Wobble (VAP/VCL × 100)
-  alh Float? // Amplitude lateral head displacement
-  bcf Float? // Beat cross frequency (Hz)
-  mad Float? // Mean angular displacement
-
-  // Hyperactivation Parameters
-  hyperactive_percent      Float? // Percentage of hyperactivated sperm
-  hyperactivation_criteria String? // VCL > 100, ALH > 7, LIN < 50
-
-  // ========== MORPHOLOGY PARAMETERS ==========
-  // Strict Kruger Criteria (WHO 2021)
-  normal_forms_percent   Float? // ≥4% normal
-  abnormal_forms_percent Float? // Total abnormal
-
-  // Head Defects
-  head_defects_percent Float?
-  head_defects_types   Json? // {large: %, small: %, tapered: %, pyriform: %, round: %, amorphous: %, vacuolated: %, double: %}
-
-  // Midpiece Defects
-  midpiece_defects_percent Float?
-  midpiece_defects_types   Json? // {bent: %, thick: %, thin: %, irregular: %}
-
-  // Tail Defects
-  tail_defects_percent Float?
-  tail_defects_types   Json? // {bent: %, coiled: %, short: %, multiple: %, broken: %}
-
-  // Cytoplasmic Droplets
-  cytoplasmic_droplets_percent Float? // Normal ≤0.5
-  droplet_size                 String? // Small, Large
-
-  // Teratozoospermia Index (TZI)
-  teratozoospermia_index Float? // TZI = (cH + cM + cT)/cN
-
-  // ========== VITALITY PARAMETERS ==========
-  // Eosin-Nigrosin or Hypo-osmotic Swelling Test
-  live_percent    Float? // ≥54% live
-  dead_percent    Float?
-  vitality_method String? // Eosin-Nigrosin, HOS Test
-
-  // HOS Test Results
-  hos_positive_percent Float? // ≥60% normal
-  hos_negative_percent Float?
-
-  // ========== FRUCTOSE & BIOCHEMICAL PARAMETERS ==========
-  fructose_mg_per_dl          Float? // Normal ≥120 mg/dL
-  zinc_ug_per_ml              Float? // Normal ≥80 µg/mL
-  acid_phosphatase_u_per_ml   Float? // Normal ≥200 U/mL
-  alpha_glucosidase_mu_per_ml Float? // Normal ≥20 mU/mL
-
-  // ========== IMMUNOLOGICAL PARAMETERS ==========
-  // Mixed Antiglobulin Reaction (MAR) Test
-  mar_test_igg_percent Float? // <50% bound (normal)
-  mar_test_iga_percent Float?
-  mar_test_type        String? // IgG, IgA, IgM
-
-  // Immunobead Test (IBT)
-  ibt_percent Float? // <20% bound (normal)
-  ibt_pattern String? // Head, Tail, Mixed
-
-  // ========== LEUKOCYTE & NON-SPERM CELLS ==========
-  leukocyte_count_million_per_ml Float? // <1.0 million/mL (normal)
-  round_cells_million_per_ml     Float?
-  epithelial_cells               String? // Few, Moderate, Many
-
-  // ========== AGGLUTINATION & AGGREGATION ==========
-  agglutination_degree String? // None, Mild, Moderate, Severe
-  agglutination_type   String? // Head-to-head, Tail-to-tail, Mixed
-  aggregation_degree   String? // None, Mild, Moderate, Severe
-
-  // ========== SPERM DNA FRAGMENTATION (Optional) ==========
-  dna_fragmentation_index  Float? // DFI < 30% normal
-  dna_fragmentation_method String? // SCSA, TUNEL, SCD
-  high_dna_stainability    Float? // HDS < 15% normal
-
-  // ========== OXIDATIVE STRESS ==========
-  reactive_oxygen_species_count Float? // ROS < 20×10³ cpm normal
-  total_antioxidant_capacity    Float? // TAC (mM)
-
-  // ========== SPERM FUNCTION TESTS ==========
-  // Acrosome Reaction
-  spontaneous_ar_percent Float? // Spontaneous acrosome reaction
-  induced_ar_percent     Float? // Ionophore-induced AR
-  ar_index               Float? // Induced - Spontaneous
-
-  // Sperm Penetration Assay (Hamster Egg)
-  zona_free_hamster_test Float? // ≥10% penetration normal
-
-  // ========== QUALITY CONTROL ==========
-  technician_name       String?
-  analysis_time_minutes Int?
-  duplicate_variation   Float? // <20% acceptable
-  chamber_type          String? // Makler, Neubauer, Microcell
-  magnification_used    String? // 200x, 400x, 1000x
-
-  // ========== INTERPRETATION ==========
-  who_classification      String? // Normal, OAT, Azoospermia, etc.
-  andrology_diagnosis     Json? // Array of diagnoses
-  clinical_interpretation String?
-  recommendations         Json? // Array of recommendations
-
-  // ========== IMAGES & DOCUMENTATION ==========
-  microscopy_images   Json? // Array of image metadata
-  motility_video_path String?
-  analysis_report_pdf String?
-
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-
-  @@map("casa_analysis")
-}
-
 model TestImage {
   id      String @id @default(uuid())
   test_id String
@@ -647,7 +488,7 @@ model TestImage {
   mime_type String // image/jpeg, image/png
   caption   String?
 
-  // For CASA-specific images
+  // For CASA-specific images - keeping TestImageType for now but simplifying if needed
   image_type    TestImageType? // Motility, Morphology, Agglutination, etc.
   magnification String? // 400x, 1000x
 
@@ -670,7 +511,6 @@ enum TestImageType {
 // Additional test types for comprehensive andrology
 enum AndrologyTestType {
   SemenAnalysis
-  CASA
   SpermDNAFragmentation
   SpermFunctionTests
   PostCoitalTest

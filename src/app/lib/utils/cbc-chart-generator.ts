@@ -1,4 +1,66 @@
-import { createCanvas } from 'canvas';
+import { createCanvas, registerFont } from 'canvas';
+import path from 'path';
+import fs from 'fs';
+
+// Register font for serverless environments (Vercel, etc.)
+// On Vercel, system fonts like Arial are not available
+let fontRegistered = false;
+
+function ensureFontRegistered() {
+    if (fontRegistered) return;
+
+    try {
+        // List of possible font file locations (Vercel has different cwd paths)
+        const fontFileName = 'Inter[opsz,wght].ttf';
+        const possiblePaths = [
+            path.join(process.cwd(), 'public', 'fonts', fontFileName),
+            path.join(process.cwd(), '.next', 'server', 'public', 'fonts', fontFileName),
+            path.join(process.cwd(), 'fonts', fontFileName),
+            // For standalone output mode
+            path.join(process.cwd(), '.next', 'standalone', 'public', 'fonts', fontFileName),
+        ];
+
+        let fontPath: string | null = null;
+        for (const p of possiblePaths) {
+            if (fs.existsSync(p)) {
+                fontPath = p;
+                break;
+            }
+        }
+
+        if (fontPath) {
+            registerFont(fontPath, { family: 'ChartFont' });
+            console.log('✅ Inter font registered from:', fontPath);
+        } else {
+            // Fallback: try node_modules fonts  
+            const fallbackPaths = [
+                path.join(process.cwd(), 'node_modules', 'pdfjs-dist', 'standard_fonts', 'LiberationSans-Regular.ttf'),
+                path.join(process.cwd(), '..', 'node_modules', 'pdfjs-dist', 'standard_fonts', 'LiberationSans-Regular.ttf'),
+            ];
+
+            let fallbackPath: string | null = null;
+            for (const p of fallbackPaths) {
+                if (fs.existsSync(p)) {
+                    fallbackPath = p;
+                    break;
+                }
+            }
+
+            if (fallbackPath) {
+                registerFont(fallbackPath, { family: 'ChartFont' });
+                console.log('✅ LiberationSans font registered from:', fallbackPath);
+            } else {
+                console.warn('⚠️ No font file found. Tried paths:', possiblePaths);
+            }
+        }
+        fontRegistered = true;
+    } catch (error) {
+        console.error('❌ Failed to register font:', error);
+    }
+}
+
+// Font to use in canvas operations
+const CHART_FONT = 'ChartFont, DejaVu Sans, sans-serif';
 
 // Types for CBC Data
 export interface CBCData {
@@ -59,6 +121,9 @@ async function drawHistogram(
     width: number = 300,
     height: number = 200
 ): Promise<string> {
+    // Ensure font is registered for serverless environments
+    ensureFontRegistered();
+
     const canvas = createCanvas(width, height);
     const ctx = canvas.getContext('2d');
 
@@ -100,7 +165,7 @@ async function drawHistogram(
 
     // Draw X-axis Ticks and Labels
     ctx.fillStyle = '#6b7280';
-    ctx.font = '9px Arial';
+    ctx.font = `9px ${CHART_FONT}`;
     ctx.textAlign = 'center';
 
     // Draw 5 tick marks
@@ -122,13 +187,13 @@ async function drawHistogram(
 
     // Draw Title
     ctx.fillStyle = '#111827';
-    ctx.font = 'bold 12px Arial';
+    ctx.font = `bold 12px ${CHART_FONT}`;
     ctx.textAlign = 'center';
     ctx.fillText(title, width / 2, 20);
 
     // Draw X Label
     ctx.fillStyle = '#6b7280';
-    ctx.font = '10px Arial';
+    ctx.font = `10px ${CHART_FONT}`;
     ctx.textAlign = 'center';
     ctx.fillText(xLabel, width / 2, height - 10);
 

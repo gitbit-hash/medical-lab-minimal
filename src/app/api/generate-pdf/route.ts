@@ -112,52 +112,38 @@ export async function GET(req: Request) {
     if (!patientId || !testIdsParam)
       return new Response('Missing required parameters', { status: 400 });
 
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
     const testIds = testIdsParam.split(',');
 
-    // 🧠 Try to fetch from main API first
+    // Fetch data directly from Prisma (more reliable on Vercel serverless)
     let patientData: any = null;
     let testsData: any[] = [];
 
     try {
-      const [patientRes, ...testPromises] = await Promise.all([
-        fetch(`${baseUrl}/api/patients/${patientId}`),
-        ...testIds.map(id => fetch(`${baseUrl}/api/tests/${id}`)),
-      ]);
+      // Fetch patient data
+      patientData = await localPrisma.patient.findUnique({
+        where: { id: patientId },
+        include: {
+          doctors: {
+            include: {
+              doctor: true
+            }
+          }
+        }
+      });
 
-      if (patientRes.ok) {
-        const patientJson = await patientRes.json();
-        patientData = patientJson.data;
+      if (!patientData) {
+        return new Response('Patient not found', { status: 404 });
       }
 
       if (patientData.payment_status !== 'Paid' && patientData.amount_due > 0) {
-        return new NextResponse('Payment required to generate PDF', { status: 402 }); // 402 Payment Required
+        return new NextResponse('Payment required to generate PDF', { status: 402 });
       }
 
-      const testResponses = await Promise.all(testPromises);
-      const testsJson = await Promise.all(testResponses.map(async r => (r.ok ? await r.json() : null)));
-      testsData = testsJson.filter(Boolean).map(j => j.data);
-    } catch {
-      console.warn('⚠️ Falling back to local Prisma...');
-    }
-
-    // 🧩 Fallback: if any data missing, pull directly from local Prisma
-    if (!patientData) {
-      patientData = await localPrisma.patient.findUnique({
-        where: { id: patientId },
-        // REMOVE patient's global doctors - we'll get visit-specific doctors instead
-      });
-    }
-
-    if (testsData.length < testIds.length) {
-      const missingIds = testIds.filter(id => !testsData.find(t => t.id === id));
-
-      // MODIFIED: Fetch tests with their visit and visit doctors
-      const localTests = await localPrisma.test.findMany({
-        where: { id: { in: missingIds } },
+      // Fetch tests data
+      testsData = await localPrisma.test.findMany({
+        where: { id: { in: testIds } },
         include: {
           patient: true,
-          // REMOVE: doctor: true (global doctor)
           patient_visit: {
             include: {
               visit_doctors: {
@@ -175,16 +161,13 @@ export async function GET(req: Request) {
           },
         },
       });
-
-      testsData.push(...localTests);
-    }
-
-    if (!patientData) {
-      return new Response('Patient not found locally or remotely', { status: 404 });
+    } catch (dbError) {
+      console.error('❌ Database error fetching data:', dbError);
+      return new Response('Database error', { status: 500 });
     }
 
     if (!testsData.length) {
-      return new Response('No tests found locally or remotely', { status: 404 });
+      return new Response('No tests found', { status: 404 });
     }
 
     // 🧩 MODIFIED: Get visit doctors for the first test (assuming all tests are from same visit)

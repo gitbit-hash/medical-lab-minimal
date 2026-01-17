@@ -26,8 +26,8 @@ export function PDFViewerModal({ isOpen, onClose, patientId, testIds, patientPho
       setPdfUrl(null);
 
       const testIdsParam = testIds.join(',');
-      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || window.location.origin;
-      const url = `${baseUrl}/api/generate-pdf?id=${patientId}&testIds=${testIdsParam}`;
+      // Use relative URL for same-origin API calls - works correctly on Vercel regardless of deployment URL
+      const url = `/api/generate-pdf?id=${patientId}&testIds=${testIdsParam}`;
 
       try {
         const res = await fetch(url, {

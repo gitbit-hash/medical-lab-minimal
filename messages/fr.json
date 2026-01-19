@@ -478,6 +478,23 @@
           "7": "Rapport sommaire",
           "8": "Rapport PDF CASA complet"
         }
+      },
+      "cultureReports": {
+        "title": "Culture & Sensibilité",
+        "description": "Rapports avancés de culture et de sensibilité avec tests de sensibilité aux antibiotiques et identification détaillée des organismes.",
+        "images": {
+          "1": "Informations de l'échantillon",
+          "2": "Examen microscopique 1",
+          "3": "Examen microscopique 2",
+          "4": "Type de microbe",
+          "5": "Antibiotiques 1",
+          "6": "Antibiotiques 2",
+          "7": "Interprétation des résultats et recommandations",
+          "8": "Effectué par",
+          "9": "Rapport final 1",
+          "10": "Rapport final 2",
+          "11": "Rapport final 3"
+        }
       }
     },
     "navigation": {

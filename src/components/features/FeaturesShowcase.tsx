@@ -26,7 +26,8 @@ import {
   CreditCard,
   Microscope,
   ArrowLeft,
-  X
+  X,
+  FlaskConical
 } from 'lucide-react';
 
 // Feature section configuration with image paths
@@ -171,6 +172,24 @@ const featureSections = [
       '/images/CASA_6.png',
       '/images/CASA_7.png',
       '/images/CASA_8.png',
+    ],
+  },
+  {
+    id: 'cultureReports',
+    icon: FlaskConical,
+    color: 'from-fuchsia-500 to-fuchsia-600',
+    images: [
+      '/images/culture_1.png',
+      '/images/culture_2.png',
+      '/images/culture_3.png',
+      '/images/culture_4.png',
+      '/images/culture_5.png',
+      '/images/culture_6.png',
+      '/images/culture_7.png',
+      '/images/culture_8.png',
+      '/images/culture_9.png',
+      '/images/culture_10.png',
+      '/images/culture_11.png',
     ],
   },
 ];

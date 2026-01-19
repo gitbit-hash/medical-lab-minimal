@@ -494,6 +494,23 @@
           "7": "Summary report",
           "8": "Complete CASA PDF report"
         }
+      },
+      "cultureReports": {
+        "title": "Culture & Sensitivity",
+        "description": "Advanced culture and sensitivity reporting with antibiotic susceptibility testing and detailed organism identification.",
+        "images": {
+          "1": "Sample Information",
+          "2": "Microscopic Examination 1",
+          "3": "Microscopic Examination 2",
+          "4": "Type of Microbe",
+          "5": "Antibiotics 1",
+          "6": "Antibiotics 2",
+          "7": "Interpretation of Results and Recommendations",
+          "8": "Performed By",
+          "9": "Final Report 1",
+          "10": "Final Report 2",
+          "11": "Final Report 3"
+        }
       }
     },
     "navigation": {

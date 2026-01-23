@@ -159,7 +159,7 @@ This project is proprietary software. All rights reserved.
 
 ## 📞 Contact
 
-- **Website**: [lapmanagerpro.com](https://lapmanagerpro.com)
+- **Website**: [lapmanagerpro.com](https://medical-lab-minimal-kdp7.vercel.app/)
 - **Email**: support@lapmanagerpro.com
 - **Phone**: +2 (011) 26649009
 

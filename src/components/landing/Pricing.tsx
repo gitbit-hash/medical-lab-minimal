@@ -3,10 +3,10 @@
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Check, X } from 'lucide-react';
+import { Check, X, Cloud } from 'lucide-react';
 import type { Locale } from '@/i18n/config';
 
-const plans = ['starter', 'professional', 'enterprise'] as const;
+const plans = ['starter', 'professional', 'enterprise', 'cloud'] as const;
 
 export default function Pricing() {
   const t = useTranslations('Landing.pricing');
@@ -67,6 +67,14 @@ export default function Pricing() {
         </div>
       );
     }
+    if (plan === 'cloud') {
+      return (
+        <div className="flex flex-col gap-1">
+          <span className="text-lg font-semibold">{formatCurrency(600, 'EGP')}{t('cloud.period')}</span>
+          <span className="text-lg font-semibold">من خارج مصر {formatCurrency(19, 'USD')}{t('cloud.period')}</span>
+        </div>
+      );
+    }
     return null;
   };
 
@@ -74,6 +82,26 @@ export default function Pricing() {
   const renderStandardPrice = (plan: string) => {
     if (plan === 'enterprise') {
       return <span>{t("enterprisePrice")}</span>;
+    }
+    if (plan === 'cloud') {
+      const price = Number(t('cloud.price'));
+      const priceMiddleEast = Number(t('cloud.priceMiddleEast'));
+      const period = t('cloud.period');
+
+      // Show both prices if different
+      if (price !== priceMiddleEast) {
+        return (
+          <div className="flex flex-col">
+            <span className="text-3xl font-bold">{formatCurrency(price, 'USD')}<span className="text-lg font-normal">{period}</span></span>
+            <span className="text-sm opacity-80">({formatCurrency(priceMiddleEast, 'USD')}{period} Middle East)</span>
+          </div>
+        );
+      }
+      return (
+        <span>
+          {formatCurrency(price, 'USD')}<span className="text-lg font-normal">{period}</span>
+        </span>
+      );
     }
     return formatCurrency(Number(t(`${plan}.price`)), locale === 'ar' ? 'EGP' : locale === 'en' ? 'USD' : 'EUR');
   };
@@ -86,52 +114,101 @@ export default function Pricing() {
           <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }} className="text-lg text-slate-600 dark:text-slate-400">{t('subtitle')}</motion.p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {plans.map((plan, index) => {
             const isProfessional = plan === 'professional';
             const isEnterprise = plan === 'enterprise';
             const isStarter = plan === 'starter';
+            const isCloud = plan === 'cloud';
 
             const features = t.raw(`${plan}.features`) as string[];
+
+            // Determine styling based on plan type
+            let cardClass = 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700';
+            let textClass = 'text-slate-900 dark:text-white';
+            let subtitleClass = 'text-slate-600 dark:text-slate-400';
+            let checkClass = 'text-green-500';
+            let buttonClass = 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-100';
+
+            if (isProfessional) {
+              cardClass = 'bg-gradient-to-br from-blue-600 to-cyan-500 text-white shadow-xl shadow-blue-500/25 scale-105';
+              textClass = 'text-white';
+              subtitleClass = 'text-blue-100';
+              checkClass = 'text-blue-200';
+              buttonClass = 'bg-white text-blue-600 hover:bg-blue-50';
+            } else if (isCloud) {
+              cardClass = 'bg-gradient-to-br from-purple-600 to-pink-500 text-white shadow-xl shadow-purple-500/25';
+              textClass = 'text-white';
+              subtitleClass = 'text-purple-100';
+              checkClass = 'text-purple-200';
+              buttonClass = 'bg-white text-purple-600 hover:bg-purple-50';
+            }
+
             return (
-              <motion.div key={plan} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }} className={`relative rounded-2xl p-8 ${isProfessional ? 'bg-gradient-to-br from-blue-600 to-cyan-500 text-white shadow-xl shadow-blue-500/25 scale-105' : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700'}`}>
-                {isProfessional && <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-yellow-400 text-yellow-900 text-sm font-semibold rounded-full">{t(`${plan}.popular`)}</div>}
-                <h3 className={`text-xl font-semibold mb-2 ${isProfessional ? 'text-white' : 'text-slate-900 dark:text-white'}`}>{t(`${plan}.name`)}</h3>
-                <p className={`text-sm mb-4 ${isProfessional ? 'text-blue-100' : 'text-slate-600 dark:text-slate-400'}`}>{t(`${plan}.description`)}</p>
-                <div className="mb-6">
-                  <div className={`${isProfessional ? 'text-white' : 'text-slate-900 dark:text-white'}`}>
-                    {locale === 'ar' && (plan === 'starter' || plan === 'professional') ? (
+              <motion.div key={plan} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }} className={`relative rounded-2xl p-6 ${cardClass}`}>
+                {/* Badges */}
+                {isProfessional && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-yellow-400 text-yellow-900 text-sm font-semibold rounded-full">
+                    {t(`${plan}.popular`)}
+                  </div>
+                )}
+                {isCloud && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-pink-500 to-purple-500 text-white text-sm font-semibold rounded-full flex items-center gap-1">
+                    <Cloud className="w-4 h-4" />
+                    {t('cloud.badge')}
+                  </div>
+                )}
+
+                <h3 className={`text-xl font-semibold mb-2 ${textClass}`}>{t(`${plan}.name`)}</h3>
+                <p className={`text-sm mb-4 ${subtitleClass}`}>{t(`${plan}.description`)}</p>
+
+                <div className="mb-4">
+                  <div className={textClass}>
+                    {locale === 'ar' && (plan === 'starter' || plan === 'professional' || plan === 'cloud') ? (
                       renderArabicPrice(plan)
                     ) : (
-                      <span className="text-4xl font-bold">
+                      <span className="text-3xl font-bold">
                         {renderStandardPrice(plan)}
                       </span>
                     )}
                   </div>
+                  {/* Annual discount note for cloud plan */}
+                  {isCloud && (
+                    <p className={`text-xs mt-2 ${subtitleClass}`}>
+                      {t('cloud.annualDiscount')}
+                    </p>
+                  )}
                 </div>
-                <ul className="space-y-3 mb-8">
+
+                <ul className="space-y-2 mb-6">
                   {features.map((feature, i) => {
                     // Check if this is a negative feature (only for starter plan)
                     const isNegative = isStarter && isNegativeFeature(feature);
                     const featureText = formatFeatureText(feature);
 
                     return (
-                      <li key={i} className="flex items-start gap-3">
+                      <li key={i} className="flex items-start gap-2">
                         {isNegative ? (
                           // Show X icon for negative features in starter plan
                           <X className="w-5 h-5 flex-shrink-0 text-red-500 dark:text-red-400" />
                         ) : (
                           // Show check icon for positive features
-                          <Check className={`w-5 h-5 flex-shrink-0 ${isProfessional ? 'text-blue-200' : 'text-green-500'}`} />
+                          <Check className={`w-5 h-5 flex-shrink-0 ${checkClass}`} />
                         )}
-                        <span className={`text-sm ${isProfessional ? 'text-white' : 'text-slate-600 dark:text-slate-400'} ${isNegative ? 'opacity-70' : ''}`}>
+                        <span className={`text-sm ${isCloud || isProfessional ? 'text-white' : 'text-slate-600 dark:text-slate-400'} ${isNegative ? 'opacity-70' : ''}`}>
                           {featureText}
                         </span>
                       </li>
                     );
                   })}
                 </ul>
-                <Link href={plan === 'enterprise' ? `/${locale}#contact` : `/${locale}/signup`} className={`block w-full py-3 rounded-xl font-semibold text-center transition-all ${isProfessional ? 'bg-white text-blue-600 hover:bg-blue-50' : 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-100'}`}>{t(`${plan}.cta`)}</Link>
+
+                <Link
+                  href={plan === 'enterprise' ? `/${locale}/contact` : plan === 'cloud' ? `/${locale}/contact` : `/${locale}/contact`}
+                  className={`block w-full py-3 rounded-xl font-semibold text-center transition-all ${buttonClass}`}
+                >
+                  {t(`${plan}.cta`)}
+                </Link>
               </motion.div>
             );
           })}

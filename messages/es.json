@@ -135,6 +135,27 @@
           "Garantía SLA"
         ],
         "cta": "Contactar ventas"
+      },
+      "cloud": {
+        "name": "Cloud",
+        "price": "29",
+        "priceMiddleEast": "19",
+        "period": "/mes",
+        "description": "Solución cloud totalmente gestionada",
+        "badge": "Nuevo",
+        "features": [
+          "Todo lo del plan Profesional",
+          "Sin configuración IT requerida",
+          "Copias de seguridad diarias automáticas",
+          "Siempre actualizado",
+          "Acceso desde cualquier lugar",
+          "Sincronización multi-dispositivo",
+          "Seguridad SSL incluida",
+          "Soporte técnico prioritario",
+          "Garantía de disponibilidad 99.9%"
+        ],
+        "cta": "Suscribirse Ahora",
+        "annualDiscount": "Ahorra 20% con facturación anual"
       }
     },
     "faq": {

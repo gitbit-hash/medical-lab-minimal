@@ -135,6 +135,27 @@
           "SLA guarantee"
         ],
         "cta": "Contact Sales"
+      },
+      "cloud": {
+        "name": "Cloud",
+        "price": "29",
+        "priceMiddleEast": "19",
+        "period": "/month",
+        "description": "Fully managed cloud solution",
+        "badge": "New",
+        "features": [
+          "Everything in Professional",
+          "Zero IT setup required",
+          "Automatic daily backups",
+          "Always up-to-date",
+          "Access from anywhere",
+          "Multi-device sync",
+          "SSL security included",
+          "Priority technical support",
+          "99.9% uptime guarantee"
+        ],
+        "cta": "Subscribe Now",
+        "annualDiscount": "Save 20% with annual billing"
       }
     },
     "faq": {

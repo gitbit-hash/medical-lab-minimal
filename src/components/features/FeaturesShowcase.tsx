@@ -30,18 +30,18 @@ import {
   FlaskConical
 } from 'lucide-react';
 
-// Feature section configuration with image paths
-const featureSections = [
+// Helper function to generate image paths for a locale
+const getFeatureSections = (locale: string) => [
   {
     id: 'adminDashboard',
     icon: LayoutDashboard,
     color: 'from-blue-500 to-blue-600',
     images: [
-      '/images/admin-page-1.png',
-      '/images/admin-page-2.png',
-      '/images/admin-page-3.png',
-      '/images/admin-page-4.png',
-      '/images/admin-page-5.png',
+      `/images/${locale}/admin-main-1.png`,
+      `/images/${locale}/admin-main-2.png`,
+      `/images/${locale}/admin-main-3.png`,
+      `/images/${locale}/admin-main-4.png`,
+      `/images/${locale}/admin-main-5.png`,
     ],
   },
   {
@@ -49,8 +49,19 @@ const featureSections = [
     icon: Users,
     color: 'from-purple-500 to-purple-600',
     images: [
-      '/images/admin-users-1.png',
-      '/images/admin-users-2.png',
+      `/images/${locale}/admin-users-1.png`,
+      `/images/${locale}/admin-users-2.png`,
+      `/images/${locale}/admin-users-3.png`,
+      `/images/${locale}/admin-users-4.png`,
+      `/images/${locale}/admin-users-5.png`,
+      `/images/${locale}/admin-users-6.png`,
+      `/images/${locale}/admin-users-7.png`,
+      `/images/${locale}/admin-users-8.png`,
+      `/images/${locale}/admin-users-9.png`,
+      `/images/${locale}/admin-users-10.png`,
+      `/images/${locale}/admin-users-11.png`,
+      `/images/${locale}/admin-users-12.png`,
+      `/images/${locale}/admin-users-13.png`,
     ],
   },
   {
@@ -58,11 +69,13 @@ const featureSections = [
     icon: FileText,
     color: 'from-orange-500 to-orange-600',
     images: [
-      '/images/admin-PDFSettings-1.png',
-      '/images/admin-PDFSettings-2.png',
-      '/images/admin-PDFSettings-3.png',
-      '/images/admin-PDFSettings-4.png',
-      '/images/admin-PDFSettings-5.png',
+      `/images/${locale}/admin-PDF-settings-1.png`,
+      `/images/${locale}/admin-PDF-settings-2.png`,
+      `/images/${locale}/admin-PDF-settings-3.png`,
+      `/images/${locale}/admin-PDF-settings-4.png`,
+      `/images/${locale}/admin-PDF-settings-5.png`,
+      `/images/${locale}/admin-PDF-settings-6.png`,
+      `/images/${locale}/admin-PDF-settings-7.png`,
     ],
   },
   {
@@ -70,10 +83,15 @@ const featureSections = [
     icon: Receipt,
     color: 'from-green-500 to-green-600',
     images: [
-      '/images/admin-ReceiptSettings-1.png',
-      '/images/admin-ReceiptSettings-2.png',
-      '/images/admin-ReceiptSettings-3.png',
-      '/images/admin-ReceiptSettings-4.png',
+      `/images/${locale}/admin-Receipt-settings-1.png`,
+      `/images/${locale}/admin-Receipt-settings-2.png`,
+      `/images/${locale}/admin-Receipt-settings-3.png`,
+      `/images/${locale}/admin-Receipt-settings-4.png`,
+      `/images/${locale}/admin-Receipt-settings-5.png`,
+      `/images/${locale}/admin-Receipt-settings-6.png`,
+      `/images/${locale}/admin-Receipt-settings-7.png`,
+      `/images/${locale}/admin-Receipt-settings-8.png`,
+      `/images/${locale}/admin-Receipt-settings-9.png`,
     ],
   },
   {
@@ -81,8 +99,16 @@ const featureSections = [
     icon: ClipboardList,
     color: 'from-indigo-500 to-indigo-600',
     images: [
-      '/images/admin-audit-1.png',
-      '/images/admin-audit-2.png',
+      `/images/${locale}/admin-audit-1.png`,
+      `/images/${locale}/admin-audit-2.png`,
+      `/images/${locale}/admin-audit-3.png`,
+      `/images/${locale}/admin-audit-4.png`,
+      `/images/${locale}/admin-audit-5.png`,
+      `/images/${locale}/admin-audit-6.png`,
+      `/images/${locale}/admin-audit-7.png`,
+      `/images/${locale}/admin-audit-8.png`,
+      `/images/${locale}/admin-audit-9.png`,
+      `/images/${locale}/admin-audit-10.png`,
     ],
   },
   {
@@ -90,7 +116,7 @@ const featureSections = [
     icon: Database,
     color: 'from-red-500 to-red-600',
     images: [
-      '/images/admin-database-restore.png',
+      `/images/${locale}/admin-backup-1.png`,
     ],
   },
   {
@@ -98,21 +124,49 @@ const featureSections = [
     icon: UserPlus,
     color: 'from-teal-500 to-teal-600',
     images: [
-      '/images/patients.png',
-      '/images/new-patient-1.png',
-      '/images/new-patient-2.png',
-      '/images/new-patient-3.png',
-      '/images/new-patient-4.png',
-      '/images/new-patient-5.png',
+      `/images/${locale}/patients-1.png`,
+      `/images/${locale}/patients-2.png`,
+      `/images/${locale}/patients-3.png`,
+      `/images/${locale}/patients-4.png`,
+      `/images/${locale}/add-patient-1.png`,
+      `/images/${locale}/add-patient-2.png`,
+      `/images/${locale}/add-patient-3.png`,
+      `/images/${locale}/add-patient-4.png`,
+      `/images/${locale}/add-patient-5.png`,
+      `/images/${locale}/add-patient-6.png`,
     ],
   },
   {
-    id: 'patientHistory',
+    id: 'patientView',
     icon: History,
     color: 'from-cyan-500 to-cyan-600',
     images: [
-      '/images/patient-history-1.png',
-      '/images/patient-history-2.png',
+      `/images/${locale}/patient-view-1.png`,
+      `/images/${locale}/patient-view-2.png`,
+      `/images/${locale}/patient-view-3.png`,
+    ],
+  },
+  {
+    id: 'patientTests',
+    icon: Edit3,
+    color: 'from-amber-500 to-amber-600',
+    images: [
+      `/images/${locale}/patient-tests-1.png`,
+      `/images/${locale}/patient-tests-2.png`,
+      `/images/${locale}/patient-tests-3.png`,
+      `/images/${locale}/patient-tests-4.png`,
+      `/images/${locale}/patient-tests-5.png`,
+      `/images/${locale}/patient-tests-6.png`,
+      `/images/${locale}/patient-tests-7.png`,
+      `/images/${locale}/patient-tests-8.png`,
+      `/images/${locale}/patient-tests-9.png`,
+      `/images/${locale}/patient-tests-10.png`,
+      `/images/${locale}/patient-tests-11.png`,
+      `/images/${locale}/patient-tests-12.png`,
+      `/images/${locale}/patient-tests-13.png`,
+      `/images/${locale}/patient-tests-14.png`,
+      `/images/${locale}/patient-tests-15png.png`,
+      `/images/${locale}/patient-tests-16.png`,
     ],
   },
   {
@@ -120,43 +174,43 @@ const featureSections = [
     icon: TestTube,
     color: 'from-pink-500 to-pink-600',
     images: [
-      '/images/test-templates-1.png',
-      '/images/test-templates-2.png',
-      '/images/test-categories_1.png',
+      `/images/${locale}/test-templates-1.png`,
+      `/images/${locale}/test-templates-2.png`,
+      `/images/${locale}/test-templates-3.png`,
+      `/images/${locale}/test-templates-4.png`,
+      `/images/${locale}/test-templates-5.png`,
+      `/images/${locale}/test-templates-6.png`,
+      `/images/${locale}/test-templates-7.png`,
+      `/images/${locale}/test-templates-8.png`,
+      `/images/${locale}/test-templates-9.png`,
+      `/images/${locale}/test-templates-10.png`,
     ],
   },
   {
-    id: 'resultsEntry',
-    icon: Edit3,
-    color: 'from-amber-500 to-amber-600',
-    images: [
-      '/images/results-form.png',
-      '/images/results-form_2.png',
-    ],
-  },
-  {
-    id: 'labToLab',
+    id: 'categories',
     icon: Building2,
     color: 'from-violet-500 to-violet-600',
     images: [
-      '/images/lab-to-lab-1.png',
-      '/images/lab-to-lab-2.png',
+      `/images/${locale}/categories-1.png`,
+      `/images/${locale}/categories-2.png`,
+      `/images/${locale}/categories-3.png`,
+      `/images/${locale}/categories-4.png`,
+      `/images/${locale}/categories-5.png`,
+      `/images/${locale}/categories-6.png`,
+      `/images/${locale}/categories-7.png`,
+      `/images/${locale}/categories-8.png`,
+      `/images/${locale}/categories-9.png`,
+      `/images/${locale}/categories-10.png`,
     ],
   },
   {
-    id: 'pdfReports',
+    id: 'cbcReports',
     icon: FileOutput,
     color: 'from-emerald-500 to-emerald-600',
     images: [
-      '/images/PDF-CBC.png',
-    ],
-  },
-  {
-    id: 'receipts',
-    icon: CreditCard,
-    color: 'from-lime-500 to-lime-600',
-    images: [
-      '/images/receipt.png',
+      `/images/${locale}/cbc-1.png`,
+      `/images/${locale}/cbc-2.png`,
+      `/images/${locale}/cbc-report-1.png`,
     ],
   },
   {
@@ -164,14 +218,25 @@ const featureSections = [
     icon: Microscope,
     color: 'from-rose-500 to-rose-600',
     images: [
-      '/images/CASA_1.png',
-      '/images/CASA_2.png',
-      '/images/CASA_3.png',
-      '/images/CASA_4.png',
-      '/images/CASA_5.png',
-      '/images/CASA_6.png',
-      '/images/CASA_7.png',
-      '/images/CASA_8.png',
+      `/images/${locale}/CASA-1.png`,
+      `/images/${locale}/CASA-2.png`,
+      `/images/${locale}/CASA-3.png`,
+      `/images/${locale}/CASA-4.png`,
+      `/images/${locale}/CASA-5.png`,
+      `/images/${locale}/CASA-6.png`,
+      `/images/${locale}/CASA-7.png`,
+      `/images/${locale}/CASA-8.png`,
+      `/images/${locale}/CASA-9.png`,
+      `/images/${locale}/CASA-10.png`,
+      `/images/${locale}/CASA-11.png`,
+      `/images/${locale}/CASA-12.png`,
+      `/images/${locale}/CASA-13.png`,
+      `/images/${locale}/CASA-report-1.png`,
+      `/images/${locale}/CASA-report-2.png`,
+      `/images/${locale}/CASA-report-3.png`,
+      `/images/${locale}/CASA-report-4.png`,
+      `/images/${locale}/CASA-report-5.png`,
+      `/images/${locale}/CASA-report-6.png`,
     ],
   },
   {
@@ -179,17 +244,53 @@ const featureSections = [
     icon: FlaskConical,
     color: 'from-fuchsia-500 to-fuchsia-600',
     images: [
-      '/images/culture_1.png',
-      '/images/culture_2.png',
-      '/images/culture_3.png',
-      '/images/culture_4.png',
-      '/images/culture_5.png',
-      '/images/culture_6.png',
-      '/images/culture_7.png',
-      '/images/culture_8.png',
-      '/images/culture_9.png',
-      '/images/culture_10.png',
-      '/images/culture_11.png',
+      `/images/${locale}/culture-1.png`,
+      `/images/${locale}/culture-2.png`,
+      `/images/${locale}/culture-3.png`,
+      `/images/${locale}/culture-4.png`,
+      `/images/${locale}/culture-5.png`,
+      `/images/${locale}/culture-report-1.png`,
+      `/images/${locale}/culture-report-2.png`,
+    ],
+  },
+  {
+    id: 'doctors',
+    icon: CreditCard,
+    color: 'from-sky-500 to-sky-600',
+    images: [
+      `/images/${locale}/doctors-1.png`,
+      `/images/${locale}/doctors-2.png`,
+      `/images/${locale}/doctors-3.png`,
+      `/images/${locale}/doctors-4.png`,
+    ],
+  },
+  {
+    id: 'homePage',
+    icon: LayoutDashboard,
+    color: 'from-slate-500 to-slate-600',
+    images: [
+      `/images/${locale}/home-page-1.png`,
+      `/images/${locale}/home-page-2.png`,
+      `/images/${locale}/home-page-3.png`,
+    ],
+  },
+  {
+    id: 'languageSupport',
+    icon: Building2,
+    color: 'from-green-500 to-green-600',
+    images: [
+      `/images/${locale}/language-1.png`,
+      `/images/${locale}/language-2.png`,
+      `/images/${locale}/language-3.png`,
+      `/images/${locale}/language-4.png`,
+    ],
+  },
+  {
+    id: 'login',
+    icon: Users,
+    color: 'from-gray-500 to-gray-600',
+    images: [
+      `/images/${locale}/login-1.png`,
     ],
   },
 ];
@@ -328,7 +429,7 @@ function ImageCarousel({ images, sectionId }: ImageCarouselProps) {
 }
 
 interface FeatureSectionProps {
-  section: typeof featureSections[0];
+  section: ReturnType<typeof getFeatureSections>[0];
   isOpen: boolean;
   onToggle: () => void;
   index: number;
@@ -403,6 +504,8 @@ export default function FeaturesShowcase() {
   const locale = useLocale() as Locale;
   const direction = locale === 'ar' ? 'rtl' : 'ltr';
 
+  // Get feature sections based on current locale (defaults to 'ar' for now)
+  const featureSections = getFeatureSections(locale);
 
   const [openSections, setOpenSections] = useState<Set<string>>(new Set(['adminDashboard']));
 

@@ -376,48 +376,74 @@
         "title": "Tableau de Bord Super Admin",
         "description": "Outils complets d'analyse et de gestion pour les superviseurs de laboratoire. Surveillez les revenus, suivez les performances et accédez à toutes les fonctions administratives depuis un hub central.",
         "images": {
-          "1": "Analyses des revenus avec statistiques quotidiennes et mensuelles, total des tests et Labo-à-Labo",
-          "2": "Graphiques de répartition des revenus quotidiens et mensuels pour des informations financières",
-          "3": "Liens rapides d'administration pour un accès rapide aux fonctions administratives",
-          "4": "Tests les plus performants et activité récente de connexion des administrateurs",
-          "5": "Surveillance de l'état du système incluant base de données, synchronisation et opérations Labo-à-Labo"
+          "1": "Page principale du tableau de bord admin",
+          "2": "Statistiques et graphiques des revenus",
+          "3": "Liens rapides vers les fonctions administratives",
+          "4": "Tests les plus performants",
+          "5": "Surveillance de l'état du système"
         }
       },
       "userManagement": {
         "title": "Gestion des Utilisateurs",
         "description": "Contrôle total sur les comptes utilisateurs, les rôles et les permissions. Gérez les administrateurs, définissez les niveaux d'accès et configurez les permissions de remise.",
         "images": {
-          "1": "Liste des utilisateurs avec rôles, statut et actions rapides",
-          "2": "Configuration des permissions utilisateur et des remises"
+          "1": "Liste des utilisateurs avec rôles et statut",
+          "2": "Détails utilisateur et permissions",
+          "3": "Ajouter un nouvel utilisateur",
+          "4": "Modifier les permissions utilisateur",
+          "5": "Paramètres de remise",
+          "6": "Activer/Désactiver utilisateur",
+          "7": "Formulaire d'ajout utilisateur",
+          "8": "Paramètres de mot de passe",
+          "9": "Paramètres de permissions avancées",
+          "10": "Confirmation de suppression utilisateur",
+          "11": "Réinitialiser le mot de passe",
+          "12": "Détails des permissions",
+          "13": "Enregistrer les modifications"
         }
       },
       "pdfSettings": {
         "title": "Paramètres des Rapports PDF",
         "description": "Personnalisez vos rapports de laboratoire avec des en-têtes, pieds de page professionnels, logos et signatures électroniques. Créez des rapports à votre image.",
         "images": {
-          "1": "Tableau de bord complet des paramètres PDF avec toutes les options de configuration",
-          "2": "Paramètres d'en-tête avec nom du laboratoire et spécialisations",
-          "3": "Paramètres de pied de page avec informations du directeur et coordonnées",
+          "1": "Tableau de bord complet des paramètres PDF",
+          "2": "Paramètres d'en-tête",
+          "3": "Paramètres de pied de page",
           "4": "Configuration de la signature électronique",
-          "5": "Téléchargement de logo et paramètres de positionnement"
+          "5": "Téléchargement de logo",
+          "6": "Paramètres de positionnement du logo",
+          "7": "Aperçu du rapport"
         }
       },
       "receiptSettings": {
         "title": "Paramètres des Reçus",
         "description": "Configurez les reçus de facturation avec les informations du laboratoire, le logo et le code QR Instapay pour des paiements numériques pratiques.",
         "images": {
-          "1": "Aperçu des paramètres de reçus avec informations du laboratoire",
-          "2": "Configuration des informations textuelles du laboratoire",
-          "3": "Configuration du code QR pour les paiements Instapay",
-          "4": "Aperçu du reçu avec code QR"
+          "1": "Aperçu des paramètres de reçus",
+          "2": "Configuration des informations du laboratoire",
+          "3": "Configuration du code QR",
+          "4": "Aperçu du reçu",
+          "5": "Personnalisation de l'en-tête",
+          "6": "Personnalisation du pied de page",
+          "7": "Paramètres d'impression",
+          "8": "Aperçu d'impression",
+          "9": "Enregistrer les paramètres"
         }
       },
       "auditLogs": {
         "title": "Journaux d'Audit",
         "description": "Suivi complet de l'activité pour la conformité et la responsabilité. Filtrez et recherchez dans toutes les activités du système pour savoir qui a fait quoi et quand.",
         "images": {
-          "1": "Tableau des journaux d'audit avec options de filtrage",
-          "2": "Vue détaillée de l'activité avec actions utilisateur"
+          "1": "Tableau des journaux d'audit",
+          "2": "Filtrer par date",
+          "3": "Filtrer par utilisateur",
+          "4": "Filtrer par action",
+          "5": "Voir les détails",
+          "6": "Détails de l'activité utilisateur",
+          "7": "Journal des modifications",
+          "8": "Exporter les journaux",
+          "9": "Rechercher dans les journaux",
+          "10": "Trier les journaux"
         }
       },
       "databaseBackup": {
@@ -431,59 +457,88 @@
         "title": "Gestion des Patients",
         "description": "Dossiers patients complets avec enregistrement facile, recherche et gestion. Suivez les informations des patients, les visites et l'historique des tests.",
         "images": {
-          "1": "Liste des patients avec options de recherche et de filtrage",
-          "2": "Nouveau formulaire d'inscription patient",
-          "3": "Saisie des informations patient",
-          "4": "Sélection des tests pour les patients",
-          "5": "Options de paiement et de remise",
-          "6": "Résumé de la visite et confirmation"
+          "1": "Liste des patients",
+          "2": "Recherche et filtre",
+          "3": "Détails du patient",
+          "4": "Actions rapides",
+          "5": "Nouveau formulaire patient - Informations de base",
+          "6": "Nouveau formulaire patient - Informations de contact",
+          "7": "Sélection des tests",
+          "8": "Sélection du médecin référent",
+          "9": "Options de paiement et de remise",
+          "10": "Résumé et confirmation"
         }
       },
-      "patientHistory": {
-        "title": "Historique Patient",
-        "description": "Accédez à l'historique complet des visites et des dossiers de tests des patients. Suivez les résultats précédents et surveillez la santé des patients au fil du temps.",
+      "patientView": {
+        "title": "Vue Patient",
+        "description": "Voir les détails complets du patient, y compris les informations personnelles, l'historique des visites et les tests.",
         "images": {
-          "1": "Aperçu de l'historique des visites patient",
-          "2": "Historique détaillé des tests avec résultats"
+          "1": "Informations de base du patient",
+          "2": "Historique des visites",
+          "3": "Détails des tests"
+        }
+      },
+      "patientTests": {
+        "title": "Tests du Patient",
+        "description": "Gérer les tests du patient, saisir les résultats, afficher les rapports et imprimer.",
+        "images": {
+          "1": "Liste des tests du patient",
+          "2": "Détails du test",
+          "3": "Saisir les résultats",
+          "4": "Formulaire de saisie des résultats",
+          "5": "Valider les résultats",
+          "6": "Enregistrer les résultats",
+          "7": "Aperçu du rapport",
+          "8": "Options d'impression",
+          "9": "Envoyer via WhatsApp",
+          "10": "Sélectionner les tests",
+          "11": "Impression par lot",
+          "12": "Paramètres d'impression",
+          "13": "Confirmation d'envoi",
+          "14": "Envoi réussi",
+          "15": "Détails du paiement",
+          "16": "Compléter le paiement"
         }
       },
       "testTemplates": {
-        "title": "Modèles de Tests et Catégories",
-        "description": "Gérez les tests de laboratoire avec des modèles personnalisables, des paramètres et des plages de référence organisés par catégories.",
+        "title": "Modèles de Tests",
+        "description": "Gérez les tests de laboratoire avec des modèles personnalisables, des paramètres et des plages de référence.",
         "images": {
-          "1": "Liste des modèles de tests avec catégories",
-          "2": "Configuration détaillée du modèle de test",
-          "3": "Gestion des catégories de tests"
+          "1": "Liste des modèles de tests",
+          "2": "Détails du modèle",
+          "3": "Ajouter un nouveau modèle",
+          "4": "Modifier le modèle",
+          "5": "Ajouter des paramètres",
+          "6": "Plages de référence",
+          "7": "Paramètres d'unités",
+          "8": "Aperçu du modèle",
+          "9": "Supprimer le modèle",
+          "10": "Confirmer la suppression"
         }
       },
-      "resultsEntry": {
-        "title": "Saisie des Résultats",
-        "description": "Interface intuitive pour la saisie des résultats de tests avec validation automatique, vérification des plages de référence et indicateurs d'alerte.",
+      "categories": {
+        "title": "Catégories de Tests",
+        "description": "Organisez les tests en catégories pour une gestion et une recherche faciles.",
         "images": {
-          "1": "Formulaire de saisie des résultats de tests",
-          "2": "Résultats avec validation et indicateurs"
+          "1": "Liste des catégories",
+          "2": "Détails de la catégorie",
+          "3": "Ajouter une nouvelle catégorie",
+          "4": "Modifier la catégorie",
+          "5": "Trier les catégories",
+          "6": "Tests de la catégorie",
+          "7": "Déplacer les tests",
+          "8": "Supprimer la catégorie",
+          "9": "Confirmer la suppression",
+          "10": "Enregistrer les modifications"
         }
       },
-      "labToLab": {
-        "title": "Tests Labo-à-Labo",
-        "description": "Gérez les partenariats avec les laboratoires externes. Sous-traitez des tests à des laboratoires partenaires et suivez les coûts pour des rapports financiers précis.",
+      "cbcReports": {
+        "title": "Rapports CBC",
+        "description": "Générez des rapports de Numération Formule Sanguine (CBC) avec graphiques et plages de référence.",
         "images": {
-          "1": "Attribution à un laboratoire externe",
-          "2": "Gestion des laboratoires externes avec tarification"
-        }
-      },
-      "pdfReports": {
-        "title": "Rapports PDF",
-        "description": "Générez des rapports de laboratoire professionnels avec une marque personnalisable, des résultats complets et des plages de référence.",
-        "images": {
-          "1": "Exemple de rapport de test CBC avec histogramme"
-        }
-      },
-      "receipts": {
-        "title": "Reçus de Facturation",
-        "description": "Générez des reçus de facturation professionnels avec tests détaillés, informations de paiement et code QR optionnel pour les paiements numériques.",
-        "images": {
-          "1": "Exemple de reçu de paiement"
+          "1": "Saisie des résultats CBC",
+          "2": "Aperçu des résultats",
+          "3": "Rapport PDF CBC complet"
         }
       },
       "casaAnalysis": {
@@ -497,7 +552,18 @@
           "5": "Paramètres supplémentaires",
           "6": "Indicateurs de qualité",
           "7": "Rapport sommaire",
-          "8": "Rapport PDF CASA complet"
+          "8": "Paramètres de vélocité",
+          "9": "Paramètres de vitalité",
+          "10": "Examen microscopique",
+          "11": "Images de l'examen",
+          "12": "Analyse finale",
+          "13": "Conclusion et recommandations",
+          "14": "Rapport CASA page 1",
+          "15": "Rapport CASA page 2",
+          "16": "Rapport CASA page 3",
+          "17": "Rapport CASA page 4",
+          "18": "Rapport CASA page 5",
+          "19": "Rapport CASA page 6"
         }
       },
       "cultureReports": {
@@ -505,16 +571,48 @@
         "description": "Rapports avancés de culture et de sensibilité avec tests de sensibilité aux antibiotiques et identification détaillée des organismes.",
         "images": {
           "1": "Informations de l'échantillon",
-          "2": "Examen microscopique 1",
-          "3": "Examen microscopique 2",
+          "2": "Examen microscopique",
+          "3": "Résultats de culture",
           "4": "Type de microbe",
-          "5": "Antibiotiques 1",
-          "6": "Antibiotiques 2",
-          "7": "Interprétation des résultats et recommandations",
-          "8": "Effectué par",
-          "9": "Rapport final 1",
-          "10": "Rapport final 2",
-          "11": "Rapport final 3"
+          "5": "Tests de sensibilité",
+          "6": "Rapport de culture page 1",
+          "7": "Rapport de culture page 2"
+        }
+      },
+      "doctors": {
+        "title": "Gestion des Médecins",
+        "description": "Gérez les médecins référents et suivez leurs références et informations.",
+        "images": {
+          "1": "Liste des médecins",
+          "2": "Ajouter un nouveau médecin",
+          "3": "Modifier les détails du médecin",
+          "4": "Détails du médecin et références"
+        }
+      },
+      "homePage": {
+        "title": "Page d'Accueil",
+        "description": "Vue d'ensemble du système avec actions rapides et statistiques.",
+        "images": {
+          "1": "Page d'accueil du système",
+          "2": "Tableau de bord et statistiques",
+          "3": "Actions rapides"
+        }
+      },
+      "languageSupport": {
+        "title": "Support Multilingue",
+        "description": "Support multilingue incluant l'arabe, l'anglais, le français et l'espagnol avec support RTL.",
+        "images": {
+          "1": "Sélection de la langue",
+          "2": "Interface en arabe",
+          "3": "Interface en anglais",
+          "4": "Interface en français"
+        }
+      },
+      "login": {
+        "title": "Page de Connexion",
+        "description": "Connexion sécurisée avec support Google et création de compte.",
+        "images": {
+          "1": "Page de connexion"
         }
       }
     },

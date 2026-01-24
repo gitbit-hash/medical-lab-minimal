@@ -392,48 +392,74 @@
         "title": "Super Admin Dashboard",
         "description": "Comprehensive analytics and management tools for laboratory supervisors. Monitor revenue, track performance, and access all administrative functions from one central hub.",
         "images": {
-          "1": "Revenue Analytics with Daily & Monthly Revenue, Total Tests, and Lab-to-Lab statistics",
-          "2": "Daily and Monthly Revenue Breakdown charts for financial insights",
-          "3": "Admin Quick Links for fast access to administrative functions",
-          "4": "Top Performed Tests and Recent Admin Login activity",
-          "5": "System Status monitoring including Database, Sync, and Lab-to-Lab Operations"
+          "1": "Main admin dashboard page",
+          "2": "Revenue statistics and charts",
+          "3": "Quick links to administrative functions",
+          "4": "Top performing tests",
+          "5": "System status monitoring"
         }
       },
       "userManagement": {
         "title": "User Management",
         "description": "Complete control over user accounts, roles, and permissions. Manage admin users, set access levels, and configure discount permissions.",
         "images": {
-          "1": "User list with roles, status, and quick actions",
-          "2": "User permissions and discount settings configuration"
+          "1": "User list with roles and status",
+          "2": "User details and permissions",
+          "3": "Add new user",
+          "4": "Edit user permissions",
+          "5": "Discount settings",
+          "6": "Activate/Deactivate user",
+          "7": "Add user form",
+          "8": "Password settings",
+          "9": "Advanced permission settings",
+          "10": "Delete user confirmation",
+          "11": "Reset password",
+          "12": "Permission details",
+          "13": "Save changes"
         }
       },
       "pdfSettings": {
         "title": "PDF Report Settings",
         "description": "Customize your laboratory reports with professional headers, footers, logos, and electronic signatures. Create branded reports that represent your laboratory.",
         "images": {
-          "1": "Complete PDF settings dashboard with all configuration options",
-          "2": "Header settings with laboratory name and specializations",
-          "3": "Footer settings with director information and contact details",
+          "1": "Complete PDF settings dashboard",
+          "2": "Header settings",
+          "3": "Footer settings",
           "4": "Electronic signature configuration",
-          "5": "Logo upload and positioning settings"
+          "5": "Logo upload",
+          "6": "Logo positioning settings",
+          "7": "Report preview"
         }
       },
       "receiptSettings": {
         "title": "Receipt Settings",
         "description": "Configure billing receipts with laboratory information, logo, and Instapay QR code for convenient digital payments.",
         "images": {
-          "1": "Receipt settings overview with lab information",
-          "2": "Laboratory text information configuration",
-          "3": "QR code setup for Instapay payments",
-          "4": "Receipt preview with QR code"
+          "1": "Receipt settings overview",
+          "2": "Laboratory information configuration",
+          "3": "QR code setup",
+          "4": "Receipt preview",
+          "5": "Header customization",
+          "6": "Footer customization",
+          "7": "Print settings",
+          "8": "Print preview",
+          "9": "Save settings"
         }
       },
       "auditLogs": {
         "title": "Audit Logs",
         "description": "Complete activity tracking for compliance and accountability. Filter and search through all system activities to know who did what and when.",
         "images": {
-          "1": "Audit logs table with filtering options",
-          "2": "Detailed activity view with user actions"
+          "1": "Audit logs table",
+          "2": "Filter by date",
+          "3": "Filter by user",
+          "4": "Filter by action",
+          "5": "View details",
+          "6": "User activity details",
+          "7": "Change log",
+          "8": "Export logs",
+          "9": "Search logs",
+          "10": "Sort logs"
         }
       },
       "databaseBackup": {
@@ -447,59 +473,88 @@
         "title": "Patient Management",
         "description": "Comprehensive patient records with easy registration, search, and management. Track patient information, visits, and test history.",
         "images": {
-          "1": "Patient list with search and filter options",
-          "2": "New patient registration form",
-          "3": "Patient information entry",
-          "4": "Test selection for patients",
-          "5": "Payment and discount options",
-          "6": "Visit summary and confirmation"
+          "1": "Patient list",
+          "2": "Search and filter",
+          "3": "Patient details",
+          "4": "Quick actions",
+          "5": "New patient form - Basic information",
+          "6": "New patient form - Contact information",
+          "7": "Test selection",
+          "8": "Referring doctor selection",
+          "9": "Payment and discount options",
+          "10": "Summary and confirmation"
         }
       },
-      "patientHistory": {
-        "title": "Patient History",
-        "description": "Access complete patient visit history and test records. Track previous results and monitor patient health over time.",
+      "patientView": {
+        "title": "Patient View",
+        "description": "View complete patient details including personal information, visit history, and tests.",
         "images": {
-          "1": "Patient visit history overview",
-          "2": "Detailed test history with results"
+          "1": "Basic patient information",
+          "2": "Visit history",
+          "3": "Test details"
+        }
+      },
+      "patientTests": {
+        "title": "Patient Tests",
+        "description": "Manage patient tests, enter results, view reports, and print.",
+        "images": {
+          "1": "Patient tests list",
+          "2": "Test details",
+          "3": "Enter results",
+          "4": "Results entry form",
+          "5": "Validate results",
+          "6": "Save results",
+          "7": "Report preview",
+          "8": "Print options",
+          "9": "Send via WhatsApp",
+          "10": "Select tests",
+          "11": "Batch print",
+          "12": "Print settings",
+          "13": "Send confirmation",
+          "14": "Send success",
+          "15": "Payment details",
+          "16": "Complete payment"
         }
       },
       "testTemplates": {
-        "title": "Test Templates & Categories",
-        "description": "Manage laboratory tests with customizable templates, parameters, and reference ranges organized by categories.",
+        "title": "Test Templates",
+        "description": "Manage laboratory tests with customizable templates, parameters, and reference ranges.",
         "images": {
-          "1": "Test template list with categories",
-          "2": "Detailed test template configuration",
-          "3": "Test categories management"
+          "1": "Test templates list",
+          "2": "Template details",
+          "3": "Add new template",
+          "4": "Edit template",
+          "5": "Add parameters",
+          "6": "Reference ranges",
+          "7": "Unit settings",
+          "8": "Template preview",
+          "9": "Delete template",
+          "10": "Confirm delete"
         }
       },
-      "resultsEntry": {
-        "title": "Results Entry",
-        "description": "Intuitive interface for entering test results with automatic validation, reference range checking, and flag indicators.",
+      "categories": {
+        "title": "Test Categories",
+        "description": "Organize tests into categories for easy management and search.",
         "images": {
-          "1": "Test results entry form",
-          "2": "Results with validation and flags"
+          "1": "Categories list",
+          "2": "Category details",
+          "3": "Add new category",
+          "4": "Edit category",
+          "5": "Sort categories",
+          "6": "Category tests",
+          "7": "Move tests",
+          "8": "Delete category",
+          "9": "Confirm delete",
+          "10": "Save changes"
         }
       },
-      "labToLab": {
-        "title": "Lab-to-Lab Tests",
-        "description": "Manage external laboratory partnerships. Outsource tests to partner labs and track costs for accurate financial reporting.",
+      "cbcReports": {
+        "title": "CBC Reports",
+        "description": "Generate Complete Blood Count (CBC) reports with charts and reference ranges.",
         "images": {
-          "1": "External lab assignment",
-          "2": "External lab management with pricing"
-        }
-      },
-      "pdfReports": {
-        "title": "PDF Reports",
-        "description": "Generate professional laboratory reports with customizable branding, complete results, and reference ranges.",
-        "images": {
-          "1": "Sample CBC test report with histogram"
-        }
-      },
-      "receipts": {
-        "title": "Billing Receipts",
-        "description": "Generate professional billing receipts with itemized tests, payment information, and optional QR code for digital payments.",
-        "images": {
-          "1": "Sample billing receipt"
+          "1": "CBC results entry",
+          "2": "Results preview",
+          "3": "Complete CBC PDF report"
         }
       },
       "casaAnalysis": {
@@ -513,7 +568,18 @@
           "5": "Additional parameters",
           "6": "Quality indicators",
           "7": "Summary report",
-          "8": "Complete CASA PDF report"
+          "8": "Velocity parameters",
+          "9": "Vitality parameters",
+          "10": "Microscopic examination",
+          "11": "Examination images",
+          "12": "Final analysis",
+          "13": "Conclusion and recommendations",
+          "14": "CASA report page 1",
+          "15": "CASA report page 2",
+          "16": "CASA report page 3",
+          "17": "CASA report page 4",
+          "18": "CASA report page 5",
+          "19": "CASA report page 6"
         }
       },
       "cultureReports": {
@@ -521,16 +587,48 @@
         "description": "Advanced culture and sensitivity reporting with antibiotic susceptibility testing and detailed organism identification.",
         "images": {
           "1": "Sample Information",
-          "2": "Microscopic Examination 1",
-          "3": "Microscopic Examination 2",
-          "4": "Type of Microbe",
-          "5": "Antibiotics 1",
-          "6": "Antibiotics 2",
-          "7": "Interpretation of Results and Recommendations",
-          "8": "Performed By",
-          "9": "Final Report 1",
-          "10": "Final Report 2",
-          "11": "Final Report 3"
+          "2": "Microscopic Examination",
+          "3": "Culture Results",
+          "4": "Microbe Type",
+          "5": "Sensitivity Testing",
+          "6": "Culture report page 1",
+          "7": "Culture report page 2"
+        }
+      },
+      "doctors": {
+        "title": "Doctor Management",
+        "description": "Manage referring doctors and track their referrals and information.",
+        "images": {
+          "1": "Doctors list",
+          "2": "Add new doctor",
+          "3": "Edit doctor details",
+          "4": "Doctor details and referrals"
+        }
+      },
+      "homePage": {
+        "title": "Home Page",
+        "description": "System overview with quick actions and statistics.",
+        "images": {
+          "1": "System home page",
+          "2": "Dashboard and statistics",
+          "3": "Quick actions"
+        }
+      },
+      "languageSupport": {
+        "title": "Language Support",
+        "description": "Multi-language support including Arabic, English, French, and Spanish with RTL support.",
+        "images": {
+          "1": "Language selection",
+          "2": "Arabic interface",
+          "3": "English interface",
+          "4": "French interface"
+        }
+      },
+      "login": {
+        "title": "Login Page",
+        "description": "Secure login with Google support and new account creation.",
+        "images": {
+          "1": "Login page"
         }
       }
     },

@@ -376,52 +376,78 @@
         "title": "Panel de Super Administrador",
         "description": "Herramientas integrales de análisis y gestión para supervisores de laboratorio. Supervise ingresos, rastree el rendimiento y acceda a todas las funciones administrativas desde un centro central.",
         "images": {
-          "1": "Análisis de ingresos con ingresos diarios y mensuales, total de pruebas y estadísticas de Lab-to-Lab",
-          "2": "Gráficos de desglose de ingresos diarios y mensuales para información financiera",
-          "3": "Enlaces rápidos de administración para acceso rápido a funciones administrativas",
-          "4": "Pruebas de mejor rendimiento y actividad reciente de inicio de sesión de administrador",
-          "5": "Monitoreo del estado del sistema, incluyendo base de datos, sincronización y operaciones Lab-to-Lab"
+          "1": "Página principal del panel de administración",
+          "2": "Estadísticas y gráficos de ingresos",
+          "3": "Enlaces rápidos a funciones administrativas",
+          "4": "Pruebas de mejor rendimiento",
+          "5": "Monitoreo del estado del sistema"
         }
       },
       "userManagement": {
         "title": "Gestión de Usuarios",
         "description": "Control completo sobre cuentas de usuario, roles y permisos. Gestione administradores, establezca niveles de acceso y configure permisos de descuento.",
         "images": {
-          "1": "Lista de usuarios con roles, estado y acciones rápidas",
-          "2": "Configuración de permisos de usuario y descuentos"
+          "1": "Lista de usuarios con roles y estado",
+          "2": "Detalles de usuario y permisos",
+          "3": "Agregar nuevo usuario",
+          "4": "Editar permisos de usuario",
+          "5": "Configuración de descuentos",
+          "6": "Activar/Desactivar usuario",
+          "7": "Formulario de agregar usuario",
+          "8": "Configuración de contraseña",
+          "9": "Configuración de permisos avanzados",
+          "10": "Confirmación de eliminación de usuario",
+          "11": "Restablecer contraseña",
+          "12": "Detalles de permisos",
+          "13": "Guardar cambios"
         }
       },
       "pdfSettings": {
         "title": "Configuración de Informes PDF",
         "description": "Personalice sus informes de laboratorio con encabezados y pies de página profesionales, logotipos y firmas electrónicas. Cree informes de marca que representen a su laboratorio.",
         "images": {
-          "1": "Panel completo de configuración de PDF con todas las opciones",
-          "2": "Configuración de encabezado con nombre del laboratorio y especializaciones",
-          "3": "Configuración de pie de página con información del director y detalles de contacto",
+          "1": "Panel completo de configuración de PDF",
+          "2": "Configuración de encabezado",
+          "3": "Configuración de pie de página",
           "4": "Configuración de firma electrónica",
-          "5": "Carga de logotipo y configuración de posicionamiento"
+          "5": "Carga de logotipo",
+          "6": "Configuración de posicionamiento del logotipo",
+          "7": "Vista previa del informe"
         }
       },
       "receiptSettings": {
         "title": "Configuración de Recibos",
         "description": "Configure recibos de facturación con información del laboratorio, logotipo y código QR de Instapay para pagos digitales convenientes.",
         "images": {
-          "1": "Descripción general de la configuración de recibos con información del laboratorio",
-          "2": "Configuración de información de texto del laboratorio",
-          "3": "Configuración de código QR para pagos Instapay",
-          "4": "Vista previa del recibo con código QR"
+          "1": "Vista general de configuración de recibos",
+          "2": "Configuración de información del laboratorio",
+          "3": "Configuración de código QR",
+          "4": "Vista previa del recibo",
+          "5": "Personalización de encabezado",
+          "6": "Personalización de pie de página",
+          "7": "Configuración de impresión",
+          "8": "Vista previa de impresión",
+          "9": "Guardar configuración"
         }
       },
       "auditLogs": {
         "title": "Registros de Auditoría",
         "description": "Seguimiento completo de actividad para cumplimiento y responsabilidad. Filtre y busque a través de todas las actividades del sistema para saber quién hizo qué y cuándo.",
         "images": {
-          "1": "Tabla de registros de auditoría con opciones de filtrado",
-          "2": "Vista detallada de la actividad con acciones del usuario"
+          "1": "Tabla de registros de auditoría",
+          "2": "Filtrar por fecha",
+          "3": "Filtrar por usuario",
+          "4": "Filtrar por acción",
+          "5": "Ver detalles",
+          "6": "Detalles de actividad del usuario",
+          "7": "Registro de cambios",
+          "8": "Exportar registros",
+          "9": "Buscar en registros",
+          "10": "Ordenar registros"
         }
       },
       "databaseBackup": {
-        "title": "Copia de Seguridad y Restauración de Base de Datos",
+        "title": "Copia de Seguridad y Restauración",
         "description": "Asegure los datos de su laboratorio con una fácil funcionalidad de copia de seguridad y restauración. Nunca pierda datos importantes de pacientes y pruebas.",
         "images": {
           "1": "Gestión de copias de seguridad con opciones de restauración"
@@ -431,73 +457,113 @@
         "title": "Gestión de Pacientes",
         "description": "Registros completos de pacientes con fácil registro, búsqueda y gestión. Rastree información del paciente, visitas e historial de pruebas.",
         "images": {
-          "1": "Lista de pacientes con opciones de búsqueda y filtrado",
-          "2": "Nuevo formulario de registro de paciente",
-          "3": "Entrada de información del paciente",
-          "4": "Selección de pruebas para pacientes",
-          "5": "Opciones de pago y descuento",
-          "6": "Resumen de visita y confirmación"
+          "1": "Lista de pacientes",
+          "2": "Buscar y filtrar",
+          "3": "Detalles del paciente",
+          "4": "Acciones rápidas",
+          "5": "Formulario de nuevo paciente - Información básica",
+          "6": "Formulario de nuevo paciente - Información de contacto",
+          "7": "Selección de pruebas",
+          "8": "Selección de médico remitente",
+          "9": "Opciones de pago y descuento",
+          "10": "Resumen y confirmación"
         }
       },
-      "patientHistory": {
-        "title": "Historial del Paciente",
-        "description": "Acceda al historial completo de visitas del paciente y registros de pruebas. Rastree resultados anteriores y monitoree la salud del paciente a lo largo del tiempo.",
+      "patientView": {
+        "title": "Vista de Paciente",
+        "description": "Ver detalles completos del paciente incluyendo información personal, historial de visitas y pruebas.",
         "images": {
-          "1": "Descripción general del historial de visitas del paciente",
-          "2": "Historial detallado de pruebas con resultados"
+          "1": "Información básica del paciente",
+          "2": "Historial de visitas",
+          "3": "Detalles de pruebas"
+        }
+      },
+      "patientTests": {
+        "title": "Pruebas del Paciente",
+        "description": "Gestionar pruebas del paciente, ingresar resultados, ver informes e imprimir.",
+        "images": {
+          "1": "Lista de pruebas del paciente",
+          "2": "Detalles de la prueba",
+          "3": "Ingresar resultados",
+          "4": "Formulario de entrada de resultados",
+          "5": "Validar resultados",
+          "6": "Guardar resultados",
+          "7": "Vista previa del informe",
+          "8": "Opciones de impresión",
+          "9": "Enviar por WhatsApp",
+          "10": "Seleccionar pruebas",
+          "11": "Impresión por lotes",
+          "12": "Configuración de impresión",
+          "13": "Confirmación de envío",
+          "14": "Envío exitoso",
+          "15": "Detalles del pago",
+          "16": "Completar pago"
         }
       },
       "testTemplates": {
-        "title": "Plantillas de Pruebas y Categorías",
-        "description": "Gestione pruebas de laboratorio con plantillas personalizables, parámetros y rangos de referencia organizados por categorías.",
+        "title": "Plantillas de Pruebas",
+        "description": "Gestione pruebas de laboratorio con plantillas personalizables, parámetros y rangos de referencia.",
         "images": {
-          "1": "Lista de plantillas de pruebas con categorías",
-          "2": "Configuración detallada de plantilla de prueba",
-          "3": "Gestión de categorías de pruebas"
+          "1": "Lista de plantillas de pruebas",
+          "2": "Detalles de la plantilla",
+          "3": "Agregar nueva plantilla",
+          "4": "Editar plantilla",
+          "5": "Agregar parámetros",
+          "6": "Rangos de referencia",
+          "7": "Configuración de unidades",
+          "8": "Vista previa de la plantilla",
+          "9": "Eliminar plantilla",
+          "10": "Confirmar eliminación"
         }
       },
-      "resultsEntry": {
-        "title": "Entrada de Resultados",
-        "description": "Interfaz intuitiva para ingresar resultados de pruebas con validación automática, verificación de rango de referencia e indicadores de bandera.",
+      "categories": {
+        "title": "Categorías de Pruebas",
+        "description": "Organice pruebas en categorías para una gestión y búsqueda fáciles.",
         "images": {
-          "1": "Formulario de entrada de resultados de prueba",
-          "2": "Resultados con validación y banderas"
+          "1": "Lista de categorías",
+          "2": "Detalles de la categoría",
+          "3": "Agregar nueva categoría",
+          "4": "Editar categoría",
+          "5": "Ordenar categorías",
+          "6": "Pruebas de la categoría",
+          "7": "Mover pruebas",
+          "8": "Eliminar categoría",
+          "9": "Confirmar eliminación",
+          "10": "Guardar cambios"
         }
       },
-      "labToLab": {
-        "title": "Pruebas Lab-to-Lab",
-        "description": "Gestione asociaciones con laboratorios externos. Externalice pruebas a laboratorios asociados y rastree costos para informes financieros precisos.",
+      "cbcReports": {
+        "title": "Informes CBC",
+        "description": "Genere informes de Hemograma Completo (CBC) con gráficos y rangos de referencia.",
         "images": {
-          "1": "Asignación de laboratorio externo",
-          "2": "Gestión de laboratorios externos con precios"
-        }
-      },
-      "pdfReports": {
-        "title": "Informes PDF",
-        "description": "Genere informes de laboratorio profesionales con marca personalizable, resultados completos y rangos de referencia.",
-        "images": {
-          "1": "Informe de muestra de prueba CBC con histograma"
-        }
-      },
-      "receipts": {
-        "title": "Recibos de Facturación",
-        "description": "Genere recibos de facturación profesionales con pruebas detalladas, información de pago y código QR opcional para pagos digitales.",
-        "images": {
-          "1": "Muestra de recibo de facturación"
+          "1": "Entrada de resultados CBC",
+          "2": "Vista previa de resultados",
+          "3": "Informe PDF CBC completo"
         }
       },
       "casaAnalysis": {
         "title": "Análisis CASA",
         "description": "Integración de Análisis de Semen Asistido por Computadora (CASA) para pruebas de salud reproductiva con seguimiento detallado de parámetros.",
         "images": {
-          "1": "Descripción general de entrada de prueba CASA",
+          "1": "Vista general de entrada de prueba CASA",
           "2": "Parámetros de motilidad",
           "3": "Análisis de concentración",
           "4": "Evaluación de morfología",
           "5": "Parámetros adicionales",
           "6": "Indicadores de calidad",
           "7": "Informe de resumen",
-          "8": "Informe completo CASA PDF"
+          "8": "Parámetros de velocidad",
+          "9": "Parámetros de vitalidad",
+          "10": "Examen microscópico",
+          "11": "Imágenes del examen",
+          "12": "Análisis final",
+          "13": "Conclusión y recomendaciones",
+          "14": "Informe CASA página 1",
+          "15": "Informe CASA página 2",
+          "16": "Informe CASA página 3",
+          "17": "Informe CASA página 4",
+          "18": "Informe CASA página 5",
+          "19": "Informe CASA página 6"
         }
       },
       "cultureReports": {
@@ -505,16 +571,48 @@
         "description": "Informes avanzados de cultivo y sensibilidad con pruebas de susceptibilidad a antibióticos e identificación detallada de organismos.",
         "images": {
           "1": "Información de la muestra",
-          "2": "Examen microscópico 1",
-          "3": "Examen microscópico 2",
+          "2": "Examen microscópico",
+          "3": "Resultados de cultivo",
           "4": "Tipo de microbio",
-          "5": "Antibióticos 1",
-          "6": "Antibióticos 2",
-          "7": "Interpretación de resultados y recomendaciones",
-          "8": "Realizado por",
-          "9": "Informe final 1",
-          "10": "Informe final 2",
-          "11": "Informe final 3"
+          "5": "Pruebas de sensibilidad",
+          "6": "Informe de cultivo página 1",
+          "7": "Informe de cultivo página 2"
+        }
+      },
+      "doctors": {
+        "title": "Gestión de Médicos",
+        "description": "Gestione médicos remitentes y rastree sus referencias e información.",
+        "images": {
+          "1": "Lista de médicos",
+          "2": "Agregar nuevo médico",
+          "3": "Editar detalles del médico",
+          "4": "Detalles del médico y referencias"
+        }
+      },
+      "homePage": {
+        "title": "Página de Inicio",
+        "description": "Vista general del sistema con acciones rápidas y estadísticas.",
+        "images": {
+          "1": "Página de inicio del sistema",
+          "2": "Panel y estadísticas",
+          "3": "Acciones rápidas"
+        }
+      },
+      "languageSupport": {
+        "title": "Soporte de Idiomas",
+        "description": "Soporte multilingüe incluyendo árabe, inglés, francés y español con soporte RTL.",
+        "images": {
+          "1": "Selección de idioma",
+          "2": "Interfaz en árabe",
+          "3": "Interfaz en inglés",
+          "4": "Interfaz en francés"
+        }
+      },
+      "login": {
+        "title": "Página de Inicio de Sesión",
+        "description": "Inicio de sesión seguro con soporte de Google y creación de cuenta.",
+        "images": {
+          "1": "Página de inicio de sesión"
         }
       }
     },

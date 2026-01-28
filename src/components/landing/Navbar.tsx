@@ -35,7 +35,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           <Link href={`/${locale}`} className="flex items-center gap-2">
             <Image
-              src="/images/logo.png"
+              src="/logos/logo_7a21bc67_colored_logo_whats_modified.png"
               alt="Lab Logo"
               width={300}
               height={100}

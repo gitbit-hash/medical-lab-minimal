@@ -64,7 +64,7 @@ export function MainNavigation({ serverLocale }: MainNavigationProps) {
           <div className="flex-shrink-0 flex items-center">
             <Link href={`/${locale}`} className="flex items-center group focus:outline-none">
               <Image
-                src="/images/logo.png"
+                src="/logos/logo_7a21bc67_colored_logo_whats_modified.png"
                 alt="Lab Logo"
                 width={300}
                 height={100}

@@ -72,7 +72,7 @@ export function HomePageClient({
             {/* Logo/Brand */}
             <div className="flex justify-center mb-6">
               <Image
-                src="/images/logo.png"
+                src="/logos/logo_7a21bc67_colored_logo_whats_modified.png"
                 alt="Lab Logo"
                 width={400}
                 height={400}

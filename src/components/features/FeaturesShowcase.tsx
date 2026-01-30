@@ -27,7 +27,8 @@ import {
   Microscope,
   ArrowLeft,
   X,
-  FlaskConical
+  FlaskConical,
+  Brain
 } from 'lucide-react';
 
 // Helper function to generate image paths for a locale
@@ -251,6 +252,15 @@ const getFeatureSections = (locale: string) => [
       `/images/${locale}/culture-5.png`,
       `/images/${locale}/culture-report-1.png`,
       `/images/${locale}/culture-report-2.png`,
+    ],
+  },
+  {
+    id: 'aiInterpretation',
+    icon: Brain,
+    color: 'from-cyan-500 to-cyan-600',
+    images: [
+      `/images/${locale}/AI-interpretation-1.png`,
+      `/images/${locale}/AI-interpretation-2.png`,
     ],
   },
   {

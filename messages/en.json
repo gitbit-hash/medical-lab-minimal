@@ -152,7 +152,8 @@
           "Multi-device sync",
           "SSL security included",
           "Priority technical support",
-          "99.9% uptime guarantee"
+          "99.9% uptime guarantee",
+          "AI Test Interpretation"
         ],
         "cta": "Subscribe Now",
         "annualDiscount": "Save 20% with annual billing"
@@ -593,6 +594,14 @@
           "5": "Sensitivity Testing",
           "6": "Culture report page 1",
           "7": "Culture report page 2"
+        }
+      },
+      "aiInterpretation": {
+        "title": "AI Test Interpretation",
+        "description": "AI-powered analysis and interpretation of test results with intelligent insights and medical context.",
+        "images": {
+          "1": "AI interpretation analysis view",
+          "2": "AI interpretation results"
         }
       },
       "doctors": {

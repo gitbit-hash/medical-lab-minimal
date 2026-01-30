@@ -152,7 +152,8 @@
           "Sincronización multi-dispositivo",
           "Seguridad SSL incluida",
           "Soporte técnico prioritario",
-          "Garantía de disponibilidad 99.9%"
+          "Garantía de disponibilidad 99.9%",
+          "Interpretación de Pruebas con IA"
         ],
         "cta": "Suscribirse Ahora",
         "annualDiscount": "Ahorra 20% con facturación anual"
@@ -577,6 +578,14 @@
           "5": "Pruebas de sensibilidad",
           "6": "Informe de cultivo página 1",
           "7": "Informe de cultivo página 2"
+        }
+      },
+      "aiInterpretation": {
+        "title": "Interpretación de Pruebas con IA",
+        "description": "Análisis e interpretación de resultados de pruebas impulsados por IA con información inteligente y contexto médico.",
+        "images": {
+          "1": "Vista de análisis de interpretación IA",
+          "2": "Resultados de interpretación IA"
         }
       },
       "doctors": {

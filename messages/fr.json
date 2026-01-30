@@ -152,7 +152,8 @@
           "Synchronisation multi-appareils",
           "Sécurité SSL incluse",
           "Support technique prioritaire",
-          "Garantie de disponibilité 99.9%"
+          "Garantie de disponibilité 99.9%",
+          "Interprétation IA des Tests"
         ],
         "cta": "S'abonner Maintenant",
         "annualDiscount": "Économisez 20% avec la facturation annuelle"
@@ -577,6 +578,14 @@
           "5": "Tests de sensibilité",
           "6": "Rapport de culture page 1",
           "7": "Rapport de culture page 2"
+        }
+      },
+      "aiInterpretation": {
+        "title": "Interprétation IA des Tests",
+        "description": "Analyse et interprétation des résultats de tests par intelligence artificielle avec des insights intelligents et un contexte médical.",
+        "images": {
+          "1": "Vue d'analyse de l'interprétation IA",
+          "2": "Résultats de l'interprétation IA"
         }
       },
       "doctors": {

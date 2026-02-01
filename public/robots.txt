@@ -1,0 +1,21 @@
+# Robots.txt for Lap Manager Pro
+# https://www.robotstxt.org/robotstxt.html
+
+User-agent: *
+Allow: /
+
+# Disallow protected/internal routes
+Disallow: /api/
+Disallow: /*/dashboard/
+Disallow: /*/patients/
+Disallow: /*/settings/
+Disallow: /*/admin/
+
+# Allow search engines to access the landing page
+Allow: /en
+Allow: /ar
+Allow: /fr
+Allow: /es
+
+# Sitemap location
+Sitemap: https://your-domain.com/sitemap.xml
